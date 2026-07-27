@@ -6,16 +6,27 @@ Lean output mode for Claude Code: minimal solution, action-first structure, zero
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+<a href="#examples">Examples</a> ·
+<a href="#install">Install</a> ·
+<a href="#what-it-does">What it does</a> ·
+<a href="#why">Why</a> ·
+<a href="#eval">Eval</a>
+
 </div>
 
-## Before / After
+## Examples
+
+**By task type.** Compression scales with what's being asked, not blindly with
+the level:
 
 <table>
 <tr>
+<th>Situation</th>
 <th>Without flow-lean</th>
 <th>With flow-lean</th>
 </tr>
 <tr>
+<td valign="top">Implement a feature</td>
 <td valign="top">
 
 Great question! There are a few different ways
@@ -32,7 +43,54 @@ handle it or the API 500s. Rest is mechanical.
 
 </td>
 </tr>
+<tr>
+<td valign="top">Tradeoff: SSR or SSG for a high-traffic blog</td>
+<td valign="top">
+
+Both have tradeoffs worth considering. SSR gives
+fresher content on every request but costs more
+server load. SSG is faster and cheaper to host but
+content can go stale between builds. It depends on
+your specific needs and traffic patterns.
+
+</td>
+<td valign="top">
+
+Use SSR, not SSG. A high-traffic blog changes often
+enough that stale SSG pages cost more in lost
+engagement than the extra server load costs in
+infrastructure. Cache the SSR output at the edge to
+close most of the performance gap.
+
+</td>
+</tr>
+<tr>
+<td valign="top">Factual lookup, <code>/flow-lean ultra</code></td>
+<td valign="top">
+
+To find the last commit that changed a file, you
+can use the git log command with a path filter,
+which will show you the commit history for that
+specific file.
+
+</td>
+<td valign="top">
+
+`git log -1 --format=%H -- src/auth.ts`
+
+</td>
+</tr>
 </table>
+
+**By level.** The task-type gate above always wins, but at the same task type
+the level still sets the default density. Same prompt ("what's the difference
+between debounce and throttle") at each level:
+
+| Level | Response |
+|-------|----------|
+| `lite` | Debounce waits until input stops for a set delay, then fires once, useful for a search box you don't want to query on every keystroke. Throttle fires at a fixed interval no matter how often the event repeats, useful for a scroll handler you want running steadily. |
+| `full` | Debounce delays until input stops for N ms, then fires once. Throttle fires at a fixed interval regardless of event frequency. Debounce for a search box, wait for typing to stop. Throttle for a scroll handler, run steadily. |
+| `ultra` | Not shown here. Explanation tasks cap at `full`/`lite` under the task-type gate, `ultra` is reserved for factual and debug lookups, see the git example above. |
 
 ## Install
 
@@ -68,7 +126,26 @@ command) but not the density. Stacked together they step on each other, and two
 of adhd's own rules are actively harmful: estimating in minutes, and stripping
 tangents in a way that can hide a real risk.
 
-flow-lean fuses the three under one rule instead of three overlapping ones.
+flow-lean fuses the three under one rule instead of three overlapping ones:
+
+```
+ponytail            adhd             caveman
+(what to code)    (the form)      (the density)
+      \                |                /
+       \_______________|_______________/
+                        |
+                        v
+               +------------------+
+               |     flow-lean    |   one rule:
+               +------------------+   every token earns its place
+                        |
+          ______________|______________
+         /               |              \
+        v                v                v
+   never ultra      compression      size in effort,
+   a decision        OFF on risk       not minutes
+```
+
 Where it goes further than any of the source skills:
 
 - It never compresses a decision. A tradeoff or recommendation gets its verdict
