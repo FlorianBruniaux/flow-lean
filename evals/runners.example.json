@@ -1,0 +1,20 @@
+{
+  "claude": {
+    "command": [
+      "claude",
+      "--disable-slash-commands",
+      "--print",
+      "--output-format",
+      "json",
+      "--no-session-persistence",
+      "--setting-sources",
+      "",
+      "--model",
+      "claude-sonnet-5",
+      "--tools",
+      ""
+    ],
+    "response_format": "claude-json",
+    "budget_flag": "--max-budget-usd"
+  }
+}
