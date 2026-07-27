@@ -1,0 +1,25 @@
+.gitignore
+  s_aa8c18eb70eb58::t_409f9d9b298e07 2
+README.md
+  s_aa8c18eb70eb58::t_15d91692472cd1 59-88
+  s_aa8c18eb70eb58::t_644568a7263ff2 89-93
+  s_aa8c18eb70eb58::t_77487155426b39 46-58
+EVAL.md
+  s_aa8c18eb70eb58::t_c93cb9dab23b99 1-145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "6032d1c92d7af78ffc4026f6f393929c475acc32",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
