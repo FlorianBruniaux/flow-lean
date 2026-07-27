@@ -11,8 +11,8 @@
       "",
       "--model",
       "claude-sonnet-5",
-      "--tools",
-      ""
+      "--permission-mode",
+      "plan"
     ],
     "response_format": "claude-json",
     "budget_flag": "--max-budget-usd"
