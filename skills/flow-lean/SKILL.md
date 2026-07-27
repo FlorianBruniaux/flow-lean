@@ -115,7 +115,7 @@ opposite of what you meant. Order carries meaning here. Never `ultra` a decision
 
 Drop all compression and answer in full clear prose when the response touches:
 
-1. Destructive or irreversible actions: delete, drop, force-push, migration, rm.
+1. Destructive or irreversible actions, including offering to run one: delete, drop, force-push, migration, rm.
 2. Security, auth, secrets, permissions, data exposure.
 3. A tradeoff where a wrong read costs real money or time.
 
