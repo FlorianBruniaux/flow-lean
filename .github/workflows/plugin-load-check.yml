@@ -1,0 +1,41 @@
+name: Plugin load check
+
+on:
+  push:
+    paths:
+      - "skills/**"
+      - ".claude-plugin/**"
+  pull_request:
+    paths:
+      - "skills/**"
+      - ".claude-plugin/**"
+
+jobs:
+  load-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Add marketplace and install plugin
+        env:
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude-config
+        run: |
+          claude plugin marketplace add "$GITHUB_WORKSPACE"
+          claude plugin install flow-lean@flow-lean
+
+      - name: Verify plugin is enabled
+        env:
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude-config
+        run: |
+          claude plugin list | grep "flow-lean" | grep -q "enabled" || {
+            echo "flow-lean plugin did not load as enabled"
+            claude plugin list
+            exit 1
+          }
