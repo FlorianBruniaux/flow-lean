@@ -43,43 +43,54 @@ claude plugin install flow-lean@flow-lean
 
 ## What it does
 
-Three layers, one rule underneath all of them: every token earns its place. A
-token earns its place only if it carries an action, a step, a decision-changing
-risk, or a proof.
+Three fused disciplines, one rule underneath: every token earns its place.
 
-- **Solution altitude (ponytail)**: before writing code, run a ladder from "does
-  this need to exist" down to "the minimum code that works". Deliberate
-  shortcuts get a `# ponytail: <ceiling>, <upgrade path>` marker. Non-trivial
-  logic ships with one runnable check.
-- **Form (adhd)**: first line is doable now, no preamble. Multi-step work is
-  numbered. Tradeoffs lead with the verdict, then the why.
-- **Density (caveman)**: zero preamble, zero recap, zero hedging, zero praise.
-  Cut every sentence that carries no decision, keep every one that does.
+- **ponytail**: minimal solution, ladder from "skip it" down to "the minimum code that works"
+- **adhd**: action-first, command or verdict in line one, numbered steps
+- **caveman**: zero-fat density, cut every sentence that carries no decision
 
-## The rules
+Compression scales with task type (factual and debug compress hard, tradeoffs
+barely move) and intensity level (`lite` / `full` / `ultra`, switch with
+`/flow-lean lite|full|ultra`). Suspends automatically on destructive actions,
+security, and high-stakes tradeoffs.
 
-Compression is not applied uniformly. A gate keyed on task type overrides the
-intensity level:
+Full mechanics: [`skills/flow-lean/SKILL.md`](skills/flow-lean/SKILL.md).
 
-| Task | Safe compression |
-|------|------------------|
-| Factual, lookup, debug diagnosis | 40-60%, `ultra` OK |
-| Explanation, teaching, walkthrough | 10-30% |
-| Tradeoff, recommendation, design decision | 0-15%, verdict first |
+## Why
 
-Compression auto-suspends for destructive actions, security/auth/secrets, and
-any tradeoff where a wrong read costs real money or time.
+Three existing skills already push toward less verbose output, each covering a
+third of the problem. Caveman, the most widely used of the three, compresses
+prose (zero preamble, symbols over words, code and commands kept byte-exact)
+but does not touch what gets built or how it is structured. Ponytail decides
+what to code (YAGNI, stdlib before a library, one line before ten) but not the
+form. i-have-adhd decides the form (action-first, numbered steps, proof by
+command) but not the density. Stacked together they step on each other, and two
+of adhd's own rules are actively harmful: estimating in minutes, and stripping
+tangents in a way that can hide a real risk.
 
-Three intensity levels:
+flow-lean fuses the three under one rule instead of three overlapping ones.
+Where it goes further than any of the source skills:
 
-| Level | Behavior |
-|-------|----------|
-| `lite` | Form + density, light connective prose |
-| `full` (default) | All three layers, tight, complete sentences |
-| `ultra` | Symbols, near-telegraphic, factual/debug only, never on decisions |
+- It never compresses a decision. A tradeoff or recommendation gets its verdict
+  in sentence one, then stays close to full prose. Compress a tradeoff too hard
+  and only the reasoning for the rejected option survives, so the reader infers
+  the opposite of the recommendation. Anthropic tested a uniform 100-word cap on
+  its own models, measured a 3% accuracy drop, and reverted it after a week.
+  "Just be terse" is a measured mistake, not a style choice.
+- It drops compression entirely on destructive actions, security and secrets,
+  or a tradeoff with real money on the line, full clear prose there instead.
+- It sizes work in effort or steps, never in minutes, a confident "15 min" from
+  a model is a guess dressed up as a fact.
 
-Switch with `/flow-lean lite|full|ultra`. Full rules live in
-[`skills/flow-lean/SKILL.md`](skills/flow-lean/SKILL.md).
+Measured net compression on mixed work lands around 20-30%, not the 50-75%
+Caveman's own README cites, those bigger figures hold for verbose prose or
+explanation, not general use.
+
+## Eval
+
+[`EVAL.md`](EVAL.md) is a 13-case regression battery, form (density, gate,
+auto-suspend) and fact (no invented specifics) graded apart. Run it in a fresh
+session after any change to `SKILL.md` to catch regressions before they ship.
 
 ## Credits
 
