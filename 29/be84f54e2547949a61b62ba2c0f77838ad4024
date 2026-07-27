@@ -1,0 +1,32 @@
+.github/workflows/plugin-load-check.yml
+  s_aa8c18eb70eb58::t_8ee1e11d38b7ee 1-41
+.gitignore
+  s_aa8c18eb70eb58::t_cd6e7b060f442b 1
+.claude-plugin/marketplace.json
+  s_aa8c18eb70eb58::t_32ca802152a172 1-17
+.claude-plugin/plugin.json
+  s_aa8c18eb70eb58::t_39f84bd804fbed 1-9
+README.md
+  s_aa8c18eb70eb58::t_a4c95f05fc9ba6 1-87,91-94
+  s_aa8c18eb70eb58::t_c2f110bf55a4e7 88-90
+LICENSE
+  s_aa8c18eb70eb58::t_90215ea947f48a 1-21
+skills/flow-lean/SKILL.md
+  s_aa8c18eb70eb58::t_37b9a28bffa0d9 1-179
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "29be84f54e2547949a61b62ba2c0f77838ad4024",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
