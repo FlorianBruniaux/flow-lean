@@ -11,8 +11,8 @@
       "",
       "--model",
       "claude-sonnet-5",
-      "--permission-mode",
-      "plan"
+      "--disallowedTools",
+      "Bash,Write,Edit,NotebookEdit,WebFetch"
     ],
     "response_format": "claude-json",
     "budget_flag": "--max-budget-usd"
