@@ -10,7 +10,8 @@ Lean output mode for Claude Code: minimal solution, action-first structure, zero
 <a href="#install">Install</a> ·
 <a href="#what-it-does">What it does</a> ·
 <a href="#why">Why</a> ·
-<a href="#eval">Eval</a>
+<a href="#eval">Eval</a> ·
+<a href="CHANGELOG.md">Changelog</a>
 
 </div>
 

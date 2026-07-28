@@ -1,7 +1,7 @@
 {
   "name": "flow-lean",
   "description": "Lean output mode that fuses minimal solution (ponytail), action-first structure (adhd), and zero-fat density (caveman) into one rule: every token earns its place.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Florian Bruniaux",
     "url": "https://github.com/FlorianBruniaux"
