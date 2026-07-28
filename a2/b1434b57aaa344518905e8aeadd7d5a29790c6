@@ -1,0 +1,23 @@
+CHANGELOG.md
+  s_aa8c18eb70eb58::t_a38f8a117a9dcc 1-41
+README.md
+  s_aa8c18eb70eb58::t_0ebc6ebc7a3d83 13-14
+.claude-plugin/plugin.json
+  s_aa8c18eb70eb58::t_6e8165a5bc8190 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "a2b1434b57aaa344518905e8aeadd7d5a29790c6",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
