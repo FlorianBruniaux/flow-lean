@@ -5,10 +5,13 @@ on:
     paths:
       - "skills/**"
       - ".claude-plugin/**"
+      - ".github/workflows/plugin-load-check.yml"
   pull_request:
     paths:
       - "skills/**"
       - ".claude-plugin/**"
+      - ".github/workflows/plugin-load-check.yml"
+  workflow_dispatch:
 
 jobs:
   load-check:
@@ -34,7 +37,7 @@ jobs:
         env:
           CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude-config
         run: |
-          claude plugin list | grep "flow-lean" | grep -q "enabled" || {
+          claude plugin list | grep -A3 "flow-lean@flow-lean" | grep -q "enabled" || {
             echo "flow-lean plugin did not load as enabled"
             claude plugin list
             exit 1
