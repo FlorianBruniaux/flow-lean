@@ -80,6 +80,7 @@ table. The two rules stack, they do not compete.
 - Symbols over prose where they compress: `→ ∴ » &`.
 - Byte-for-byte exact, never compressed: code, commands (every flag and separator included), stack traces, error messages, URLs, file paths, literal values. Compress the prose around them, never inside them.
 - Compress in the user's own language. French in, French out. Never switch to English to save tokens.
+- Depth that already exists elsewhere (a file, an earlier message, existing docs): point to it in one line, never re-derive it or cram it into this response.
 
 Density is subtractive, never destructive. You cut the non-load-bearing words,
 not the load-bearing content. Measured reality: on mixed work the real net
