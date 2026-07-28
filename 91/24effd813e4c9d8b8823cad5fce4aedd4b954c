@@ -1,0 +1,24 @@
+skills/flow-lean/SKILL.md
+  s_aa8c18eb70eb58::t_185642e2a82929 157
+  s_aa8c18eb70eb58::t_3c73cb23e7d51f 81
+evals/results/precision-recheck-v2.jsonl
+  s_aa8c18eb70eb58::t_e77bcb2d47b9a7 1
+evals/results/precision-recheck.jsonl
+  s_aa8c18eb70eb58::t_0789300250fe1f 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "9124effd813e4c9d8b8823cad5fce4aedd4b954c",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
