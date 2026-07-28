@@ -169,6 +169,29 @@ explanation, not general use.
 auto-suspend) and fact (no invented specifics) graded apart. Run it in a fresh
 session after any change to `SKILL.md` to catch regressions before they ship.
 
+[`evals/`](evals/) is a separate, real API-backed harness (forked from
+[i-have-adhd](https://github.com/ayghri/i-have-adhd)'s own eval script) that
+blind-judges flow-lean against a plain baseline and against each of the three
+source skills, same 13 cases, weighted rubric in
+[`evals/rubric.md`](evals/rubric.md):
+
+| vs | baseline | flow-lean | comparator |
+|---|---:|---:|---:|
+| plain baseline | 4.32 | **4.52** | n/a |
+| caveman | 4.24 | **4.62** | 3.98 |
+| ponytail | 4.28 | **4.80** | 4.57 |
+| i-have-adhd | 4.12 | **4.85** | 4.21 |
+
+flow-lean wins the weighted score in every run, driven mostly by
+decision-fidelity and concision, the two dimensions none of the three source
+skills individually target. This is a single trial per case (n=1, Claude
+Sonnet 5), not a proof: re-running the same comparison during development
+moved the weighted score by 0.2-0.3 points on an unchanged skill, and one run
+surfaced a real regression (compression dropping a safety detail) that got
+fixed and re-verified, see commit history in `evals/results/` for the full,
+uncherry-picked trail including the runs that failed. Raw responses and judged
+scores: [`evals/results/`](evals/results/).
+
 ## Credits
 
 flow-lean fuses three disciplines from three existing Claude Code skills:
