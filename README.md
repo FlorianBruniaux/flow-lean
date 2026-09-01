@@ -213,6 +213,19 @@ flow-lean fuses three disciplines from three existing Claude Code skills:
 - [ponytail](https://github.com/DietrichGebert/ponytail): minimal solution ladder
 - [i-have-adhd](https://github.com/ayghri/i-have-adhd): action-first structure
 
+<!-- BEGIN GENERATED RELATED PROJECTS -->
+<!-- Source: https://github.com/FlorianBruniaux/FlorianBruniaux/blob/main/ecosystem/projects.json; project: flow-lean -->
+## Explore the ecosystem
+
+These projects extend the workflow without duplicating this tool:
+
+- **Measure with [cc-skill-usage](https://github.com/FlorianBruniaux/cc-skill-usage)**: verify that the skill is invoked in real transcripts rather than only mentioned.
+- **Optimize with [RTK](https://github.com/rtk-ai/rtk)**: flow-lean reduces model prose while RTK reduces command output.
+- **Learn with [Claude Code Ultimate Guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide)**: place response density inside the broader context-engineering model.
+
+[Browse the complete open-source galaxy](https://github.com/FlorianBruniaux#open-source-galaxy)
+<!-- END GENERATED RELATED PROJECTS -->
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
