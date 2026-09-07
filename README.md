@@ -21,6 +21,7 @@ structure, adaptive density.
 
 <a href="#examples">Examples</a> ·
 <a href="#install">Install</a> ·
+<a href="#verify">Verify</a> ·
 <a href="#what-it-does">What it does</a> ·
 <a href="#why">Why</a> ·
 <a href="#eval">Eval</a> ·
@@ -118,20 +119,72 @@ claude plugin install flow-lean@flow-lean
 ### Codex
 
 ```bash
+codex plugin marketplace add FlorianBruniaux/flow-lean
+codex plugin add flow-lean@flow-lean
+```
+
+Codex versions without the `plugin` subcommand can use the legacy skill
+projection instead:
+
+```bash
 git clone https://github.com/FlorianBruniaux/flow-lean.git ~/.local/share/flow-lean
 mkdir -p ~/.codex/skills
 ln -s ~/.local/share/flow-lean/skills/flow-lean ~/.codex/skills/flow-lean
 ```
 
-Restart the Codex session after installation. Both hosts load the same canonical
-[`SKILL.md`](skills/flow-lean/SKILL.md); there is no separate Codex rewrite.
+Restart the host session after installation. Claude Code and current Codex
+versions load the same plugin; the legacy Codex projection resolves the same
+canonical [`SKILL.md`](skills/flow-lean/SKILL.md), not a host-specific rewrite.
+
+## Verify
+
+First verify installation, not behavior:
+
+```bash
+# Claude Code: the entry must contain flow-lean@flow-lean and enabled
+claude plugin list
+
+# Codex: the JSON entry must contain installed=true and enabled=true
+codex plugin list --json
+```
+
+For the legacy Codex projection, verify that the canonical file resolves:
+
+```bash
+test -f ~/.codex/skills/flow-lean/SKILL.md
+```
+
+Then open a fresh session and use this behavioral canary:
+
+```text
+Use flow-lean ultra. Give only the Git command that prints the last commit
+which changed src/auth.ts.
+```
+
+The answer should start with
+`git log -1 --format=%H -- src/auth.ts` and end with a `Skills used:` footer
+containing `flow-lean`. A listed plugin proves installation; only this canary
+proves that the session applied the skill.
+
+To verify automatic routing, repeat the test in another fresh session without
+naming the skill: `Be concise. Give only the Git command that prints the last
+commit which changed src/auth.ts.` The footer must still contain `flow-lean`.
+If it does not, the skill is installed but was not automatically selected.
+
+Installation makes flow-lean available, not automatically active for every
+request. For always-on concise mode, add this instruction to the host's global
+instruction file (`~/.claude/CLAUDE.md` or `~/.codex/AGENTS.md`):
+
+```text
+Load and apply the installed flow-lean skill in concise mode by default.
+```
 
 ## What it does
 
 Three fused disciplines, one rule underneath: every token earns its place.
 
 - **ponytail**: minimal solution, ladder from "skip it" down to "the minimum code that works"
-- **adhd**: action-first, command or verdict in line one, numbered steps
+- **i-have-adhd**: action-first, command or verdict in line one, numbered steps
 - **caveman**: zero-fat density, cut sentences that carry no action, evidence,
   required context, or decision
 
@@ -156,8 +209,10 @@ Full mechanics: [`skills/flow-lean/SKILL.md`](skills/flow-lean/SKILL.md).
 
 ## Why
 
+### Core fusion
+
 Three existing skills already push toward less verbose output, each covering a
-third of the problem. Caveman, the most widely used of the three, compresses
+different part of the problem. Caveman compresses
 prose (zero preamble, symbols over words, code and commands kept byte-exact)
 but does not touch what gets built or how it is structured. Ponytail decides
 what to code (YAGNI, stdlib before a library, one line before ten) but not the
@@ -166,24 +221,34 @@ command) but not the density. Stacked together they step on each other, and two
 of adhd's own rules are actively harmful: estimating in minutes, and stripping
 tangents in a way that can hide a real risk.
 
-flow-lean fuses the three under one rule instead of three overlapping ones:
+flow-lean fuses the three under one rule, then applies that rule through a
+task-sensitive runtime:
 
 ```
-ponytail            adhd             caveman
-(what to code)    (the form)      (the density)
-      \                |                /
-       \_______________|_______________/
-                        |
-                        v
-               +------------------+
-               |     flow-lean    |   one rule:
-               +------------------+   every token earns its place
-                        |
-          ______________|______________
-         /               |              \
-        v                v                v
-   never ultra      compression      size in effort,
-   a decision        OFF on risk       not minutes
+CORE SOURCES                         RUNTIME
+
+ponytail       solution altitude --\
+i-have-adhd    answer structure -----+--> classify task
+caveman        prose density -------/          |
+                                                v
+                                      risk / decision gate
+                                         /           \
+                         destructive or high stakes   normal
+                                   |                    |
+                                   v                    v
+                            compression off       choose density
+                                                /      |      \
+                                         detailed  concise  ultra
+                                                     |
+                                                     v
+                                  result + required proof and risk
+                                  + optional recap / handles / footer
+
+DESIGN REFERENCES
+
+writing-for-agents  -> routing, pruning, one source of truth
+unslop              -> editorial-pattern cross-check
+Liza                -> review depth and reviewer provenance
 ```
 
 Where it goes further than any of the source skills:
@@ -201,9 +266,10 @@ Where it goes further than any of the source skills:
   independent review.
 
 Historical v0.2.0 runs measured mixed-work net compression around 20-30%, not
-the 50-75% Caveman's README cites for narrower tasks. v0.3.0 has not been
-remeasured, so those figures are retained as historical evidence, not a current
-performance claim.
+the 50-75% Caveman's README cites for narrower tasks. The 17-case behavior
+introduced in v0.3.0 has not been remeasured. v0.3.1 changes documentation and
+distribution metadata only, so those figures remain historical evidence, not a
+current performance claim.
 
 ## Eval
 
@@ -238,7 +304,9 @@ fixed and re-verified, see commit history in `evals/results/` for the full,
 uncherry-picked trail including the runs that failed. Raw responses and judged
 scores: [`evals/results/`](evals/results/).
 
-## Credits
+## Sources and design references
+
+### Core sources
 
 flow-lean fuses three disciplines from three existing Claude Code skills:
 
@@ -246,11 +314,20 @@ flow-lean fuses three disciplines from three existing Claude Code skills:
 - [ponytail](https://github.com/DietrichGebert/ponytail): minimal solution ladder
 - [i-have-adhd](https://github.com/ayghri/i-have-adhd): action-first structure
 
-[Liza's adversarial pairing](https://github.com/liza-mas/liza/tree/main/skills/adversarial-pairing)
-inspired the review-depth boundary: compress the report, not the diligence;
-recommend an independent reviewer when consequence or uncertainty warrants it.
-Flow Lean does not copy Liza's blackboard, polling, worktree, or multi-agent
-lifecycle.
+### Later design references
+
+- [writing-for-agents](https://github.com/mattpocock/skills/blob/main/skills/productivity/writing-for-agents/SKILL.md):
+  context pointers, progressive disclosure, pruning, and one source of truth.
+- [unslop](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md):
+  a cross-check for generic phrasing, formatting habits, filler, and editorial
+  warning signs. It is not presented as the source of flow-lean's earlier
+  anti-AI rules.
+- [Liza's adversarial pairing](https://github.com/liza-mas/liza/tree/main/skills/adversarial-pairing):
+  the review-depth boundary and honest reviewer provenance.
+
+These are scoped references, not a claim that flow-lean copied their full
+workflows. In particular, it does not copy Liza's blackboard, polling, worktree,
+or multi-agent lifecycle.
 
 <!-- BEGIN GENERATED RELATED PROJECTS -->
 <!-- Source: https://github.com/FlorianBruniaux/FlorianBruniaux/blob/main/ecosystem/projects.json; project: flow-lean -->

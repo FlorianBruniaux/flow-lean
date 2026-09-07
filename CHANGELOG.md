@@ -2,6 +2,26 @@
 
 All notable changes to flow-lean are documented here.
 
+## [0.3.1] - 2026-09-07
+
+### Added
+
+- Native Codex marketplace installation and structural plus behavioral
+  verification steps for Claude Code and Codex, including an automatic-routing
+  canary.
+- Scoped design-reference credits for writing-for-agents, unslop, and Liza.
+- Always-on global instruction example, with installation and runtime proof
+  kept separate.
+
+### Changed
+
+- Replaced the historical three-input diagram with a runtime diagram covering
+  task classification, the risk gate, density selection, preserved proof, and
+  optional recap, handles, and skills footer.
+- Separated core source skills from later design references and clarified that
+  v0.3.1 changes documentation and distribution metadata only.
+- Kept the legacy Codex symlink installation as a compatibility fallback.
+
 ## [0.3.0] - 2026-09-07
 
 ### Added
