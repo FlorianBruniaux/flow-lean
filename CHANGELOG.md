@@ -2,6 +2,13 @@
 
 All notable changes to flow-lean are documented here.
 
+## [Unreleased]
+
+### Changed
+
+- Made the README runtime diagram Mermaid-first, with the portable ASCII
+  version available through a collapsed fallback.
+
 ## [0.3.1] - 2026-09-07
 
 ### Added

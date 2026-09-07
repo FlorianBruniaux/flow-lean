@@ -224,7 +224,34 @@ tangents in a way that can hide a real risk.
 flow-lean fuses the three under one rule, then applies that rule through a
 task-sensitive runtime:
 
+```mermaid
+flowchart TB
+  I["Core sources<br/><b>ponytail</b>: solution altitude<br/><b>i-have-adhd</b>: answer structure<br/><b>caveman</b>: prose density"]
+  T["Classify task"]
+  G{"Destructive, security,<br/>or high-stakes?"}
+  S["Suspend compression"]
+  D["Choose density from task type + selected level<br/><b>Detailed</b> · <b>Concise</b> · <b>Ultra</b><br/>Ultra only for factual or debug work"]
+  V["Set review depth independently"]
+  O["Result<br/>Required proof and risk preserved<br/>Optional recap, handles, and skills footer"]
+
+  I --> T
+  T --> G
+  T --> V
+  G -->|Yes| S
+  G -->|No| D
+  S --> O
+  D --> O
+  V --> O
+
+  W["writing-for-agents<br/>Routing, pruning, one source of truth"] -.-> T
+  U["unslop<br/>Editorial-pattern cross-check"] -.-> O
+  L["Liza<br/>Review depth and reviewer provenance"] -.-> V
 ```
+
+<details>
+<summary>ASCII fallback</summary>
+
+```text
 CORE SOURCES                         RUNTIME
 
 ponytail       solution altitude --\
@@ -250,6 +277,8 @@ writing-for-agents  -> routing, pruning, one source of truth
 unslop              -> editorial-pattern cross-check
 Liza                -> review depth and reviewer provenance
 ```
+
+</details>
 
 Where it goes further than any of the source skills:
 
