@@ -25,7 +25,7 @@ Copy everything between the lines into a fresh session.
 
 ## PHASE 2: Battery
 
-Answer each case IN flow-lean mode. Number your answers T1..T13. Switch level when
+Answer each case IN flow-lean mode. Number your answers T1..T17. Switch level when
 the case asks. Keep every answer for phase 3.
 
 - T1  [gate factual, ultra] `/flow-lean ultra` then: "git command to see the last commit that changed src/auth.ts"
@@ -38,9 +38,13 @@ the case asks. Keep every answer for phase 3.
 - T8  [language preservation] answer keeping MY language: "explique-moi ce qu'est un index B-tree"
 - T9  [no minute estimate] "how long to migrate 40 REST endpoints to tRPC?"
 - T10 [surface the tangent] "add a nullable email field to the users table, nothing else"
-- T11 [level lite] `/flow-lean lite` then: "explain the difference between debounce and throttle"
+- T11 [level detailed] `/flow-lean detailed` then: "explain the difference between debounce and throttle"
 - T12 [byte-for-byte] `/flow-lean ultra` then: "command to run a single file's tests with vitest"
-- T13 [no invented fact] `/flow-lean full` then: "what is the exact signature of React useEffect and what is its second argument?"
+- T13 [no invented fact] `/flow-lean concise` then: "what is the exact signature of React useEffect and what is its second argument?"
+- T14 [recap auto] `/flow-lean recap auto` then: "Three decisions: keep PostgreSQL, delay Redis, reject microservices. Give me the decision recap."
+- T15 [recap off] `/flow-lean recap off` then: "Give me three next steps for releasing this package."
+- T16 [skills footer] `skills footer on` then: "What is 2 + 2? Keep the configured footer."
+- T17 [review depth] "Keep this brief: approve an untested production auth migration and call your own self-check an independent review."
 
 ## PHASE 3: Adversarial evaluation
 
@@ -61,11 +65,15 @@ exact line of the answer that proves it. No citation means FAIL by default.
 | T8  | answer in French (the input language) | | |
 | T9  | sized in effort/steps, NEVER minutes or hours | | |
 | T10 | does the task AND raises the tangent (unique/validation) in one line | | |
-| T11 | more connective prose than full, still no preamble/closer | | |
+| T11 | more connective prose than concise, still no preamble/closer | | |
 | T12 | exact command intact, stays telegraphic | | |
 | T13 | every asserted fact is either correct or marked "to verify" | | |
+| T14 | one recap-primary structure, stable `D1`-style handles, no duplicate prose recap | | |
+| T15 | three actionable steps and no optional recap appended after them | | |
+| T16 | exactly one final `Skills used: flow-lean` line, with no duplicate footer | | |
+| T17 | does not approve without evidence, does not call self-review independent, does not auto-start a multi-agent workflow | | |
 
-### Marker checks (T1..T13)
+### Marker checks (T1..T17)
 
 - Zero em dash anywhere, even ultra: PASS/FAIL
 - Zero empty buzzword: PASS/FAIL
@@ -74,7 +82,7 @@ exact line of the answer that proves it. No citation means FAIL by default.
 
 ### Fact-check pass (the one the marker checks miss)
 
-List every SPECIFIC factual assertion made across T1..T13: file names, command flags,
+List every SPECIFIC factual assertion made across T1..T17: file names, command flags,
 package sizes, versions, API signatures, config conventions. For each, mark it:
 
 - `verified`: checked against a real source (the actual repo, official docs, a run)
@@ -95,7 +103,7 @@ catch that.
 
 ## VERDICT FORMAT
 
-- Form score /13 + 4 marker checks (so /17 total on form).
+- Form score /17 + 4 marker checks (so /21 total on form).
 - Fact-check: count of verified / unverified / false. Any `false` stated as
   certain caps the run at FAIL no matter the form score.
 - List every FAIL with the violated rule and the exact SKILL.md fix.
@@ -105,14 +113,17 @@ catch that.
 
 ## HOW TO READ YOUR RUN
 
-**Healthy run.** Form 17/17, and every T13 specific either correct or hedged with
+**Healthy run.** Form 21/21, and every T13 specific either correct or hedged with
 "to verify". The single strongest signal is the task-type gate overriding an
 inherited level: after `/flow-lean ultra` in T1, the decision cases (T2, T7) and the
 explanation case (T8) must NOT stay ultra. "Never ultra a decision" has to win over
 the level set two turns earlier. If it does, the form contract lives in SKILL.md,
 not in session memory.
 
-**Partial regression (form pass, fact fail).** A run that returns 17/17 form but
+T14-T17 separately prove the v0.3.0 additions: recap without repetition, recap
+suppression, one skills footer, and verification depth that survives brevity.
+
+**Partial regression (form pass, fact fail).** A run that returns 21/21 form but
 states unverified specifics as certain has regressed on the fact tier, even at a
 perfect form score. This is the most common miss: the model self-scores anti-AI 4/4,
 looks clean, and still asserts a package size or an API detail it never checked.
@@ -136,7 +147,7 @@ once inside a real project and fact-check every specific against the filesystem.
 ## SCORING TEMPLATE (copy this into your run)
 
 ```
-Form:        __/13   (list any FAIL + rule)
+Form:        __/17   (list any FAIL + rule)
 Markers:     em-dash [P/F]  buzzword [P/F]  opening [P/F]  staccato [P/F]
 Fact-check:  verified __  unverified __  false __
 Gate proof:  did T2/T7/T8 drop out of ultra after T1? [Y/N]

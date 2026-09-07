@@ -14,7 +14,8 @@
   </tr>
 </table>
 
-Lean output mode for Claude Code: minimal solution, action-first structure, zero-fat density.
+Lean output control for Claude Code and Codex: minimal solution, action-first
+structure, adaptive density.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -69,11 +70,11 @@ your specific needs and traffic patterns.
 </td>
 <td valign="top">
 
-Use SSR, not SSG. A high-traffic blog changes often
-enough that stale SSG pages cost more in lost
-engagement than the extra server load costs in
-infrastructure. Cache the SSR output at the edge to
-close most of the performance gap.
+Use SSG, not SSR. Blog pages are usually shared and
+change when an article is published, so pre-rendering
+removes per-request rendering cost. Rebuild or use
+incremental regeneration after publication. Use SSR
+only when the page must vary per request.
 
 </td>
 </tr>
@@ -101,16 +102,29 @@ between debounce and throttle") at each level:
 
 | Level | Response |
 |-------|----------|
-| `lite` | Debounce waits until input stops for a set delay, then fires once, useful for a search box you don't want to query on every keystroke. Throttle fires at a fixed interval no matter how often the event repeats, useful for a scroll handler you want running steadily. |
-| `full` | Debounce delays until input stops for N ms, then fires once. Throttle fires at a fixed interval regardless of event frequency. Debounce for a search box, wait for typing to stop. Throttle for a scroll handler, run steadily. |
-| `ultra` | Not shown here. Explanation tasks cap at `full`/`lite` under the task-type gate, `ultra` is reserved for factual and debug lookups, see the git example above. |
+| `detailed` (`lite`) | Debounce waits until input stops for a set delay, then fires once, useful for a search box you don't want to query on every keystroke. Throttle fires at a fixed interval no matter how often the event repeats, useful for a scroll handler you want running steadily. |
+| `concise` (`full`, default) | Debounce delays until input stops for N ms, then fires once. Throttle fires at a fixed interval regardless of event frequency. Debounce for a search box, wait for typing to stop. Throttle for a scroll handler, run steadily. |
+| `ultra` | Not shown here. Explanation tasks cap at `concise`/`detailed` under the task-type gate. `ultra` is reserved for factual and debug lookups, see the git example above. |
 
 ## Install
 
-```
+### Claude Code
+
+```bash
 claude plugin marketplace add FlorianBruniaux/flow-lean
 claude plugin install flow-lean@flow-lean
 ```
+
+### Codex
+
+```bash
+git clone https://github.com/FlorianBruniaux/flow-lean.git ~/.local/share/flow-lean
+mkdir -p ~/.codex/skills
+ln -s ~/.local/share/flow-lean/skills/flow-lean ~/.codex/skills/flow-lean
+```
+
+Restart the Codex session after installation. Both hosts load the same canonical
+[`SKILL.md`](skills/flow-lean/SKILL.md); there is no separate Codex rewrite.
 
 ## What it does
 
@@ -118,12 +132,25 @@ Three fused disciplines, one rule underneath: every token earns its place.
 
 - **ponytail**: minimal solution, ladder from "skip it" down to "the minimum code that works"
 - **adhd**: action-first, command or verdict in line one, numbered steps
-- **caveman**: zero-fat density, cut every sentence that carries no decision
+- **caveman**: zero-fat density, cut sentences that carry no action, evidence,
+  required context, or decision
 
 Compression scales with task type (factual and debug compress hard, tradeoffs
-barely move) and intensity level (`lite` / `full` / `ultra`, switch with
-`/flow-lean lite|full|ultra`). Suspends automatically on destructive actions,
-security, and high-stakes tradeoffs.
+barely move) and intensity level (`detailed` / `concise` / `ultra`, switch with
+`/flow-lean detailed|concise|ultra`; `lite` and `full` remain aliases). It
+suspends automatically on destructive actions, security, and high-stakes
+tradeoffs.
+
+It also adds:
+
+- `recap=auto`: choose a table, diagram, bullets, or one sentence only when a
+  recap helps;
+- stable handles such as `D1` and `R1` when later replies need to target one
+  decision or risk;
+- an optional `Skills used: ...` footer, enabled by default and disabled with
+  `skills footer off`;
+- review-depth separation: short output never means shallow verification, and
+  independent review is recommended only when it could change the decision.
 
 Full mechanics: [`skills/flow-lean/SKILL.md`](skills/flow-lean/SKILL.md).
 
@@ -164,29 +191,35 @@ Where it goes further than any of the source skills:
 - It never compresses a decision. A tradeoff or recommendation gets its verdict
   in sentence one, then stays close to full prose. Compress a tradeoff too hard
   and only the reasoning for the rejected option survives, so the reader infers
-  the opposite of the recommendation. Anthropic tested a uniform 100-word cap on
-  its own models, measured a 3% accuracy drop, and reverted it after a week.
-  "Just be terse" is a measured mistake, not a style choice.
+  the opposite of the recommendation.
 - It drops compression entirely on destructive actions, security and secrets,
   or a tradeoff with real money on the line, full clear prose there instead.
 - It sizes work in effort or steps, never in minutes, a confident "15 min" from
   a model is a guess dressed up as a fact.
+- It separates response length from review depth. Consequential or uncertain
+  work keeps its checks; a same-agent self-check is never presented as an
+  independent review.
 
-Measured net compression on mixed work lands around 20-30%, not the 50-75%
-Caveman's own README cites, those bigger figures hold for verbose prose or
-explanation, not general use.
+Historical v0.2.0 runs measured mixed-work net compression around 20-30%, not
+the 50-75% Caveman's README cites for narrower tasks. v0.3.0 has not been
+remeasured, so those figures are retained as historical evidence, not a current
+performance claim.
 
 ## Eval
 
-[`EVAL.md`](EVAL.md) is a 13-case regression battery, form (density, gate,
+[`EVAL.md`](EVAL.md) is a 17-case regression battery, form (density, gate,
 auto-suspend) and fact (no invented specifics) graded apart. Run it in a fresh
 session after any change to `SKILL.md` to catch regressions before they ship.
 
 [`evals/`](evals/) is a separate, real API-backed harness (forked from
 [i-have-adhd](https://github.com/ayghri/i-have-adhd)'s own eval script) that
 blind-judges flow-lean against a plain baseline and against each of the three
-source skills, same 13 cases, weighted rubric in
+source skills, using the current case set and the weighted rubric in
 [`evals/rubric.md`](evals/rubric.md):
+
+The scores below are the historical v0.2.0 snapshot on its 13-case suite. They
+remain reproducible in `evals/results/`, but must not be compared with a future
+17-case run as if the suites were identical.
 
 | vs | baseline | flow-lean | comparator |
 |---|---:|---:|---:|
@@ -195,7 +228,7 @@ source skills, same 13 cases, weighted rubric in
 | ponytail | 4.28 | **4.80** | 4.57 |
 | i-have-adhd | 4.12 | **4.85** | 4.21 |
 
-flow-lean wins the weighted score in every run, driven mostly by
+In that v0.2.0 snapshot, flow-lean won the weighted score in every run, driven mostly by
 decision-fidelity and concision, the two dimensions none of the three source
 skills individually target. This is a single trial per case (n=1, Claude
 Sonnet 5), not a proof: re-running the same comparison during development
@@ -212,6 +245,12 @@ flow-lean fuses three disciplines from three existing Claude Code skills:
 - [caveman](https://github.com/JuliusBrussee/caveman): zero-fat density
 - [ponytail](https://github.com/DietrichGebert/ponytail): minimal solution ladder
 - [i-have-adhd](https://github.com/ayghri/i-have-adhd): action-first structure
+
+[Liza's adversarial pairing](https://github.com/liza-mas/liza/tree/main/skills/adversarial-pairing)
+inspired the review-depth boundary: compress the report, not the diligence;
+recommend an independent reviewer when consequence or uncertainty warrants it.
+Flow Lean does not copy Liza's blackboard, polling, worktree, or multi-agent
+lifecycle.
 
 <!-- BEGIN GENERATED RELATED PROJECTS -->
 <!-- Source: https://github.com/FlorianBruniaux/FlorianBruniaux/blob/main/ecosystem/projects.json; project: flow-lean -->

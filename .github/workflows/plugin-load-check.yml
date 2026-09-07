@@ -4,11 +4,15 @@ on:
   push:
     paths:
       - "skills/**"
+      - "evals/**"
+      - "scripts/run_evals.py"
       - ".claude-plugin/**"
       - ".github/workflows/plugin-load-check.yml"
   pull_request:
     paths:
       - "skills/**"
+      - "evals/**"
+      - "scripts/run_evals.py"
       - ".claude-plugin/**"
       - ".github/workflows/plugin-load-check.yml"
   workflow_dispatch:
@@ -22,6 +26,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      - name: Validate evaluation catalogs
+        run: |
+          python3 scripts/run_evals.py validate
+          python3 -m json.tool evals/scenarios.json >/dev/null
+          test "$(jq '.positive | length' evals/scenarios.json)" -ge 8
+          test "$(jq '.negative | length' evals/scenarios.json)" -ge 2
 
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code

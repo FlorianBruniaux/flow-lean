@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "flow-lean",
-  "description": "Lean output mode that fuses minimal solution (ponytail), action-first structure (adhd), and zero-fat density (caveman) into one rule: every token earns its place.",
+  "description": "Adaptive output control for concise, action-first answers without reducing verification depth.",
   "owner": {
     "name": "Florian Bruniaux",
     "url": "https://github.com/FlorianBruniaux"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "flow-lean",
-      "description": "Lean output mode that fuses minimal solution (ponytail), action-first structure (adhd), and zero-fat density (caveman) into one rule: every token earns its place.",
+      "description": "Adaptive output control for concise, action-first answers without reducing verification depth.",
       "source": "./",
       "category": "productivity"
     }

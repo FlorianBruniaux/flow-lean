@@ -1,0 +1,22 @@
+{
+  "skill": "flow-lean",
+  "positive": [
+    "Active flow-lean pour cette session",
+    "Flow Lean full par défaut",
+    "Passe en mode concis, réponse courte et directe",
+    "Réduis les output tokens et va droit au but",
+    "Use Flow Lean action-first output",
+    "Flow Lean ultra for this factual lookup",
+    "Passe Flow Lean en detailed pour développer la réponse précédente",
+    "Flow Lean recap auto pour les décisions de cette session",
+    "Use Flow Lean recap off for the next answer",
+    "Désactive le Flow Lean skills footer",
+    "Show the Flow Lean skills-used footer"
+  ],
+  "negative": [
+    "Audite la consommation de tokens de ces cinquante transcripts",
+    "Compresse cette archive ZIP sans perte",
+    "Fais une revue de sécurité complète de cette pull request",
+    "Rédige un README détaillé pour cette bibliothèque"
+  ]
+}

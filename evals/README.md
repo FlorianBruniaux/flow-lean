@@ -37,7 +37,7 @@ python3 scripts/run_evals.py plan --trials 1 --include-comparator
 ```
 
 `plan` prints the expected call count before any money is spent. At 1 trial,
-13 cases, 3 conditions: 39 calls per full run.
+17 cases, 3 conditions: 51 calls per full run.
 
 ## Run
 
@@ -120,3 +120,7 @@ regardless of the weighted score.
 Do not compare conditions produced with different cases, models, trial
 counts, or rubrics. Commit `evals/results/` snapshots so numbers are
 reproducible without re-spending.
+
+The committed v0.2.0 result files used the former 13-case suite. They remain
+historical evidence only. Run all three conditions again before publishing a
+v0.3.0 comparison against the current 17-case suite.
