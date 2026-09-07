@@ -1,7 +1,7 @@
 {
   "name": "flow-lean",
-  "description": "Adaptive output control for concise, action-first answers without reducing verification depth.",
-  "version": "0.3.1",
+  "description": "Model-agnostic output control for concise, action-first answers with proof and risk preserved.",
+  "version": "0.3.2",
   "author": {
     "name": "Florian Bruniaux",
     "url": "https://github.com/FlorianBruniaux"

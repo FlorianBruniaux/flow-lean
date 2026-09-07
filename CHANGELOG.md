@@ -2,12 +2,19 @@
 
 All notable changes to flow-lean are documented here.
 
-## [Unreleased]
+## [0.3.2] - 2026-09-07
 
 ### Changed
 
 - Made the README runtime diagram Mermaid-first, with the portable ASCII
   version available through a collapsed fallback.
+- Repositioned flow-lean as model-agnostic output control for LLM agents while
+  keeping Claude Code and Codex as the documented native installation paths.
+- Added guidance for other hosts and stated the portability boundary:
+  instructions are portable, but discovery, persistence, commands, and routing
+  depend on the host.
+- Updated distributed descriptions and repository topics to remove the former
+  Claude-only framing.
 
 ## [0.3.1] - 2026-09-07
 

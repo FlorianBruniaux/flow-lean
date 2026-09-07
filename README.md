@@ -14,8 +14,9 @@
   </tr>
 </table>
 
-Lean output control for Claude Code and Codex: minimal solution, action-first
-structure, adaptive density.
+Adaptive output control for LLM agents: minimal solution, action-first
+structure, proof-preserving density. Native installation is documented for
+Claude Code and Codex; other hosts can load the same plain-Markdown skill.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -131,6 +132,14 @@ git clone https://github.com/FlorianBruniaux/flow-lean.git ~/.local/share/flow-l
 mkdir -p ~/.codex/skills
 ln -s ~/.local/share/flow-lean/skills/flow-lean ~/.codex/skills/flow-lean
 ```
+
+### Other LLM agents
+
+Use the canonical [`skills/flow-lean/SKILL.md`](skills/flow-lean/SKILL.md)
+through the host's native skill mechanism or load it as persistent system,
+developer, or project instructions. The rules are model-agnostic Markdown;
+discovery, persistence, commands, and automatic routing remain host-specific
+and must be verified in that environment.
 
 Restart the host session after installation. Claude Code and current Codex
 versions load the same plugin; the legacy Codex projection resolves the same
@@ -296,9 +305,9 @@ Where it goes further than any of the source skills:
 
 Historical v0.2.0 runs measured mixed-work net compression around 20-30%, not
 the 50-75% Caveman's README cites for narrower tasks. The 17-case behavior
-introduced in v0.3.0 has not been remeasured. v0.3.1 changes documentation and
-distribution metadata only, so those figures remain historical evidence, not a
-current performance claim.
+introduced in v0.3.0 has not been remeasured. Versions 0.3.1 and 0.3.2 change
+documentation and distribution metadata only, so those figures remain
+historical evidence, not a current performance claim.
 
 ## Eval
 
