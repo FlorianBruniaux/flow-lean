@@ -1,0 +1,43 @@
+CHANGELOG.md
+  s_8e2f5eb86a0417::t_deb82d470b6cfb 5-30
+EVAL.md
+  s_8e2f5eb86a0417::t_8fb19077af521c 9,28,33-34,49-55,58-59,66-70,74,82-86,88,97,118,128,135,137-139,141,165
+README.md
+  s_8e2f5eb86a0417::t_851cd3891eacae 101-102,109,175-177,181-183,202-214,218-219,225-227,246,250-257,260,262-264,266,269-271,278-293,300-304,312-314,318-320,331
+evals/README.md
+  s_8e2f5eb86a0417::t_64727b66b18451 19-36,58,144
+evals/cases.jsonl
+  s_8e2f5eb86a0417::t_36914855349bb9 3,5-6,10,18-22
+evals/explicit-controls.json
+  s_8e2f5eb86a0417::t_53b50bd96f675f 1-16
+evals/results/concision-2026-09-26.json
+  s_8e2f5eb86a0417::t_401399315e4211 1-762
+evals/results/concision-2026-09-26.md
+  s_8e2f5eb86a0417::t_8ae4c6074bdbaf 1-68
+evals/routing-probes.json
+  s_8e2f5eb86a0417::t_ca5925af3541f9 1-16
+evals/rubric.md
+  s_8e2f5eb86a0417::t_6e944d6fea486d 16
+evals/scenarios.json
+  s_8e2f5eb86a0417::t_0153d698600f61 1
+skills/flow-lean/SKILL.md
+  s_8e2f5eb86a0417::t_4970d9821c56ea 46-53,57,62,64-66,71-80,94-96,98-102,134,139,161-184,188
+skills/flow-lean/evals/scenarios.json
+  s_8e2f5eb86a0417::t_4a08c0fb3f72ac 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "44f12533e85ac415f6cb37be3d5e873587292c74",
+  "prompts": {},
+  "sessions": {
+    "s_8e2f5eb86a0417": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d3a5-14e3-7ac2-838b-e4f78ed75628",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
