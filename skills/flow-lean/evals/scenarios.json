@@ -1,0 +1,27 @@
+{
+  "skill": "flow-lean",
+  "positive": [
+    "mode lean activé",
+    "flow-lean s'il te plaît",
+    "passe en mode léger",
+    "sois ultra-concis",
+    "brevity mode on",
+    "trim the fat",
+    "on est pressés, sois bref",
+    "condensé et direct",
+    "fais-moi un récap de ce qu'on vient de faire",
+    "donne-moi le TLDR de cette session",
+    "explique-moi globalement ce qu'on vient de dire",
+    "un résumé de la conversation jusqu'ici",
+    "récapitule les décisions prises dans cet échange",
+    "TLDR : qu'est-ce qu'on a décidé jusqu'ici",
+    "résume-moi cette session de travail en quelques phrases",
+    "peux-tu synthétiser les points clés de cette conversation"
+  ],
+  "negative": [
+    "écris-moi un article complet",
+    "donne moi tous les détails",
+    "je veux la version complète avec explications",
+    "summarize the codebase architecture in a document"
+  ]
+}

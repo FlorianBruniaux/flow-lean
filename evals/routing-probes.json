@@ -1,0 +1,16 @@
+{
+  "purpose": "Additional public phrasing retained from the old repository corpus and the first candidate. Held out from calibration.",
+  "positive": [
+    "Passe en mode concis, réponse courte et directe",
+    "Réduis les output tokens et va droit au but",
+    "Réponds plus court, sans tableau ni récap à la fin",
+    "Be concise but keep the important caveat",
+    "Use short prose by default, skip the duplicate summary"
+  ],
+  "negative": [
+    "Audite la consommation de tokens de ces cinquante transcripts",
+    "Compresse cette archive ZIP sans perte",
+    "Fais une revue de sécurité complète de cette pull request",
+    "Rédige un README détaillé pour cette bibliothèque"
+  ]
+}

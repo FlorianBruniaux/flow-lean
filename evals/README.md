@@ -16,6 +16,24 @@ Run every command below from the repository root (`flow-lean/`), not from
 inside `evals/`, `--cases` and `--runner-config` default to the right paths
 under `evals/` on their own.
 
+## Routing scenarios
+
+The positive and negative routing corpus is bundled at
+[`skills/flow-lean/evals/scenarios.json`](../skills/flow-lean/evals/scenarios.json).
+`evals/scenarios.json` is a compatibility symlink to that one source. Named
+invocations and controls are kept in [`explicit-controls.json`](explicit-controls.json)
+for separate native-host checks; they are not implicit-routing training data.
+[`routing-probes.json`](routing-probes.json) retains additional public phrasing
+and boundary probes outside calibration; report misses rather than hiding them. Routing
+checks measure skill selection; they do not prove response quality or native
+plugin invocation.
+
+## Latest source-update checks
+
+The [2026-09-26 check report](results/concision-2026-09-26.md) records response
+smoke tests, routing checks, excluded evidence, and remaining limitations.
+It is not a paired comparison or a benchmark release-gate pass.
+
 ## Fetch comparators
 
 Comparator `SKILL.md` files are not vendored in this repo, they are fetched
@@ -37,7 +55,7 @@ python3 scripts/run_evals.py plan --trials 1 --include-comparator
 ```
 
 `plan` prints the expected call count before any money is spent. At 1 trial,
-17 cases, 3 conditions: 51 calls per full run.
+22 cases, 3 conditions: 66 calls per full run.
 
 ## Run
 
@@ -123,4 +141,4 @@ reproducible without re-spending.
 
 The committed v0.2.0 result files used the former 13-case suite. They remain
 historical evidence only. Run all three conditions again before publishing a
-v0.3.0 comparison against the current 17-case suite.
+current-version comparison against the 22-case suite.

@@ -98,15 +98,15 @@ specific file.
 </tr>
 </table>
 
-**By level.** The task-type gate above always wins, but at the same task type
-the level still sets the default density. Same prompt ("what's the difference
+**By level.** Required information and explicit detail requests always win;
+the selected level sets the default density. Same prompt ("what's the difference
 between debounce and throttle") at each level:
 
 | Level | Response |
 |-------|----------|
 | `detailed` (`lite`) | Debounce waits until input stops for a set delay, then fires once, useful for a search box you don't want to query on every keystroke. Throttle fires at a fixed interval no matter how often the event repeats, useful for a scroll handler you want running steadily. |
 | `concise` (`full`, default) | Debounce delays until input stops for N ms, then fires once. Throttle fires at a fixed interval regardless of event frequency. Debounce for a search box, wait for typing to stop. Throttle for a scroll handler, run steadily. |
-| `ultra` | Not shown here. Explanation tasks cap at `concise`/`detailed` under the task-type gate. `ultra` is reserved for factual and debug lookups, see the git example above. |
+| `ultra` | Not shown here. Explanations keep the detail needed to understand them. `ultra` is reserved for factual and debug lookups, see the git example above. |
 
 ## Install
 
@@ -172,13 +172,15 @@ which changed src/auth.ts.
 
 The answer should start with
 `git log -1 --format=%H -- src/auth.ts` and end with a `Skills used:` footer
-containing `flow-lean`. A listed plugin proves installation; only this canary
-proves that the session applied the skill.
+containing `flow-lean`. A listed plugin checks installation; this canary
+checks the visible response. A footer is a model declaration, not proof of
+native skill loading. Inspect the host's skill-loading events separately.
 
 To verify automatic routing, repeat the test in another fresh session without
 naming the skill: `Be concise. Give only the Git command that prints the last
-commit which changed src/auth.ts.` The footer must still contain `flow-lean`.
-If it does not, the skill is installed but was not automatically selected.
+commit which changed src/auth.ts.` The footer should still contain `flow-lean`.
+Confirm automatic selection through the host's loading events; a missing
+footer alone cannot distinguish a routing failure from a response failure.
 
 Installation makes flow-lean available, not automatically active for every
 request. For always-on concise mode, add this instruction to the host's global
@@ -197,22 +199,32 @@ Three fused disciplines, one rule underneath: every token earns its place.
 - **caveman**: zero-fat density, cut sentences that carry no action, evidence,
   required context, or decision
 
-Compression scales with task type (factual and debug compress hard, tradeoffs
-barely move) and intensity level (`detailed` / `concise` / `ultra`, switch with
-`/flow-lean detailed|concise|ultra`; `lite` and `full` remain aliases). It
-suspends automatically on destructive actions, security, and high-stakes
-tradeoffs.
+Ordinary replies aim for a short paragraph or up to three short bullets.
+Stop once the request is satisfied. This is a starting shape, not a cap that
+permits dropping requested information. Add detail when asked, when it enables
+action, or when it changes a decision.
+
+Use short prose by default. Tables help compare repeated fields; diagrams
+help explain a flow. Neither is mandatory just because there are several
+items. Use a sequence diagram for runtime exchanges when their order helps,
+and mark proposed or unknown behavior explicitly.
+
+Switch density with `/flow-lean detailed|concise|ultra`; `lite` and `full`
+remain aliases. Sensitive topics retain the relevant risks, conditions, and
+authorization boundaries without automatically expanding into long prose.
 
 It also adds:
 
-- `recap=auto`: choose a table, diagram, bullets, or one sentence only when a
-  recap helps;
+- `recap=auto`: no extra recap by default; summarize when requested or when
+  a handoff needs state that has not already been stated together;
 - stable handles such as `D1` and `R1` when later replies need to target one
   decision or risk;
 - an optional `Skills used: ...` footer, enabled by default and disabled with
   `skills footer off`;
 - review-depth separation: short output never means shallow verification, and
-  independent review is recommended only when it could change the decision.
+  independent review is recommended only when it could change the decision;
+- voice separation: the assistant speaks for itself; a message drafted for
+  the user preserves that user's facts, voice, and commitments.
 
 Full mechanics: [`skills/flow-lean/SKILL.md`](skills/flow-lean/SKILL.md).
 
@@ -231,72 +243,65 @@ of adhd's own rules are actively harmful: estimating in minutes, and stripping
 tangents in a way that can hide a real risk.
 
 flow-lean fuses the three under one rule, then applies that rule through a
-task-sensitive runtime:
+response process:
 
 ```mermaid
 flowchart TB
-  I["Core sources<br/><b>ponytail</b>: solution altitude<br/><b>i-have-adhd</b>: answer structure<br/><b>caveman</b>: prose density"]
-  T["Classify task"]
-  G{"Destructive, security,<br/>or high-stakes?"}
-  S["Suspend compression"]
-  D["Choose density from task type + selected level<br/><b>Detailed</b> · <b>Concise</b> · <b>Ultra</b><br/>Ultra only for factual or debug work"]
-  V["Set review depth independently"]
-  O["Result<br/>Required proof and risk preserved<br/>Optional recap, handles, and skills footer"]
+  I["Core sources: solution altitude, answer structure, prose density"]
+  T["Read the request and selected level"]
+  C["Preserve required facts, conditions, risks, and authorization"]
+  D{"More detail requested or needed?"}
+  S["Short prose by default"]
+  E["Add only the detail needed"]
+  V["Set verification depth independently"]
+  O["Answer once, then stop<br/>Use a table, diagram, or recap only when useful"]
 
   I --> T
-  T --> G
+  T --> C
   T --> V
-  G -->|Yes| S
-  G -->|No| D
+  C --> D
+  D -->|No| S
+  D -->|Yes| E
   S --> O
-  D --> O
+  E --> O
   V --> O
 
-  W["writing-for-agents<br/>Routing, pruning, one source of truth"] -.-> T
-  U["unslop<br/>Editorial-pattern cross-check"] -.-> O
-  L["Liza<br/>Review depth and reviewer provenance"] -.-> V
+  W["writing-for-agents: routing and pruning"] -.-> T
+  U["unslop: editorial cross-check"] -.-> O
+  L["Liza: review depth and provenance"] -.-> V
 ```
 
 <details>
 <summary>ASCII fallback</summary>
 
 ```text
-CORE SOURCES                         RUNTIME
+request + selected level
+          |
+          v
+preserve facts, conditions, risks, authorization
+          |
+          v
+more detail requested or needed?
+       /              \
+     no               yes
+     |                 |
+short prose       necessary detail
+       \              /
+        answer once, then stop
 
-ponytail       solution altitude --\
-i-have-adhd    answer structure -----+--> classify task
-caveman        prose density -------/          |
-                                                v
-                                      risk / decision gate
-                                         /           \
-                         destructive or high stakes   normal
-                                   |                    |
-                                   v                    v
-                            compression off       choose density
-                                                /      |      \
-                                         detailed  concise  ultra
-                                                     |
-                                                     v
-                                  result + required proof and risk
-                                  + optional recap / handles / footer
-
-DESIGN REFERENCES
-
-writing-for-agents  -> routing, pruning, one source of truth
-unslop              -> editorial-pattern cross-check
-Liza                -> review depth and reviewer provenance
+Verification depth is independent of response length.
+Use tables, diagrams, and recaps only when they help.
 ```
 
 </details>
 
 Where it goes further than any of the source skills:
 
-- It never compresses a decision. A tradeoff or recommendation gets its verdict
-  in sentence one, then stays close to full prose. Compress a tradeoff too hard
-  and only the reasoning for the rejected option survives, so the reader infers
-  the opposite of the recommendation.
-- It drops compression entirely on destructive actions, security and secrets,
-  or a tradeoff with real money on the line, full clear prose there instead.
+- A recommendation gives the verdict, decisive reason, and the tradeoff that
+  could change the choice. It can be short if those facts remain clear.
+- Destructive actions, security, and material cost keep the necessary
+  conditions, consequences, and authorization boundaries. Their presence
+  alone does not require a long answer.
 - It sizes work in effort or steps, never in minutes, a confident "15 min" from
   a model is a guess dressed up as a fact.
 - It separates response length from review depth. Consequential or uncertain
@@ -304,15 +309,15 @@ Where it goes further than any of the source skills:
   independent review.
 
 Historical v0.2.0 runs measured mixed-work net compression around 20-30%, not
-the 50-75% Caveman's README cites for narrower tasks. The 17-case behavior
-introduced in v0.3.0 has not been remeasured. Versions 0.3.1 and 0.3.2 change
-documentation and distribution metadata only, so those figures remain
-historical evidence, not a current performance claim.
+the 50-75% Caveman's README cites for narrower tasks. The current behavior
+and 22-case suite have no new paired comparison result. Earlier scores remain
+historical evidence, not a current compression or performance claim.
 
 ## Eval
 
-[`EVAL.md`](EVAL.md) is a 17-case regression battery, form (density, gate,
-auto-suspend) and fact (no invented specifics) graded apart. Run it in a fresh
+[`EVAL.md`](EVAL.md) is a 22-case regression battery, form (brevity, useful
+formatting, requested detail, and preserved risk) and fact (no invented
+specifics) graded apart. Run it in a fresh
 session after any change to `SKILL.md` to catch regressions before they ship.
 
 [`evals/`](evals/) is a separate, real API-backed harness (forked from
@@ -323,7 +328,7 @@ source skills, using the current case set and the weighted rubric in
 
 The scores below are the historical v0.2.0 snapshot on its 13-case suite. They
 remain reproducible in `evals/results/`, but must not be compared with a future
-17-case run as if the suites were identical.
+22-case run as if the suites were identical.
 
 | vs | baseline | flow-lean | comparator |
 |---|---:|---:|---:|

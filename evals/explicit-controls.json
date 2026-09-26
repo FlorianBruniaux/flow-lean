@@ -1,0 +1,16 @@
+{
+  "purpose": "Named invocations and controls from the former root routing corpus. Check with the host native skill mechanism, separately from implicit BM25 suggestions.",
+  "prompts": [
+    "Active flow-lean pour cette session",
+    "Flow Lean full par défaut",
+    "Use Flow Lean action-first output",
+    "Flow Lean ultra for this factual lookup",
+    "Passe Flow Lean en detailed pour développer la réponse précédente",
+    "Flow Lean recap auto pour les décisions de cette session",
+    "Use Flow Lean recap off for the next answer",
+    "Désactive le Flow Lean skills footer",
+    "Show the Flow Lean skills-used footer",
+    "Flow Lean : une réponse courte suffit ici",
+    "Flow Lean: explain in detail with an example this time"
+  ]
+}

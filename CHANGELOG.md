@@ -2,6 +2,32 @@
 
 All notable changes to flow-lean are documented here.
 
+## [Unreleased]
+
+### Changed
+
+- Prefer a short paragraph or up to three short bullets for ordinary replies,
+  while preserving requested information and explicitly requested detail.
+- Use short prose by default; choose tables and diagrams when they clarify
+  the content, and remove automatic duplicate recaps.
+- Keep relevant safety conditions and authorization boundaries without
+  expanding every sensitive topic into a long answer.
+- Separate the assistant's voice from messages drafted for the user, without
+  depending on a personal profile or another locally installed skill.
+- Remove unmeasured compression targets from the instruction contract.
+- Align the README, runtime diagram, manual battery, and scoring criteria
+  with these rules. Historical comparison scores remain historical.
+
+### Added
+
+- Sequence-diagram guidance for runtime exchanges, including proposed-flow
+  labels and a portable ASCII fallback.
+- Five regression cases for short status, simple choices, requested detail,
+  speaker fidelity, and no automatic recap (22 cases total).
+- A bundled natural-language routing corpus shared with the root evaluation
+  path through a compatibility symlink. Keep named invocation checks separate
+  from implicit routing checks.
+
 ## [0.3.2] - 2026-09-07
 
 ### Changed

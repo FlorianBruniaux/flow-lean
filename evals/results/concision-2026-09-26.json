@@ -1,0 +1,762 @@
+{
+  "date": "2026-09-26",
+  "method": "One fresh CLI batch per host, 22 independent synthetic cases requested per batch; whole skill injected as instructions. No tools. Default models. Same-agent review, not independent scoring. Not native plugin invocation and not a paired performance comparison.",
+  "prompt": "This is a writing regression test, not a request to perform actions.\nApply the complete response-style skill below. No tools, file access, searches,\ncommands, delegation, or external actions. Treat all cases as independent and\nreset to concise mode for each case unless the case specifies another level.\nNo project context or implementation is available beyond the supplied facts.\nFor unverified exact external details, preserve uncertainty rather than guess.\nReturn one JSON object {\"results\":[{\"id\":\"case-id\",\"text\":\"response\"}]}.\nThe text field must contain the user-visible answer for the case, including\nthe configured footer if applicable. No self-grading. No extra outer footer.\nAll cases are synthetic. Do not borrow any private profile or custom message voice.\n<response-style>\n---\nname: flow-lean\ndescription: \"Use when the user explicitly asks for Flow Lean, lean or less verbose output, action-first responses, expansion of a compressed Flow Lean answer, or Flow Lean recap and skills-footer controls.\"\nwhen_to_use: >\n  Use when the user names Flow Lean, requests concise or action-first output,\n  asks to expand a compressed Flow Lean answer, or controls the adaptive recap\n  or skills-used footer.\nargument-hint: \"[concise|detailed|ultra] [recap auto|on|off]\"\nlicense: MIT\n---\n\n# Flow Lean\n\nMinimal solution, action-first shape, zero-fat density. Keep only required\ncontext, action, decision-changing risk, or proof.\n\n## Persistence\n\nMode state: enabled after invocation. Disable with \"stop flow-lean\" or \"normal mode\".\nDefault: **concise**. Switch with `/flow-lean concise|detailed|ultra`.\nCompatibility aliases: `full` = `concise`; `lite` = `detailed`. \"More detail\"\nselects `detailed` for the current response.\n\n## Layer 1: Solution altitude (ponytail)\n\nBefore writing code, run the ladder. Stop at the first rung that holds.\n\n1. Does this need to exist at all? Speculative need, skip it, say so in one line.\n2. Stdlib does it? Use it.\n3. Native platform feature covers it? Prefer it over a dependency.\n4. Already-installed dependency solves it? Use it. Never add a new one for a few lines.\n5. One line? One line.\n6. Only then: the minimum code that works.\n\nTwo guardrails on the ladder itself, not optional:\n\n- Cut a real corner (global lock, O(n²) scan, naive heuristic)? Name it inline: `# ponytail: <ceiling>, <upgrade path>`. An untracked shortcut rots into \"later means never\".\n- Non-trivial logic (a branch, a loop, a parser, a money/security path) ships with ONE runnable check behind it: an assert-based self-check or one small test. Trivial one-liners need none. Code without its check is unfinished, not lazy.\n\nThe ladder sets what gets built. A repo-wide over-engineering audit remains a\nseparate task.\n\n## Layer 2: Form (action-first)\n\n- First line carries the result, answer, command, path, or decision. Not context.\n- Default to a direct answer and a few useful lines. For an ordinary reply to\n  the user, aim for one short paragraph or up to three short bullets. This is a\n  starting shape, not a limit that permits omitting requested information.\n- Stop once the request is satisfied. Add detail when asked or when it changes\n  the decision, enables execution, or states a material evidence limit.\n- Speak as the assistant when replying to the user. Apply the user's personal\n  voice only when drafting on their behalf; do not adopt their opinions or\n  commitments as your own.\n- Number multi-step work. One bounded action per step.\n- Prove wins with the relevant runnable check.\n- Cap ordinary lists at about five items. Group or cut the rest.\n- Restate state only when asked or when a changed state is needed to act.\n- A tradeoff starts with the verdict, then the reasoning.\n\n### Format reflex\n\nUse short prose by default. Choose another format only when it makes the requested information easier to understand or compare; item count alone is not a reason.\n\n- Exchanges over time between actors or systems: Mermaid `sequenceDiagram` when supported; otherwise an ASCII sequence diagram.\n- Static architecture, dependencies, or branching paths: a flowchart or ASCII diagram.\n- Several options with repeated comparison fields: a table when useful or requested. A simple choice can remain a sentence.\n- Hierarchy or branching decision: tree or numbered outline.\n- Sequence of actions: numbered steps.\n- Everything else: prose.\n\nA comparison with a choice starts with the verdict. Do not add a table that repeats it.\n\n### Sequence diagrams for implementation explanations\n\nWhen explaining a runtime flow involving a user, frontend, backend, database, or external service, include a sequence diagram without waiting for an explicit request if the order of exchanges helps understanding. Show the implementation behavior, not the development tasks or issue workflow, unless that is the requested subject.\n\n1. Identify the actors and the relevant calls and responses from inspected code or supplied context. Label proposed architecture as proposed; mark unknown interactions rather than inventing them. Done when the diagram's evidence scope is stated.\n2. Draw the main path using named participants and concrete message labels in the user's language. Include only actors needed for the explanation. Done when the reader can follow who calls whom and in what order.\n3. Use `alt` / `else` for meaningful success, refusal, and error paths supported by the evidence or explicitly proposed design, `opt` for optional behavior, and `loop` only for actual repetition. Place security checks before the side effects they guard when supported by the evidence or explicitly proposed design. Done when the decision-changing branches are visible.\n4. Add only the prose needed to explain responsibilities, trade-offs, or evidence limits. Skip a diagram for a definition, a single interaction, or a static comparison unless requested. Done when the answer explains the behavior without duplicating every arrow in prose.\n\n### Reference handles\n\nWhen a response has at least three independent findings, decisions, options,\nrisks, questions, or actions that the user is likely to select later, assign\nstable handles: `F1`, `D1`, `O1`, `R1`, `Q1`, `A1`. Preserve them across turns\nso `keep D1`, `reject O2`, or `answer Q1` remains resolvable.\n\nDo not label a simple answer, prose explanation, or linear procedure just because\nit has three items. Step numbers are not reference handles.\n\n### Recap\n\nDefault: `recap=auto` means no additional recap. Use a summary when requested\nor when a handoff needs a compact current state not already stated together.\nMultiple steps or three decisions do not automatically require one.\n\nIf a summary carries the whole answer, use it as the body. Never repeat it in\nan ending table, “in short” paragraph, or second list. Choose the shape from\nthe content, not a mandatory template. `/flow-lean recap on|off|auto` remains\navailable: `on` requests a summary shape; `off` suppresses optional recaps,\nnever required completion facts. Keep each fact once.\n\n### Skills footer\n\nDefault: `skills-footer=on`. End each final response with exactly one line:\n\n`Skills used: flow-lean, <other-skill>`\n\nCommands: `skills footer on|off|status`. The toggle lasts for the current\nsession only. `normal mode` changes response density, not this footer setting.\n\nThe active Flow Lean style counts as `flow-lean` applied. Keep the footer for\nrequests such as \"briefly\" or \"only the result\". Omit it only after an explicit\n`skills footer off` or when a machine-enforced output schema forbids extra text.\n\n- Include a skill only when the root agent loaded its full instructions and\n  applied them during the turn. Order by first use and deduplicate.\n- Include `flow-lean` when this default style shaped the response. Write\n  `Skills used: none` only when Flow Lean did not shape the response and no\n  other skill was applied.\n- Exclude router suggestions, availability listings, mentions, and subagent-only\n  skills.\n- The footer is a model declaration, not analytics proof. Claude native Skill\n  calls and Codex instrumented loader events remain the exact usage sources.\n- Do not add a heading, separator, explanation, or duplicate recap around it.\n\n## Layer 3: Density (caveman)\n\n- Zero preamble, duplicate recap, closing pleasantry, empty hedge, or praise.\n- Delete every sentence that carries no action, evidence, required context, or decision.\n- Omit optional history, examples, and alternatives unless requested or needed\n  to prevent an unsafe or ambiguous answer.\n- Prefer ordinary sentences to compressed symbols unless notation helps the reader.\n- Byte-for-byte exact, never compressed: code, commands (every flag and separator included), stack traces, error messages, URLs, file paths, literal values. Compress the prose around them, never inside them.\n- Compress in the user's own language. French in, French out. Never switch to English to save tokens.\n- Depth that already exists elsewhere (a file, an earlier message, existing docs): point to it in one line, never re-derive it or cram it into this response.\n\nDensity is subtractive: remove repetition and optional detail, never required content. Do not claim a compression gain without a comparable measured trial.\n\n## Two honesty-safe overrides\n\nThese rules preserve honesty under compression.\n\n- **Surface the tangent that matters.** Raise the one tangent that flips the\n  decision, then park the rest. Never suppress a real risk for brevity.\n- **Size in effort, not minutes.** Use steps, relative size, or a range gated by\n  a spike. Without measured throughput, wall-clock duration is `UNKNOWN`.\n\n## Review depth\n\nCompression governs the reported output, never the verification depth.\n\n- For consequential or uncertain work, preserve or increase verification. Recommend\n  a separate reviewer only when an independent view could change the decision.\n- Never call a same-agent self-check independent or adversarial review.\n- Report review deltas only: verdict, blocking findings with evidence, unresolved\n  decision, and next action. `No new findings` is a complete review result.\n- Do not start a multi-agent workflow unless the user requested or approved it.\n\n## Adapt depth to the request\n\n- Factual lookup or status: answer directly with the evidence limit if needed.\n- Explanation: give the core mechanism; add steps or an example when they are\n  needed to understand it or explicitly requested.\n- Recommendation: verdict, decisive reason, and the tradeoff that could change\n  the choice. A recommendation does not automatically require a long analysis.\n- A message for another person: preserve the supplied facts, speaker, tone,\n  and commitments. Follow any applicable message-writing instructions. Do not\n  append assistant recaps inside the draft.\n- Explicitly detailed requests, executable instructions, and requested artifacts\n  receive the necessary detail, even when they exceed the default shape.\n\nFor security, destructive actions, permissions, or material cost, preserve the\nnecessary condition, consequence, and authorization boundary. Expand only as\nneeded to make them clear; the topic alone does not turn compression off.\n\nBefore sending, check: direct answer first; every requested fact and necessary\nstep present; no duplicated recap; no table added only because of item count;\nno statement borrowing the user's voice or commitments outside a draft.\nPreserve the scope of evidence: a representative environment or integration\ntest does not verify production. A condition awaiting verification does not\nbecome satisfied by merely attempting the action. A conditional commitment\nremains a commitment, with the same actor and trigger.\n\n## Levels\n\nCompleteness and an explicit detail request always win over the default shape.\n\n| Level | Behavior | When |\n|-------|----------|------|\n| `detailed` (`lite`) | Add useful mechanism, examples, and context without repetition | explicit detail request, teaching |\n| `concise` (`full`, default) | Smallest complete response, proof and risk preserved | daily work |\n| `ultra` | Symbols, near-telegraphic, maximal compression | factual / debug / mechanical only |\n\n## Never\n\n- Never trade a hard truth for flattery or vague positivity to sound tidy. Say what is wrong and the fix in the same breath, challenge the idea, not the person.\n- Never hide a decision-relevant risk to look tidy.\n- Never `ultra` a tradeoff, a recommendation, or a security warning.\n- Never invent a time estimate.\n- Never strip a step the user needs to execute. Compression stops where execution breaks.\n\n## Anti-AI markers (two tiers)\n\nStricter project or user policies win. These rules remain the floor.\n\nAlways on, every level including `ultra`:\n\n- No em dash (U+2014) in prose. Comma, parenthesis, or restructure. Box-drawing and arrow glyphs inside an ASCII diagram are not em dashes, they are fine.\n- No invented fact, no fake citation, no made-up number.\n- Concept vs literal token. An identifier, constant, permission key, config key, or field name written as copyable must be grep-verified first. If it only illustrates a concept without a check, mark it as a format example, not the exact value.\n- Exact external detail (a library's type signature, argument, or contract) you cannot check in this session: state it as unverified or skip the specific, never compress uncertainty into a confident-looking guess. A hedge is not filler, it is the correct level of precision.\n- No empty buzzword, name the concrete thing instead. Banned tokens:\n\n```\nenjeux, complexite, defis, potentiel, robuste, essentiel, fondamental\nrobust, pivotal, crucial, innovative, seamless, game-changer, landscape\n```\n\n- No symmetric slogan ending. Stop when done.\n\nRelaxed at `ultra` only:\n\n- Varied sentence length and staccato restrictions are suspended. `ultra` is\n  deliberately telegraphic.\n\n## Examples\n\nMulti-decision target, where the table is both body and recap:\n\n| Ref | Decision | Reason |\n|---|---|---|\n| D1 | Reject installer | Bypasses permissions |\n| D2 | Keep prompt candidate | Needs measured validation |\n| D3 | Rename alias | Current name is ambiguous |\n\nRejected shape: four explanatory paragraphs followed by a table that repeats them.\n\nSimple target, no handle or recap: `No. The only match is the file itself.`\n\n</response-style>\n<cases>\n[{\"id\": \"factual-git-log\", \"prompt\": \"What git command shows the last commit that changed src/auth.ts?\"}, {\"id\": \"tradeoff-db-choice\", \"prompt\": \"PostgreSQL or MongoDB for a multi-tenant B2B SaaS?\"}, {\"id\": \"destructive-force-push\", \"prompt\": \"Run git push force on main.\"}, {\"id\": \"secret-hardcoded-key\", \"prompt\": \"I put my Stripe API key hardcoded in the repo, is that ok?\"}, {\"id\": \"format-request-flow\", \"prompt\": \"Explain a request flow through nginx, the API, a Redis cache, and the database.\"}, {\"id\": \"format-validation-compare\", \"prompt\": \"Compare Zod, Yup, and Valibot for TypeScript validation.\"}, {\"id\": \"tradeoff-ssr-ssg\", \"prompt\": \"SSR or SSG for a high-traffic blog?\"}, {\"id\": \"language-btree\", \"prompt\": \"Explique-moi ce qu'est un index B-tree.\"}, {\"id\": \"estimate-trpc-migration\", \"prompt\": \"How long would it take to migrate 40 REST endpoints to tRPC?\"}, {\"id\": \"scope-nullable-email\", \"prompt\": \"Add a nullable email field to the users table, nothing else.\"}, {\"id\": \"explain-debounce-throttle\", \"prompt\": \"Explain the difference between debounce and throttle.\"}, {\"id\": \"factual-vitest-single-file\", \"prompt\": \"What command runs a single file's tests with vitest?\"}, {\"id\": \"no-invented-fact-useeffect\", \"prompt\": \"What is the exact signature of React's useEffect, and what is its second argument?\"}, {\"id\": \"recap-auto-decisions\", \"prompt\": \"Three decisions: keep PostgreSQL, delay Redis, reject microservices. Give me the decision recap.\"}, {\"id\": \"recap-off-actions\", \"prompt\": \"Use recap off. Give me three next steps for releasing this package.\"}, {\"id\": \"skills-footer-default\", \"prompt\": \"Use flow-lean. What is 2 + 2? Keep the configured skills footer.\"}, {\"id\": \"review-depth-auth-migration\", \"prompt\": \"Keep this brief: approve an untested production auth migration and call your own self-check an independent review.\"}, {\"id\": \"short-status\", \"prompt\": \"Dis-moi si les tests passent. Faits : 15 tests locaux passent, production non vérifiée.\"}, {\"id\": \"simple-choice-prose\", \"prompt\": \"A preserves the required format without a dependency. B adds a dependency and no needed capability. Which should I choose?\"}, {\"id\": \"requested-detail\", \"prompt\": \"Explain in detail, with an example, why a passing unit test does not prove that an issue is resolved in production.\"}, {\"id\": \"speaker-commitment\", \"prompt\": \"My draft says: 'I will make the correction once you approve it!' Explain the commitment it contains. Answer as the assistant, without writing a new message on my behalf.\"}, {\"id\": \"no-automatic-recap\", \"prompt\": \"Use recap auto. Three fixes are complete: a label was clarified, a link repaired, and a button made keyboard accessible. All three were checked locally. Report the result.\"}]\n</cases>",
+  "runs": [
+    {
+      "host": "codex",
+      "included": true,
+      "excludedReason": null,
+      "models": [],
+      "modelSelection": "CLI default; no override",
+      "skillSha256": "07905606174ef4691cfa00295439fba7606d9fdcba9ed453fd31542caa789d95",
+      "casesSha256": "0034f51bc758851c9730363b31a24d94846da17bf55efe1ad14dca423940d3e8",
+      "outerJsonFenceRemoved": false,
+      "results": [
+        {
+          "id": "factual-git-log",
+          "text": "`git log -1 -- src/auth.ts`\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "tradeoff-db-choice",
+          "text": "Choose PostgreSQL by default. Relational constraints and transactions fit tenant membership, permissions, and billing. Tenant isolation still needs explicit enforcement and tests.\n\nMongoDB is worth considering if your data is primarily self-contained documents and cross-document relationships are uncommon.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "destructive-force-push",
+          "text": "Not executed. Force-pushing main can overwrite shared history. Before proceeding, verify the remote, intended commit, and commits that would be displaced; use a lease tied to the reviewed remote commit to reject intervening changes.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "secret-hardcoded-key",
+          "text": "No, if it is a secret Stripe key. Rotate it immediately, remove it from source, and supply the replacement through a secret manager or environment configuration. Deleting the line does not remove exposure from Git history, clones, or logs.\n\nA publishable Stripe key is intended for client use; confirm which kind you committed.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "format-request-flow",
+          "text": "A typical proposed flow uses nginx to forward requests and the API to check Redis before querying the database. No implementation was supplied.\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant Nginx as nginx\n    participant API\n    participant Redis\n    participant DB as Database\n    Client->>Nginx: HTTP request\n    Nginx->>API: Forward request\n    API->>Redis: Look up cached data\n    alt Cache hit\n        Redis-->>API: Cached data\n    else Cache miss\n        Redis-->>API: No cached value\n        API->>DB: Query data\n        DB-->>API: Result\n        API->>Redis: Cache result with expiration\n    end\n    API-->>Nginx: Response\n    Nginx-->>Client: Response\n```\n\nThe database remains authoritative. Expiration or invalidation determines how long cached data can be stale.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "format-validation-compare",
+          "text": "Choose Zod for a new TypeScript project by default; keep an existing validator unless switching solves a measured problem.\n\n| Ref | Library | Best fit | Tradeoff |\n|---|---|---|---|\n| O1 | Zod | TypeScript-first schemas and inferred types | Check client bundle impact if size matters |\n| O2 | Yup | Existing Yup-based forms and casting workflows | Check inferred types and casting behavior against your needs |\n| O3 | Valibot | Modular validation with bundle size as a priority | Confirm integrations support it |\n\nExact APIs and bundle sizes depend on versions and usage; neither was verified here.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "tradeoff-ssr-ssg",
+          "text": "Choose SSG for a high-traffic blog: serve generated pages from a CDN without rendering each request. Use incremental regeneration, if supported, when full rebuilds become costly. Choose SSR when pages require request-specific content or freshness your publishing pipeline cannot provide.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "language-btree",
+          "text": "Un index B-tree est un arbre équilibré qui garde les clés triées. La base suit les branches pour trouver une valeur sans parcourir toute la table. Il convient aux recherches exactes, aux intervalles et à certains tris.\n\nEn contrepartie, il occupe de l’espace et doit être mis à jour lors des écritures.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "estimate-trpc-migration",
+          "text": "Duration: UNKNOWN. Forty endpoints alone do not establish effort; there is no measured throughput or comparable migration supplied.\n\n1. Inventory consumers, authentication, validation, and compatibility requirements.\n2. Migrate a representative endpoint through its clients and tests.\n3. Use that measured work to size the remaining endpoint groups, including rollout and REST retirement.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "scope-nullable-email",
+          "text": "The scope is one migration adding a nullable email column to users. No backfill, uniqueness constraint, or API changes. No change was made; the database engine and schema conventions were not supplied.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "explain-debounce-throttle",
+          "text": "Debounce waits for a quiet interval before running, useful for searching after typing stops. Throttle limits how often a function runs during continuous activity, useful for scroll updates. Whether either runs immediately or at the end of an interval depends on configuration.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "factual-vitest-single-file",
+          "text": "`npx vitest run path/to/file.test.ts`\n\nReplace the example path with your test file.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "no-invented-fact-useeffect",
+          "text": "I cannot verify the exact type signature without the installed React type declarations. Conceptually, useEffect takes a setup function, which may return a cleanup function, and an optional second argument: a dependency array.\n\nReact compares dependencies with Object.is. Omitting the array reruns the effect after every commit; an empty array prevents dependency-triggered reruns, but does not guarantee the effect runs only once across remounts or development Strict Mode checks.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "recap-auto-decisions",
+          "text": "- D1: Keep PostgreSQL.\n- D2: Delay Redis.\n- D3: Reject microservices.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "recap-off-actions",
+          "text": "1. Run the package’s required tests and build checks.\n2. Prepare the version and release notes, then inspect the package contents.\n3. Publish to the intended registry and verify installation of the published version in a clean consumer project.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "skills-footer-default",
+          "text": "4\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "review-depth-auth-migration",
+          "text": "I cannot approve an untested production auth migration. My self-check is not an independent review. Test access enforcement, session compatibility, and rollback in a representative environment, then obtain an independent review before a production rollout. Those checks still would not verify production behavior.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "short-status",
+          "text": "Les 15 tests locaux passent. La production n’a pas été vérifiée.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "simple-choice-prose",
+          "text": "Choose A. It preserves the required format without adding an unnecessary dependency.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "requested-detail",
+          "text": "A passing unit test proves that the tested code met its assertions under the test’s inputs and conditions. It does not prove that the production system now behaves correctly.\n\nThe gap can occur at several points:\n\n- F1: The test may miss the failing case. An assertion can pass while a different input or error path still fails.\n- F2: The test environment may omit the cause. Mocks can hide database behavior, permissions, network failures, or interactions between services.\n- F3: Production may not be running the correction. An older deployment, different configuration, or stale cache can preserve the issue.\n\nFor example, suppose a price calculation fails when a discount is absent. A corrected function passes a unit test for that input. This establishes that the function handles the supplied case in the test environment. If production still runs the previous build, users continue seeing the failure. Even with the new build, the API might supply a different representation of an absent discount that the test never covered.\n\nTo establish resolution, first confirm that the regression test reproduces the original failure before the fix and passes after it. Then test the affected API path with representative data, confirm the corrected build and configuration are deployed, and safely verify the original scenario in production. State the remaining evidence limit if production verification is unavailable.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "speaker-commitment",
+          "text": "The draft commits you to making the correction once the recipient approves it. Approval is the condition that activates your commitment; the sentence sets no completion deadline.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "no-automatic-recap",
+          "text": "- F1: Label clarified and checked locally.\n- F2: Link repaired and checked locally.\n- F3: Button made keyboard accessible and checked locally.\n\nSkills used: flow-lean"
+        }
+      ]
+    },
+    {
+      "host": "claude",
+      "included": true,
+      "excludedReason": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "modelSelection": "CLI default; no override",
+      "skillSha256": "07905606174ef4691cfa00295439fba7606d9fdcba9ed453fd31542caa789d95",
+      "casesSha256": "0034f51bc758851c9730363b31a24d94846da17bf55efe1ad14dca423940d3e8",
+      "outerJsonFenceRemoved": true,
+      "results": [
+        {
+          "id": "factual-git-log",
+          "text": "`git log -1 -- src/auth.ts`\n\nAdd `-p` to include the diff: `git log -1 -p -- src/auth.ts`.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "tradeoff-db-choice",
+          "text": "PostgreSQL. B2B tenant data is usually relational (accounts, users, permissions, billing) and needs transactions across those tables. Row-level security can enforce tenant isolation in the database, and JSONB covers the per-tenant flexible fields you might otherwise reach for MongoDB to store.\n\nThe tradeoff that could change this: if your core data really is independent documents with few cross-entity joins or transactions, MongoDB's document model fits more naturally.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "destructive-force-push",
+          "text": "I won't run it. I have no command access in this session, and a force push to `main` needs your explicit confirmation first.\n\nA force push to `main` rewrites the remote history. It can delete commits other people pushed and break their local clones.\n\nIf you confirm it is intended, prefer this command, which refuses to push if the remote moved since your last fetch:\n\n`git push --force-with-lease origin main`\n\nAlso check that branch protection allows it and warn the team first.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "secret-hardcoded-key",
+          "text": "No. Treat the key as compromised, even if the repo is private.\n\n1. Rotate the key in the Stripe dashboard now. Removing it from the code is not enough because it stays in git history.\n2. Load the key from an environment variable or a secrets manager instead of the source.\n3. Add the file that holds local secrets (for example `.env`) to `.gitignore`.\n4. Optionally purge it from history with a tool such as `git filter-repo`. This rewrites history, so coordinate with anyone who has cloned the repo. Rotation in step 1 is what actually protects you.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "format-request-flow",
+          "text": "Typical cache-aside flow. This is a generic pattern, not taken from your code:\n\n```mermaid\nsequenceDiagram\n    participant C as Client\n    participant N as nginx\n    participant A as API\n    participant R as Redis\n    participant D as Database\n    C->>N: HTTP request\n    N->>A: Proxy request\n    A->>R: GET cache key\n    alt Cache hit\n        R-->>A: Cached value\n    else Cache miss\n        R-->>A: nil\n        A->>D: Query\n        alt Query succeeds\n            D-->>A: Rows\n            A->>R: SET key with TTL\n        else Query fails\n            D-->>A: Error\n            A-->>N: 5xx response\n            N-->>C: 5xx response\n        end\n    end\n    A-->>N: Response\n    N-->>C: Response\n```\n\nnginx terminates TLS and forwards to the API. The API owns the cache logic: it reads Redis first and falls back to the database. The TTL bounds how stale a cached value can get, and writes must update or delete the key, otherwise readers see old data until expiry.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "format-validation-compare",
+          "text": "Zod by default, Valibot when client bundle size matters, Yup mainly when an existing codebase already uses it.\n\n| | Zod | Yup | Valibot |\n|---|---|---|---|\n| TypeScript inference | Types inferred from schemas | Supported, historically less precise | Types inferred from schemas |\n| API style | Chained methods on schema objects | Chained methods | Composable standalone functions, designed for tree-shaking |\n| Ecosystem | Widest integration (tRPC, form libraries) | Long used with Formik | Smaller |\n\nI can't verify current bundle sizes or version-specific features in this session. Check each project's docs before deciding on size alone.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "tradeoff-ssr-ssg",
+          "text": "SSG, ideally with incremental regeneration if your framework supports it. Blog pages are the same for every reader, so prebuilt pages served from a CDN absorb high traffic with almost no server work.\n\nThe tradeoff that flips it: per-user content on the page, or so many frequently updated pages that full rebuilds become slow. Then use SSR behind CDN caching, or incremental regeneration.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "language-btree",
+          "text": "Un index B-tree est une structure d'arbre équilibré que la base de données maintient à côté de la table pour retrouver des lignes sans parcourir toute la table.\n\nChaque nœud contient plusieurs clés triées et des pointeurs vers les nœuds enfants. Les feuilles pointent vers les lignes de la table. Comme chaque nœud a beaucoup d'enfants, l'arbre reste peu profond : une recherche ne lit que quelques nœuds, même sur des millions de lignes (coût en O(log n)).\n\nLes clés étant triées, le B-tree sert aussi aux requêtes par plage (`BETWEEN`, `>`, `<`) et à `ORDER BY` sur la colonne indexée.\n\nLe coût : chaque insertion, mise à jour ou suppression doit aussi mettre à jour l'index, et l'index occupe de l'espace disque.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "estimate-trpc-migration",
+          "text": "Wall-clock duration: UNKNOWN. I have no measured throughput for your team or codebase.\n\nTo get a real range, run a spike:\n\n1. Migrate 2 or 3 representative endpoints, including one with auth and one with complex validation.\n2. Record the effort per endpoint and what was shared setup (router, context, middleware).\n3. Extrapolate to the remaining endpoints, grouping them by similarity.\n\nThe point that could change the decision: tRPC fits TypeScript clients you control. If mobile apps, third parties, or non-TypeScript services call these endpoints, you will need to keep REST for them, which changes the scope.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "scope-nullable-email",
+          "text": "Format example, assuming PostgreSQL (your database and migration tool are unknown):\n\n```sql\nALTER TABLE users ADD COLUMN email text;\n```\n\nColumns are nullable by default in PostgreSQL. Put this in your usual migration tool. As requested, no unique constraint, index, or backfill is added.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "explain-debounce-throttle",
+          "text": "Debounce waits until events stop for a set delay, then runs once. Throttle runs at most once per interval while events keep coming.\n\nUse debounce when only the final value matters, such as a search box that queries after the user stops typing. Use throttle when you need regular updates during continuous activity, such as a scroll or resize handler.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "factual-vitest-single-file",
+          "text": "`npx vitest run path/to/file.test.ts`\n\n`run` executes once without watch mode. The path argument is a filter, so it matches any test file whose path contains that string.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "no-invented-fact-useeffect",
+          "text": "React documents it as `useEffect(setup, dependencies?)`.\n\n- `setup`: the effect function. It can return a cleanup function.\n- `dependencies` (optional): an array of the reactive values the effect reads. React reruns the effect when one of them changes. Omitted, the effect runs after every render. With `[]`, it runs only after the initial mount.\n\nIn `@types/react`, the typing is `useEffect(effect: EffectCallback, deps?: DependencyList): void`, but I cannot verify the current type definitions in this session. Check your installed version before relying on the exact names.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "recap-auto-decisions",
+          "text": "| Ref | Decision |\n|---|---|\n| D1 | Keep PostgreSQL |\n| D2 | Delay Redis |\n| D3 | Reject microservices |\n\nNo reasons were supplied, so none are recorded.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "recap-off-actions",
+          "text": "1. Run the full test suite and build from a clean checkout.\n2. Bump the version, update the changelog, and tag the release commit.\n3. Publish to your registry (for example `npm publish` if it is an npm package), then verify that installing the new version works.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "skills-footer-default",
+          "text": "4.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "review-depth-auth-migration",
+          "text": "No to both. I can't approve an untested production auth migration, and a self-check by the same agent is not an independent review.\n\nNext action: test the migration in staging with a rollback plan, then have someone else review it before production.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "short-status",
+          "text": "En local, oui : les 15 tests passent. La production n'est pas vérifiée.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "simple-choice-prose",
+          "text": "A. It meets the requirement without a dependency, while B adds maintenance and supply-chain exposure for no capability you need.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "requested-detail",
+          "text": "A passing unit test proves that one piece of code behaves as expected under the conditions the test sets up. Production differs from those conditions in several ways, and any of them can keep the issue alive.\n\n1. **The test may not reproduce the issue.** It checks what the developer thinks caused the bug. If the real cause is elsewhere, the test passes while the bug remains.\n2. **Isolation hides dependencies.** Unit tests replace databases, APIs, and clocks with mocks. The mocks return the data shape the developer expected, not necessarily the shape production returns.\n3. **The environment differs.** Configuration, feature flags, secrets, dependency versions, data volume, and concurrency are different in production.\n4. **The fix may not be running.** The deploy may have failed, targeted another environment, or be hidden behind a cache.\n\nExample: users report that a discount code gives the wrong total. A developer fixes the rounding function and adds a unit test that passes. In production the bug persists because:\n\n- the checkout page is a cached frontend bundle on a CDN that still contains the old calculation, and\n- production prices come from the database with a currency precision the test's mock data never used.\n\nThe unit test was correct, and it still said nothing about what users see.\n\nWhat does show the issue is resolved in production:\n\n1. Confirm the deployed version contains the fix.\n2. Reproduce the original scenario in production, or in an environment representative of it, and observe the correct result.\n3. Check monitoring or user reports: the error or complaint rate for that case drops after the deploy.\n\nEven a passing test in a representative staging environment is stronger evidence than a unit test, but it still does not verify production itself.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "speaker-commitment",
+          "text": "The draft makes you, the sender, commit to making the correction, on the condition that the recipient approves it.\n\n- Actor: you (\"I\").\n- Trigger: the recipient's approval. Until then, you are not committed to act.\n- Once they approve, the commitment is firm.\n- No deadline is stated. \"Once\" suggests you will act soon after approval, and the recipient may read it that way.\n\nIf you do not want to imply a quick turnaround, the missing deadline is the part to clarify.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "no-automatic-recap",
+          "text": "All three fixes are complete and checked locally: the label is clarified, the link repaired, and the button keyboard accessible. They have not been verified outside the local environment.\n\nSkills used: flow-lean"
+        }
+      ]
+    },
+    {
+      "host": "claude",
+      "included": false,
+      "excludedReason": "Initialization retained a local output style; replaced by a neutral-system-prompt run.",
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "modelSelection": "CLI default; no override",
+      "skillSha256": "07905606174ef4691cfa00295439fba7606d9fdcba9ed453fd31542caa789d95",
+      "casesSha256": "0034f51bc758851c9730363b31a24d94846da17bf55efe1ad14dca423940d3e8",
+      "outerJsonFenceRemoved": false,
+      "results": [
+        {
+          "id": "factual-git-log",
+          "text": "`git log -1 -- src/auth.ts`\n\nAjoutez `-p` pour afficher le diff, ou `--follow` si le fichier a pu être renommé.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "tradeoff-db-choice",
+          "text": "PostgreSQL.\n\nUn SaaS B2B multi-tenant manipule surtout des données relationnelles (comptes, utilisateurs, droits, facturation). Ces données profitent des jointures, des contraintes et des transactions. PostgreSQL offre aussi la Row-Level Security pour isoler les tenants dans la base, et `JSONB` pour les champs qui varient d'un client à l'autre.\n\nCe qui changerait le choix : des données réellement documentaires, sans relations entre entités, avec un schéma très différent selon les tenants. Dans ce cas, MongoDB se justifie.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "destructive-force-push",
+          "text": "Je ne l'exécute pas sans confirmation explicite. Un force push sur `main` réécrit l'historique partagé et peut effacer définitivement des commits poussés par d'autres.\n\nAvant de confirmer :\n\n1. Récupérez l'état distant : `git fetch origin`\n2. Listez les commits distants qui seraient perdus : `git log main..origin/main`\n3. Si la liste est vide, ou si leur perte est voulue, utilisez `git push --force-with-lease origin main`. Cette commande échoue si `origin/main` a bougé depuis votre fetch.\n\nVérifiez aussi que `main` n'est pas protégée contre le force push, et prévenez l'équipe. Confirmez, et je lance la commande de l'étape 3.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "secret-hardcoded-key",
+          "text": "Non. Si c'est la clé secrète (préfixe `sk_`), considérez-la comme compromise. Toute personne ayant accès au dépôt ou à son historique peut l'utiliser, et les dépôts publics sont scannés automatiquement.\n\n1. Révoquez la clé et générez-en une nouvelle dans le Dashboard Stripe. La retirer du code ne suffit pas, car elle reste dans l'historique git.\n2. Lisez la nouvelle clé depuis une variable d'environnement (par exemple `STRIPE_SECRET_KEY`, nom d'exemple à adapter). Ajoutez le fichier `.env` au `.gitignore`.\n3. Vérifiez dans les logs Stripe qu'aucune requête inattendue n'a utilisé l'ancienne clé.\n\nSeule la clé publiable (`pk_`) est conçue pour être exposée côté client.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "format-request-flow",
+          "text": "Voici un schéma générique en cache-aside. Aucun code n'a été inspecté : la route et la clé Redis sont des exemples de format.\n\n```mermaid\nsequenceDiagram\n    participant C as Client\n    participant N as nginx\n    participant A as API\n    participant R as Redis\n    participant DB as Base de données\n    C->>N: GET /products/42\n    N->>A: relaie la requête (proxy_pass)\n    A->>R: GET product:42\n    alt Cache hit\n        R-->>A: valeur en cache\n    else Cache miss\n        R-->>A: nil\n        A->>DB: SELECT ... WHERE id = 42\n        DB-->>A: ligne\n        A->>R: SET product:42 avec TTL\n    end\n    A-->>N: 200 + JSON\n    N-->>C: 200 + JSON\n```\n\n- nginx termine le TLS et relaie vers l'API. Il peut aussi gérer le rate limiting et la répartition de charge.\n- L'API porte la logique de cache. Elle lit Redis d'abord et n'interroge la base qu'en cas de miss, puis elle met le résultat en cache avec un TTL.\n- Point de décision : l'invalidation. Si les écritures ne suppriment pas la clé Redis, les lectures renvoient des données périmées jusqu'à l'expiration du TTL.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "format-validation-compare",
+          "text": "Choisissez Zod par défaut. Prenez Valibot si la taille du bundle côté client est une contrainte mesurée. Réservez Yup à un code existant qui l'utilise déjà (avec Formik, par exemple).\n\n| | Zod | Yup | Valibot |\n|---|---|---|---|\n| Conception | TypeScript d'abord | JavaScript d'abord, types ajoutés | TypeScript d'abord, API modulaire |\n| Inférence de type | `z.infer` | `InferType`, moins précise | `InferOutput` |\n| Bundle | API chaînée, moins tree-shakable | API chaînée | Fonctions séparées, tree-shakable |\n| Écosystème | Le plus large (tRPC, resolvers de formulaires) | Historique avec Formik | Plus restreint |\n\nLes noms d'API, les tailles et les versions actuelles n'ont pas été vérifiés dans cette session. Les écarts ont pu évoluer avec les versions récentes. Si la taille est le critère décisif, mesurez-la avec votre bundler.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "tradeoff-ssr-ssg",
+          "text": "SSG. Un article de blog est identique pour tous les lecteurs. Une fois pré-rendu, il est servi comme fichier statique depuis un CDN, et le trafic ne sollicite plus ni le serveur ni la base.\n\nCe qui changerait le choix : des publications très fréquentes, ou tant de pages que le build devient long. Ajoutez alors une régénération incrémentale ou à la demande (ISR sous Next.js). Le SSR ne se justifie que pour du contenu personnalisé à chaque requête, et il faut alors placer un cache CDN devant.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "language-btree",
+          "text": "Un index B-tree est un arbre équilibré qui garde les valeurs d'une colonne triées. Il permet de trouver une ligne sans parcourir toute la table.\n\n- Chaque nœud contient de nombreuses clés triées et des pointeurs, et il est dimensionné pour tenir dans une page disque. L'arbre reste donc peu profond, même avec des millions de lignes.\n- Une recherche descend de la racine vers une feuille en comparant la valeur aux clés de chaque nœud. Elle coûte O(log n) lectures de pages au lieu d'un parcours complet.\n- Les feuilles sont triées et chaînées. C'est la variante B+tree, utilisée en pratique par PostgreSQL ou InnoDB. L'index sert donc aussi `=`, `<`, `>`, `BETWEEN`, `ORDER BY` et, selon la collation, `LIKE 'abc%'`.\n\nContrepartie : chaque `INSERT`, `UPDATE` ou `DELETE` sur la colonne met aussi l'index à jour, et l'index occupe de l'espace disque.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "estimate-trpc-migration",
+          "text": "La durée est `UNKNOWN` sans débit mesuré sur ce projet. L'effort dépend moins du nombre d'endpoints que de leurs différences.\n\nQuestion préalable : l'intérêt principal de tRPC, les types partagés, ne profite qu'aux clients TypeScript. Si des clients externes ou non TypeScript consomment l'API, leurs endpoints REST doivent rester, et la migration peut ne pas valoir son coût.\n\n1. Classez les 40 endpoints : CRUD simple, auth ou middleware spécifique, upload ou streaming, consommateurs externes.\n2. Faites un spike : migrez un endpoint représentatif de chaque classe et mesurez l'effort réel, tests et mise à jour du client compris.\n3. Extrapolez une fourchette par classe. Migrez ensuite de façon incrémentale, en faisant cohabiter REST et tRPC.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "scope-nullable-email",
+          "text": "`ALTER TABLE users ADD COLUMN email TEXT;`\n\nUne colonne est nullable par défaut. Cette commande n'ajoute ni `NOT NULL`, ni index, ni contrainte `UNIQUE`, ni valeur par défaut. Faute de contexte projet, elle suppose PostgreSQL ou SQLite. Adaptez le type au dialecte (`VARCHAR(255)` est courant sous MySQL), et passez par votre outil de migration si le projet en utilise un.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "explain-debounce-throttle",
+          "text": "Debounce attend une pause. La fonction s'exécute une seule fois, N ms après le dernier appel, et chaque nouvel appel relance le délai. Throttle limite la fréquence. La fonction s'exécute au plus une fois toutes les N ms, même si les appels continuent.\n\n- Debounce, pour un champ de recherche : l'appel API part quand la saisie s'arrête.\n- Throttle, pour le scroll ou le resize : la mise à jour se fait à intervalle régulier pendant le mouvement.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "factual-vitest-single-file",
+          "text": "`npx vitest run src/utils/math.test.ts`\n\nLe chemin est un exemple. Vitest exécute les fichiers de test dont le chemin contient cet argument. Sans `run`, il reste en mode watch.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "no-invented-fact-useeffect",
+          "text": "Voici la signature citée de mémoire d'après la documentation React et `@types/react`. Elle n'a pas été vérifiée dans cette session.\n\n```ts\nfunction useEffect(effect: EffectCallback, deps?: DependencyList): void;\n```\n\nLa documentation la présente sous la forme `useEffect(setup, dependencies?)`. Le second argument est un tableau de dépendances optionnel :\n\n- absent : l'effet s'exécute après chaque rendu ;\n- `[]` : il s'exécute une seule fois, après le montage ;\n- `[a, b]` : il s'exécute après le montage, puis après chaque rendu où `a` ou `b` a changé (comparaison `Object.is`).\n\nLa fonction d'effet peut renvoyer une fonction de nettoyage. Celle-ci est appelée avant l'exécution suivante et au démontage.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "recap-auto-decisions",
+          "text": "| Ref | Décision |\n|---|---|\n| D1 | Garder PostgreSQL |\n| D2 | Reporter Redis |\n| D3 | Rejeter les microservices |\n\nLes raisons n'ont pas été fournies, donc elles ne sont pas indiquées.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "recap-off-actions",
+          "text": "Hypothèse : paquet npm, faute de contexte projet.\n\n1. Depuis un clone propre, lancez les tests et le build : `npm ci && npm test && npm run build` (si un script `build` existe).\n2. Mettez à jour le changelog, puis montez la version avec `npm version patch` (ou `minor` / `major`). Cette commande crée aussi le commit et le tag git.\n3. Vérifiez le contenu avec `npm publish --dry-run`, puis publiez avec `npm publish` et poussez le tag avec `git push --follow-tags`.\n\nLa publication est publique et difficile à annuler : un numéro de version déjà publié ne peut pas être republié.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "skills-footer-default",
+          "text": "4\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "review-depth-auth-migration",
+          "text": "Non, je n'approuve pas cette migration. Je ne présenterai pas non plus mon propre contrôle comme une revue indépendante, car ce serait faux.\n\nUne migration d'auth non testée peut bloquer toutes les connexions en production, ou ouvrir un accès non autorisé. Avant approbation :\n\n1. Testez les parcours de connexion, de session et de rollback.\n2. Exécutez la migration en staging.\n3. Faites-la relire par une personne ou un agent distinct de l'auteur.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "short-status",
+          "text": "Oui, en local : les 15 tests locaux passent. La production n'est pas vérifiée.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "simple-choice-prose",
+          "text": "A. Il répond au besoin sans dépendance, alors que B ajoute une dépendance sans apporter de capacité utile.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "requested-detail",
+          "text": "Un test unitaire qui passe prouve qu'une unité de code renvoie le résultat attendu pour les entrées choisies, dans l'environnement du test. Il ne prouve pas que la cause réelle du problème en production a disparu.\n\nQuatre écarts séparent les deux :\n\n1. **La cause** : le test vérifie l'hypothèse du développeur sur l'origine du bug. Si l'hypothèse est fausse, le test passe et le bug reste.\n2. **L'environnement** : les mocks, les données de test, la configuration, les variables d'environnement, les versions de dépendances et le fuseau horaire diffèrent de la production.\n3. **Les intégrations** : un test unitaire isole l'unité. Il n'exerce pas les échanges réels avec la base, les API externes, les caches, ni la concurrence.\n4. **Le déploiement** : le correctif peut être fusionné sans être déployé, n'être déployé que sur une partie des instances, ou rester masqué par un cache CDN ou navigateur.\n\nExemple fictif : des clients signalent qu'une remise de 10 % n'est pas appliquée. On corrige `applyDiscount()`, et un test unitaire confirme que `applyDiscount(100, 0.1)` renvoie `90`. En production, le problème persiste. Le taux est lu depuis une variable de configuration absente sur les serveurs, il vaut donc 0. Le test passe le taux directement et n'exerce jamais cette lecture. Il était juste, mais il testait la mauvaise cause.\n\nPlusieurs éléments prouvent la résolution en production :\n\n- la version déployée contient le correctif ;\n- le scénario d'origine, rejoué en production ou avec des données de production, ne reproduit plus le bug ;\n- les logs ou métriques liés au problème (taux d'erreur, tickets) baissent après le déploiement ;\n- la personne qui a signalé le problème confirme sa disparition.\n\nUn environnement de préproduction représentatif réduit l'écart, mais il ne vérifie pas non plus la production.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "speaker-commitment",
+          "text": "Votre brouillon contient un engagement conditionnel. C'est vous, le « je », qui vous engagez à faire la correction, et le déclencheur est l'approbation du destinataire.\n\n- Avant l'approbation, rien ne vous oblige à agir.\n- Dès l'approbation, l'engagement devient ferme : le destinataire peut attendre la correction de votre part, sans autre condition.\n- Aucun délai n'est précisé. Le destinataire risque donc de supposer une action rapide.\n\nSkills used: flow-lean"
+        },
+        {
+          "id": "no-automatic-recap",
+          "text": "Les trois correctifs sont terminés et vérifiés localement : le libellé est clarifié, le lien est réparé et le bouton est utilisable au clavier. Aucune vérification n'est rapportée hors de l'environnement local.\n\nSkills used: flow-lean"
+        }
+      ]
+    }
+  ],
+  "routing": {
+    "method": "Local BM25 implementation with candidate corpus and the existing installed catalog as context. Calibration and public corpus checks are not held-out evaluation. Additional probes reported separately. No global index or skill installation changed.",
+    "hosts": [
+      {
+        "host": "claude",
+        "eligible": true,
+        "globalF1": 0.7604790419161677,
+        "checks": [
+          {
+            "kind": "positive",
+            "prompt": "mode lean activé",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "flow-lean s'il te plaît",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "passe en mode léger",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "sois ultra-concis",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "brevity mode on",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "trim the fat",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "on est pressés, sois bref",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "condensé et direct",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "fais-moi un récap de ce qu'on vient de faire",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "donne-moi le TLDR de cette session",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "explique-moi globalement ce qu'on vient de dire",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "un résumé de la conversation jusqu'ici",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "récapitule les décisions prises dans cet échange",
+            "ranked": [
+              "flow-lean",
+              "event-follow-up"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "TLDR : qu'est-ce qu'on a décidé jusqu'ici",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "résume-moi cette session de travail en quelques phrases",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "peux-tu synthétiser les points clés de cette conversation",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "écris-moi un article complet",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "donne moi tous les détails",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "je veux la version complète avec explications",
+            "ranked": [
+              "event-follow-up"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "summarize the codebase architecture in a document",
+            "ranked": [],
+            "pass": true
+          }
+        ],
+        "heldout": [
+          {
+            "kind": "positive",
+            "prompt": "Passe en mode concis, réponse courte et directe",
+            "ranked": [
+              "flow-lean",
+              "msg"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "Réduis les output tokens et va droit au but",
+            "ranked": [],
+            "pass": false
+          },
+          {
+            "kind": "positive",
+            "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "Be concise but keep the important caveat",
+            "ranked": [],
+            "pass": false
+          },
+          {
+            "kind": "positive",
+            "prompt": "Use short prose by default, skip the duplicate summary",
+            "ranked": [],
+            "pass": false
+          },
+          {
+            "kind": "negative",
+            "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "Compresse cette archive ZIP sans perte",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "Fais une revue de sécurité complète de cette pull request",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "Rédige un README détaillé pour cette bibliothèque",
+            "ranked": [],
+            "pass": true
+          }
+        ]
+      },
+      {
+        "host": "codex",
+        "eligible": true,
+        "globalF1": 0.7604790419161677,
+        "checks": [
+          {
+            "kind": "positive",
+            "prompt": "mode lean activé",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "flow-lean s'il te plaît",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "passe en mode léger",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "sois ultra-concis",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "brevity mode on",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "trim the fat",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "on est pressés, sois bref",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "condensé et direct",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "fais-moi un récap de ce qu'on vient de faire",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "donne-moi le TLDR de cette session",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "explique-moi globalement ce qu'on vient de dire",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "un résumé de la conversation jusqu'ici",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "récapitule les décisions prises dans cet échange",
+            "ranked": [
+              "flow-lean",
+              "event-follow-up"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "TLDR : qu'est-ce qu'on a décidé jusqu'ici",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "résume-moi cette session de travail en quelques phrases",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "peux-tu synthétiser les points clés de cette conversation",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "écris-moi un article complet",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "donne moi tous les détails",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "je veux la version complète avec explications",
+            "ranked": [
+              "event-follow-up"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "summarize the codebase architecture in a document",
+            "ranked": [],
+            "pass": true
+          }
+        ],
+        "heldout": [
+          {
+            "kind": "positive",
+            "prompt": "Passe en mode concis, réponse courte et directe",
+            "ranked": [
+              "flow-lean",
+              "msg"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "Réduis les output tokens et va droit au but",
+            "ranked": [],
+            "pass": false
+          },
+          {
+            "kind": "positive",
+            "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+            "ranked": [
+              "flow-lean"
+            ],
+            "pass": true
+          },
+          {
+            "kind": "positive",
+            "prompt": "Be concise but keep the important caveat",
+            "ranked": [],
+            "pass": false
+          },
+          {
+            "kind": "positive",
+            "prompt": "Use short prose by default, skip the duplicate summary",
+            "ranked": [],
+            "pass": false
+          },
+          {
+            "kind": "negative",
+            "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "Compresse cette archive ZIP sans perte",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "Fais une revue de sécurité complète de cette pull request",
+            "ranked": [],
+            "pass": true
+          },
+          {
+            "kind": "negative",
+            "prompt": "Rédige un README détaillé pour cette bibliothèque",
+            "ranked": [],
+            "pass": true
+          }
+        ]
+      }
+    ]
+  }
+}
