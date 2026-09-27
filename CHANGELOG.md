@@ -4,6 +4,8 @@ All notable changes to flow-lean are documented here.
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-09-27
+
 ### Changed
 
 - Prefer a short paragraph or up to three short bullets for ordinary replies,
@@ -14,16 +16,26 @@ All notable changes to flow-lean are documented here.
   expanding every sensitive topic into a long answer.
 - Separate the assistant's voice from messages drafted for the user, without
   depending on a personal profile or another locally installed skill.
-- Remove unmeasured compression targets from the instruction contract.
+- Set an approximate 80-word target for ordinary replies, without claiming
+  a measured compression gain or limiting requested detail.
+- Preserve the scope of unknowns and required rollback steps, including prior
+  absence, concurrent edits, and verification records outside removed items.
+- Require writer coordination throughout executable rollback, stop for manual
+  reconciliation when unavailable, and retain verification records afterward.
+- Report completion facts once and avoid asking for authorization already given.
 - Align the README, runtime diagram, manual battery, and scoring criteria
   with these rules. Historical comparison scores remain historical.
 
 ### Added
 
+- Regression cases for evidence scope, rollback preservation, and completion
+  reports that do not repeat an authorization request (25 cases total).
+- Source-update evidence covering isolated Claude installation, both local
+  BM25 projections, focused response checks, and incomplete or failing checks.
 - Sequence-diagram guidance for runtime exchanges, including proposed-flow
   labels and a portable ASCII fallback.
 - Five regression cases for short status, simple choices, requested detail,
-  speaker fidelity, and no automatic recap (22 cases total).
+  speaker fidelity, and no automatic recap.
 - A bundled natural-language routing corpus shared with the root evaluation
   path through a compatibility symlink. Keep named invocation checks separate
   from implicit routing checks.

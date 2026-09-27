@@ -30,9 +30,11 @@ plugin invocation.
 
 ## Latest source-update checks
 
-The [2026-09-26 check report](results/concision-2026-09-26.md) records response
-smoke tests, routing checks, excluded evidence, and remaining limitations.
-It is not a paired comparison or a benchmark release-gate pass.
+The [2026-09-27 check report](results/concision-2026-09-27.md) records isolated
+Claude installation, focused Claude/Codex response checks, local routing,
+and the failed or incomplete checks. The
+[2026-09-26 report](results/concision-2026-09-26.md) remains historical evidence.
+Neither is a paired comparison or a benchmark release-gate pass.
 
 ## Fetch comparators
 
@@ -141,4 +143,4 @@ reproducible without re-spending.
 
 The committed v0.2.0 result files used the former 13-case suite. They remain
 historical evidence only. Run all three conditions again before publishing a
-current-version comparison against the 22-case suite.
+current-version comparison against the 25-case suite.

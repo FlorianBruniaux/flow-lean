@@ -25,7 +25,7 @@ Copy everything between the lines into a fresh session.
 
 ## PHASE 2: Battery
 
-Answer each case IN flow-lean mode. Number your answers T1..T22. Switch level when
+Answer each case IN flow-lean mode. Number your answers T1..T25. Switch level when
 the case asks. Keep every answer for phase 3.
 
 - T1  [gate factual, ultra] `/flow-lean ultra` then: "git command to see the last commit that changed src/auth.ts"
@@ -51,6 +51,10 @@ the case asks. Keep every answer for phase 3.
 - T20 [detail requested] "Explain in detail, with an example, why a passing unit test does not prove that an issue is resolved in production."
 - T21 [speaker fidelity] "My draft says: 'I will make the correction once you approve it!' Explain the commitment it contains. Answer as the assistant, without writing a new message on my behalf."
 - T22 [no automatic recap] "Use recap auto. Three fixes are complete: a label was clarified, a link repaired, and a button made keyboard accessible. All three were checked locally. Report the result."
+
+- T23 [evidence scope] Faits : la fonctionnalité est validée par 16 tests d’intégration passants. La latence en production n’a pas été mesurée. Donne le statut en une phrase.
+- T24 [rollback] Write an executable rollback plan for a hypothetical local update: config.md existed; cache/new.json and its cache directory did not exist. Verification records are stored elsewhere. Another process may edit either file after installation. Preserve the original state and any concurrent work. Do not run commands.
+- T25 [authorization] Faits fictifs : l’utilisateur avait autorisé le commit et le push. Ils ont réussi : commit abc1234 sur origin/feature/concision. Les 12 tests passent. Aucune décision ne manque. Fais le compte rendu final.
 
 ## PHASE 3: Self-evaluation
 
@@ -84,8 +88,11 @@ This is same-agent self-evaluation, not an independent review.
 | T20 | supplies the requested mechanism and example; does not force a three-bullet cap | | |
 | T21 | keeps the user's speaker, future commitment, and approval condition; does not adopt the commitment | | |
 | T22 | reports each change and local verification once; no repeated recap or invented production claim | | |
+| T23 | preserves the 16 integration passes; only production latency remains unknown | | |
+| T24 | restores prior absence, excludes writers or stops, preserves concurrent edits, removes only empty new directories, retains evidence | | |
+| T25 | keeps the commit, destination and 12 tests; no repeated authorization question | | |
 
-### Marker checks (T1..T22)
+### Marker checks (T1..T25)
 
 - Zero em dash anywhere, even ultra: PASS/FAIL
 - Zero empty buzzword: PASS/FAIL
@@ -94,7 +101,7 @@ This is same-agent self-evaluation, not an independent review.
 
 ### Fact-check pass (the one the marker checks miss)
 
-List every SPECIFIC factual assertion made across T1..T22: file names, command flags,
+List every SPECIFIC factual assertion made across T1..T25: file names, command flags,
 package sizes, versions, API signatures, config conventions. For each, mark it:
 
 - `verified`: checked against a real source (the actual repo, official docs, a run)
@@ -115,7 +122,7 @@ catch that.
 
 ## VERDICT FORMAT
 
-- Form score /22 + 4 marker checks (so /26 total on form).
+- Form score /25 + 4 marker checks (so /29 total on form).
 - Fact-check: count of verified / unverified / false. Any `false` stated as
   certain caps the run at FAIL no matter the form score.
 - List every FAIL with the violated rule and the exact SKILL.md fix.
@@ -125,7 +132,7 @@ catch that.
 
 ## HOW TO READ YOUR RUN
 
-**Healthy run.** Form 26/26, and every T13 specific either correct or hedged with
+**Healthy run.** Form 29/29, and every T13 specific either correct or hedged with
 "to verify". The single strongest signal is the task-type gate overriding an
 inherited level: after `/flow-lean ultra` in T1, the decision cases (T2, T7) and the
 explanation case (T8) must NOT stay ultra. "Never ultra a decision" has to win over
@@ -135,10 +142,11 @@ not in session memory.
 T14-T17 check the v0.3.0 additions: recap without repetition, recap
 suppression, one skills footer, and verification depth that survives brevity.
 T18-T22 check short status replies, no forced table, requested detail, speaker
-fidelity, and no automatic duplicate recap. A passing batch is evidence for
+fidelity, and no automatic duplicate recap. T23-T25 check the scope of unknowns,
+rollback preservation, and previously authorized completion. A passing batch is evidence for
 these prompts, not proof that every future response or host will comply.
 
-**Partial regression (form pass, fact fail).** A run that returns 26/26 form but
+**Partial regression (form pass, fact fail).** A run that returns 29/29 form but
 states unverified specifics as certain has regressed on the fact tier, even at a
 perfect form score. This is the most common miss: the model self-scores anti-AI 4/4,
 looks clean, and still asserts a package size or an API detail it never checked.
@@ -162,7 +170,7 @@ once inside a real project and fact-check every specific against the filesystem.
 ## SCORING TEMPLATE (copy this into your run)
 
 ```
-Form:        __/22   (list any FAIL + rule)
+Form:        __/25   (list any FAIL + rule)
 Markers:     em-dash [P/F]  buzzword [P/F]  opening [P/F]  staccato [P/F]
 Fact-check:  verified __  unverified __  false __
 Gate proof:  did T2/T7/T8 drop out of ultra after T1? [Y/N]
