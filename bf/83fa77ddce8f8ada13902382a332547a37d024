@@ -1,0 +1,44 @@
+evals/cases.jsonl
+  s_a587b5c02ec5ed::t_7d03d5d9089fcc 23-25
+skills/flow-lean/SKILL.md
+  s_a587b5c02ec5ed::t_7d03d5d9089fcc 46-53,60-61,65-105,112,287-299
+EVAL.md
+  s_a587b5c02ec5ed::t_a78adcee8c4ff7 28,55-58,91-93,95,104,125,135,145-146,149,173
+README.md
+  s_a587b5c02ec5ed::t_a78adcee8c4ff7 202-210,317-318,323,328-332,341
+evals/README.md
+  s_a587b5c02ec5ed::t_7f86262e791eec 33-37,146
+CHANGELOG.md
+  s_a587b5c02ec5ed::t_7d03d5d9089fcc 7-8,19-25,31
+  s_a587b5c02ec5ed::t_a78adcee8c4ff7 32-34,38
+.claude-plugin/plugin.json
+  s_a587b5c02ec5ed::t_137421f8384cc0 4
+evals/results/concision-2026-09-27.json
+  s_a587b5c02ec5ed::t_2cf87a2f2e4d2d 1-1111
+evals/results/concision-2026-09-27.md
+  s_86ed8bd547d4f8::t_398b8121574969 1-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bf83fa77ddce8f8ada13902382a332547a37d024",
+  "prompts": {},
+  "sessions": {
+    "s_86ed8bd547d4f8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ddea-193b-7a90-97b4-7fabe707f76c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a587b5c02ec5ed": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0dd7f-0605-7542-bbb1-bba326c12fa3",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
