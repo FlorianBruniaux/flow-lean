@@ -199,10 +199,15 @@ Three fused disciplines, one rule underneath: every token earns its place.
 - **caveman**: zero-fat density, cut sentences that carry no action, evidence,
   required context, or decision
 
-Ordinary replies aim for a short paragraph or up to three short bullets.
-Stop once the request is satisfied. This is a starting shape, not a cap that
-permits dropping requested information. Add detail when asked, when it enables
-action, or when it changes a decision.
+Ordinary replies aim for about 80 words, with the result first and at most
+three short bullets or a short paragraph. This is a target, not a quota:
+stop once the request is satisfied. Requested detail, executable steps,
+required evidence, and material limits take priority.
+
+Status reports keep completion facts once and ask a question only when a
+necessary user decision is missing. Unknown production performance must not
+be expanded into unverified functionality. Rollback plans preserve concurrent
+edits and restore the original state, including the absence of new files.
 
 Use short prose by default. Tables help compare repeated fields; diagrams
 help explain a flow. Neither is mandatory just because there are several
@@ -309,16 +314,21 @@ Where it goes further than any of the source skills:
   independent review.
 
 Historical v0.2.0 runs measured mixed-work net compression around 20-30%, not
-the 50-75% Caveman's README cites for narrower tasks. The current behavior
-and 22-case suite have no new paired comparison result. Earlier scores remain
+the 50-75% Caveman's README cites for narrower tasks. The current public skill
+and 25-case suite have no new paired comparison result. Earlier scores remain
 historical evidence, not a current compression or performance claim.
 
 ## Eval
 
-[`EVAL.md`](EVAL.md) is a 22-case regression battery, form (brevity, useful
+[`EVAL.md`](EVAL.md) is a 25-case regression battery, form (brevity, useful
 formatting, requested detail, and preserved risk) and fact (no invented
 specifics) graded apart. Run it in a fresh
 session after any change to `SKILL.md` to catch regressions before they ship.
+
+The [0.3.3 source-update checks](evals/results/concision-2026-09-27.md)
+record the focused Claude/Codex checks, isolated Claude installation,
+and local BM25 routing. They also retain known factual limitations,
+routing misses, and two Codex batch timeouts; this is not a full benchmark pass.
 
 [`evals/`](evals/) is a separate, real API-backed harness (forked from
 [i-have-adhd](https://github.com/ayghri/i-have-adhd)'s own eval script) that
@@ -328,7 +338,7 @@ source skills, using the current case set and the weighted rubric in
 
 The scores below are the historical v0.2.0 snapshot on its 13-case suite. They
 remain reproducible in `evals/results/`, but must not be compared with a future
-22-case run as if the suites were identical.
+25-case run as if the suites were identical.
 
 | vs | baseline | flow-lean | comparator |
 |---|---:|---:|---:|
