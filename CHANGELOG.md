@@ -4,6 +4,20 @@ All notable changes to flow-lean are documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Sync Layer 1 with Ponytail 5.2.0: scope check before writing, codebase
+  reuse as its own rung, finish every caller and test the change breaks,
+  root-cause bug fixes in shared code, and an explicit never-cut list.
+- Replace the branded `# ponytail:` code marker with a neutral
+  `shortcut: <the limit>, <when to upgrade>` comment, as upstream did.
+- Sync the list cap with i-have-adhd 0.4.1: it shapes presentation only and
+  never drops relevant items or limits analysis. Add the debug-spiral rule.
+- Sync Layer 3 with Caveman 4.0.1: keep negations, no invented abbreviations,
+  diff-first code in chat, never delete existing comments, bounded status
+  during tool runs, normal prose in persisted artifacts and in questions to
+  the user.
+
 ## [0.3.3] - 2026-09-27
 
 ### Changed
