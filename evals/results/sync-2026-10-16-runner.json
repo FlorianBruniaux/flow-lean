@@ -1,0 +1,1 @@
+{"claude":{"command":["claude","--disable-slash-commands","--print","--output-format","json","--no-session-persistence","--setting-sources","","--strict-mcp-config","--tools","","--system-prompt","You are a helpful assistant.","--model","claude-sonnet-5"],"response_format":"claude-json","budget_flag":"--max-budget-usd"}}
