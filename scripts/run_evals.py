@@ -190,6 +190,18 @@ def _condition_prompt(task: str, condition: str, skill_path: Path | None) -> str
     )
 
 
+def _run_command(invocation: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
+    # Runner CLIs emit UTF-8; text=True alone decodes with the locale codec (cp1252 on Windows).
+    return subprocess.run(
+        invocation,
+        check=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        cwd=cwd,
+    )
+
+
 def _parse_response(output: str, response_format: str) -> tuple[str, dict[str, Any], float | None]:
     if response_format == "text":
         return output.strip(), {}, None
@@ -267,13 +279,7 @@ def run_evaluations(args: argparse.Namespace) -> int:
                 invocation.append(prompt)
                 completed = None
                 for attempt in range(args.retries + 1):
-                    completed = subprocess.run(
-                        invocation,
-                        check=False,
-                        capture_output=True,
-                        text=True,
-                        cwd=ROOT,
-                    )
+                    completed = _run_command(invocation, ROOT)
                     if completed.returncode == 0:
                         break
                     if attempt < args.retries:
