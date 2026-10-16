@@ -195,6 +195,9 @@ def _parse_response(output: str, response_format: str) -> tuple[str, dict[str, A
         return output.strip(), {}, None
     if response_format == "claude-json":
         payload = json.loads(output)
+        # Newer Claude Code CLIs emit an event array; the final "result" event holds the answer.
+        if isinstance(payload, list):
+            payload = next((e for e in reversed(payload) if e.get("type") == "result"), {})
         return (
             str(payload.get("result", "")).strip(),
             payload.get("usage", {}) or {},
