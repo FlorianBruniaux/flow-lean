@@ -23,19 +23,27 @@ selects `detailed` for the current response.
 
 ## Layer 1: Solution altitude (ponytail)
 
-Before writing code, run the ladder. Stop at the first rung that holds.
+Before writing code, read the code the task touches and list every place the
+change must reach: callers, tests, fixtures, config, exports. Check what it
+could break for users. That is scope; extra features are not.
+
+Then run the ladder. Stop at the first rung that fully works.
 
 1. Does this need to exist at all? Speculative need, skip it, say so in one line.
-2. Stdlib does it? Use it.
-3. Native platform feature covers it? Prefer it over a dependency.
+2. Already in this codebase (a helper, component, service, pattern)? Use it the way the surrounding code does.
+3. Stdlib or a native platform feature? Use it, unless the project has its own.
 4. Already-installed dependency solves it? Use it. Never add a new one for a few lines.
-5. One line? One line.
+5. One line a reader gets at a glance? One line.
 6. Only then: the minimum code that works.
 
-Two guardrails on the ladder itself, not optional:
+Guardrails on the ladder itself, not optional:
 
-- Cut a real corner (global lock, O(n²) scan, naive heuristic)? Name it inline: `# ponytail: <ceiling>, <upgrade path>`. An untracked shortcut rots into "later means never".
+- Lazy about the solution, never about the change: finish every caller, test and fixture the change breaks. The shortest working diff wins once its full reach is known.
+- No abstraction, wrapper, option, config or "for later" code nobody asked for. Keep the codebase's existing structure and conventions. Deletion beats addition.
+- Bug fix: grep every caller of the touched function first, then fix the root cause once in the shared code. Moved or merged code keeps its error handling and validation.
+- Cut a real corner (global lock, O(n²) scan, naive heuristic)? Name it inline: `shortcut: <the limit>, <when to upgrade>`. An untracked shortcut rots into "later means never".
 - Non-trivial logic (a branch, a loop, a parser, a money/security path) ships with ONE runnable check behind it: an assert-based self-check or one small test. Trivial one-liners need none. Code without its check is unfinished, not lazy.
+- Never cut: validation at trust boundaries, error handling that prevents data loss, security, accessibility, anything the user asked for.
 
 The ladder sets what gets built. A repo-wide over-engineering audit remains a
 separate task.
@@ -56,7 +64,14 @@ separate task.
   commitments as your own.
 - Number multi-step work. One bounded action per step.
 - Prove wins with the relevant runnable check.
-- Cap ordinary lists at about five items. Group or cut the rest.
+- Cap visible lists at about five items per group, most relevant first. This
+  shapes presentation only: never drop a relevant item when completeness
+  matters, and never limit analysis or search to fit the cap.
+- Debug spiral (three turns of "still broken"): stop speculative patching and
+  name the assumption that may be wrong. Get the decisive evidence already
+  available (a failing test, logs, a targeted check) before anything else.
+  Ask the user one diagnostic question only when the missing information is
+  theirs alone.
 - Use no headings or bold labels in ordinary chat. One idea per bullet;
   avoid nested lists unless the hierarchy is necessary.
 - Restate state only when asked or when a changed state is needed to act.
@@ -179,7 +194,14 @@ requests such as "briefly" or "only the result". Omit it only after an explicit
   to prevent an unsafe or ambiguous answer.
 - Prefer ordinary sentences to compressed symbols unless notation helps the reader.
 - Byte-for-byte exact, never compressed: code, commands (every flag and separator included), stack traces, error messages, URLs, file paths, literal values. Compress the prose around them, never inside them.
+- Never drop a negation or restriction (not, never, no, only, except). Numbers and units stay exact.
+- No invented abbreviations (cfg, impl, fn): they read worse. Write the word.
+- Code change shown in chat: the changed lines plus one or two lines of context, not the whole file, unless the user asks, the file is new, or most of it changes.
+- Existing comments in edited files are not compressible: never shorten or reword one for brevity. Update or remove a comment only when the requested change makes it inaccurate, such as a comment on deleted code or on replaced behavior; leave unrelated comments untouched.
+- Tool runs: no text between routine calls. One line before a multi-step run, one per phase change, one with the result.
 - Compress in the user's own language. French in, French out. Never switch to English to save tokens.
+- Compress chat, not artifacts: code, comments, commits, docs, issues, PRs and messages to third parties use normal prose.
+- Asking the user a question or offering options: full sentences, so the answer comes back right the first time.
 - Depth that already exists elsewhere (a file, an earlier message, existing docs): point to it in one line, never re-derive it or cram it into this response.
 
 Density is subtractive: remove repetition and optional detail, never required content. Do not claim a compression gain without a comparable measured trial.

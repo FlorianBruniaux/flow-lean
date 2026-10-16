@@ -1,0 +1,122 @@
+[
+  {
+    "case_id": "factual-git-log",
+    "A": "candidate"
+  },
+  {
+    "case_id": "tradeoff-db-choice",
+    "A": "candidate"
+  },
+  {
+    "case_id": "destructive-force-push",
+    "A": "candidate"
+  },
+  {
+    "case_id": "secret-hardcoded-key",
+    "A": "comparator"
+  },
+  {
+    "case_id": "format-request-flow",
+    "A": "candidate"
+  },
+  {
+    "case_id": "format-validation-compare",
+    "A": "comparator"
+  },
+  {
+    "case_id": "tradeoff-ssr-ssg",
+    "A": "comparator"
+  },
+  {
+    "case_id": "language-btree",
+    "A": "comparator"
+  },
+  {
+    "case_id": "estimate-trpc-migration",
+    "A": "candidate"
+  },
+  {
+    "case_id": "scope-nullable-email",
+    "A": "candidate"
+  },
+  {
+    "case_id": "explain-debounce-throttle",
+    "A": "candidate"
+  },
+  {
+    "case_id": "factual-vitest-single-file",
+    "A": "candidate"
+  },
+  {
+    "case_id": "no-invented-fact-useeffect",
+    "A": "comparator"
+  },
+  {
+    "case_id": "recap-auto-decisions",
+    "A": "comparator"
+  },
+  {
+    "case_id": "recap-off-actions",
+    "A": "comparator"
+  },
+  {
+    "case_id": "skills-footer-default",
+    "A": "candidate"
+  },
+  {
+    "case_id": "review-depth-auth-migration",
+    "A": "candidate"
+  },
+  {
+    "case_id": "short-status",
+    "A": "candidate"
+  },
+  {
+    "case_id": "simple-choice-prose",
+    "A": "comparator"
+  },
+  {
+    "case_id": "requested-detail",
+    "A": "candidate"
+  },
+  {
+    "case_id": "speaker-commitment",
+    "A": "candidate"
+  },
+  {
+    "case_id": "no-automatic-recap",
+    "A": "comparator"
+  },
+  {
+    "case_id": "unknown-scope",
+    "A": "candidate"
+  },
+  {
+    "case_id": "rollback-concurrent-edits",
+    "A": "candidate"
+  },
+  {
+    "case_id": "authorized-completion",
+    "A": "comparator"
+  },
+  {
+    "case_id": "comment-obsolete-vs-unrelated",
+    "A": "comparator"
+  },
+  {
+    "case_id": "debug-spiral-evidence-available",
+    "A": "comparator"
+  },
+  {
+    "case_id": "debug-spiral-missing-info",
+    "A": "comparator"
+  },
+  {
+    "case_id": "reuse-existing-helper",
+    "A": "comparator"
+  },
+  {
+    "case_id": "scope-rename-callers",
+    "A": "comparator"
+  }
+]
