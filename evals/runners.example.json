@@ -40,5 +40,28 @@
     "cwd": "repo",
     "response_format": "claude-json",
     "budget_flag": "--max-budget-usd"
+  },
+  "codex": {
+    "command": [
+      "codex",
+      "exec",
+      "--json",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--sandbox",
+      "read-only",
+      "--disable",
+      "plugins",
+      "--disable",
+      "apps",
+      "--disable",
+      "hooks",
+      "-c",
+      "web_search=\"disabled\""
+    ],
+    "cwd": "empty",
+    "response_format": "codex-jsonl"
   }
 }

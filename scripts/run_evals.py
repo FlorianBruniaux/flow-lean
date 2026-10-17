@@ -195,9 +195,11 @@ def _condition_prompt(task: str, condition: str, skill_path: Path | None) -> str
 
 def _run_command(invocation: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
     # Runner CLIs emit UTF-8; text=True alone decodes with the locale codec (cp1252 on Windows).
+    # Closed stdin: codex exec otherwise waits for extra prompt input.
     return subprocess.run(
         invocation,
         check=False,
+        stdin=subprocess.DEVNULL,
         capture_output=True,
         text=True,
         encoding="utf-8",

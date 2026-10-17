@@ -63,6 +63,23 @@ class RunnerIsolationTest(unittest.TestCase):
         # --tools is variadic: another flag must follow, or it swallows the appended prompt.
         self.assertTrue(command[tools + 2].startswith("--"))
 
+    def test_example_codex_runner_is_isolated(self):
+        config = json.loads((ROOT / "evals" / "runners.example.json").read_text(encoding="utf-8"))
+        codex = config["codex"]
+        command = codex["command"]
+        self.assertEqual(codex["cwd"], "empty")
+        self.assertEqual(codex["response_format"], "codex-jsonl")
+        for flag in ("--ignore-user-config", "--ephemeral"):
+            self.assertIn(flag, command)
+        self.assertEqual(command[command.index("--sandbox") + 1], "read-only")
+        disabled = {command[i + 1] for i, part in enumerate(command) if part == "--disable"}
+        self.assertTrue({"plugins", "apps", "hooks"} <= disabled)
+        self.assertIn('web_search="disabled"', command)
+
+    def test_runner_stdin_is_closed(self):
+        completed = run_evals._run_command([sys.executable, "-c", "import sys; print(repr(sys.stdin.read()))"], ROOT)
+        self.assertEqual(completed.stdout.strip(), "''")
+
 
 if __name__ == "__main__":
     unittest.main()

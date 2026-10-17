@@ -117,12 +117,21 @@ across them.
   Use it only for tests that are meant to read files, such as skill or
   reference loading.
 
-Both runners pass `--setting-sources ""`, so locally installed skills,
+- `codex` runs `codex exec` from a fresh empty temporary directory with a
+  read-only sandbox. It ignores `config.toml` and execpolicy rules, and turns
+  off plugins, apps, hooks and web search. It reports no dollar cost, so pass
+  `--allow-unmetered`.
+
+Both Claude runners pass `--setting-sources ""`, so locally installed skills,
 flow-lean included, cannot leak into the `baseline` condition.
 
 **Known limit:** Claude Code still injects its environment context (working
-directory, git flag, OS and date) into the `claude` runner. Fully isolated
-text runs need a direct API runner.
+directory, git flag, OS and date) into the `claude` runner. The `codex`
+runner still lists skills from `~/.codex/skills`, `~/.agents/skills` and the
+bundled system skills, and keeps its shell tool, which can read outside the
+empty directory. Before a Codex `baseline` run, check that no flow-lean or
+source skill (caveman, ponytail, i-have-adhd) is installed there. Fully
+isolated text runs need a direct API runner.
 
 Before this change, the `claude` runner ran from the repository with read
 tools and MCP servers available. Its results, including every committed one
