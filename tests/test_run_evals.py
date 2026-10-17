@@ -36,5 +36,33 @@ class Utf8DecodingTest(unittest.TestCase):
         self.assertEqual(cost, 0.01)
 
 
+class RunnerIsolationTest(unittest.TestCase):
+    def test_empty_cwd_is_fresh_and_removed(self):
+        with run_evals._runner_cwd({"cwd": "empty"}) as cwd:
+            self.assertNotEqual(cwd, ROOT)
+            self.assertEqual(list(cwd.iterdir()), [])
+        self.assertFalse(cwd.exists())
+
+    def test_repo_cwd_is_default(self):
+        with run_evals._runner_cwd({}) as cwd:
+            self.assertEqual(cwd, ROOT)
+
+    def test_unknown_cwd_is_rejected(self):
+        with self.assertRaises(ValueError):
+            with run_evals._runner_cwd({"cwd": "home"}):
+                pass
+
+    def test_example_text_runner_is_isolated(self):
+        config = json.loads((ROOT / "evals" / "runners.example.json").read_text(encoding="utf-8"))
+        command = config["claude"]["command"]
+        self.assertEqual(config["claude"]["cwd"], "empty")
+        self.assertIn("--strict-mcp-config", command)
+        self.assertIn("--system-prompt", command)
+        tools = command.index("--tools")
+        self.assertEqual(command[tools + 1], "")
+        # --tools is variadic: another flag must follow, or it swallows the appended prompt.
+        self.assertTrue(command[tools + 2].startswith("--"))
+
+
 if __name__ == "__main__":
     unittest.main()

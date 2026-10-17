@@ -16,8 +16,11 @@ import json
 import shlex
 import subprocess
 import sys
+import tempfile
 import time
 from collections import Counter, defaultdict
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -202,6 +205,19 @@ def _run_command(invocation: list[str], cwd: Path) -> subprocess.CompletedProces
     )
 
 
+@contextmanager
+def _runner_cwd(runner: dict[str, Any]) -> Iterator[Path]:
+    # "empty" keeps text-only runs away from the repository; "repo" is for native loading tests.
+    mode = runner.get("cwd", "repo")
+    if mode == "repo":
+        yield ROOT
+    elif mode == "empty":
+        with tempfile.TemporaryDirectory(prefix="flow-lean-eval-") as scratch:
+            yield Path(scratch)
+    else:
+        raise ValueError(f"Unsupported runner cwd: {mode!r} (use 'repo' or 'empty')")
+
+
 def _parse_response(output: str, response_format: str) -> tuple[str, dict[str, Any], float | None]:
     if response_format == "text":
         return output.strip(), {}, None
@@ -259,7 +275,7 @@ def run_evaluations(args: argparse.Namespace) -> int:
         raise ValueError("--budget-usd must be greater than 0 and no more than 25")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    with args.output.open("a", encoding="utf-8") as destination:
+    with args.output.open("a", encoding="utf-8") as destination, _runner_cwd(runner) as cwd:
         for trial in range(1, args.trials + 1):
             for case in cases:
                 if args.case and case["id"] not in args.case:
@@ -279,7 +295,9 @@ def run_evaluations(args: argparse.Namespace) -> int:
                 invocation.append(prompt)
                 completed = None
                 for attempt in range(args.retries + 1):
-                    completed = _run_command(invocation, ROOT)
+                    completed = _run_command(invocation, cwd)
+                    if cwd != ROOT and any(cwd.iterdir()):
+                        raise RuntimeError(f"Isolated runner wrote into its empty cwd on {case['id']}")
                     if completed.returncode == 0:
                         break
                     if attempt < args.retries:

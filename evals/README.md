@@ -104,11 +104,30 @@ file, task prompts stay identical across all three conditions in a given run.
 it anywhere, the model pin (`claude-sonnet-5` per this session) lives there.
 Record the exact pinned model with any published result.
 
-`--setting-sources ""` (baked into the `claude` runner command in
-`runners.example.json`) isolates every call from this machine's own Claude
-Code config. Without it, any locally installed skill, including flow-lean
-itself, leaks into the `baseline` condition and measures the skill against
-itself.
+`runners.example.json` defines two Claude runners. Don't compare results
+across them.
+
+- `claude` is for text-only response-style evaluations, which is what this
+  harness measures. It runs from a fresh empty temporary directory
+  (`"cwd": "empty"`). `--tools ""` removes built-in tools, and
+  `--strict-mcp-config` removes MCP servers, including claude.ai connectors
+  such as mail or chat. `--system-prompt` replaces the coding-agent prompt.
+  The run aborts if a call writes into that directory.
+- `claude-native` runs from the repository root with read tools available.
+  Use it only for tests that are meant to read files, such as skill or
+  reference loading.
+
+Both runners pass `--setting-sources ""`, so locally installed skills,
+flow-lean included, cannot leak into the `baseline` condition.
+
+**Known limit:** Claude Code still injects its environment context (working
+directory, git flag, OS and date) into the `claude` runner. Fully isolated
+text runs need a direct API runner.
+
+Before this change, the `claude` runner ran from the repository with read
+tools and MCP servers available. Its results, including every committed one
+up to v0.3.3, are not directly comparable with runs made with the new
+`claude` runner.
 
 Runs are resumable: rerun the same command after a provider failure and
 completed `(case_id, trial, condition, runner)` rows are skipped, no need to
