@@ -118,6 +118,8 @@ evals/candidates/v3-groups.json
   s_67362ad3557062::t_6e0adc2ee748b1 1-26
 evals/rubric.md
   s_67362ad3557062::t_073cfe412ba28e 10-39
+tests/test_run_evals.py
+  s_67362ad3557062::t_7ddd182d13eeda 2,4,15-31,33-34,41-43
 ---
 {
   "schema_version": "authorship/3.0.0",
