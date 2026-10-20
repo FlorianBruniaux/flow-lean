@@ -1,0 +1,21 @@
+.github/workflows/plugin-load-check.yml
+  s_67362ad3557062::t_fe5926ef615d44 4
+evals/README.md
+  s_67362ad3557062::t_39bfb8ddc8e5f1 40-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9e46d4d6fe1452f174bb7802b48f0a0a873449df",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
