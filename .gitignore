@@ -2,3 +2,4 @@
 .idea/
 evals/comparators/
 __pycache__/
+evals/local/

@@ -5,7 +5,7 @@ on:
     paths:
       - "skills/**"
       - "evals/**"
-      - "scripts/run_evals.py"
+      - "scripts/**"
       - "tests/**"
       - ".claude-plugin/**"
       - ".github/workflows/plugin-load-check.yml"
@@ -13,13 +13,28 @@ on:
     paths:
       - "skills/**"
       - "evals/**"
-      - "scripts/run_evals.py"
+      - "scripts/**"
       - "tests/**"
       - ".claude-plugin/**"
       - ".github/workflows/plugin-load-check.yml"
   workflow_dispatch:
 
 jobs:
+  offline-evaluations:
+    env:
+      PYTHONUTF8: "1"
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/run_evals.py validate
+
   load-check:
     runs-on: ubuntu-latest
     steps:
@@ -28,9 +43,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-
-      - name: Run harness unit tests
-        run: python3 -m unittest discover -s tests
 
       - name: Validate evaluation catalogs
         run: |

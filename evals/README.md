@@ -5,7 +5,8 @@ Real, API-backed comparison of flow-lean against a plain baseline, generic
 ponytail, i-have-adhd). Cases live in `cases.jsonl`, the scoring contract
 lives in `rubric.md`. The harness itself (`scripts/run_evals.py`) is forked
 from [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) (MIT),
-credited in the script header. Only the scoring weights changed.
+credited in the script header. Flow Lean now adds provenance-bound resumes,
+per-attempt accounting and isolated working directories.
 
 This is different from `../EVAL.md`, which is a manual, self-graded
 regression battery you paste into a fresh session after any `SKILL.md` edit.
@@ -57,15 +58,33 @@ python3 scripts/run_evals.py plan --trials 1 --include-comparator
 ```
 
 `plan` prints the expected call count before any money is spent. At 1 trial,
-22 cases, 3 conditions: 66 calls per full run.
+25 cases, 3 conditions: 75 planned calls, before retries.
 
 ## Run
 
-Each run of `baseline` + `candidate` + `comparator` must land in its own
-output file. The resumability key is `(case_id, trial, condition, runner)`,
-it does not know which skill file backed a `comparator` run, so writing two
-different comparators into the same file makes the second one skip every
-case as "already done". Three comparators means three full runs, three files.
+Use a new output file for each runner/model/corpus/trial selection and comparator.
+A manifest binds each condition to its actual instructions. Incompatible resumes
+fail before generation rather than silently skipping cases. Historical result
+files without this provenance remain readable by `score`, but cannot be resumed.
+
+`--budget-usd` now applies to **all attempts and conditions in one output file**,
+including failed calls. It is no longer a separate allowance for each condition.
+Keep the same total budget in commands that share an output. The CLI stops at
+the reported limit; the provider-side cap remains necessary, especially when a
+runner does not enforce the budget flag.
+
+For v3, use the [group comparison](GROUP-COMPARISON.md) and
+[executable rollback checks](ROLLBACK-CHECKS.md). The separately authorized
+seven-arm pilot stopped at its budget reserve after 118/175 responses.
+It validates neither group removal nor quality-preserving savings.
+The [v3.1 installation record](V3.1-ROUTING-INSTALL.md) covers the integrated
+global variant and its local routing checks, not a public plugin release or
+a new model comparison.
+
+For the four-arm experiment, use the [minimal-core v2 protocol](MINIMAL-COMPARISON.md)
+and its explicit candidate path. V1 is preserved. A local v2 pilot completed on
+2026-10-17 within its $5 ceiling; correctness and safety defects prevent adoption.
+The protocol records its scope and local evidence location.
 
 ```bash
 # Sanity run first: baseline + candidate only, no comparator, cheap
@@ -97,22 +116,60 @@ for comparator in caveman ponytail i-have-adhd; do
 done
 ```
 
-Candidate and comparator instructions are injected from the supplied skill
-file, task prompts stay identical across all three conditions in a given run.
+Style instructions are injected from the supplied file. All conditions receive
+the same task and explicit text-only environment framing, including baseline.
+The baseline has no extra style instructions. The revised corpus asks for written
+decisions, proposed code, or reports from supplied facts, not actual repository
+operations. It cannot establish safe tool execution.
 
 `--runner-config` defaults to `evals/runners.example.json`, no need to copy
-it anywhere, the model pin (`claude-sonnet-5` per this session) lives there.
-Record the exact pinned model with any published result.
+it anywhere, the requested model lives there. Verify availability before spending, and use a
+separate config per model. `version_command` observes the installed CLI version
+without generating a response; a changed version invalidates resume. A declared
+model label is not proof of the model actually served: retain provider metadata.
 
-`--setting-sources ""` (baked into the `claude` runner command in
-`runners.example.json`) isolates every call from this machine's own Claude
-Code config. Without it, any locally installed skill, including flow-lean
-itself, leaks into the `baseline` condition and measures the skill against
-itself.
+The example runner disables skills, built-in tools and MCP servers and requests
+empty setting sources. Each attempt runs in a fresh temporary directory outside
+this repository. This tests injected style instructions, not native skill loading.
+The common prompt declares the lack of tools, repository and network access;
+scenario paths do not refer to that temporary directory. Keep this harness
+text-only. A tool-enabled evaluation requires a separate protocol and context.
+Inherited environment and host-managed instructions are not fully captured by
+these controls; check the host before any public benchmark claim.
 
-Runs are resumable: rerun the same command after a provider failure and
-completed `(case_id, trial, condition, runner)` rows are skipped, no need to
-track progress by hand.
+### Evidence and interruption recovery
+
+Keep these three files together:
+
+- `<output>.manifest.json`: corpus snapshot, instruction snapshots, hashes of the
+  runner configuration, rubric and harness, selected cases/trials, observed CLI
+  version when available, Python/platform, and creation-time Git revision.
+- `<output>.attempts.jsonl`: durable start/finish events, raw stdout/stderr, status,
+  usage, reported cost and elapsed time for every attempt.
+- `<output>`: successful nonempty responses with run/condition fingerprints and
+  an attempt ID. A missing response write is recovered from a finished success.
+
+Instructions are read once per invocation. Case content and injected prompts
+are fingerprinted from the snapshots actually used. Retry count and spending
+allowance can change on resume; changing the experimental inputs requires a new
+output. Keep local runner scripts and external configuration fixed as well: the
+harness hashes configuration, not every transitive dependency or environment value.
+
+A missing, invalid or interrupted cost stays `null`/`UNKNOWN`. Metered runs stop
+before further calls, including on resume. `--allow-unmetered` permits continuation
+only when you have a separate provider-side spending cap; the displayed subtotal
+is then explicitly not the total. Retries consume the remaining shared budget.
+The retry count is per invocation, so manually resuming can retry a failed case
+again, within the cumulative spending allowance.
+
+`<output>.lock` prevents concurrent writers. A killed process may leave this lock:
+verify that its PID is no longer running before removing that lock alone. Do not
+delete unfinished attempt events or costs to make a resume pass. Malformed JSONL
+or inconsistent response evidence is rejected; preserve it for investigation.
+
+Logs and snapshots can contain task content, provider output and errors. Use the
+ignored `evals/local/` directory for private trials and inspect/redact evidence
+before publishing. Existing committed results remain unchanged.
 
 ## Judge and score
 
@@ -144,3 +201,6 @@ reproducible without re-spending.
 The committed v0.2.0 result files used the former 13-case suite. They remain
 historical evidence only. Run all three conditions again before publishing a
 current-version comparison against the 25-case suite.
+The text-only context and revised cases/criteria also invalidate direct score
+comparisons with the local v1 pilot, even though the case IDs and count remain
+unchanged. Retain old manifests as evidence; regenerate all conditions for v2.

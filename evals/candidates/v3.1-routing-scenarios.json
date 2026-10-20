@@ -1,0 +1,43 @@
+{
+  "skill": "flow-lean",
+  "positive": [
+    "Flow Lean : réponses concises, résultat en premier.",
+    "Active Flow Lean pour des réponses courtes sans préambule.",
+    "Réponds brièvement, résultat en premier, sans récap répété.",
+    "Je veux des réponses concises sans préambule ni répétition.",
+    "Réponses plus courtes : conclusion d’abord, détails nécessaires ensuite.",
+    "Keep replies concise, answer first, without filler or repeated summaries.",
+    "Use Flow Lean: concise replies, result first.",
+    "Flow Lean detailed : développe ta réponse trop compressée.",
+    "Flow Lean : réponse détaillée, explique davantage.",
+    "Flow Lean recap off : pas de récapitulatif automatique.",
+    "Flow Lean recap on : un seul récapitulatif des décisions.",
+    "Flow Lean skills footer off.",
+    "Flow Lean skills footer on.",
+    "Fais une réponse concise, commence par la conclusion.",
+    "Réponds de manière concise : conclusion au début, aucun préambule."
+  ],
+  "negative": [
+    "Résume ce document technique dans un article complet.",
+    "Résume les commits et prépare un rapport de projet.",
+    "Rédige un message court pour répondre à Guillaume sur Slack.",
+    "Analyse la structure du dépôt et dessine son architecture.",
+    "Prépare une passation de session avec les commandes de reprise.",
+    "Quel skill permet de rédiger une newsletter ?",
+    "Compare les performances de deux index PostgreSQL.",
+    "Écris un résumé de réunion pour les participants.",
+    "Summarize the codebase architecture in a document.",
+    "Review this pull request and list blocking bugs.",
+    "Audite les skills globaux et leurs métadonnées.",
+    "Passe en revue les modes de permission et les outils des agents.",
+    "Affiche les lignes en erreur dans la sortie du hook.",
+    "Explique le mode sombre de ce composant.",
+    "Vérifie uniquement les métadonnées des skills installés.",
+    "Active le hook de contrôle des instructions globales.",
+    "Donne davantage de détails sur le diagramme technique du projet.",
+    "Change la ligne footer de ce composant React.",
+    "Condense ce mail pour le rendre bref et poli.",
+    "Prepare a detailed project handoff document with a summary.",
+    "Enable dark mode and show the status line in the editor."
+  ]
+}
