@@ -1,22 +1,7 @@
 name: Plugin load check
 
 on:
-  push:
-    paths:
-      - "skills/**"
-      - "evals/**"
-      - "scripts/**"
-      - "tests/**"
-      - ".claude-plugin/**"
-      - ".github/workflows/plugin-load-check.yml"
-  pull_request:
-    paths:
-      - "skills/**"
-      - "evals/**"
-      - "scripts/**"
-      - "tests/**"
-      - ".claude-plugin/**"
-      - ".github/workflows/plugin-load-check.yml"
+  # Repository policy permits only owner-requested workflow_dispatch runs.
   workflow_dispatch:
 
 jobs:

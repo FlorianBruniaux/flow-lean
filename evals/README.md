@@ -37,6 +37,26 @@ and the failed or incomplete checks. The
 [2026-09-26 report](results/concision-2026-09-26.md) remains historical evidence.
 Neither is a paired comparison or a benchmark release-gate pass.
 
+## CI without model calls
+
+The repository's "Owner-requested workflows only" Actions policy permits
+`workflow_dispatch` by the owner. Push and pull-request events are not allowed
+and previously produced `startup_failure` before any job ran. The workflow now
+declares only the permitted manual trigger; the policy remains unchanged.
+
+After pushing, the owner can select the branch in Actions, or run:
+
+```bash
+gh workflow run plugin-load-check.yml --repo FlorianBruniaux/flow-lean --ref YOUR_BRANCH
+```
+
+Replace `YOUR_BRANCH` with the branch to verify. Check the resulting run's
+`headSha` against the intended commit before using its result. Pushes and PRs
+alone do not start CI. The workflow runs offline harness tests on Linux and
+Windows, validates the corpus, and installs/lists the plugin in an isolated
+Claude configuration. It makes no model-generation calls and supplies no model
+API credentials. Plugin loading does not establish model adherence.
+
 ## Fetch comparators
 
 Comparator `SKILL.md` files are not vendored in this repo, they are fetched
