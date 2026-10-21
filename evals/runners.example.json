@@ -15,7 +15,9 @@
       "",
       "--strict-mcp-config",
       "--mcp-config",
-      "{\"mcpServers\":{}}"
+      "{\"mcpServers\":{}}",
+      "--system-prompt",
+      "You are a helpful assistant."
     ],
     "response_format": "claude-json",
     "budget_flag": "--max-budget-usd",

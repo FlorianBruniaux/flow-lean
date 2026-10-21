@@ -187,14 +187,20 @@ def execute(args, cases, runner, instructions, prompts, parse_response, read_jso
                                 'trial': trial, 'condition': args.condition, 'runner': args.runner}
                     append(ledger_path, {**identity, 'event': 'started', 'timestamp': time.time()})
                     started = time.monotonic()
+                    completed, isolation_error, cwd_entries = None, None, []
                     try:
                         with tempfile.TemporaryDirectory(prefix='flow-lean-eval-') as work:
                             completed = subprocess.run(invocation, check=False, capture_output=True,
-                                                       cwd=work)
+                                                       stdin=subprocess.DEVNULL, cwd=work)
+                            cwd_entries = sorted(entry.name for entry in Path(work).iterdir())
+                            if cwd_entries:
+                                isolation_error = 'Isolated runner wrote into its empty cwd'
                     except OSError as exc:
-                        append(ledger_path, {**identity, 'event': 'finished', 'status': 'failed',
-                                            'cost_usd': None, 'error': str(exc), 'elapsed_seconds': time.monotonic()-started})
-                        raise RuntimeError('Runner could not start; attempt recorded with UNKNOWN cost.') from exc
+                        if completed is None:
+                            append(ledger_path, {**identity, 'event': 'finished', 'status': 'failed',
+                                                'cost_usd': None, 'error': str(exc), 'elapsed_seconds': time.monotonic()-started})
+                            raise RuntimeError('Runner could not start; attempt recorded with UNKNOWN cost.') from exc
+                        isolation_error = f'Cannot inspect or clean isolated cwd: {exc}'
                     text, usage, cost, error = '', {}, None, None
                     # Decode explicitly; byte corruption is an error, never silent replacement in responses.
                     try:
@@ -207,6 +213,8 @@ def execute(args, cases, runner, instructions, prompts, parse_response, read_jso
                             error = 'Provider reported failure'
                     except (UnicodeError, ValueError, TypeError, AttributeError) as exc:
                         error = f'Invalid response: {exc}'
+                    if isolation_error:
+                        error = '; '.join(filter(None, (error, isolation_error)))
                     result = {**identity, 'response': text, 'usage': usage, 'cost_usd': cost}
                     status = 'success' if completed.returncode == 0 and not error else 'failed'
                     finished = {**identity, 'event': 'finished', 'status': status,
@@ -214,7 +222,7 @@ def execute(args, cases, runner, instructions, prompts, parse_response, read_jso
                                 'usage': usage, 'elapsed_seconds': time.monotonic()-started,
                                 'stdout': completed.stdout.decode('utf-8', errors='backslashreplace'),
                                 'stderr': completed.stderr.decode('utf-8', errors='backslashreplace'),
-                                'error': error, 'result': result}
+                                'error': error, 'cwd_entries': cwd_entries, 'result': result}
                     append(ledger_path, finished)
                     known_cost += cost or 0
                     unknown_cost += cost is None

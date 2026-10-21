@@ -154,6 +154,20 @@ this repository. This tests injected style instructions, not native skill loadin
 The common prompt declares the lack of tools, repository and network access;
 scenario paths do not refer to that temporary directory. Keep this harness
 text-only. A tool-enabled evaluation requires a separate protocol and context.
+
+The Claude example replaces the coding-agent system prompt with a neutral one.
+The runner receives closed stdin, so launcher input cannot be appended to the
+case prompt. Files or directories left in the temporary working directory mark
+the attempt failed: its raw receipt, reported cost and top-level entry names
+are journaled before retry or resume. A failed attempt never completes the case.
+Unknown cost blocks metered continuation as for other failures.
+
+This directory check detects leftovers, not writes later removed or reads and
+writes outside that directory. Claude Code may still inject environment metadata.
+The proposed Codex CLI runner retains shell access and locally discovered skills,
+so it is not included as an isolated text baseline. Native Claude/Codex reference
+loading remains a separate follow-up in issue #4; no new live model run validates
+native isolation here. Historical runs must retain their original runner settings.
 Inherited environment and host-managed instructions are not fully captured by
 these controls; check the host before any public benchmark claim.
 

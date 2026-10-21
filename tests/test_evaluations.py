@@ -27,6 +27,10 @@ with state.open('a') as f:
     f.write(json.dumps({'cwd': os.getcwd(), 'args': sys.argv[3:]}) + '\\n')
 rows = json.loads(fixture.read_text())
 row = rows[min(n, len(rows)-1)]
+if row.get('write'):
+    Path('unexpected.txt').write_text('unexpected provider write')
+if row.get('read_stdin'):
+    assert sys.stdin.read() == '', 'runner inherited input'
 print(row['stdout'])
 sys.exit(row.get('exit', 0))
 ''', encoding="utf-8")
@@ -54,12 +58,13 @@ sys.exit(row.get('exit', 0))
     def configure_responses(self, rows):
         self.fixture.write_text(json.dumps(rows), encoding="utf-8")
 
-    def run_cli(self, *extra, condition="candidate"):
+    def run_cli(self, *extra, condition="candidate", input_text=None):
         return subprocess.run([sys.executable, str(CLI), "run", "--cases", str(self.cases),
                                "--runner-config", str(self.config), "--runner", "fixture",
                                "--condition", condition, "--condition-skill", str(self.skill),
                                "--trials", "1", "--budget-usd", "1", "--retries", "0",
-                               "--output", str(self.output), *extra], capture_output=True, text=True)
+                               "--output", str(self.output), *extra], capture_output=True, text=True,
+                              input=input_text)
 
     def rows(self, path):
         return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()]
@@ -72,6 +77,39 @@ sys.exit(row.get('exit', 0))
         self.assertNotEqual(changed.returncode, 0, "changed skill must not reuse old results")
         self.assertIn("provenance", changed.stderr.lower())
         self.assertEqual(len(self.rows(self.state)), 1)
+
+    def test_isolation_failure_retains_cost_and_reduces_resume_budget(self):
+        self.configure_responses([{**self.response(0.6), 'write': True}, self.response(0.2)])
+        failed = self.run_cli()
+        self.assertNotEqual(failed.returncode, 0)
+        self.assertFalse(self.output.exists())
+        ledger = self.rows(Path(str(self.output) + '.attempts.jsonl'))
+        self.assertEqual(ledger[-1]['status'], 'failed')
+        self.assertEqual(ledger[-1]['cost_usd'], 0.6)
+        self.assertIn('unexpected.txt', ledger[-1]['cwd_entries'])
+        self.assertIn('total_cost_usd', ledger[-1]['stdout'])
+        resumed = self.run_cli()
+        self.assertEqual(resumed.returncode, 0, resumed.stderr)
+        calls = self.rows(self.state)
+        self.assertEqual(calls[1]['args'][1], '0.4000')
+        self.assertNotEqual(calls[0]['cwd'], calls[1]['cwd'])
+        self.assertTrue(all(not Path(call['cwd']).exists() for call in calls))
+        self.assertEqual(len(self.rows(self.output)), 1)
+
+    def test_unknown_cost_isolation_failure_blocks_resume(self):
+        self.configure_responses([{**self.response(None), 'write': True}])
+        self.assertNotEqual(self.run_cli().returncode, 0)
+        ledger = self.rows(Path(str(self.output) + '.attempts.jsonl'))
+        self.assertEqual(ledger[-1]['status'], 'failed')
+        self.assertIn('unexpected.txt', ledger[-1]['cwd_entries'])
+        self.assertFalse(self.output.exists())
+        self.assertIn('UNKNOWN', self.run_cli().stderr)
+        self.assertEqual(len(self.rows(self.state)), 1)
+
+    def test_runner_receives_eof_even_when_harness_stdin_contains_text(self):
+        self.configure_responses([{**self.response(), 'read_stdin': True}])
+        result = self.run_cli(input_text='unrelated launcher input')
+        self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_interleaved_case_schedule_preserves_shared_provenance_and_budget(self):
         case = self.rows(self.cases)[0]
