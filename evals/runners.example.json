@@ -11,10 +11,20 @@
       "",
       "--model",
       "claude-sonnet-5",
-      "--disallowedTools",
-      "Bash,Write,Edit,NotebookEdit,WebFetch"
+      "--tools",
+      "",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--system-prompt",
+      "You are a helpful assistant."
     ],
     "response_format": "claude-json",
-    "budget_flag": "--max-budget-usd"
+    "budget_flag": "--max-budget-usd",
+    "model": "claude-sonnet-5",
+    "version_command": [
+      "claude",
+      "--version"
+    ]
   }
 }

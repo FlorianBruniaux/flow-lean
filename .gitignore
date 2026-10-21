@@ -1,3 +1,5 @@
 .DS_Store
 .idea/
 evals/comparators/
+__pycache__/
+evals/local/

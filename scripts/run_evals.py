@@ -3,23 +3,20 @@
 
 Forked from ayghri/i-have-adhd (https://github.com/ayghri/i-have-adhd),
 scripts/run_evals.py, MIT License, Copyright (c) 2026 Ayoub Ghriss.
-Only change from the source: WEIGHTS below, adapted to flow-lean's own
-claims (decision-fidelity, gate-fit) instead of i-have-adhd's autonomy
-focus. Everything else, the run/score/plan mechanics, the CLI isolation,
-budget cap, and resumability, is unmodified.
+Flow Lean adds scoring weights, provenance-bound resumes, isolated execution,
+and a durable per-attempt cost ledger.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import shlex
-import subprocess
 import sys
-import time
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+
+from eval_runtime import execute
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +28,9 @@ WEIGHTS = {
     "concision": 0.15,
     "safety": 0.10,
 }
-CONDITIONS = {"baseline", "candidate", "comparator"}
+CONDITIONS = {"baseline", "candidate", "comparator", "generic", "minimal", "v3",
+              "v3_without_fidelity", "v3_without_evidence", "v3_without_duration",
+              "v3_without_rollback"}
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -51,17 +50,6 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 def load_cases(path: Path = DEFAULT_CASES) -> list[dict[str, Any]]:
     return read_jsonl(path)
-
-
-def completed_keys(rows: list[dict[str, Any]]) -> set[tuple[str, int, str, str]]:
-    keys: set[tuple[str, int, str, str]] = set()
-    for row in rows:
-        fields = (row.get("case_id"), row.get("trial"), row.get("condition"), row.get("runner"))
-        if isinstance(fields[0], str) and isinstance(fields[1], int) and all(
-            isinstance(value, str) for value in fields[2:]
-        ):
-            keys.add(fields)  # type: ignore[arg-type]
-    return keys
 
 
 def validate_cases(cases: list[dict[str, Any]]) -> list[str]:
@@ -106,7 +94,7 @@ def _describe_rows(keys: list[tuple[str, Any]]) -> str:
     return ", ".join(f"{case_id}/trial {trial}" for case_id, trial in keys)
 
 
-def _check_pairing(grouped: dict[str, list[dict[str, Any]]]) -> None:
+def _check_pairing(grouped: dict[str, list[dict[str, Any]]], reference: str = "baseline") -> None:
     """Conditions are only comparable when judged on identical rows."""
     coverage = {
         condition: Counter((row["case_id"], row["trial"]) for row in rows)
@@ -118,9 +106,9 @@ def _check_pairing(grouped: dict[str, list[dict[str, Any]]]) -> None:
             raise ValueError(
                 f"{condition}: duplicate score rows for {_describe_rows(repeated)}"
             )
-    baseline = coverage["baseline"]
+    baseline = coverage[reference]
     for condition, counts in sorted(coverage.items()):
-        if condition == "baseline" or counts == baseline:
+        if condition == reference or counts == baseline:
             continue
         details = []
         missing = sorted(set(baseline) - set(counts))
@@ -130,19 +118,20 @@ def _check_pairing(grouped: dict[str, list[dict[str, Any]]]) -> None:
         if unmatched:
             details.append(f"unmatched {_describe_rows(unmatched)}")
         raise ValueError(
-            f"{condition} was not judged on the same rows as baseline: "
+            f"{condition} was not judged on the same rows as {reference}: "
             + "; ".join(details)
         )
 
 
-def summarize_scores(scores: list[dict[str, Any]]) -> dict[str, Any]:
+def summarize_scores(scores: list[dict[str, Any]], reference: str = "baseline",
+                     candidate_name: str = "candidate") -> dict[str, Any]:
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for index, row in enumerate(scores, start=1):
         _validate_score(row, index)
         grouped[row["condition"]].append(row)
-    if "baseline" not in grouped or "candidate" not in grouped:
-        raise ValueError("Scores must include baseline and candidate conditions")
-    _check_pairing(grouped)
+    if reference == candidate_name or reference not in grouped or candidate_name not in grouped:
+        raise ValueError("Scores must include two distinct selected comparison conditions")
+    _check_pairing(grouped, reference)
 
     conditions: dict[str, dict[str, Any]] = {}
     for condition, rows in sorted(grouped.items()):
@@ -157,37 +146,50 @@ def summarize_scores(scores: list[dict[str, Any]]) -> dict[str, Any]:
             "blocking_findings": sum(bool(row["blocker"]) for row in rows),
         }
 
-    baseline = conditions["baseline"]
-    candidate = conditions["candidate"]
+    baseline = conditions[reference]
+    candidate = conditions[candidate_name]
     reasons: list[str] = []
     if candidate["blocking_findings"]:
         reasons.append("Candidate has blocking safety or correctness findings.")
     if candidate["correctness"] < baseline["correctness"] - 0.1:
-        reasons.append("Candidate correctness regressed by more than 0.1 points.")
+        reasons.append("Candidate correctness regressed by more than 0.1 points against the selected reference.")
     if candidate["safety"] < baseline["safety"] - 0.1:
-        reasons.append("Candidate safety regressed by more than 0.1 points.")
+        reasons.append("Candidate safety regressed by more than 0.1 points against the selected reference.")
     if candidate["weighted_score"] <= baseline["weighted_score"]:
-        reasons.append("Candidate weighted score did not beat baseline.")
+        reasons.append("Candidate weighted score did not beat the selected reference.")
 
     return {
+        "comparison": {"reference": reference, "candidate": candidate_name},
         "weights": WEIGHTS,
         "conditions": conditions,
         "release_gate": {"passed": not reasons, "reasons": reasons},
     }
 
 
-def _condition_prompt(task: str, condition: str, skill_path: Path | None) -> str:
+def _condition_instructions(condition: str, skill_path: Path | None) -> str:
     if condition == "baseline":
-        return task
+        return ""
+    if skill_path is None and condition in {"generic", "minimal"}:
+        skill_path = ROOT / "evals" / "candidates" / f"{condition}.md"
     if skill_path is None:
         raise ValueError(f"--condition-skill is required for the {condition} condition")
-    instructions = skill_path.read_text(encoding="utf-8")
-    return (
+    return skill_path.read_text(encoding="utf-8")
+
+
+def _condition_prompt(task: str, condition: str, instructions: str) -> str:
+    context = (
+        "<evaluation_context>\n"
+        "This is a text-only evaluation with no tools, repository access, or network access. "
+        "Paths and operational facts belong to the task's scenario, not the runner's working directory. "
+        "Requested code and commands are text deliverables, not actions to execute.\n"
+        "</evaluation_context>\n\n"
+    )
+    style = "" if condition == "baseline" else (
         "Follow the response-style skill below while completing the task. "
         "Do not discuss or quote the skill.\n\n"
         f"<response_style>\n{instructions}\n</response_style>\n\n"
-        f"<task>\n{task}\n</task>"
     )
+    return f"{context}{style}<task>\n{task}\n</task>"
 
 
 def _parse_response(output: str, response_format: str) -> tuple[str, dict[str, Any], float | None]:
@@ -198,8 +200,9 @@ def _parse_response(output: str, response_format: str) -> tuple[str, dict[str, A
         # Newer Claude Code CLIs emit an event array; the final "result" event holds the answer.
         if isinstance(payload, list):
             payload = next((e for e in reversed(payload) if e.get("type") == "result"), {})
+        result = payload.get("result")
         return (
-            str(payload.get("result", "")).strip(),
+            result.strip() if isinstance(result, str) else "",
             payload.get("usage", {}) or {},
             payload.get("total_cost_usd"),
         )
@@ -225,93 +228,21 @@ def run_evaluations(args: argparse.Namespace) -> int:
     unknown = sorted(set(args.case or []) - {case["id"] for case in cases})
     if unknown:
         raise ValueError(f"--case matched no evaluation case: {', '.join(unknown)}")
+    selected = set(args.case or [case["id"] for case in cases])
+    if args.next_case is not None and args.next_case not in selected:
+        raise ValueError("--next-case must belong to the selected campaign cases")
     config = json.loads(args.runner_config.read_text(encoding="utf-8"))
     runner = config[args.runner]
-    command = list(runner["command"])
     response_format = runner.get("response_format", "text")
     if response_format != "claude-json" and not args.allow_unmetered:
         raise RuntimeError(
             f"The {response_format!r} response format never reports dollar cost; rerun with "
             "--allow-unmetered only when the provider has a separate hard spending cap."
         )
-    reported_cost = 0.0
-    prior_rows = read_jsonl(args.output) if args.output.exists() else []
-    done = completed_keys(prior_rows)
-    reported_cost = sum(
-        float(row.get("cost_usd") or 0)
-        for row in prior_rows
-        if row.get("condition") == args.condition and row.get("runner") == args.runner
-    )
-
-    if args.budget_usd <= 0 or args.budget_usd > 25:
-        raise ValueError("--budget-usd must be greater than 0 and no more than 25")
-
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with args.output.open("a", encoding="utf-8") as destination:
-        for trial in range(1, args.trials + 1):
-            for case in cases:
-                if args.case and case["id"] not in args.case:
-                    continue
-                key = (case["id"], trial, args.condition, args.runner)
-                if key in done:
-                    print(f"skip completed {args.condition} trial {trial}: {case['id']}")
-                    continue
-                remaining = args.budget_usd - reported_cost
-                if remaining <= 0:
-                    print("Budget exhausted; stopping.", file=sys.stderr)
-                    return 2
-                prompt = _condition_prompt(case["prompt"], args.condition, args.condition_skill)
-                invocation = [*command]
-                if runner.get("budget_flag"):
-                    invocation.extend([runner["budget_flag"], f"{remaining:.4f}"])
-                invocation.append(prompt)
-                completed = None
-                for attempt in range(args.retries + 1):
-                    completed = subprocess.run(
-                        invocation,
-                        check=False,
-                        capture_output=True,
-                        text=True,
-                        cwd=ROOT,
-                    )
-                    if completed.returncode == 0:
-                        break
-                    if attempt < args.retries:
-                        time.sleep(min(2**attempt, 5))
-                assert completed is not None
-                if completed.returncode:
-                    detail = completed.stderr.strip() or completed.stdout.strip()
-                    if completed.stdout.strip():
-                        try:
-                            parsed_text, _, _ = _parse_response(completed.stdout, response_format)
-                            detail = parsed_text or detail
-                        except (ValueError, json.JSONDecodeError):
-                            pass
-                    raise RuntimeError(
-                        f"Runner failed after {args.retries + 1} attempts "
-                        f"({shlex.join(invocation[:-1])}):\n{detail}"
-                    )
-                text, usage, cost = _parse_response(completed.stdout, response_format)
-                if cost is None and not args.allow_unmetered:
-                    raise RuntimeError(
-                        "Runner did not report dollar cost; rerun with --allow-unmetered only when "
-                        "the provider has a separate hard spending cap."
-                    )
-                reported_cost += float(cost or 0)
-                row = {
-                    "case_id": case["id"],
-                    "trial": trial,
-                    "condition": args.condition,
-                    "runner": args.runner,
-                    "response": text,
-                    "usage": usage,
-                    "cost_usd": cost,
-                }
-                destination.write(json.dumps(row, ensure_ascii=False) + "\n")
-                destination.flush()
-                print(f"{args.condition} trial {trial}: {case['id']}")
-    print(f"Reported cost: ${reported_cost:.4f}")
-    return 0
+    instructions = _condition_instructions(args.condition, args.condition_skill)
+    prompts = {case["id"]: _condition_prompt(case["prompt"], args.condition, instructions)
+               for case in cases}
+    return execute(args, cases, runner, instructions, prompts, _parse_response, read_jsonl)
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -324,10 +255,15 @@ def _build_parser() -> argparse.ArgumentParser:
     plan = subparsers.add_parser("plan", help="Print the paired run matrix as JSONL")
     plan.add_argument("--cases", type=Path, default=DEFAULT_CASES)
     plan.add_argument("--trials", type=int, default=3)
-    plan.add_argument("--include-comparator", action="store_true")
+    plans = plan.add_mutually_exclusive_group()
+    plans.add_argument("--include-comparator", action="store_true")
+    plans.add_argument("--core-comparison", action="store_true",
+                       help="Plan baseline, generic, minimal and current candidate")
 
     score = subparsers.add_parser("score", help="Aggregate manually judged score rows")
     score.add_argument("scores", type=Path)
+    score.add_argument("--reference-condition", choices=sorted(CONDITIONS), default="baseline")
+    score.add_argument("--candidate-condition", choices=sorted(CONDITIONS), default="candidate")
 
     run = subparsers.add_parser("run", help="Run one evaluation condition")
     run.add_argument("--cases", type=Path, default=DEFAULT_CASES)
@@ -336,6 +272,7 @@ def _build_parser() -> argparse.ArgumentParser:
     run.add_argument("--condition", choices=sorted(CONDITIONS), required=True)
     run.add_argument("--condition-skill", type=Path)
     run.add_argument("--case", action="append")
+    run.add_argument("--next-case", help="Schedule one selected case without changing campaign provenance")
     run.add_argument("--trials", type=int, default=3)
     run.add_argument("--retries", type=int, default=2)
     run.add_argument("--budget-usd", type=float, default=25.0)
@@ -363,7 +300,10 @@ def main(argv: list[str] | None = None) -> int:
         errors = validate_cases(cases)
         if errors:
             raise ValueError("\n".join(errors))
-        conditions = ["baseline", "candidate"]
+        if args.trials < 1:
+            raise ValueError("trials must be positive")
+        conditions = (["baseline", "generic", "minimal", "candidate"]
+                      if args.core_comparison else ["baseline", "candidate"])
         if args.include_comparator:
             conditions.append("comparator")
         for trial in range(1, args.trials + 1):
@@ -372,7 +312,7 @@ def main(argv: list[str] | None = None) -> int:
                     print(json.dumps({"case_id": case["id"], "trial": trial, "condition": condition}))
         return 0
     if args.command == "score":
-        print(json.dumps(summarize_scores(read_jsonl(args.scores)), indent=2))
+        print(json.dumps(summarize_scores(read_jsonl(args.scores), args.reference_condition, args.candidate_condition), indent=2))
         return 0
     parser.error("unknown command")
     return 2

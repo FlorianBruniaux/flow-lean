@@ -315,7 +315,7 @@ Where it goes further than any of the source skills:
 
 Historical v0.2.0 runs measured mixed-work net compression around 20-30%, not
 the 50-75% Caveman's README cites for narrower tasks. The current public skill
-and 25-case suite have no new paired comparison result. Earlier scores remain
+and current 30-case suite have no qualifying paired comparison result. Earlier scores remain
 historical evidence, not a current compression or performance claim.
 
 ## Eval
@@ -338,7 +338,7 @@ source skills, using the current case set and the weighted rubric in
 
 The scores below are the historical v0.2.0 snapshot on its 13-case suite. They
 remain reproducible in `evals/results/`, but must not be compared with a future
-25-case run as if the suites were identical.
+30-case run as if the suites were identical.
 
 | vs | baseline | flow-lean | comparator |
 |---|---:|---:|---:|
