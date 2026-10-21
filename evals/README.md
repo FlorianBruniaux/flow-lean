@@ -25,9 +25,25 @@ The positive and negative routing corpus is bundled at
 invocations and controls are kept in [`explicit-controls.json`](explicit-controls.json)
 for separate native-host checks; they are not implicit-routing training data.
 [`routing-probes.json`](routing-probes.json) retains additional public phrasing
-and boundary probes outside calibration; report misses rather than hiding them. Routing
+and boundary probes outside calibration. Their observed misses informed the public
+corpus repair, so they are development regressions, not an independent holdout.
+The [public BM25 repair report](results/public-bm25-repair-2026-10-21.md) records
+dual-host eligibility, hook results and remaining calibration errors. Routing
 checks measure skill selection; they do not prove response quality or native
 plugin invocation.
+
+With an already installed compatible skill-router, reproduce the offline check:
+
+```bash
+node scripts/check_routing.cjs /path/to/skill-router /tmp/new-flow-lean-routing-report.json
+```
+
+The router root must contain `bm25-suggest.js` and `routing/build-index.js`.
+The checker uses the real user catalogs with disposable project projections and
+caches, verifies that both hosts discover the candidate, and returns a nonzero
+status on failed eligibility, global gate or any probe. It does not install a
+router or call a model. Use a new report path; previous evidence is not overwritten.
+An optional third argument selects a different skill directory for a control run.
 
 ## Latest source-update checks
 

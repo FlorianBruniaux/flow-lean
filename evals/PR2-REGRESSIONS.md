@@ -6,7 +6,9 @@ that these response-quality blockers are resolved. No provider calls or budget
 are authorized by this preparation.
 
 The [offline preparation record](results/pr2-repair-preparation-2026-10-21.md)
-also records the existing public BM25 eligibility failure on both hosts.
+preserves the earlier public BM25 eligibility failure. The subsequent
+[public corpus repair](results/public-bm25-repair-2026-10-21.md) restores
+eligibility on both hosts without changing the candidate instruction bytes.
 
 ## Candidate and cases
 
