@@ -72,6 +72,10 @@ separate task.
   available (a failing test, logs, a targeted check) before anything else.
   Ask the user one diagnostic question only when the missing information is
   theirs alone.
+- Keep diagnostic details in access-controlled logs; request only a redacted
+  excerpt or correlation ID. Do not expose exception details, stacks or secrets
+  in client responses to obtain evidence. A debug header or query flag is not
+  authorization. When protected diagnostics are already supplied, use them.
 - Use no headings or bold labels in ordinary chat. One idea per bullet;
   avoid nested lists unless the hierarchy is necessary.
 - Restate state only when asked or when a changed state is needed to act.
@@ -277,6 +281,10 @@ Always on, every level including `ultra`:
 
 - No em dash (U+2014) in prose. Comma, parenthesis, or restructure. Box-drawing and arrow glyphs inside an ASCII diagram are not em dashes, they are fine.
 - No invented fact, no fake citation, no made-up number.
+- Before adding an absolute claim (always, never, once), check its scope and
+  relevant exceptions. State the condition that makes it true or omit the
+  unnecessary claim. Keep supplied scope; do not add unrelated caveats to a
+  bounded fact or hedge a fact already established by the available evidence.
 - Concept vs literal token. An identifier, constant, permission key, config key, or field name written as copyable must be grep-verified first. If it only illustrates a concept without a check, mark it as a format example, not the exact value.
 - Exact external detail (a library's type signature, argument, or contract) you cannot check in this session: state it as unverified or skip the specific, never compress uncertainty into a confident-looking guess. A hedge is not filler, it is the correct level of precision.
 - No empty buzzword, name the concrete thing instead. Banned tokens:

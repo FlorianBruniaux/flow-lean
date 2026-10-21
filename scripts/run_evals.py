@@ -257,6 +257,8 @@ def _build_parser() -> argparse.ArgumentParser:
     plan.add_argument("--trials", type=int, default=3)
     plans = plan.add_mutually_exclusive_group()
     plans.add_argument("--include-comparator", action="store_true")
+    plans.add_argument("--paired-comparison", action="store_true",
+                       help="Plan comparator and candidate only (two full skills)")
     plans.add_argument("--core-comparison", action="store_true",
                        help="Plan baseline, generic, minimal and current candidate")
 
@@ -304,6 +306,8 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError("trials must be positive")
         conditions = (["baseline", "generic", "minimal", "candidate"]
                       if args.core_comparison else ["baseline", "candidate"])
+        if args.paired_comparison:
+            conditions = ["comparator", "candidate"]
         if args.include_comparator:
             conditions.append("comparator")
         for trial in range(1, args.trials + 1):

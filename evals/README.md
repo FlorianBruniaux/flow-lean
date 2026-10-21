@@ -31,6 +31,10 @@ plugin invocation.
 
 ## Latest source-update checks
 
+The [PR #2 regression protocol](PR2-REGRESSIONS.md) prepares the repaired
+factual-scope and protected-diagnostics rules, six focused cases, and a paired
+comparison against the full main skill. New model evaluation is **not run**.
+
 The [2026-09-27 check report](results/concision-2026-09-27.md) records isolated
 Claude installation, focused Claude/Codex response checks, local routing,
 and the failed or incomplete checks. The

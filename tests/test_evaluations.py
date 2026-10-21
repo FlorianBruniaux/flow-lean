@@ -323,6 +323,59 @@ sys.exit(row.get('exit', 0))
         self.assertNotEqual(self.run_cli().returncode, 0)
         self.assertEqual(len(self.rows(self.state)), 1)
 
+    def test_pr2_corpus_validates_and_preserves_shared_cases(self):
+        focus_path = ROOT / 'evals/pr2-regressions.jsonl'
+        result = subprocess.run([sys.executable, str(CLI), 'validate', '--cases', str(focus_path)],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        focus = {row['id']: row for row in self.rows(focus_path)}
+        full = {row['id']: row for row in self.rows(ROOT / 'evals/cases.jsonl')}
+        self.assertEqual(len(focus), 6)
+        self.assertEqual(len(full | focus), 34)
+        self.assertEqual(set(full) & set(focus),
+                         {'no-invented-fact-useeffect', 'debug-spiral-missing-info'})
+        for case_id in set(full) & set(focus):
+            self.assertEqual(full[case_id], focus[case_id])
+
+    def test_paired_comparison_plan_uses_full_skill_arms_only(self):
+        second = {'id': 'two', 'category': 'test', 'prompt': 'Explain',
+                  'risk': 'medium', 'criteria': ['Be accurate']}
+        with self.cases.open('a', encoding='utf-8') as stream:
+            stream.write(json.dumps(second) + '\n')
+        result = subprocess.run([sys.executable, str(CLI), 'plan', '--cases', str(self.cases),
+            '--trials', '2', '--paired-comparison'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        rows = [json.loads(line) for line in result.stdout.splitlines()]
+        expected = {(case, trial, arm) for case in ('one', 'two') for trial in (1, 2)
+                    for arm in ('comparator', 'candidate')}
+        self.assertEqual(len(rows), len(expected))
+        self.assertEqual({(r['case_id'], r['trial'], r['condition']) for r in rows}, expected)
+        self.assertFalse(self.state.exists(), 'planning must not call a provider')
+
+    def test_paired_comparison_cannot_be_combined_with_other_plan_modes(self):
+        for mode in ('--include-comparator', '--core-comparison'):
+            result = subprocess.run([sys.executable, str(CLI), 'plan',
+                '--paired-comparison', mode], capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('not allowed with', result.stderr)
+
+    def test_candidate_blocker_overrides_higher_aggregate(self):
+        scores = self.dir / 'scores.jsonl'
+        rows = [{'case_id': 'one', 'trial': 1, 'condition': arm,
+                 'correctness': 5, 'decision_fidelity': 5, 'gate_fit': 5,
+                 'concision': concision, 'safety': 5, 'blocker': blocker,
+                 'notes': 'Synthetic gate fixture, not a model judgment'}
+                for arm, concision, blocker in [('comparator', 1, False), ('candidate', 5, True)]]
+        scores.write_text(''.join(json.dumps(row) + '\n' for row in rows))
+        result = subprocess.run([sys.executable, str(CLI), 'score', str(scores),
+            '--reference-condition', 'comparator'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        report = json.loads(result.stdout)
+        self.assertGreater(report['conditions']['candidate']['weighted_score'],
+                           report['conditions']['comparator']['weighted_score'])
+        self.assertFalse(report['release_gate']['passed'])
+        self.assertEqual(report['conditions']['candidate']['blocking_findings'], 1)
+
     def test_scoring_can_compare_minimal_to_current_candidate(self):
         scores = self.dir / 'scores.jsonl'
         rows = []
