@@ -1,0 +1,48 @@
+{
+  "status": "DEVELOPMENT_REGRESSION_AFTER_ROUTING_REPAIR",
+  "model_calls": 0,
+  "independent_author": false,
+  "probes": [
+    {
+      "prompt": "Réponds de façon concise, avec la conclusion dès le début et sans phrases de remplissage.",
+      "expected": true
+    },
+    {
+      "prompt": "Please make your answers shorter and put the result first.",
+      "expected": true
+    },
+    {
+      "prompt": "Flow Lean detailed : reprends ton explication, elle est trop raccourcie.",
+      "expected": true
+    },
+    {
+      "prompt": "Flow Lean recap auto, ne répète pas les conclusions à la fin.",
+      "expected": true
+    },
+    {
+      "prompt": "Flow Lean : skills footer status",
+      "expected": true
+    },
+    {
+      "prompt": "Rédige un email très bref pour remercier le client.",
+      "expected": false
+    },
+    {
+      "prompt": "Fais la synthèse des résultats trimestriels dans un document.",
+      "expected": false
+    },
+    {
+      "prompt": "Review the authentication patch for security bugs.",
+      "expected": false
+    },
+    {
+      "prompt": "Prépare une note de reprise pour la prochaine session de développement.",
+      "expected": false
+    },
+    {
+      "prompt": "Liste les agents et vérifie leur configuration.",
+      "expected": false
+    }
+  ],
+  "limitation": "Initially frozen probes were subsequently used to repair routing; no longer an independent holdout."
+}
