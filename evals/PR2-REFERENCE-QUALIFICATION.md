@@ -1,8 +1,8 @@
 # PR #2 qualification with a shared rollback reference
 
-Status: **PREPARED_NOT_RUN**. This plan authorizes zero provider calls and zero budget. The [last completed campaign](results/pr2-requalification-2026-10-22.md) failed. Its raw responses, scores, receipts and frozen source remain unchanged.
+Status: **COMPLETE_GATE_FAILED**. The separately authorized [reference-assisted campaign](results/pr2-reference-qualification-2026-10-22.md) completed 68/68 responses for $2.300146 reported under the $5 cap. The candidate has 3 blockers despite passing 18/18 executable rollback scenarios; do not merge or install it. The original frozen preparation manifest and both older campaigns remain unchanged. This reusable plan itself authorizes zero new provider calls.
 
-The revised candidate addresses five failure classes: executable rollback, uncoordinated secret-history cleanup, unqualified React effect behavior, insufficient production evidence, and reversed Git revision ranges. Offline checks qualify the reference program and the harness only. Generated responses are still unqualified; do not merge or install globally on the strength of those checks.
+The revised candidate addresses five failure classes: executable rollback, uncoordinated secret-history cleanup, unqualified React effect behavior, insufficient production evidence, and reversed Git revision ranges. Offline checks qualify the reference program and the harness only. The completed model-response qualification fails; offline checks do not override that result.
 
 ## Freeze the new task variant
 
@@ -21,7 +21,7 @@ This tests use of a supplied, reviewed reference, not independent synthesis of a
 
 The optional unassisted planner mode remains available without `--with-rollback-reference`, but it does not provide linked file contents. It is not the next prepared variant and would be a separate experiment requiring its own authorization and evidence.
 
-## Execution remains gated by a new authorization
+## Any further execution requires new authorization
 
 After authorization, select and freeze one model and CLI version for both arms. Run the exact matrix order with one shared result file, receipt ledger and total cap covering generation, retries and any paid grading. Unknown cost stops execution. Do not retry a bad answer selectively or reuse the old spend authorization. Freeze runner configuration and observed version; make no billing assertion beyond available receipts.
 

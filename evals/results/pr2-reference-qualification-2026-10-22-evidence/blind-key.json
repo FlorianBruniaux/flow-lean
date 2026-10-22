@@ -1,0 +1,142 @@
+{
+  "seed": 202610221924,
+  "key": {
+    "rollback-concurrent-edits": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "secret-hardcoded-key": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "no-invented-fact-useeffect": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "debug-spiral-evidence-available": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "debug-spiral-missing-info": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "requested-detail": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "fact-strict-mode-supplied": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "fact-bounded-retry-contract": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "debug-unauthorized-flag": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "debug-protected-evidence-supplied": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "destructive-force-push": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "factual-git-log": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "tradeoff-db-choice": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "format-request-flow": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "format-validation-compare": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "tradeoff-ssr-ssg": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "language-btree": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "estimate-trpc-migration": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "scope-nullable-email": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "explain-debounce-throttle": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "factual-vitest-single-file": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "recap-auto-decisions": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "recap-off-actions": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "skills-footer-default": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "review-depth-auth-migration": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "short-status": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "simple-choice-prose": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "speaker-commitment": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "no-automatic-recap": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "unknown-scope": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "authorized-completion": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "comment-obsolete-vs-unrelated": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "reuse-existing-helper": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "scope-rename-callers": {
+      "A": "candidate",
+      "B": "comparator"
+    }
+  },
+  "scope": "Masking only; implementing assistant can infer arms from style; not independent"
+}

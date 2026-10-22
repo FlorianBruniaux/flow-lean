@@ -47,11 +47,7 @@ An optional third argument selects a different skill directory for a control run
 
 ## Latest source-update checks
 
-The [next PR #2 qualification](PR2-REFERENCE-QUALIFICATION.md) prepares corrected
-instructions and a tested POSIX rollback reference ([offline preparation report](results/pr2-reference-preparation-2026-10-22.md)). It retains 34 cases and
-supplies the same reference to both arms in the rollback prompt. It is
-**PREPARED_NOT_RUN**, with zero calls and no authorized budget. Reference tests
-and routing checks do not qualify generated responses or permit merge.
+The [reference-assisted PR #2 qualification](results/pr2-reference-qualification-2026-10-22.md) completed 68/68 responses for $2.300146 reported. Both conditions received the same rollback reference; the other 33 prompts are unchanged. The candidate scores 4.5662 versus 4.3103, but retains 3 blockers. Both returned scripts pass 18/18 executable scenarios; one candidate explanation still falsely guarantees no mutation on exit 3. The PR remains unqualified. [Protocol](PR2-REFERENCE-QUALIFICATION.md), [offline preparation](results/pr2-reference-preparation-2026-10-22.md), raw outputs and frozen sources are retained; this report authorizes no further calls.
 
 The [new PR #2 qualification plan](PR2-REQUALIFICATION.md) freezes the repaired
 rollback and diagnostic rules, the same 34 prompts with strengthened criteria,
