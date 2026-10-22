@@ -6,6 +6,9 @@ and [subsequent evidence review](results/pr2-qualification-2026-10-22-review.md)
 The protocol below remains the original preparation contract. Its plan-only
 budget fields do not describe the completed run or authorize further calls.
 
+The next candidate uses the separate [requalification protocol](PR2-REQUALIFICATION.md).
+Do not rerun this historical preparation to qualify the new rollback guards.
+
 The [offline preparation record](results/pr2-repair-preparation-2026-10-21.md)
 preserves the earlier public BM25 eligibility failure. The subsequent
 [public corpus repair](results/public-bm25-repair-2026-10-21.md) restores

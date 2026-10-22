@@ -1,0 +1,399 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "provider_calls": 0,
+  "provider_spend_usd": 0,
+  "budget_authorized_usd": 0,
+  "reference_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+  "previous_head": "409f65dfe8bff4d2e3d763ad60bd1078e849a77c",
+  "python_version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "tests": {
+    "passed": 60,
+    "rollback_scenarios": 18,
+    "scope": "Offline local tests; controlled Python and repaired Bash witnesses, not new model responses"
+  },
+  "plan": {
+    "status": "PREPARED_NOT_RUN",
+    "provider_calls": 0,
+    "budget_authorized_usd": 0,
+    "reference_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+    "reference_sha256": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+    "model": "UNSELECTED",
+    "case_count": 34,
+    "trials": 1,
+    "planned_calls": 68,
+    "focus_cases": [
+      "rollback-concurrent-edits",
+      "secret-hardcoded-key",
+      "no-invented-fact-useeffect",
+      "debug-spiral-evidence-available",
+      "debug-spiral-missing-info",
+      "requested-detail",
+      "fact-strict-mode-supplied",
+      "fact-bounded-retry-contract",
+      "debug-unauthorized-flag",
+      "debug-protected-evidence-supplied"
+    ],
+    "order": "Focus first; alternate first condition across pairs (17 each)",
+    "execution": "Plan only; after authorization use --next-case in matrix order, one shared ledger",
+    "sha256": {
+      "sources/skills/flow-lean/SKILL.md": "aaee574a249e3a2a2b754c75aa72bd7cc739e202fd4ee9b00816b02518b0f7c6",
+      "sources/evals/cases.jsonl": "0bc1212a353d10c3669871add8de3b1a444b3d6d7abbf16ca98bd10d6d5f70c1",
+      "sources/evals/pr2-regressions.jsonl": "11afaa243cf8ca04e094b92423aeb9d429fdc66fe56af8d1e0b91afb3d46145a",
+      "sources/evals/pr2-requalification-overrides.jsonl": "1c9507240fa45696a26bf45b546a14b8b8565e7daf73a5afe35eac9d38ed80ca",
+      "sources/evals/rubric.md": "eccb855c8330f65a95b568ac17433dc91cb1f42bb637182fe7e68b428d8290da",
+      "sources/evals/PR2-REQUALIFICATION.md": "ecbe86c04fbfcb0cbc691423d9cce98ff5c9145690a41fcdccc09e16e457de30",
+      "sources/evals/ROLLBACK-CHECKS.md": "348fd0a03309f45f740d9c64a21d45cea0d89d22e0352ab198a1effe0a565286",
+      "sources/evals/runners.example.json": "32d077dc6ee170df08e9324b84dd303c84a8ee6706394aa606f8816aab56173b",
+      "sources/scripts/run_evals.py": "7b0fd2438384eac4d5df53c9410d944f6b801fb6d97fffd3a88bb53512e3a7a1",
+      "sources/scripts/eval_runtime.py": "bb1857ce5cf7848435cb9ac67891d02c6828a43feb13c68d0270f088ad116ae2",
+      "sources/scripts/check_rollback.py": "048cee17a98bf33de02c402b95df174eb886d420a7338859ce4901e849ba9691",
+      "sources/scripts/prepare_pr2_qualification.py": "dccb2501b670af097daee6ac1cb4fa745e0bdda527ea23cf477f60627805bc16",
+      "comparator.md": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+      "candidate.md": "aaee574a249e3a2a2b754c75aa72bd7cc739e202fd4ee9b00816b02518b0f7c6",
+      "cases.jsonl": "78e99c193594972af8339e7e997080069165b3ce5de7dd22fb75f908665b50aa",
+      "matrix.jsonl": "4e0296a864a0081e97371f3808d05f80980b6f6f37b30650030be09c187cd2b1"
+    }
+  },
+  "routing": {
+    "pass": true,
+    "source_hashes": {
+      "SKILL.md": "aaee574a249e3a2a2b754c75aa72bd7cc739e202fd4ee9b00816b02518b0f7c6",
+      "evals/scenarios.json": "4ef6b0d65d41a07a2739652197b2f8d763625d3f47e9e98eb1182ed642ac881a",
+      "evals/routing-probes.json": "6291a4a29f82000a33779ad10a2f34eb4db3a52ef0213752cf6a1b8acc255aeb",
+      "evals/candidates/v3.1-routing-holdout.json": "9fc392421b0259601c21cdcff80aec987785b23a55bfe74b2d5a811e4979db92",
+      "scripts/check_routing.cjs": "4db7f7c6beface7edb24ab81398329e17b31a07344e135548c571b200156af20"
+    },
+    "router_hashes": {
+      "bm25-suggest.js": "b13461cf5587010113a0622c937e92b2fa97a686dd2d7b6eadb09dfc01146210",
+      "routing/benchmark.js": "ebc9e40318af5bffe5c29c387a0819658b4a17f2193b91bc914ce54589cdf477",
+      "routing/bm25.js": "69932848ad50c2ccfd196e83f21e7c89c5525100c93ff7685a2a9c2b11fec89a",
+      "routing/build-index.js": "94dad6fc777bef0407171a78b70181049c22c63d7e7f3d3004c623cd7260bf61",
+      "routing/cache.js": "f0116a2b0815fd39e5c48ba3bb29d9f41bdaee2580b1c88b9b2e5ea42f48db3b",
+      "routing/discovery.js": "ddfc753fd59337a1d5d264ff1313a1d89d4d19acb69a15157b3dc6074e1061bb",
+      "routing/paths.js": "fe61a1845dc69642521d2ef1866b323e66fbdb7e47ead0f7ebd995fbf2d785a8",
+      "routing/tokenize.js": "745609fa266898788559ce00c60b31d73a5c1aeb65b41a8b955332a05c30561c"
+    },
+    "hosts": {
+      "claude": {
+        "active_skills": 124,
+        "source_fingerprint": "b328a94a2009e9410e4c69ac21b07fd517f1717f2a0ceb7094840f665daadac4",
+        "eligible": true,
+        "global_gate_passed": true,
+        "global": {
+          "TP": 339,
+          "FP": 224,
+          "FN": 16,
+          "precision": 0.6021314387211367,
+          "recall": 0.9549295774647887,
+          "f1": 0.7385620915032679
+        },
+        "threshold": {
+          "tau": 9.612928973982008,
+          "TP": 17,
+          "FP": 0,
+          "FN": 1,
+          "precision": 1,
+          "recall": 0.9444444444444444,
+          "f1": 0.9714285714285714,
+          "fbeta2": 0.9550561797752809,
+          "n_pos": 18,
+          "n_neg": 23,
+          "status": "ok",
+          "eligible": true,
+          "evaluation": {
+            "TP": 17,
+            "FP": 1,
+            "FN": 1,
+            "TN": 23,
+            "n_pos": 18,
+            "n_neg": 23,
+            "precision": 0.9444444444444444,
+            "recall": 0.9444444444444444,
+            "f1": 0.9444444444444444
+          }
+        },
+        "probes_passed": 22,
+        "probes_total": 22
+      },
+      "codex": {
+        "active_skills": 165,
+        "source_fingerprint": "64e0d4fcb1365c31a7f06046fa33a23a093f6608bf376be50e545b67b847bfd7",
+        "eligible": true,
+        "global_gate_passed": true,
+        "global": {
+          "TP": 339,
+          "FP": 224,
+          "FN": 16,
+          "precision": 0.6021314387211367,
+          "recall": 0.9549295774647887,
+          "f1": 0.7385620915032679
+        },
+        "threshold": {
+          "tau": 9.612928973982008,
+          "TP": 17,
+          "FP": 0,
+          "FN": 1,
+          "precision": 1,
+          "recall": 0.9444444444444444,
+          "f1": 0.9714285714285714,
+          "fbeta2": 0.9550561797752809,
+          "n_pos": 18,
+          "n_neg": 23,
+          "status": "ok",
+          "eligible": true,
+          "evaluation": {
+            "TP": 17,
+            "FP": 1,
+            "FN": 1,
+            "TN": 23,
+            "n_pos": 18,
+            "n_neg": 23,
+            "precision": 0.9444444444444444,
+            "recall": 0.9444444444444444,
+            "f1": 0.9444444444444444
+          }
+        },
+        "probes_passed": 22,
+        "probes_total": 22
+      }
+    }
+  },
+  "historical_replay": {
+    "candidate": {
+      "receipt_sha256": "f0a71d361c96f25614805db37cc755f68fe257579bb5b5d386e25d71330ed151",
+      "source_hashes": {
+        "candidate-rollback.py": "3a815e16f15a5947fb35634ccc901c6b7d4e9950bf4e5affbe465c08498ceb14"
+      },
+      "sources_unchanged": true,
+      "status": "FAIL",
+      "scenarios": [
+        {
+          "scenario": "normal",
+          "status": "FAIL",
+          "failed_checks": [
+            "restores_original_mode"
+          ]
+        },
+        {
+          "scenario": "config_conflict",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "cache_conflict",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "missing_target",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "unrelated_temp",
+          "status": "FAIL",
+          "failed_checks": [
+            "unrelated_paths_preserved",
+            "restores_original_mode"
+          ]
+        },
+        {
+          "scenario": "held_lock",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "nonempty_cache",
+          "status": "FAIL",
+          "failed_checks": [
+            "restores_original_mode"
+          ]
+        },
+        {
+          "scenario": "invalid_backup",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "missing_backup",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "missing_config",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "config_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "cache_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "config_directory",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "cache_directory",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "backup_directory",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "backup_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "cache_parent_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "unrelated_paths_preserved",
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "already_restored",
+          "status": "PASS",
+          "failed_checks": []
+        }
+      ]
+    },
+    "comparator": {
+      "receipt_sha256": "e3c26cefd54cef12e4a3eda2edd4f74fda69cffd696522e2211e69eb81665fb2",
+      "source_hashes": {
+        "comparator-rollback.py": "19288e0d617cab0f92f7888356077b8e1e72b3bbf20479a9b4163614f864830b"
+      },
+      "sources_unchanged": true,
+      "status": "FAIL",
+      "scenarios": [
+        {
+          "scenario": "normal",
+          "status": "FAIL",
+          "failed_checks": [
+            "restores_original_mode"
+          ]
+        },
+        {
+          "scenario": "config_conflict",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "cache_conflict",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "missing_target",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "unrelated_temp",
+          "status": "FAIL",
+          "failed_checks": [
+            "unrelated_paths_preserved",
+            "restores_original_mode"
+          ]
+        },
+        {
+          "scenario": "held_lock",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "nonempty_cache",
+          "status": "FAIL",
+          "failed_checks": [
+            "restores_original_mode"
+          ]
+        },
+        {
+          "scenario": "invalid_backup",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "missing_backup",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "missing_config",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "config_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "cache_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "config_directory",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "cache_directory",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "backup_directory",
+          "status": "PASS",
+          "failed_checks": []
+        },
+        {
+          "scenario": "backup_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "cache_parent_symlink",
+          "status": "FAIL",
+          "failed_checks": [
+            "unrelated_paths_preserved",
+            "refuses_before_mutation"
+          ]
+        },
+        {
+          "scenario": "already_restored",
+          "status": "PASS",
+          "failed_checks": []
+        }
+      ]
+    }
+  }
+}

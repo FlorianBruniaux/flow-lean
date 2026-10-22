@@ -61,7 +61,7 @@ LOCK_DIR="${LOCK_DIR:-$ROOT/.rollback.lock}"
 
 [ -d "$ROOT" ] || { echo "Root path not found: $ROOT" >&2; exit 1; }
 [ -d "$VERIFY_DIR" ] && [ -w "$VERIFY_DIR" ] || { echo "Verify-dir missing or not writable: $VERIFY_DIR" >&2; exit 1; }
-[ -f "$BACKUP" ] || { echo "Backup file not found: $BACKUP" >&2; exit 1; }
+[ -f "$BACKUP" ] && [ ! -L "$BACKUP" ] || { echo "Backup missing or substituted: $BACKUP" >&2; exit 1; }
 
 sha256_of() {
   if command -v sha256sum >/dev/null 2>&1; then
@@ -121,6 +121,12 @@ release_lock() {
 trap release_lock EXIT
 
 acquire_lock
+
+# A symlinked parent can redirect a regular leaf to unrelated work.
+[ -d "$CACHE_DIR" ] && [ ! -L "$CACHE_DIR" ] || {
+  echo "Cache directory missing or substituted; no changes made." >&2
+  exit 4
+}
 
 # ---------------------------------------------------------------------------
 # Validate backup integrity before touching anything.

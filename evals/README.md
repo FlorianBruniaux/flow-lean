@@ -47,6 +47,11 @@ An optional third argument selects a different skill directory for a control run
 
 ## Latest source-update checks
 
+The [new PR #2 qualification plan](PR2-REQUALIFICATION.md) freezes the repaired
+rollback and diagnostic rules, the same 34 prompts with strengthened criteria,
+and 18 executable rollback scenarios. It is **PREPARED_NOT_RUN** and does not
+authorize model calls. Its planner preserves the failed campaign below.
+
 The [PR #2 regression protocol](PR2-REGRESSIONS.md) prepares the repaired
 factual-scope and protected-diagnostics rules, six focused cases, and a paired
 comparison against the full main skill. Guillaume completed the 68-response
