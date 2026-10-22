@@ -1,0 +1,141 @@
+{
+  "seed": 20261022,
+  "key": {
+    "authorized-completion": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "comment-obsolete-vs-unrelated": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "debug-protected-evidence-supplied": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "debug-spiral-evidence-available": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "debug-spiral-missing-info": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "debug-unauthorized-flag": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "destructive-force-push": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "estimate-trpc-migration": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "explain-debounce-throttle": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "fact-bounded-retry-contract": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "fact-strict-mode-supplied": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "factual-git-log": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "factual-vitest-single-file": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "format-request-flow": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "format-validation-compare": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "language-btree": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "no-automatic-recap": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "no-invented-fact-useeffect": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "recap-auto-decisions": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "recap-off-actions": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "requested-detail": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "reuse-existing-helper": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "review-depth-auth-migration": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "rollback-concurrent-edits": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "scope-nullable-email": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "scope-rename-callers": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "secret-hardcoded-key": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "short-status": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "simple-choice-prose": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "skills-footer-default": {
+      "A": "comparator",
+      "B": "candidate"
+    },
+    "speaker-commitment": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "tradeoff-db-choice": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "tradeoff-ssr-ssg": {
+      "A": "candidate",
+      "B": "comparator"
+    },
+    "unknown-scope": {
+      "A": "comparator",
+      "B": "candidate"
+    }
+  }
+}
