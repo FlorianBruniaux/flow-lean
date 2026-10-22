@@ -92,7 +92,7 @@ def check(adapter, scenarios=SCENARIOS):
                             "reason": "flock probes require POSIX"})
             continue
         with tempfile.TemporaryDirectory(prefix="flow-lean-rollback-") as tmp:
-            base = Path(tmp)
+            base = Path(tmp).resolve()  # Physical fixture root before injecting symlink conflicts.
             root, records, backup = base / "root", base / "records", base / "original.md"
             root.mkdir(); records.mkdir(); (root / "cache").mkdir()
             config, new = root / "config.md", root / "cache/new.json"

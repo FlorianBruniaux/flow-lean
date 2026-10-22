@@ -47,6 +47,12 @@ An optional third argument selects a different skill directory for a control run
 
 ## Latest source-update checks
 
+The [next PR #2 qualification](PR2-REFERENCE-QUALIFICATION.md) prepares corrected
+instructions and a tested POSIX rollback reference ([offline preparation report](results/pr2-reference-preparation-2026-10-22.md)). It retains 34 cases and
+supplies the same reference to both arms in the rollback prompt. It is
+**PREPARED_NOT_RUN**, with zero calls and no authorized budget. Reference tests
+and routing checks do not qualify generated responses or permit merge.
+
 The [new PR #2 qualification plan](PR2-REQUALIFICATION.md) freezes the repaired
 rollback and diagnostic rules, the same 34 prompts with strengthened criteria,
 and 18 executable rollback scenarios. The authorized [requalification](results/pr2-requalification-2026-10-22.md) completed 68/68 responses for $2.395518 reported. Its gate fails: the candidate has five blocking responses and passes 15/18 executable rollback scenarios. The original preparation and previous campaign remain preserved; the planner itself authorizes no calls.

@@ -18,7 +18,8 @@
     "Réponds de manière concise : conclusion au début, aucun préambule.",
     "Adopte un mode concis : des réponses courtes et directes pour la suite.",
     "Réduis tes output tokens : va droit au but, garde les faits utiles.",
-    "Use short prose for replies, skip duplicate summaries and unnecessary detail."
+    "Use short prose for replies, skip duplicate summaries and unnecessary detail.",
+    "Pour tes réponses, reste court : prose simple, sans tableau ni récap non demandé."
   ],
   "negative": [
     "Résume ce document technique dans un article complet.",

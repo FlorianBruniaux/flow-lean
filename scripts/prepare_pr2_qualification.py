@@ -13,19 +13,23 @@ PRIOR = "evals/results/pr2-qualification-2026-10-22.manifest.json"
 FOCUS = ["rollback-concurrent-edits", "secret-hardcoded-key", "no-invented-fact-useeffect",
          "debug-spiral-evidence-available", "debug-spiral-missing-info", "requested-detail",
          "fact-strict-mode-supplied", "fact-bounded-retry-contract", "debug-unauthorized-flag",
-         "debug-protected-evidence-supplied"]
+         "debug-protected-evidence-supplied", "destructive-force-push"]
 SOURCES = ["skills/flow-lean/SKILL.md", "evals/cases.jsonl", "evals/pr2-regressions.jsonl",
            "evals/pr2-requalification-overrides.jsonl", "evals/rubric.md",
            "evals/PR2-REQUALIFICATION.md", "evals/ROLLBACK-CHECKS.md",
            "evals/runners.example.json", "scripts/run_evals.py", "scripts/eval_runtime.py",
-           "scripts/check_rollback.py", "scripts/prepare_pr2_qualification.py"]
+           "scripts/check_rollback.py", "scripts/prepare_pr2_qualification.py",
+           "skills/flow-lean/scripts/rollback_reference.py", "skills/flow-lean/references/rollback.md",
+           "tests/test_reference_rollback.py", "tests/test_git_range_contract.py",
+           "evals/PR2-REFERENCE-QUALIFICATION.md", "skills/flow-lean/evals/scenarios.json",
+           "scripts/check_routing.cjs"]
 
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def cases_for_qualification():
+def cases_for_qualification(*, with_rollback_reference=False):
     cases = {}
     for name in ("evals/cases.jsonl", "evals/pr2-regressions.jsonl"):
         for row in load_cases(ROOT / name):
@@ -45,6 +49,18 @@ def cases_for_qualification():
         cases[row["id"]] = row
     if len(cases) != 34 or not set(FOCUS) <= set(cases):
         raise ValueError("Expected the prepared 34 cases and all focus cases")
+    if with_rollback_reference:
+        # Equal task-side resource access for both arms in this text-only runner.
+        # This changes one task prompt: never compare its result as an unassisted rerun.
+        reference = (ROOT / "skills/flow-lean/scripts/rollback_reference.py").read_text(encoding="utf-8")
+        contract = (ROOT / "skills/flow-lean/references/rollback.md").read_text(encoding="utf-8")
+        cases["rollback-concurrent-edits"]["prompt"] += (
+            "\n\nThe same optional reference is supplied to both conditions because no files or tools "
+            "are available. Inspect its limits and reuse it where appropriate; still return a runnable "
+            "script and necessary usage instructions. This source does not establish writer exclusion "
+            "in the hypothetical environment. Do not claim to have run it.\n\n"
+            "<supplied_reference_contract>\n" + contract + "\n</supplied_reference_contract>\n"
+            "<supplied_reference_code>\n```python\n" + reference + "```\n</supplied_reference_code>")
     ordered = [cases[cid] for cid in FOCUS] + [c for cid, c in cases.items() if cid not in FOCUS]
     errors = validate_cases(ordered)
     if errors:
@@ -52,8 +68,8 @@ def cases_for_qualification():
     return ordered
 
 
-def prepare(output):
-    cases = cases_for_qualification()
+def prepare(output, *, with_rollback_reference=False):
+    cases = cases_for_qualification(with_rollback_reference=with_rollback_reference)
     prior = json.loads((ROOT / PRIOR).read_text(encoding="utf-8"))
     comparator = prior["conditions"]["comparator"]["instructions"]
     if sha(comparator.encode()) != REFERENCE_HASH:
@@ -76,6 +92,9 @@ def prepare(output):
         files[name] = "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in data).encode()
     manifest = {"status": "PREPARED_NOT_RUN", "provider_calls": 0, "budget_authorized_usd": 0,
                 "reference_commit": REFERENCE, "reference_sha256": REFERENCE_HASH,
+                "task_variant": "shared-rollback-reference" if with_rollback_reference else "unassisted",
+                "modified_prompt_case_ids": ["rollback-concurrent-edits"] if with_rollback_reference else [],
+                "resource_delivery": "Same rollback code and contract in both task prompts" if with_rollback_reference else "No bundled resource text supplied",
                 "model": "UNSELECTED", "case_count": len(cases), "trials": 1,
                 "planned_calls": len(rows), "focus_cases": FOCUS,
                 "order": "Focus first; alternate first condition across pairs (17 each)",
@@ -94,8 +113,10 @@ def prepare(output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--with-rollback-reference", action="store_true",
+                        help="Supply the same rollback reference to both arms; changes that task prompt")
     args = parser.parse_args()
-    result = prepare(args.output)
+    result = prepare(args.output, with_rollback_reference=args.with_rollback_reference)
     print(json.dumps({key: result[key] for key in ("status", "provider_calls", "case_count", "planned_calls")}))
 
 

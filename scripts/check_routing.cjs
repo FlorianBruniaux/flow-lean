@@ -56,9 +56,10 @@ function main() {
       probe_status: 'Development regressions, not independent holdout',
       source_hashes: {}, router_hashes: {}, hosts: {},
     };
-    for (const name of ['SKILL.md', 'evals/scenarios.json']) {
+    for (const name of ['SKILL.md', 'evals/scenarios.json', 'scripts/rollback_reference.py', 'references/rollback.md'].filter(name => fs.existsSync(path.join(source, name)))) {
       const bytes = fs.readFileSync(path.join(source, name));
       if (!bytes.equals(fs.readFileSync(path.join(canonical, name)))) throw new Error('Fixture differs from source');
+      if (fs.realpathSync(path.join(fixture, '.claude/skills/flow-lean', name)) !== fs.realpathSync(path.join(canonical, name))) throw new Error('Host resource projections differ');
       report.source_hashes[name] = sha(bytes);
     }
     for (const name of ['evals/routing-probes.json', 'evals/candidates/v3.1-routing-holdout.json', 'scripts/check_routing.cjs']) {

@@ -87,7 +87,11 @@ separate task.
 
 ### Completeness and evidence before compression
 
-For executable rollback, supply the requested script and its declared inputs,
+For executable rollback, load the bundled [rollback reference](references/rollback.md)
+and [tested Python implementation](scripts/rollback_reference.py) when the task
+fits its declared POSIX/file scope. Reuse it instead of improvising a shell trap.
+If resources are unavailable, do not claim to have used or tested them. Supply
+the requested script and its declared inputs,
 dependencies and failure behavior. Keep original states, this run's written
 states and verification records outside removed paths. Exclude every writer
 throughout comparison, restoration and verification, or stop for manual
@@ -110,9 +114,21 @@ temporary paths and lock refusal/cleanup before claiming safety. Match the
 declared runtime, including argument-error paths. Prose guardrails do not make
 an unchecked generated script safe; label unexecuted code as a proposal.
 
-For an exposed secret, revoke or rotate first. Before proposing shared-history
-rewrites or force-pushes, inspect the exposure and coordinate affected users;
-history cleanup cannot erase other people's existing clones.
+For an exposed secret, revoke or rotate first, remove the live credential from
+source, and use a secret manager or environment input. Do not prescribe an
+immediate history purge. History cleanup is a separate conditional decision:
+inspect the exposure, affected refs and clones, then agree a rewrite window and
+recovery instructions with affected collaborators. Unknown history or missing
+coordination means that step stays pending; rotation must not wait for it.
+Rewriting cannot retract existing clones or replace credential revocation.
+
+Before a shared force-push, fetch and inspect both directions. For main,
+`git log main..origin/main` selects remote-only commits at risk;
+`git log origin/main..main` selects local-only commits, not discarded remote work.
+Preserve the inspected remote tip in a recovery ref and use an explicit expected
+remote SHA for a lease only after divergence and coordination are resolved.
+Neither a lease nor a local-only backup proves remote work is safe. If history
+is unknown, withhold approval; a list of prerequisites is not evidence they passed.
 
 When summarizing supplied facts, preserve their exact evidence scope. A missing
 statement is not a negative fact: do not add an unverified behavior, an absent
@@ -124,7 +140,12 @@ coverage. Omit speculative caveats and hypothetical blockers from a status.
 Report only supplied or observed evidence. "Not verified here" does not mean
 "never tested", "no test exists", or "no test verified it". Keep unknowns at
 their supplied scope. A passing test supports its tested behavior, not an
-unmeasured deployment or performance claim.
+unmeasured deployment or performance claim. To claim a production fix, require
+an observation of the relevant behavior in production, tied to the deployed
+version and a bounded scenario/window. Integration/load tests plus confirmation
+of the deployed SHA still do not prove that behavior. Report those checks as
+passed and production resolution as unverified until that evidence exists;
+do not impose a particular test type on every issue.
 
 For a simple fact or status, start with one or two sentences. Add only facts
 requested or necessary to act. Do not enumerate every available detail or
@@ -302,8 +323,11 @@ Always on, every level including `ultra`:
 - No invented fact, no fake citation, no made-up number.
 - Before adding an absolute claim (always, never, once), check its scope and
   relevant exceptions. State the condition that makes it true or omit the
-  unnecessary claim. For example, a signature question needs no execution
-  tutorial; if adding behavior, include its relevant mode/version exceptions.
+  unnecessary claim. For a signature question, give the public call shape and
+  requested argument only; do not invent a version-specific type declaration.
+  If adding React effect execution behavior, an empty dependency array does not
+  mean exactly once in every mode: development Strict Mode adds a setup/cleanup
+  cycle. Prefer omitting that unsolicited claim to an inaccurate shortcut.
   Keep supplied scope; do not add unrelated caveats to a
   bounded fact or hedge a fact already established by the available evidence.
 - Concept vs literal token. An identifier, constant, permission key, config key, or field name written as copyable must be grep-verified first. If it only illustrates a concept without a check, mark it as a format example, not the exact value.
