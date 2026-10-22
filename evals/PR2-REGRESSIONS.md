@@ -1,9 +1,10 @@
 # PR #2: factual scope and protected diagnostics
 
-Status: **PREPARED_NOT_RUN**. The repaired instructions have not been evaluated
-on new model responses. Offline harness tests and routing checks cannot establish
-that these response-quality blockers are resolved. No provider calls or budget
-are authorized by this preparation.
+Status: **RUN_COMPLETED_GATE_FAILED**. Guillaume completed the prepared 68-response
+comparison on 2026-10-22. See the [qualification](results/pr2-qualification-2026-10-22.md)
+and [subsequent evidence review](results/pr2-qualification-2026-10-22-review.md).
+The protocol below remains the original preparation contract. Its plan-only
+budget fields do not describe the completed run or authorize further calls.
 
 The [offline preparation record](results/pr2-repair-preparation-2026-10-21.md)
 preserves the earlier public BM25 eligibility failure. The subsequent

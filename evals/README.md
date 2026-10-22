@@ -49,7 +49,10 @@ An optional third argument selects a different skill directory for a control run
 
 The [PR #2 regression protocol](PR2-REGRESSIONS.md) prepares the repaired
 factual-scope and protected-diagnostics rules, six focused cases, and a paired
-comparison against the full main skill. New model evaluation is **not run**.
+comparison against the full main skill. Guillaume completed the 68-response
+[qualification](results/pr2-qualification-2026-10-22.md); its gate fails.
+The [subsequent evidence review](results/pr2-qualification-2026-10-22-review.md)
+reconciles receipts and adds executable rollback findings without another model run.
 
 The [2026-09-27 check report](results/concision-2026-09-27.md) records isolated
 Claude installation, focused Claude/Codex response checks, local routing,
