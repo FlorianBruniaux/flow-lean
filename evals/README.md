@@ -224,6 +224,19 @@ Then apply the release gate:
 python3 scripts/run_evals.py score evals/results/scores-vs-caveman.jsonl
 ```
 
+Before judging, run the deterministic editorial check on the same file:
+
+```bash
+python3 scripts/run_evals.py editorial evals/results/vs-caveman.jsonl
+```
+
+It counts em dashes (U+2014) and the banned tokens listed in `SKILL.md`,
+outside fenced and inline code, blockquotes and quoted strings. Banned tokens
+match accent-insensitively, with plural and adverb inflections only. A
+response that parses as JSON, or a case with `"output_schema": true`, is
+exempt. The check reports counts per condition and the flagged rows; it does
+not change scores or the release gate.
+
 For `no-invented-fact` cases, run the separate fact-audit pass described in
 `rubric.md` before scoring, its `false` verdicts are a hard blocker
 regardless of the weighted score.

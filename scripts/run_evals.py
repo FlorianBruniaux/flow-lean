@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+import editorial
 from eval_runtime import execute
 
 
@@ -245,6 +246,26 @@ def run_evaluations(args: argparse.Namespace) -> int:
     return execute(args, cases, runner, instructions, prompts, _parse_response, read_jsonl)
 
 
+def editorial_report(responses: list[dict[str, Any]], cases: list[dict[str, Any]]) -> dict[str, Any]:
+    tokens = editorial.banned_tokens()
+    schema_cases = {case["id"] for case in cases if case.get("output_schema")}
+    findings: list[dict[str, Any]] = []
+    totals: dict[str, Counter] = defaultdict(Counter)
+    for row in responses:
+        if "response" not in row:
+            continue
+        result = editorial.check(row["response"], tokens, row["case_id"] in schema_cases)
+        total = totals[row["condition"]]
+        total["responses"] += 1
+        total["exempt"] += bool(result["exempt"])
+        total["with_em_dash"] += bool(result["em_dashes"])
+        total["em_dashes"] += result["em_dashes"]
+        total["with_banned"] += bool(result["banned"])
+        if result["em_dashes"] or result["banned"]:
+            findings.append({key: row[key] for key in ("case_id", "trial", "condition")} | result)
+    return {"conditions": {name: dict(total) for name, total in sorted(totals.items())}, "findings": findings}
+
+
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -264,6 +285,10 @@ def _build_parser() -> argparse.ArgumentParser:
     score.add_argument("scores", type=Path)
     score.add_argument("--reference-condition", choices=sorted(CONDITIONS), default="baseline")
     score.add_argument("--candidate-condition", choices=sorted(CONDITIONS), default="candidate")
+
+    check = subparsers.add_parser("editorial", help="Count em dashes and banned tokens in responses, outside code and quotes")
+    check.add_argument("responses", type=Path)
+    check.add_argument("--cases", type=Path, default=DEFAULT_CASES)
 
     run = subparsers.add_parser("run", help="Run one evaluation condition")
     run.add_argument("--cases", type=Path, default=DEFAULT_CASES)
@@ -313,6 +338,10 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "score":
         print(json.dumps(summarize_scores(read_jsonl(args.scores), args.reference_condition, args.candidate_condition), indent=2))
+        return 0
+    if args.command == "editorial":
+        report = editorial_report(read_jsonl(args.responses), load_cases(args.cases))
+        print(json.dumps(report, indent=2, ensure_ascii=False))
         return 0
     parser.error("unknown command")
     return 2
