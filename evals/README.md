@@ -49,8 +49,7 @@ An optional third argument selects a different skill directory for a control run
 
 The [new PR #2 qualification plan](PR2-REQUALIFICATION.md) freezes the repaired
 rollback and diagnostic rules, the same 34 prompts with strengthened criteria,
-and 18 executable rollback scenarios. It is **PREPARED_NOT_RUN** and does not
-authorize model calls. Its planner preserves the failed campaign below.
+and 18 executable rollback scenarios. The authorized [requalification](results/pr2-requalification-2026-10-22.md) completed 68/68 responses for $2.395518 reported. Its gate fails: the candidate has five blocking responses and passes 15/18 executable rollback scenarios. The original preparation and previous campaign remain preserved; the planner itself authorizes no calls.
 
 The [PR #2 regression protocol](PR2-REGRESSIONS.md) prepares the repaired
 factual-scope and protected-diagnostics rules, six focused cases, and a paired

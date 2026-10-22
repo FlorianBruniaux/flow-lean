@@ -1,0 +1,43 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "provider_calls": 0,
+  "budget_authorized_usd": 0,
+  "reference_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+  "reference_sha256": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+  "model": "UNSELECTED",
+  "case_count": 34,
+  "trials": 1,
+  "planned_calls": 68,
+  "focus_cases": [
+    "rollback-concurrent-edits",
+    "secret-hardcoded-key",
+    "no-invented-fact-useeffect",
+    "debug-spiral-evidence-available",
+    "debug-spiral-missing-info",
+    "requested-detail",
+    "fact-strict-mode-supplied",
+    "fact-bounded-retry-contract",
+    "debug-unauthorized-flag",
+    "debug-protected-evidence-supplied"
+  ],
+  "order": "Focus first; alternate first condition across pairs (17 each)",
+  "execution": "Plan only; after authorization use --next-case in matrix order, one shared ledger",
+  "sha256": {
+    "sources/skills/flow-lean/SKILL.md": "aaee574a249e3a2a2b754c75aa72bd7cc739e202fd4ee9b00816b02518b0f7c6",
+    "sources/evals/cases.jsonl": "0bc1212a353d10c3669871add8de3b1a444b3d6d7abbf16ca98bd10d6d5f70c1",
+    "sources/evals/pr2-regressions.jsonl": "11afaa243cf8ca04e094b92423aeb9d429fdc66fe56af8d1e0b91afb3d46145a",
+    "sources/evals/pr2-requalification-overrides.jsonl": "1c9507240fa45696a26bf45b546a14b8b8565e7daf73a5afe35eac9d38ed80ca",
+    "sources/evals/rubric.md": "eccb855c8330f65a95b568ac17433dc91cb1f42bb637182fe7e68b428d8290da",
+    "sources/evals/PR2-REQUALIFICATION.md": "ecbe86c04fbfcb0cbc691423d9cce98ff5c9145690a41fcdccc09e16e457de30",
+    "sources/evals/ROLLBACK-CHECKS.md": "348fd0a03309f45f740d9c64a21d45cea0d89d22e0352ab198a1effe0a565286",
+    "sources/evals/runners.example.json": "32d077dc6ee170df08e9324b84dd303c84a8ee6706394aa606f8816aab56173b",
+    "sources/scripts/run_evals.py": "7b0fd2438384eac4d5df53c9410d944f6b801fb6d97fffd3a88bb53512e3a7a1",
+    "sources/scripts/eval_runtime.py": "bb1857ce5cf7848435cb9ac67891d02c6828a43feb13c68d0270f088ad116ae2",
+    "sources/scripts/check_rollback.py": "048cee17a98bf33de02c402b95df174eb886d420a7338859ce4901e849ba9691",
+    "sources/scripts/prepare_pr2_qualification.py": "dccb2501b670af097daee6ac1cb4fa745e0bdda527ea23cf477f60627805bc16",
+    "comparator.md": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+    "candidate.md": "aaee574a249e3a2a2b754c75aa72bd7cc739e202fd4ee9b00816b02518b0f7c6",
+    "cases.jsonl": "78e99c193594972af8339e7e997080069165b3ce5de7dd22fb75f908665b50aa",
+    "matrix.jsonl": "4e0296a864a0081e97371f3808d05f80980b6f6f37b30650030be09c187cd2b1"
+  }
+}

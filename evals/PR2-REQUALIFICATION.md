@@ -1,7 +1,6 @@
 # PR #2 requalification after executable rollback failures
 
-Status: **PREPARED_NOT_RUN**. No provider calls or budget are authorized by this
-preparation. The [previous campaign](results/pr2-qualification-2026-10-22.md) and
+Status: **COMPLETE_GATE_FAILED** for the [authorized 2026-10-22 run](results/pr2-requalification-2026-10-22.md): 68/68 responses, $2.395518 reported, five candidate blockers and 15/18 rollback scenarios passing. The frozen preparation remains unchanged. This protocol and its planner do not authorize new provider calls or budget. The [previous campaign](results/pr2-qualification-2026-10-22.md) and
 [evidence review](results/pr2-qualification-2026-10-22-review.md) remain unchanged
 and do not qualify the new candidate.
 

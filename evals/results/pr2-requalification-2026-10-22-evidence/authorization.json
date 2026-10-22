@@ -1,0 +1,15 @@
+{
+  "status": "AUTHORIZED_TO_RUN",
+  "budget_total_usd": 5,
+  "case_count": 34,
+  "trials": 1,
+  "planned_calls": 68,
+  "generation_retries": 0,
+  "grading": "Root assistant, no additional provider calls; not independent",
+  "runner_version": "2.1.308",
+  "model": "claude-sonnet-5",
+  "auth_method": "claude.ai subscription",
+  "cost_scope": "CLI-reported list-price equivalent; actual billed cash unverified",
+  "candidate_commit": "9b1f8a6e828616a27cccb0717f345e17c6bda7d7",
+  "runner_sha256": "f8d6eb2f6e8b8616ff2b2115df0ba7cb59aa5829c4618c4b1fdd874a61fa5b49"
+}
