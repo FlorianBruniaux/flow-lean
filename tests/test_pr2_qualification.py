@@ -33,11 +33,11 @@ class QualificationPreparationTests(unittest.TestCase):
                     self.assertEqual(row['prompt'], _condition_prompt(case['prompt'], row['condition'], instructions))
                     self.assertEqual(row['prompt_sha256'], hashlib.sha256(row['prompt'].encode()).hexdigest())
             self.assertEqual(sum(r['condition'] == 'candidate' for r in rows[::2]), 17)
-            before = {str(p.relative_to(output)): p.read_bytes() for p in output.rglob('*') if p.is_file()}
+            before = {p.relative_to(output).as_posix(): p.read_bytes() for p in output.rglob('*') if p.is_file()}
             for name, checksum in manifest['sha256'].items():
                 self.assertEqual(hashlib.sha256(before[name]).hexdigest(), checksum)
             with self.assertRaises(FileExistsError): prepare(output)
-            self.assertEqual(before, {str(p.relative_to(output)): p.read_bytes() for p in output.rglob('*') if p.is_file()})
+            self.assertEqual(before, {p.relative_to(output).as_posix(): p.read_bytes() for p in output.rglob('*') if p.is_file()})
 
     def test_overrides_keep_prompts_and_original_criteria(self):
         original = {c['id']: c for name in ('cases.jsonl', 'pr2-regressions.jsonl')
