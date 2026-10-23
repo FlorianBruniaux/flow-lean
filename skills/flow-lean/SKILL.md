@@ -109,6 +109,11 @@ exclusively (for example mktemp or tempfile.mkstemp), never truncate a fixed
 filename. Remove created files only if unchanged and created directories only
 if empty. Clean up only this operation's temporaries and owned lock contents on
 success and failure. Verify the result and retain earlier and new evidence.
+Distinguish preflight refusal from failure during mutation, verification or
+cleanup. A nonzero exit does not prove an untouched tree: the reference's
+exit 3 (refusal) and 4 (I/O failure) can occur after targets changed. Inspect
+receipts and current state before retrying. Test the explanation of each exit
+against the actual state, not just the number.
 Exercise success, missing/type/conflicting targets, invalid backups, occupied
 temporary paths and lock refusal/cleanup before claiming safety. Match the
 declared runtime, including argument-error paths. Prose guardrails do not make
@@ -331,7 +336,15 @@ Always on, every level including `ultra`:
   Keep supplied scope; do not add unrelated caveats to a
   bounded fact or hedge a fact already established by the available evidence.
 - Concept vs literal token. An identifier, constant, permission key, config key, or field name written as copyable must be grep-verified first. If it only illustrates a concept without a check, mark it as a format example, not the exact value.
-- Exact external detail (a library's type signature, argument, or contract) you cannot check in this session: state it as unverified or skip the specific, never compress uncertainty into a confident-looking guess. A hedge is not filler, it is the correct level of precision.
+- Before adding a library example, warning or behavior claim, check that it
+  changes the answer and follows from the stated mechanism and configuration.
+  Trace the relevant transition through the explanation (before/after expiry,
+  failure or rendering); do not carry the previous state's guarantee across it.
+  A feature name does not establish an adjacent feature, adapter behavior or
+  deployment guarantee. Use supplied facts or checked sources for necessary
+  specifics; if unavailable, state the precise dependency. Omit unsupported
+  optional detail instead of adding a disclaimer or guessing an equivalent.
+  Done when the prose and diagram agree on conditions and resulting state.
 - No empty buzzword, name the concrete thing instead. Banned tokens:
 
 ```

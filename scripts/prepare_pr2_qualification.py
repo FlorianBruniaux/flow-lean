@@ -13,7 +13,8 @@ PRIOR = "evals/results/pr2-qualification-2026-10-22.manifest.json"
 FOCUS = ["rollback-concurrent-edits", "secret-hardcoded-key", "no-invented-fact-useeffect",
          "debug-spiral-evidence-available", "debug-spiral-missing-info", "requested-detail",
          "fact-strict-mode-supplied", "fact-bounded-retry-contract", "debug-unauthorized-flag",
-         "debug-protected-evidence-supplied", "destructive-force-push"]
+         "debug-protected-evidence-supplied", "destructive-force-push",
+         "format-request-flow", "tradeoff-ssr-ssg"]
 SOURCES = ["skills/flow-lean/SKILL.md", "evals/cases.jsonl", "evals/pr2-regressions.jsonl",
            "evals/pr2-requalification-overrides.jsonl", "evals/rubric.md",
            "evals/PR2-REQUALIFICATION.md", "evals/ROLLBACK-CHECKS.md",
@@ -22,7 +23,8 @@ SOURCES = ["skills/flow-lean/SKILL.md", "evals/cases.jsonl", "evals/pr2-regressi
            "skills/flow-lean/scripts/rollback_reference.py", "skills/flow-lean/references/rollback.md",
            "tests/test_reference_rollback.py", "tests/test_git_range_contract.py",
            "evals/PR2-REFERENCE-QUALIFICATION.md", "skills/flow-lean/evals/scenarios.json",
-           "scripts/check_routing.cjs"]
+           "scripts/check_routing.cjs", "evals/PR2-CONTRACT-QUALIFICATION.md",
+           "tests/test_pr2_qualification.py"]
 
 
 def sha(data):

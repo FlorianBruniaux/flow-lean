@@ -1,0 +1,50 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "provider_calls": 0,
+  "budget_authorized_usd": 0,
+  "case_count": 34,
+  "planned_calls": 68,
+  "trials": 1,
+  "focus_cases": 13,
+  "python": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "source_sha256": "9697d1f68f16962e7fc715b5adf934638387a720decc5dbdd84beee7ab2447e3",
+  "rollback_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+  "checks": {
+    "suite": {
+      "count": 80,
+      "passed": true,
+      "log": "pr2-contract-preparation-2026-10-23-suite.txt",
+      "initial_error": "First full run had one temporary .git directory cleanup OSError; subsequent full run passed. Cause not established, not silently discarded."
+    },
+    "rollback_unittest_methods": 17,
+    "rollback_scenarios": 18,
+    "skill_structure": true,
+    "local_resource_links": 3,
+    "frozen_files": 25,
+    "routing": {
+      "claude": {
+        "passed": true,
+        "probes": 22,
+        "eligible": true,
+        "global_gate_passed": true,
+        "global_f1": 0.7213438735177866
+      },
+      "codex": {
+        "passed": true,
+        "probes": 22,
+        "eligible": true,
+        "global_gate_passed": true,
+        "global_f1": 0.7213438735177866
+      }
+    },
+    "prior_campaign_evidence": "Offline verifier and five corruption checks still pass"
+  },
+  "limits": [
+    "No new model responses or grader calls",
+    "Same known development corpus, no holdout",
+    "New shared rollback resource changes one prompt in both conditions",
+    "Disposable host projections, no global installation or live router cache writes",
+    "POSIX reference, no Windows rollback proof",
+    "Self-check, not independent review"
+  ]
+}

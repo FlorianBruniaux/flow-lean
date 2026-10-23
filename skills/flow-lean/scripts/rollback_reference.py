@@ -3,7 +3,9 @@
 
 Requires all writers stopped for the full operation. This cooperative lock does
 not enforce that prerequisite. Not a transaction, crash-recovery system or
-sandbox. See ../references/rollback.md before using it on real files.
+sandbox. Exit 3 (refusal) and exit 4 (I/O failure) do not identify the mutation
+phase: either may occur before or after targets changed. Inspect receipts and
+state before any retry. See ../references/rollback.md before using real files.
 """
 import argparse
 from contextlib import contextmanager
@@ -18,7 +20,7 @@ import tempfile
 
 
 class Refusal(RuntimeError):
-    """An unmet prerequisite or conflict requires manual reconciliation."""
+    """A prerequisite, verification or cleanup conflict; targets may have changed."""
 
 
 def physical(path, directory=False):
@@ -178,7 +180,8 @@ def main():
     try:
         result = rollback(**vars(args))
     except Refusal as exc:
-        print('REFUSED: ' + str(exc), file=sys.stderr)
+        print('REFUSED: ' + str(exc) + '; targets may already have changed; '
+              'inspect retained evidence before retrying', file=sys.stderr)
         return 3
     except OSError as exc:
         print('FAILED: ' + str(exc) + '; inspect retained evidence before retrying', file=sys.stderr)

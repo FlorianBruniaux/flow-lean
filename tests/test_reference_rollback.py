@@ -1,4 +1,6 @@
 """Behavior checks for the shipped, bounded POSIX reference, without providers."""
+import contextlib
+import io
 import importlib.util
 import json
 import os
@@ -159,6 +161,99 @@ class ReferenceRollbackTests(unittest.TestCase):
             with self.assertRaises(reference.Refusal): reference.rollback(**self.kwargs)
         self.assertEqual(owner.read_text(), 'different owner')
         self.assertNotIn('complete', [e['stage'] for e in self.events()])
+
+    def invoke_cli(self):
+        values = {key: str(value) for key, value in self.kwargs.items()}
+        command = [p.format_map(values) for p in adapter()['command']]
+        out, err = io.StringIO(), io.StringIO()
+        with patch.object(sys, 'argv', command[1:]), contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = reference.main()
+        return code, out.getvalue(), err.getvalue()
+
+    def test_cli_refusal_before_restore_keeps_targets(self):
+        self.config.write_text('concurrent edit')
+        before = tree_snapshot(self.root)
+        code, out, err = self.invoke_cli()
+        self.assertEqual(code, 3)
+        self.assertEqual(out, '')
+        self.assertIn('REFUSED:', err)
+        self.assertEqual(tree_snapshot(self.root), before)
+        self.assertNotIn('complete', [e['stage'] for e in self.events()])
+
+    def test_cli_refusal_after_restore_reports_possible_changes(self):
+        real_replace = reference.os.replace
+        owner = self.root / '.rollback.lock/owner.json'
+        def change_owner_after_restore(*args):
+            real_replace(*args)
+            owner.write_text('foreign owner')
+        with patch.object(reference.os, 'replace', side_effect=change_owner_after_restore):
+            code, out, err = self.invoke_cli()
+        self.assertEqual(code, 3)
+        self.assertEqual(out, '')
+        self.assertIn('targets may already have changed', err)
+        self.assertIn('inspect retained evidence', err)
+        self.assertEqual(self.config.read_bytes(), ORIGINAL)
+        self.assertFalse(self.new.exists())
+        self.assertEqual(owner.read_text(), 'foreign owner')
+        self.assertEqual([e['stage'] for e in self.events()], ['validated', 'restored', 'verified', 'failed'])
+        self.assertEqual(self.prior.read_text(), 'prior evidence')
+
+    def test_cli_final_verification_refusal_is_after_mutation(self):
+        real_image = reference.image
+        injected = []
+        def mismatched_final_image(path):
+            result = real_image(path)
+            if path == self.config and not self.new.exists():
+                injected.append(True)
+                return {**result, 'sha256': '0' * 64}
+            return result
+        with patch.object(reference, 'image', side_effect=mismatched_final_image):
+            code, out, err = self.invoke_cli()
+        self.assertEqual(injected, [True])
+        self.assertEqual(code, 3)
+        self.assertEqual(out, '')
+        self.assertIn('Final state mismatch', err)
+        self.assertIn('targets may already have changed', err)
+        self.assertEqual(self.config.read_bytes(), ORIGINAL)
+        self.assertFalse(self.new.exists())
+        self.assertFalse((self.root / '.rollback.lock').exists())
+        self.assertEqual([e['stage'] for e in self.events()], ['validated', 'restored', 'failed'])
+
+    def test_cli_io_failures_before_and_after_restore_do_not_imply_untouched_tree(self):
+        before = tree_snapshot(self.root)
+        with patch.object(reference.os, 'replace', side_effect=OSError('injected before restore')):
+            code, out, err = self.invoke_cli()
+        self.assertEqual(code, 4)
+        self.assertEqual(out, '')
+        self.assertIn('inspect retained evidence', err)
+        self.assertEqual(tree_snapshot(self.root), before)
+        real_unlink = Path.unlink
+        def fail_delete(path, *args, **kwargs):
+            if path == self.new: raise OSError('injected after restore')
+            return real_unlink(path, *args, **kwargs)
+        with patch.object(Path, 'unlink', fail_delete):
+            code, out, err = self.invoke_cli()
+        self.assertEqual(code, 4)
+        self.assertEqual(out, '')
+        self.assertIn('inspect retained evidence', err)
+        self.assertEqual(self.config.read_bytes(), ORIGINAL)
+        self.assertEqual(self.new.read_bytes(), CACHE)
+        self.assertFalse((self.root / '.rollback.lock').exists())
+        self.assertNotIn('complete', [e['stage'] for e in self.events()])
+        self.assertEqual(self.backup.read_bytes(), ORIGINAL)
+        self.assertEqual(self.prior.read_text(), 'prior evidence')
+
+    def test_cli_success_requires_complete_receipt_and_released_lock(self):
+        code, out, err = self.invoke_cli()
+        self.assertEqual(code, 0)
+        self.assertEqual(err, '')
+        result = json.loads(out)
+        self.assertEqual(result['status'], 'complete')
+        self.assertTrue(Path(result['receipt']).is_file())
+        self.assertEqual(self.events()[-1]['stage'], 'complete')
+        self.assertEqual(self.config.read_bytes(), ORIGINAL)
+        self.assertFalse(self.new.exists())
+        self.assertFalse((self.root / '.rollback.lock').exists())
 
     def test_cli_argument_errors_are_clean_and_inert(self):
         for args in ([], ['--root'], ['--help'], ['--bogus']):

@@ -47,6 +47,8 @@ An optional third argument selects a different skill directory for a control run
 
 ## Latest source-update checks
 
+The [next contract qualification](PR2-CONTRACT-QUALIFICATION.md) is **PREPARED_NOT_RUN**: corrections for the 3 blockers, 34 cases and 68 planned responses, zero calls and zero budget. The [offline preparation report](results/pr2-contract-preparation-2026-10-23.md) records 80 passing tests, the exit/state checks and dual-host routing. Model adherence remains unqualified; the last completed failed campaign below remains unchanged.
+
 The [reference-assisted PR #2 qualification](results/pr2-reference-qualification-2026-10-22.md) completed 68/68 responses for $2.300146 reported. Both conditions received the same rollback reference; the other 33 prompts are unchanged. The candidate scores 4.5662 versus 4.3103, but retains 3 blockers. Both returned scripts pass 18/18 executable scenarios; one candidate explanation still falsely guarantees no mutation on exit 3. The PR remains unqualified. [Protocol](PR2-REFERENCE-QUALIFICATION.md), [offline preparation](results/pr2-reference-preparation-2026-10-22.md), raw outputs and frozen sources are retained; this report authorizes no further calls.
 
 The [new PR #2 qualification plan](PR2-REQUALIFICATION.md) freezes the repaired

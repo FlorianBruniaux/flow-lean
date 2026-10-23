@@ -73,6 +73,21 @@ class QualificationPreparationTests(unittest.TestCase):
                 self.assertEqual(case[key], old[key])
             self.assertEqual(case['criteria'][:len(old['criteria'])], old['criteria'])
 
+    def test_prior_campaign_prompts_and_criteria_remain_comparable(self):
+        prior_path = ROOT / 'evals/results/pr2-reference-qualification-2026-10-22-evidence/cases.jsonl'
+        prior = {c['id']: c for c in load_cases(prior_path)}
+        current = {c['id']: c for c in cases_for_qualification(with_rollback_reference=True)}
+        self.assertEqual(set(current), set(prior))
+        changed_prompts, changed_criteria = [], []
+        for cid, case in current.items():
+            old = prior[cid]
+            self.assertEqual(case['criteria'][:len(old['criteria'])], old['criteria'])
+            if case['prompt'] != old['prompt']: changed_prompts.append(cid)
+            if case['criteria'] != old['criteria']: changed_criteria.append(cid)
+        self.assertEqual(changed_prompts, ['rollback-concurrent-edits'])
+        self.assertEqual(set(changed_criteria), {
+            'rollback-concurrent-edits', 'format-request-flow', 'tradeoff-ssr-ssg'})
+
     def test_changed_prompt_or_weakened_criteria_is_rejected(self):
         real_load = load_cases
         for mutation in ('prompt', 'criteria'):
