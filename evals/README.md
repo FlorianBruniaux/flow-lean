@@ -237,6 +237,15 @@ response that parses as JSON, or a case with `"output_schema": true`, is
 exempt. The check reports counts per condition and the flagged rows; it does
 not change scores or the release gate.
 
+Indented fences (up to three spaces), longer closing fences and unclosed
+fences through end of output are exempt too. An empty banned-token block
+or non-boolean `output_schema` metadata fails explicitly. The report uses
+the checked-out skill's vocabulary for every condition, not each historical
+condition's vocabulary. Quoted spans are syntactic exemptions, not verified
+attributions. This lightweight scanner does not implement all Markdown
+containers (for example, lazy blockquote continuations); review flagged
+excerpts before interpreting counts. A flag is not proof of AI authorship.
+
 For `no-invented-fact` cases, run the separate fact-audit pass described in
 `rubric.md` before scoring, its `false` verdicts are a hard blocker
 regardless of the weighted score.

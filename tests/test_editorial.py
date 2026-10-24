@@ -35,6 +35,40 @@ class EditorialCheckTests(unittest.TestCase):
     def test_inflection_does_not_widen_to_other_words(self):
         self.assertEqual(editorial.check("La défiscalisation et le landscaping.", TOKENS)["banned"], [])
 
+    def test_fences_allow_indentation_and_longer_closers(self):
+        for opener, closer in (("  ~~~text", "  ~~~"), ("~~~text", "~~~~"),
+                               (" ```text", " ````")):
+            with self.subTest(opener=opener, closer=closer):
+                result = editorial.check(opener + "\nrobust — literal\n" + closer + "\ncrucial — prose", TOKENS)
+                self.assertEqual(result["em_dashes"], 1)
+                self.assertEqual(result["banned"], ["crucial"])
+
+    def test_unclosed_fence_exempts_code_through_end(self):
+        self.assertEqual(editorial.check("~~~text\nrobust — literal", TOKENS)["em_dashes"], 0)
+
+    def test_shorter_fence_does_not_close_code(self):
+        result = editorial.check("~~~~text\n~~~\nrobust — literal\n~~~~\ncrucial — prose", TOKENS)
+        self.assertEqual(result["em_dashes"], 1)
+        self.assertEqual(result["banned"], ["crucial"])
+
+    def test_inline_code_requires_exact_backtick_run(self):
+        result = editorial.check("`literal `` robust — x ` crucial — prose", TOKENS)
+        self.assertEqual(result["em_dashes"], 1)
+        self.assertEqual(result["banned"], ["crucial"])
+
+    def test_empty_token_block_fails_loudly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            skill = Path(tmp) / "SKILL.md"
+            skill.write_text("Banned tokens:\n```\n , \n```", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "empty"):
+                editorial.banned_tokens(skill)
+
+    def test_non_boolean_schema_metadata_is_rejected(self):
+        from run_evals import editorial_report
+        for value in ("false", "true", 1, None):
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, "output_schema"):
+                editorial_report([], [{"id": "a", "output_schema": value}])
+
     def test_schema_output_is_exempt(self):
         self.assertEqual(editorial.check('{"note": "robust — output"}', TOKENS)["exempt"], "output-schema")
         self.assertEqual(editorial.check("robust", TOKENS, output_schema=True)["exempt"], "output-schema")

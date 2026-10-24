@@ -248,6 +248,9 @@ def run_evaluations(args: argparse.Namespace) -> int:
 
 def editorial_report(responses: list[dict[str, Any]], cases: list[dict[str, Any]]) -> dict[str, Any]:
     tokens = editorial.banned_tokens()
+    for case in cases:
+        if "output_schema" in case and type(case["output_schema"]) is not bool:
+            raise ValueError(f"Case {case['id']}: output_schema must be a boolean")
     schema_cases = {case["id"] for case in cases if case.get("output_schema")}
     findings: list[dict[str, Any]] = []
     totals: dict[str, Counter] = defaultdict(Counter)

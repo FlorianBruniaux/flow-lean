@@ -18,7 +18,7 @@ EM_DASH = "—"
 # Plural and adverb inflections of the listed tokens, nothing broader: "defis" must not match "defiscalisation".
 INFLECTIONS = r"(?:s|e|es|le|les|aux|ly|ness)?"
 
-_FENCE = re.compile(r"^(`{3,}|~{3,}).*?^\1[ \t]*$", re.MULTILINE | re.DOTALL)
+_FENCE_OPEN = re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
 _INLINE_CODE = re.compile(r"(`+)(?!`).+?(?<!`)\1", re.DOTALL)
 _BLOCKQUOTE = re.compile(r"^[ \t]*>.*$", re.MULTILINE)
 _QUOTED = re.compile(r"\"[^\"\n]*\"|“[^”\n]*”|«[^»\n]*»")
@@ -34,11 +34,32 @@ def banned_tokens(skill: Path = SKILL) -> list[str]:
     match = re.search(r"Banned tokens:\s*```[^\n]*\n(.*?)```", skill.read_text(encoding="utf-8"), re.DOTALL)
     if not match:
         raise ValueError(f"{skill}: no fenced block after 'Banned tokens:'")
-    return [_fold(token.strip()) for token in re.split(r"[,\n]", match.group(1)) if token.strip()]
+    tokens = [_fold(token.strip()) for token in re.split(r"[,\n]", match.group(1)) if token.strip()]
+    if not tokens:
+        raise ValueError(f"{skill}: empty banned-token block")
+    return tokens
 
 
 def prose(text: str) -> str:
-    for pattern in (_FENCE, _INLINE_CODE, _BLOCKQUOTE, _QUOTED):
+    # Markdown permits up to three spaces and a closing fence at least as
+    # long as its opener. An unclosed fence extends to the end of the response.
+    lines = []
+    closing = None
+    for line in text.splitlines(keepends=True):
+        if closing is not None:
+            if closing.fullmatch(line.rstrip("\r\n")):
+                closing = None
+            lines.append("\n")
+            continue
+        opening = _FENCE_OPEN.fullmatch(line.rstrip("\r\n"))
+        if opening and not (opening[1][0] == "`" and "`" in opening[2]):
+            fence = opening[1]
+            closing = re.compile(r" {0,3}" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}[ \t]*")
+            lines.append("\n")
+        else:
+            lines.append(line)
+    text = "".join(lines)
+    for pattern in (_INLINE_CODE, _BLOCKQUOTE, _QUOTED):
         text = pattern.sub(" ", text)
     return text
 
