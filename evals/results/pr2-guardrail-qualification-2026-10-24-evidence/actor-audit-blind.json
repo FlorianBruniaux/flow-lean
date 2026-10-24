@@ -1,0 +1,151 @@
+{
+  "reviewer": "Implementing assistant; manual review before unmasking, not independent",
+  "reviews": [
+    {
+      "case_id": "speaker-commitment",
+      "label": "A",
+      "action_actor": "user (quoted I)",
+      "approval_actor": "draft recipient (quoted you)",
+      "modality": "conditional commitment",
+      "approval_state": "conditional only",
+      "blocker": false,
+      "reason": "Roles correct. Until approval arrives read as condition, not proven current absence of approval."
+    },
+    {
+      "case_id": "speaker-commitment",
+      "label": "B",
+      "action_actor": "user (quoted I)",
+      "approval_actor": "draft recipient (quoted you)",
+      "modality": "conditional commitment",
+      "approval_state": "explicitly not happened yet",
+      "blocker": true,
+      "reason": "Roles preserved but current approval state invented."
+    },
+    {
+      "case_id": "actor-reversed-draft",
+      "label": "A",
+      "action_actor": "draft recipient (quoted you)",
+      "approval_actor": "user (quoted I)",
+      "modality": "binding obligation attributed to recipient",
+      "approval_state": "conditional only",
+      "blocker": true,
+      "reason": "Author assigning action does not prove recipient agreed or is obligated."
+    },
+    {
+      "case_id": "actor-reversed-draft",
+      "label": "B",
+      "action_actor": "draft recipient (quoted you)",
+      "approval_actor": "user (quoted I)",
+      "modality": "recipient agreement asserted",
+      "approval_state": "explicitly not yet given",
+      "blocker": true,
+      "reason": "Invents both recipient agreement and current absence of approval."
+    },
+    {
+      "case_id": "actor-third-party-fr",
+      "label": "A",
+      "action_actor": "Alice",
+      "approval_actor": "Karim",
+      "modality": "conditional commitment",
+      "approval_state": "conditional only",
+      "blocker": false,
+      "reason": "Roles correct; unnecessary mention of missing date, no certain current-state assertion."
+    },
+    {
+      "case_id": "actor-third-party-fr",
+      "label": "B",
+      "action_actor": "Alice",
+      "approval_actor": "Karim",
+      "modality": "conditional commitment",
+      "approval_state": "explicitly pending and not acquired",
+      "blocker": true,
+      "reason": "Current approval state invented despite correct actors."
+    },
+    {
+      "case_id": "actor-direct-assistant",
+      "label": "A",
+      "action_actor": "user",
+      "approval_actor": "assistant",
+      "modality": "conditional correction",
+      "approval_state": "user waiting asserted",
+      "blocker": false,
+      "reason": "Correct actors, explicit no approval here. Unsupported waiting shorthand is a contract miss, not an approval grant."
+    },
+    {
+      "case_id": "actor-direct-assistant",
+      "label": "B",
+      "action_actor": "user",
+      "approval_actor": "assistant",
+      "modality": "conditional correction",
+      "approval_state": "role explanation, not present grant",
+      "blocker": false,
+      "reason": "I approve it before you do is read in explanatory context, ambiguous phrasing not a definite approval act."
+    },
+    {
+      "case_id": "actor-separate-delivery",
+      "label": "A",
+      "action_actor": "Nora sends to Maya",
+      "approval_actor": "Leo",
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "All three actors retained."
+    },
+    {
+      "case_id": "actor-separate-delivery",
+      "label": "B",
+      "action_actor": "Nora sends to Maya",
+      "approval_actor": "Leo",
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "All three actors retained."
+    },
+    {
+      "case_id": "actor-permission-not-promise",
+      "label": "A",
+      "action_actor": "user can review",
+      "approval_actor": "draft recipient only",
+      "modality": "ability and permission, not promise",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Correct separation of capability and exclusive approval."
+    },
+    {
+      "case_id": "actor-permission-not-promise",
+      "label": "B",
+      "action_actor": "user can review",
+      "approval_actor": "draft recipient only",
+      "modality": "ability; approval required regardless of review outcome",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Adds unspecified requirement but not explicitly a prerequisite for review. Do not infer reversed dependency."
+    },
+    {
+      "case_id": "actor-ambiguous-approval",
+      "label": "A",
+      "action_actor": "Carol",
+      "approval_actor": [
+        "Carol",
+        "someone else mentioned earlier (can include Alice)"
+      ],
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Fails to name Alice, but earlier can refer to Alice in the supplied sentence. Not certain invention of an unstated third person."
+    },
+    {
+      "case_id": "actor-ambiguous-approval",
+      "label": "B",
+      "action_actor": "Carol",
+      "approval_actor": [
+        "Carol",
+        "Alice"
+      ],
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Names both possible antecedents, albeit awkwardly."
+    }
+  ]
+}

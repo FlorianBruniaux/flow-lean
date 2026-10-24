@@ -1,0 +1,258 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "provider_calls": 0,
+  "candidate_skill_sha256": "41a480403ec59b5066c80b45310def38b65bc66ad386457f3798fefb4e3ee5c7",
+  "main_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+  "offline_tests": 48,
+  "case_counts": {
+    "main": 30,
+    "focused": 6,
+    "combined_unique": 34
+  },
+  "planned_calls_one_trial": 68,
+  "routing_scope": "Disposable fixture, full live skill catalog, isolated caches, no native model session or global installation",
+  "routing": {
+    "claude": {
+      "activeSkills": 123,
+      "eligible": false,
+      "globalGatePassed": true,
+      "threshold": {
+        "tau": 4.210358020243783,
+        "TP": 13,
+        "FP": 1,
+        "FN": 3,
+        "precision": 0.9285714285714286,
+        "recall": 0.8125,
+        "f1": 0.8666666666666666,
+        "fbeta2": 0.8333333333333334,
+        "n_pos": 16,
+        "n_neg": 4,
+        "status": "ok",
+        "eligible": false,
+        "evaluation": {
+          "TP": 12,
+          "FP": 29,
+          "FN": 4,
+          "TN": 3,
+          "n_pos": 16,
+          "n_neg": 4,
+          "precision": 0.2926829268292683,
+          "recall": 0.75,
+          "f1": 0.4210526315789473
+        }
+      },
+      "results": [
+        {
+          "prompt": "Passe en mode concis, réponse courte et directe",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Réduis les output tokens et va droit au but",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Be concise but keep the important caveat",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Use short prose by default, skip the duplicate summary",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Compresse cette archive ZIP sans perte",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais une revue de sécurité complète de cette pull request",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un README détaillé pour cette bibliothèque",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Vas-y",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        }
+      ],
+      "main_control": {
+        "eligible": false,
+        "globalGatePassed": true,
+        "threshold": {
+          "tau": 4.210358020243783,
+          "TP": 13,
+          "FP": 1,
+          "FN": 3,
+          "precision": 0.9285714285714286,
+          "recall": 0.8125,
+          "f1": 0.8666666666666666,
+          "fbeta2": 0.8333333333333334,
+          "n_pos": 16,
+          "n_neg": 4,
+          "status": "ok",
+          "eligible": false,
+          "evaluation": {
+            "TP": 12,
+            "FP": 29,
+            "FN": 4,
+            "TN": 3,
+            "n_pos": 16,
+            "n_neg": 4,
+            "precision": 0.2926829268292683,
+            "recall": 0.75,
+            "f1": 0.4210526315789473
+          }
+        }
+      }
+    },
+    "codex": {
+      "activeSkills": 164,
+      "eligible": false,
+      "globalGatePassed": true,
+      "threshold": {
+        "tau": 4.210358020243783,
+        "TP": 13,
+        "FP": 1,
+        "FN": 3,
+        "precision": 0.9285714285714286,
+        "recall": 0.8125,
+        "f1": 0.8666666666666666,
+        "fbeta2": 0.8333333333333334,
+        "n_pos": 16,
+        "n_neg": 4,
+        "status": "ok",
+        "eligible": false,
+        "evaluation": {
+          "TP": 12,
+          "FP": 29,
+          "FN": 4,
+          "TN": 3,
+          "n_pos": 16,
+          "n_neg": 4,
+          "precision": 0.2926829268292683,
+          "recall": 0.75,
+          "f1": 0.4210526315789473
+        }
+      },
+      "results": [
+        {
+          "prompt": "Passe en mode concis, réponse courte et directe",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Réduis les output tokens et va droit au but",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Be concise but keep the important caveat",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Use short prose by default, skip the duplicate summary",
+          "expected": true,
+          "selected": false,
+          "pass": false
+        },
+        {
+          "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Compresse cette archive ZIP sans perte",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais une revue de sécurité complète de cette pull request",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un README détaillé pour cette bibliothèque",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Vas-y",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        }
+      ],
+      "main_control": {
+        "eligible": false,
+        "globalGatePassed": true,
+        "threshold": {
+          "tau": 4.210358020243783,
+          "TP": 13,
+          "FP": 1,
+          "FN": 3,
+          "precision": 0.9285714285714286,
+          "recall": 0.8125,
+          "f1": 0.8666666666666666,
+          "fbeta2": 0.8333333333333334,
+          "n_pos": 16,
+          "n_neg": 4,
+          "status": "ok",
+          "eligible": false,
+          "evaluation": {
+            "TP": 12,
+            "FP": 29,
+            "FN": 4,
+            "TN": 3,
+            "n_pos": 16,
+            "n_neg": 4,
+            "precision": 0.2926829268292683,
+            "recall": 0.75,
+            "f1": 0.4210526315789473
+          }
+        }
+      }
+    }
+  }
+}

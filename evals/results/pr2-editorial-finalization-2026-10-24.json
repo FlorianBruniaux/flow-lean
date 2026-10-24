@@ -1,0 +1,36 @@
+{
+  "conditions": {
+    "candidate": {
+      "responses": 40,
+      "exempt": 0,
+      "with_em_dash": 2,
+      "em_dashes": 2,
+      "with_banned": 0
+    },
+    "comparator": {
+      "responses": 40,
+      "exempt": 0,
+      "with_em_dash": 0,
+      "em_dashes": 0,
+      "with_banned": 0
+    }
+  },
+  "findings": [
+    {
+      "case_id": "rollback-concurrent-edits",
+      "trial": 1,
+      "condition": "candidate",
+      "exempt": null,
+      "em_dashes": 1,
+      "banned": []
+    },
+    {
+      "case_id": "tradeoff-db-choice",
+      "trial": 1,
+      "condition": "candidate",
+      "exempt": null,
+      "em_dashes": 1,
+      "banned": []
+    }
+  ]
+}

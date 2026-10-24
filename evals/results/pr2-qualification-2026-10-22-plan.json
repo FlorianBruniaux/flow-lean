@@ -1,0 +1,21 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "reference_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+  "provider_calls": 0,
+  "budget_authorized_usd": 0,
+  "model": "UNSELECTED",
+  "case_count": 34,
+  "trials": 1,
+  "planned_calls": 68,
+  "sha256": {
+    "candidate.md": "4dd576e2df76c44facd2a74dea1c9c710f58abc0ccf73ef16bb27af37be96917",
+    "cases.jsonl": "2cf9bd1b9e0c8b049e104cc4eaeac4f78b2f902a04f0dd9001854de025134773",
+    "comparator.md": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+    "sources\\evals\\cases.jsonl": "b02a4ccdfe6def29a2958ef0f7752b5fdde7d8687e00c53faf5babe0af8d6aeb",
+    "sources\\evals\\pr2-regressions.jsonl": "948a4dcc75b7e674bdb16fbff56b3dfb0117579d9e330a9add99e21838810bf4",
+    "sources\\evals\\PR2-REGRESSIONS.md": "c4be231ff0da09a01c5f740fb017bf7f28b82d969efe58af369d686856536e38",
+    "sources\\evals\\rubric.md": "8b208e8cac75e2af9d6747ab693f5ba94820cd3e40830b4265f624b6e7a26d44",
+    "sources\\scripts\\eval_runtime.py": "304932c95e7b873562578cc9c6971f4cd01e0dca5435ecb0a1d86bf4ce29d917",
+    "sources\\scripts\\run_evals.py": "81c68da72e9d21dfb802d8732086a4f3e30cd21b8c847aee9e91d34c3bdddf54"
+  }
+}

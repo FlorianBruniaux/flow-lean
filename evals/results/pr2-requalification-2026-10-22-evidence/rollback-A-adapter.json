@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-I",
+    "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-A.py",
+    "--root",
+    "{root}",
+    "--verification-dir",
+    "{records}",
+    "--config-backup",
+    "{backup}",
+    "--config-orig-checksum",
+    "{original_sha256}",
+    "--config-installed-checksum",
+    "{config_sha256}",
+    "--new-json-installed-checksum",
+    "{cache_sha256}"
+  ],
+  "source_files": [
+    "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-A.py"
+  ],
+  "lock_kind": "flock",
+  "lock_path": "{root}/.rollback.lock",
+  "temporary_paths": []
+}

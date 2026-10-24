@@ -1,0 +1,49 @@
+{
+  "provider_calls": 0,
+  "tests": [
+    {
+      "test": "published_summary_reproduced",
+      "status": "PASS"
+    },
+    {
+      "test": "missing_answer",
+      "status": "PASS",
+      "rejected_with": "Scheduled order mismatch"
+    },
+    {
+      "test": "receipt_cost",
+      "status": "PASS",
+      "rejected_with": "Receipt cost mismatch"
+    },
+    {
+      "test": "condition_instructions",
+      "status": "PASS",
+      "rejected_with": "Instructions mismatch"
+    },
+    {
+      "test": "frozen_grade",
+      "status": "PASS",
+      "rejected_with": "Frozen grades changed"
+    },
+    {
+      "test": "supplemental_failure",
+      "status": "PASS",
+      "rejected_with": "Supplemental rollback checks failed"
+    },
+    {
+      "test": "unexpected_tool",
+      "status": "PASS",
+      "rejected_with": "Unexpected tools, MCP servers or skills"
+    },
+    {
+      "test": "actor_grade_changed",
+      "status": "PASS",
+      "rejected_with": "Frozen actor audit changed"
+    },
+    {
+      "test": "subgroup_corruption",
+      "status": "PASS",
+      "rejected_with": "Core/actor partition mismatch"
+    }
+  ]
+}

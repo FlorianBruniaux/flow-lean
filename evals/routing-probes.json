@@ -1,5 +1,5 @@
 {
-  "purpose": "Additional public phrasing retained from the old repository corpus and the first candidate. Held out from calibration.",
+  "purpose": "Development regressions retained from the public corpus audit. Their misses informed corpus repair; they are not an independent holdout and are not included verbatim in calibration.",
   "positive": [
     "Passe en mode concis, réponse courte et directe",
     "Réduis les output tokens et va droit au but",

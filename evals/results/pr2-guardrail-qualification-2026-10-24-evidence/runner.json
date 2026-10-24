@@ -1,0 +1,31 @@
+{
+  "claude": {
+    "command": [
+      "/Users/florianbruniaux/.local/share/claude/versions/2.1.308",
+      "--verbose",
+      "--disable-slash-commands",
+      "--print",
+      "--output-format",
+      "json",
+      "--no-session-persistence",
+      "--setting-sources",
+      "",
+      "--model",
+      "claude-sonnet-5",
+      "--tools",
+      "",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--system-prompt",
+      "You are a helpful assistant."
+    ],
+    "response_format": "claude-json",
+    "budget_flag": "--max-budget-usd",
+    "model": "claude-sonnet-5",
+    "version_command": [
+      "/Users/florianbruniaux/.local/share/claude/versions/2.1.308",
+      "--version"
+    ]
+  }
+}

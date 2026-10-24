@@ -73,8 +73,8 @@ python3 scripts/run_evals.py validate
 python3 scripts/run_evals.py plan --core-comparison --trials 3
 ```
 
-The current corpus has 25 cases. Four conditions and three trials give **300
-planned calls**, before failures/retries. One trial gives 100 calls and is useful
+The current corpus has 30 cases. Four conditions and three trials give **360
+planned calls**, before failures/retries. One trial gives 120 calls and is useful
 for a pilot, not for a general savings claim. No estimated dollar savings are
 inferred from prompt length.
 
@@ -84,7 +84,7 @@ are cold or warm when observable. Otherwise label cache state `UNKNOWN`. Keep
 provider token categories separate; do not add a nested reasoning-token field
 to output tokens without checking whether it is already included.
 
-The 25 public cases are a development suite. Reserve separate, independently
+The 30 public cases are a development suite. Reserve separate, independently
 written cases before tuning a winner. Do not label the existing suite a holdout.
 Freeze the selected winner before running that reserved set on each target host.
 

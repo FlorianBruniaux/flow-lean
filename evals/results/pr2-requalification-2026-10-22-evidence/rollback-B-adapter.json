@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/bin/bash",
+    "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh",
+    "--root",
+    "{root}",
+    "--verify-dir",
+    "{records}",
+    "--config-backup",
+    "{backup}",
+    "--orig-checksum",
+    "{original_sha256}",
+    "--installed-config-checksum",
+    "{config_sha256}",
+    "--installed-newjson-checksum",
+    "{cache_sha256}"
+  ],
+  "source_files": [
+    "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh"
+  ],
+  "lock_kind": "directory",
+  "lock_path": "{root}/.rollback.lock",
+  "temporary_paths": []
+}

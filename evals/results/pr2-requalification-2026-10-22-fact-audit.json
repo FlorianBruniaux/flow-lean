@@ -1,0 +1,102 @@
+{
+  "reviewer": "implementing Codex assistant; non-independent",
+  "claims": [
+    {
+      "conditions": [
+        "comparator"
+      ],
+      "claim": "useEffect(setup, dependencies?)",
+      "verdict": "verified",
+      "reason": "Official public call signature.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "candidate"
+      ],
+      "claim": "function useEffect(effect: () => (void | (() => void)), deps?: ReadonlyArray<unknown>): void",
+      "verdict": "unverified",
+      "reason": "Plausible structural TypeScript shape; no pinned @types/react version was supplied or checked. Not asserted as the exact upstream declaration.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "comparator",
+        "candidate"
+      ],
+      "claim": "setup/effect may return cleanup",
+      "verdict": "verified",
+      "reason": "Optional cleanup is part of the public API.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "comparator",
+        "candidate"
+      ],
+      "claim": "dependency array is optional",
+      "verdict": "verified",
+      "reason": "Omission is allowed.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "candidate"
+      ],
+      "claim": "each dependency uses Object.is comparison",
+      "verdict": "verified",
+      "reason": "Documented comparison algorithm.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "candidate"
+      ],
+      "claim": "useEffect returns void",
+      "verdict": "verified",
+      "reason": "Public API returns undefined; void is consistent with that surface contract.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "comparator",
+        "candidate"
+      ],
+      "claim": "reruns only when a dependency differs",
+      "verdict": "false",
+      "reason": "Absolute statement omits the extra development Strict Mode setup/cleanup cycle; part of the same per-response blocker as the empty-array statement.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "comparator",
+        "candidate"
+      ],
+      "claim": "omitting dependencies runs after every render",
+      "verdict": "verified",
+      "reason": "Read as the normal shorthand for committed renders; abandoned renders are not effect execution. This imprecision is not counted as an additional blocker.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "comparator",
+        "candidate"
+      ],
+      "claim": "[] runs once after mount",
+      "verdict": "false",
+      "reason": "Unqualified claim omits development Strict Mode, explicitly required by the frozen criterion. Automatic fact-audit blocker on both responses.",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "conditions": [
+        "candidate"
+      ],
+      "claim": "origin/main..main lists remote commits that force-push would discard",
+      "verdict": "false",
+      "reason": "It lists commits reachable from main excluding origin/main. After fetching, main..origin/main is the remote-only direction. This is an additional safety-relevant blocker.",
+      "source": "https://git-scm.com/docs/gitrevisions#_dotted_range_notations"
+    }
+  ],
+  "candidate_false_claim_blocker": true,
+  "scope": "Separate categorical audit of literal claims in the no-invented-fact case, plus the consequential Git range error; not an exhaustive external validation of every library claim in all 68 outputs."
+}

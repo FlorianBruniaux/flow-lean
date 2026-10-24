@@ -1,0 +1,76 @@
+test_complete_balanced_reproducible_matrix_and_no_execution_authority (test_v4_ablation.AblationPreparationTests) ... FAIL
+test_existing_destination_and_changed_artifact_are_refused (test_v4_ablation.AblationPreparationTests) ... FAIL
+test_historical_prompts_preserved_and_novel_pairs_are_distinct (test_v4_ablation.AblationPreparationTests) ... FAIL
+test_remove_one_group_preserves_common_contract_and_other_groups (test_v4_ablation.AblationPreparationTests) ... FAIL
+test_reviewer_changes_cannot_change_generation_inputs (test_v4_ablation.AblationPreparationTests) ... FAIL
+test_scoring_accepts_all_new_conditions_without_provider (test_v4_ablation.AblationPreparationTests) ... FAIL
+
+======================================================================
+FAIL: test_complete_balanced_reproducible_matrix_and_no_execution_authority (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 36, in test_complete_balanced_reproducible_matrix_and_no_execution_authority
+    p = self.planner()
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 19, in planner
+    self.assertTrue((ROOT / 'scripts/prepare_v4_ablation.py').is_file(),
+AssertionError: False is not true : Missing offline v4 ablation preparer
+
+======================================================================
+FAIL: test_existing_destination_and_changed_artifact_are_refused (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 93, in test_existing_destination_and_changed_artifact_are_refused
+    p=self.planner()
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 19, in planner
+    self.assertTrue((ROOT / 'scripts/prepare_v4_ablation.py').is_file(),
+AssertionError: False is not true : Missing offline v4 ablation preparer
+
+======================================================================
+FAIL: test_historical_prompts_preserved_and_novel_pairs_are_distinct (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 81, in test_historical_prompts_preserved_and_novel_pairs_are_distinct
+    p=self.planner()
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 19, in planner
+    self.assertTrue((ROOT / 'scripts/prepare_v4_ablation.py').is_file(),
+AssertionError: False is not true : Missing offline v4 ablation preparer
+
+======================================================================
+FAIL: test_remove_one_group_preserves_common_contract_and_other_groups (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 24, in test_remove_one_group_preserves_common_contract_and_other_groups
+    p = self.planner()
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 19, in planner
+    self.assertTrue((ROOT / 'scripts/prepare_v4_ablation.py').is_file(),
+AssertionError: False is not true : Missing offline v4 ablation preparer
+
+======================================================================
+FAIL: test_reviewer_changes_cannot_change_generation_inputs (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 60, in test_reviewer_changes_cannot_change_generation_inputs
+    p=self.planner()
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 19, in planner
+    self.assertTrue((ROOT / 'scripts/prepare_v4_ablation.py').is_file(),
+AssertionError: False is not true : Missing offline v4 ablation preparer
+
+======================================================================
+FAIL: test_scoring_accepts_all_new_conditions_without_provider (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 107, in test_scoring_accepts_all_new_conditions_without_provider
+    result=summarize_scores(rows,'v4','v4_without_scope')
+ValueError: Score row 2: unsupported condition 'pr2_full'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 109, in test_scoring_accepts_all_new_conditions_without_provider
+    self.fail('Prepared conditions cannot be scored: '+str(exc))
+AssertionError: Prepared conditions cannot be scored: Score row 2: unsupported condition 'pr2_full'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=6)

@@ -1,0 +1,17 @@
+test_cli_extension_freezes_40_pairs_without_disclosing_review_oracles (test_actor_fidelity.ActorFidelityPreparationTests) ... FAIL
+
+======================================================================
+FAIL: test_cli_extension_freezes_40_pairs_without_disclosing_review_oracles (test_actor_fidelity.ActorFidelityPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_actor_fidelity.py", line 26, in test_cli_extension_freezes_40_pairs_without_disclosing_review_oracles
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 2 != 0 : usage: prepare_pr2_qualification.py [-h] --output OUTPUT
+                                    [--with-rollback-reference]
+prepare_pr2_qualification.py: error: unrecognized arguments: --with-actor-regressions
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.058s
+
+FAILED (failures=1)

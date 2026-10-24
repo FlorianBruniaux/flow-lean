@@ -1,0 +1,17 @@
+{
+  "status": "AUTHORIZED_TO_RUN",
+  "budget_total_usd": 5,
+  "case_count": 40,
+  "trials": 1,
+  "planned_calls": 80,
+  "generation_retries": 0,
+  "grading": "Implementing Codex assistant; no additional provider calls; not independent",
+  "runner_version": "2.1.308",
+  "model": "claude-sonnet-5",
+  "cost_scope": "CLI-reported subscription list-price equivalent; billed cash UNKNOWN",
+  "candidate_commit": "f45a919a5e97ce458a6285993cd950a3935840d7",
+  "runner_sha256": "2671d6e4c93836018eabfd7ac8a854fd09efaa62ee5a3e84ca8cd9bcd5daca0c",
+  "authorized_date": "2026-10-24",
+  "authorization": "User requested the prepared 40-case campaign, one trial per condition, a total $5 cap including retries and grading, separate analysis of the original 34, and merge only if qualified.",
+  "runner_change": "Add --verbose to retain initialization events; same pinned CLI/model and other settings."
+}

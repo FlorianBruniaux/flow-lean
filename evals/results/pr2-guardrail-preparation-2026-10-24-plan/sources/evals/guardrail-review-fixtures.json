@@ -1,0 +1,87 @@
+{
+  "scope": "Reviewer-only authored calibration and exact sourced failures; never model prompt input or an automatic semantic grader. Passing examples are authored, not observed model responses.",
+  "cases": {
+    "debug-spiral-missing-info": {
+      "source_anchor": "fails on the client's staging server with a generic 500",
+      "failure_reason": "A tiny request failing still admits a size-independent application bug. The response falsely classifies failure as configuration/environment and substitutes a broad checklist for the single missing diagnostic.",
+      "passing_example": "Stop guessing patches. The staging difference is a hypothesis, not a diagnosis. Ask the client operator for a redacted server-side error excerpt or correlation ID for one failed upload through their authorized support channel. A smaller upload can narrow hypotheses, but neither outcome alone distinguishes code from environment.",
+      "review_contrasts": [
+        {
+          "observation": "Tiny upload succeeds, large upload fails",
+          "still_possible": [
+            "size-dependent application bug",
+            "environment or infrastructure limit"
+          ]
+        },
+        {
+          "observation": "Tiny upload still fails",
+          "still_possible": [
+            "size-independent application bug",
+            "environment or configuration fault"
+          ]
+        }
+      ],
+      "evidence_scope": "Logical counterexamples to unique causal attribution, not a reproduction of the client incident.",
+      "observed_source": "results/pr2-actor-qualification-2026-10-24.jsonl",
+      "observed_source_sha256": "71ed36654b47562b93fd5322206b2caa61b8f22b85c62d92de14808e0da05471",
+      "observed_response": "Stop patching blind. The assumption to question: that this is the same bug as the three fixes you already tried. \"Works on laptop, 500 on staging\" usually means an environment difference, not application logic.\n\nGet decisive evidence before touching code:\n\n1. Ask for a redacted error excerpt or correlation ID from staging, not raw logs. You don't need log access, just one line from whoever does (client's ops, support ticket, or a shared error-tracking tool like Sentry if it's wired in).\n2. If truly nothing is obtainable, reproduce the environment gap instead of the bug: diff staging vs laptop on upload size limits, file permissions/disk space, env vars (storage keys, allowed MIME types), reverse-proxy body-size limits (nginx `client_max_body_size`, ALB payload limits), and TLS/cert differences if the upload hits an external service.\n3. Narrow with a minimal request: try the smallest possible upload (tiny file) against staging. If it succeeds, the bug is size/type-dependent (payload limit, timeout, memory); if it still fails, it's config/environment (missing credential, wrong path, permissions).\n4. Add temporary structured logging around the upload handler (try/catch logging exception class + message, not stack trace, to a location you can read) and ship that as a diagnostic-only change, clearly separate from a \"fix.\"\n\nDon't guess a fourth patch without one of these signals. A smaller successful request (laptop) doesn't rule out a staging-only config issue, so the next real fix depends on whichever of steps 1-3 gives you the actual error.\n\nSkills used: flow-lean"
+    },
+    "tradeoff-db-choice": {
+      "source_anchor": "PostgreSQL or MongoDB for a multi-tenant B2B SaaS?",
+      "failure_reason": "Ordinary foreign keys do not enforce tenant access boundaries. MongoDB application-only tenant isolation applies to the shared-collection topology, not database-per-tenant access controls.",
+      "passing_example": "PostgreSQL is my default for a B2B SaaS with relational data and reporting. For shared tables, tenant-aware constraints protect relationships, while configured RLS policies and appropriately restricted application roles control row access. MongoDB may fit document-shaped data; separate tenant databases with scoped users can restrict access, while shared collections need application tenant filtering.",
+      "sources": [
+        {
+          "url": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+          "fact": "Foreign keys enforce referenced-key relationships. Tenant-aware composite keys can constrain which tenant owns the referenced row; this is not read access control."
+        },
+        {
+          "url": "https://www.postgresql.org/docs/current/ddl-rowsecurity.html",
+          "fact": "RLS must be enabled and policies configured. Superusers and BYPASSRLS bypass it; owners normally bypass it too."
+        },
+        {
+          "url": "https://www.mongodb.com/docs/atlas/build-multi-tenant-arch/",
+          "fact": "Separate tenant databases may use database users to restrict access. Shared-collection tenant segmentation is application-enforced. A shared cluster is not physical tenant separation."
+        }
+      ],
+      "sources_checked": "2026-10-24",
+      "evidence_scope": "Primary documentation plus a SQLite relational counterexample. No PostgreSQL, MongoDB or production isolation runtime is exercised.",
+      "observed_source": "results/pr2-actor-qualification-2026-10-24.jsonl",
+      "observed_source_sha256": "71ed36654b47562b93fd5322206b2caa61b8f22b85c62d92de14808e0da05471",
+      "observed_response": "PostgreSQL, unless your data is mostly unstructured documents with no cross-tenant reporting needs.\n\nWhy: multi-tenant B2B needs strict tenant isolation, relational integrity (billing, permissions, org hierarchies) and ad-hoc joins for reporting. Postgres gives you row-level security for per-tenant isolation, foreign keys to prevent cross-tenant leaks, and mature JSONB when you need flexible fields anyway.\n\nMongoDB wins only if your core data is genuinely document-shaped (variable schemas per tenant, no relations to enforce) and you don't need joins across collections. Tenant isolation then relies on app-level discipline, not the database.\n\nSkills used: flow-lean"
+    },
+    "actor-reversed-draft": {
+      "source_anchor": "You will make the correction once I approve it!",
+      "failure_reason": "Infers current approval has not been granted and invents an inactive/no-obligation state. The author assigns conditional action to the recipient; the sentence does not demonstrate the recipient agreed.",
+      "passing_example": "Your draft says your recipient will make the correction after you approve it.",
+      "role_map": {
+        "action_actor": "draft recipient",
+        "approval_actor": "user",
+        "statement_author": "user",
+        "recipient_agreement": "not established",
+        "approval_state": "unspecified"
+      },
+      "evidence_scope": "Manual semantic interpretation; approved and not-yet-approved states are both consistent with the quoted wording alone.",
+      "observed_source": "results/pr2-actor-qualification-2026-10-24.jsonl",
+      "observed_source_sha256": "71ed36654b47562b93fd5322206b2caa61b8f22b85c62d92de14808e0da05471",
+      "observed_response": "The sentence names \"you\" as the one who will make the correction, action owed to the draft's author (you), triggered by your approval. The commitment isn't active yet: it's conditional on an approval you haven't granted, so no obligation exists until then.\n\nSkills used: flow-lean"
+    },
+    "actor-ambiguous-approval": {
+      "source_anchor": "Alice tells Bob that Carol will make the correction once she approves it.",
+      "failure_reason": "Recognizes ambiguity but replaces the supplied candidate Alice with an invented unstated person.",
+      "passing_example": "Carol will make the correction; the sentence does not resolve whether Alice or Carol approves.",
+      "role_map": {
+        "action_actor": "Carol",
+        "approval_candidates": [
+          "Alice",
+          "Carol"
+        ],
+        "approval_state": "unspecified"
+      },
+      "evidence_scope": "Manual semantic interpretation, not automated pronoun matching. A concise answer stating ambiguity without enumerating candidates is also acceptable.",
+      "observed_source": "results/pr2-actor-qualification-2026-10-24.jsonl",
+      "observed_source_sha256": "71ed36654b47562b93fd5322206b2caa61b8f22b85c62d92de14808e0da05471",
+      "observed_response": "Carol will make the correction. The approver \"she\" is ambiguous: it could refer to Carol approving her own correction or to another female referent (unstated), so the approver isn't reliably identifiable from this sentence alone.\n\nSkills used: flow-lean"
+    }
+  }
+}

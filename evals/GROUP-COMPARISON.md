@@ -31,8 +31,9 @@ group and leaves every other byte unchanged. The seven arms are `baseline`,
 `generic`, `v3`, `v3_without_fidelity`, `v3_without_evidence`,
 `v3_without_duration`, and `v3_without_rollback`.
 
-All seven arms cover all 25 existing cases, not just the group's focus cases:
-**175 planned responses per trial**. This catches effects outside a group's main
+All seven arms cover all 30 current cases, not just the group's focus cases:
+**210 planned responses per trial**. The historical pilot used 25 cases and
+175 planned responses. This catches effects outside a group's main
 targets. Focus labels are preregistered analysis slices, not separate denominators
 for an overall quality score. Removing a block estimates its marginal contribution
 in this particular combination; it does not isolate each sentence or interactions
@@ -98,7 +99,7 @@ measured total cost. Shorter text alone is insufficient. One trial supports
 triage, not statistical non-inferiority. Record failures and repair burden rather
 than presenting cost per raw output as cost per acceptable result.
 
-The existing 25 cases and the new rollback probes are development data. Before
+The current 30 cases and the rollback probes are development data. Before
 choosing a winner, reserve independently authored cases covering changed actors,
 quotations, explicit versus absent limits, lock lifecycle and temporary files.
 Freeze the selected candidate before evaluating those reserved cases on each

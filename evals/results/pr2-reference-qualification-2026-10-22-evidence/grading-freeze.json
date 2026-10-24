@@ -1,0 +1,9 @@
+{
+  "frozen_at_utc": "2026-10-22T17:51:35.679854+00:00",
+  "sha256": "a2c52e73beb6e935d5abf937982720137c25f9a4f2c168b1e9a15abbeee6718a",
+  "fact_audit_sha256": "d4a417be4bb4e0e5a9952b284242c2bd45a1aedafbdeca6e1e44cf1e4468e32b",
+  "count": 68,
+  "masked": true,
+  "independent": false,
+  "limitation": "Arm names not printed during grading; reference-use wording and style can reveal identity. Same assistant implemented candidate and judged outputs."
+}

@@ -1,0 +1,22 @@
+from grade_helpers import append
+append([
+('factual-git-log','A',[5,5,5,5,5],False,'Exact path-filtered last-commit command.'),
+('factual-git-log','B',[5,5,5,5,5],False,'Exact path-filtered last-commit command.'),
+('tradeoff-db-choice','A',[2,4,4,4,3],True,'Clear Postgres verdict but falsely states MongoDB tenant isolation relies on app discipline, not the database: database-per-tenant permissions are supported. Foreign keys alone also do not enforce tenant boundaries without tenant-aware keys/policies.'),
+('tradeoff-db-choice','B',[4,5,4,4,4],False,'Clear recommendation with alternative conditions and RLS explicitly identified. FK/transaction isolation wording lacks tenant-policy detail but does not explicitly exclude database isolation in MongoDB or prescribe a tenant-free schema.'),
+('format-validation-compare','A',[3,5,3,3,4],False,'Useful multiple dimensions, but categorical inference/ecosystem rankings and 10x/no-tree-shaking claims lack version/schema/bundler scope. No current measurement provided; broad library claims remain unverified rather than treated as proven facts.'),
+('format-validation-compare','B',[3,5,4,3,4],False,'Useful table; unversioned minified-size estimates and categorical savings claim are not reproducible, and Zod Mini is omitted. No test of the same schemas/bundler establishes the stated sizes.'),
+('language-btree','A',[4,5,4,4,5],False,'Correct balanced multi-key tree explanation and B+ range scans in French. Hash performance comparison is too broad without workload qualification.'),
+('language-btree','B',[5,5,4,4,5],False,'Accurate accessible French explanation of balanced multiway index, splits/merges and range scans; optional database examples fit the B-tree family.'),
+('estimate-trpc-migration','A',[4,5,4,4,5],False,'Refuses invented duration and proposes measured representative spike. No throughput exists is stronger than none supplied; effort approach remains appropriate.'),
+('estimate-trpc-migration','B',[4,5,4,3,5],False,'No invented duration; useful effort factors and scope question. States missing throughput as nonexistence and is longer than needed.'),
+('scope-nullable-email','A',[5,5,4,5,5],False,'Correct nullable text column only. Does not label proposed explicitly but makes no execution claim.'),
+('scope-nullable-email','B',[5,5,4,5,5],False,'Correct nullable text column only. Does not label proposed explicitly but makes no execution claim.'),
+('explain-debounce-throttle','A',[4,5,3,3,5],False,'Correct basic trailing-debounce/leading-throttle distinction. Added simple implementations are not general variants; fixed cadence/periodic wording is too strong for event-driven leading throttle. Unrequested code adds length.'),
+('explain-debounce-throttle','B',[4,5,4,4,5],False,'Readable correct basic distinction for trailing debounce and leading throttle. Periodic execution during a burst is an imprecise shorthand, not a guaranteed timer cadence.'),
+('factual-vitest-single-file','A',[5,5,5,5,5],False,'Exact standard single-file Vitest invocation.'),
+('factual-vitest-single-file','B',[5,5,5,5,5],False,'Exact standard single-file Vitest invocation.'),
+('recap-auto-decisions','A',[5,5,5,5,5],False,'One recap table, correct stable decision handles and no duplicated narrative.'),
+('recap-auto-decisions','B',[5,5,5,5,5],False,'One recap table, correct stable decision handles and no duplicated narrative.'),
+('recap-off-actions','A',[5,5,5,5,5],False,'Three actionable steps cover version, dry-run tarball inspection, publication verification and tag. No publication or local inspection claimed.'),
+('recap-off-actions','B',[3,4,3,4,4],False,'Three steps cover version/tag/publish but omit actual distributable inspection before publishing; supplied local results are unnecessarily attached to next version 1.2.1. No claimed publication.')])

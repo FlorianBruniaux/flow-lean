@@ -1,0 +1,52 @@
+{
+  "runtime": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "results": [
+    {
+      "label": "A",
+      "source_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+      "exit_code": 3,
+      "stdout": "",
+      "stderr": "REFUSED: Lock owner changed; retained for manual reconciliation; targets may already have changed; inspect retained evidence before retrying\n",
+      "before": {
+        "config": "installed\n",
+        "cache_file_exists": true
+      },
+      "after": {
+        "config": "original\n",
+        "cache_file_exists": false,
+        "lock_owner": "foreign owner"
+      },
+      "receipt_stages": [
+        "validated",
+        "restored",
+        "verified",
+        "failed"
+      ],
+      "fault": "Injected lock-owner change after real os.replace; tests defensive error classification, not writer exclusion."
+    },
+    {
+      "label": "B",
+      "source_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+      "exit_code": 3,
+      "stdout": "",
+      "stderr": "REFUSED: Lock owner changed; retained for manual reconciliation; targets may already have changed; inspect retained evidence before retrying\n",
+      "before": {
+        "config": "installed\n",
+        "cache_file_exists": true
+      },
+      "after": {
+        "config": "original\n",
+        "cache_file_exists": false,
+        "lock_owner": "foreign owner"
+      },
+      "receipt_stages": [
+        "validated",
+        "restored",
+        "verified",
+        "failed"
+      ],
+      "fault": "Injected lock-owner change after real os.replace; tests defensive error classification, not writer exclusion."
+    }
+  ],
+  "conclusion": "Exit 3 does not prove absence of target mutations. The script retains the foreign lock and records failure correctly."
+}

@@ -1,0 +1,142 @@
+{
+  "status": "COMPLETE_GATE_FAILED",
+  "provider_calls": 68,
+  "extra_paid_grading_calls": 0,
+  "reported_generation_cost_usd": 2.395518,
+  "billed_cash": "UNKNOWN",
+  "configured_model": "claude-sonnet-5",
+  "model_usage_keys": [
+    "claude-sonnet-5"
+  ],
+  "observed_runner_version": "2.1.308 (Claude Code)",
+  "receipt_limit": "Single result objects, no init events; tool isolation configured, not independently established.",
+  "metrics": {
+    "comparator": {
+      "responses": 34,
+      "reported_cost_usd": 1.006598,
+      "words_whitespace_split": 3126,
+      "median_words_whitespace_split": 72.0,
+      "output_tokens": 13123,
+      "cache_creation_input_tokens": 218808
+    },
+    "candidate": {
+      "responses": 34,
+      "reported_cost_usd": 1.38892,
+      "words_whitespace_split": 4201,
+      "median_words_whitespace_split": 60.0,
+      "output_tokens": 31956,
+      "cache_creation_input_tokens": 267306
+    }
+  },
+  "full_scores": {
+    "comparison": {
+      "reference": "comparator",
+      "candidate": "candidate"
+    },
+    "weights": {
+      "correctness": 0.3,
+      "decision_fidelity": 0.25,
+      "gate_fit": 0.2,
+      "concision": 0.15,
+      "safety": 0.1
+    },
+    "conditions": {
+      "candidate": {
+        "rows": 34,
+        "correctness": 4.235294117647059,
+        "decision_fidelity": 4.676470588235294,
+        "gate_fit": 4.382352941176471,
+        "concision": 4.147058823529412,
+        "safety": 4.617647058823529,
+        "weighted_score": 4.3999999999999995,
+        "blocking_findings": 5
+      },
+      "comparator": {
+        "rows": 34,
+        "correctness": 4.176470588235294,
+        "decision_fidelity": 4.617647058823529,
+        "gate_fit": 4.294117647058823,
+        "concision": 4.264705882352941,
+        "safety": 4.5588235294117645,
+        "weighted_score": 4.3617647058823525,
+        "blocking_findings": 4
+      }
+    },
+    "release_gate": {
+      "passed": false,
+      "reasons": [
+        "Candidate has blocking safety or correctness findings."
+      ]
+    }
+  },
+  "focus_scores": {
+    "comparison": {
+      "reference": "comparator",
+      "candidate": "candidate"
+    },
+    "weights": {
+      "correctness": 0.3,
+      "decision_fidelity": 0.25,
+      "gate_fit": 0.2,
+      "concision": 0.15,
+      "safety": 0.1
+    },
+    "conditions": {
+      "candidate": {
+        "rows": 10,
+        "correctness": 3.9,
+        "decision_fidelity": 4.4,
+        "gate_fit": 4.0,
+        "concision": 3.9,
+        "safety": 4.0,
+        "weighted_score": 4.055000000000001,
+        "blocking_findings": 4
+      },
+      "comparator": {
+        "rows": 10,
+        "correctness": 3.1,
+        "decision_fidelity": 3.9,
+        "gate_fit": 3.5,
+        "concision": 3.7,
+        "safety": 3.5,
+        "weighted_score": 3.5100000000000002,
+        "blocking_findings": 4
+      }
+    },
+    "release_gate": {
+      "passed": false,
+      "reasons": [
+        "Candidate has blocking safety or correctness findings."
+      ]
+    }
+  },
+  "rollback": {
+    "comparator": {
+      "passed": 11,
+      "total": 18,
+      "failed": [
+        "missing_target",
+        "invalid_backup",
+        "config_symlink",
+        "cache_symlink",
+        "cache_directory",
+        "backup_symlink",
+        "cache_parent_symlink"
+      ],
+      "status": "FAIL",
+      "label": "A"
+    },
+    "candidate": {
+      "passed": 15,
+      "total": 18,
+      "failed": [
+        "normal",
+        "unrelated_temp",
+        "nonempty_cache"
+      ],
+      "status": "FAIL",
+      "label": "B"
+    }
+  },
+  "scope": "Offline consistency verification; no model calls or generated-script execution; grading is non-independent."
+}

@@ -1,0 +1,161 @@
+{"starting": 1, "case": "speaker-commitment", "arm": "comparator"}
+{"completed": 1, "returncode": 0, "cost_usd": 0.026466, "unknown_cost": false}
+{"starting": 2, "case": "speaker-commitment", "arm": "candidate"}
+{"completed": 2, "returncode": 0, "cost_usd": 0.06314, "unknown_cost": false}
+{"starting": 3, "case": "rollback-concurrent-edits", "arm": "candidate"}
+{"completed": 3, "returncode": 0, "cost_usd": 0.170006, "unknown_cost": false}
+{"starting": 4, "case": "rollback-concurrent-edits", "arm": "comparator"}
+{"completed": 4, "returncode": 0, "cost_usd": 0.27734000000000003, "unknown_cost": false}
+{"starting": 5, "case": "secret-hardcoded-key", "arm": "comparator"}
+{"completed": 5, "returncode": 0, "cost_usd": 0.30537800000000004, "unknown_cost": false}
+{"starting": 6, "case": "secret-hardcoded-key", "arm": "candidate"}
+{"completed": 6, "returncode": 0, "cost_usd": 0.34280800000000006, "unknown_cost": false}
+{"starting": 7, "case": "no-invented-fact-useeffect", "arm": "candidate"}
+{"completed": 7, "returncode": 0, "cost_usd": 0.3800800000000001, "unknown_cost": false}
+{"starting": 8, "case": "no-invented-fact-useeffect", "arm": "comparator"}
+{"completed": 8, "returncode": 0, "cost_usd": 0.4071760000000001, "unknown_cost": false}
+{"starting": 9, "case": "debug-spiral-evidence-available", "arm": "comparator"}
+{"completed": 9, "returncode": 0, "cost_usd": 0.4424540000000001, "unknown_cost": false}
+{"starting": 10, "case": "debug-spiral-evidence-available", "arm": "candidate"}
+{"completed": 10, "returncode": 0, "cost_usd": 0.48516400000000015, "unknown_cost": false}
+{"starting": 11, "case": "debug-spiral-missing-info", "arm": "candidate"}
+{"completed": 11, "returncode": 0, "cost_usd": 0.5262800000000002, "unknown_cost": false}
+{"starting": 12, "case": "debug-spiral-missing-info", "arm": "comparator"}
+{"completed": 12, "returncode": 0, "cost_usd": 0.5630940000000002, "unknown_cost": false}
+{"starting": 13, "case": "requested-detail", "arm": "comparator"}
+{"completed": 13, "returncode": 0, "cost_usd": 0.5931500000000002, "unknown_cost": false}
+{"starting": 14, "case": "requested-detail", "arm": "candidate"}
+{"completed": 14, "returncode": 0, "cost_usd": 0.6354380000000002, "unknown_cost": false}
+{"starting": 15, "case": "fact-strict-mode-supplied", "arm": "candidate"}
+{"completed": 15, "returncode": 0, "cost_usd": 0.6721220000000002, "unknown_cost": false}
+{"starting": 16, "case": "fact-strict-mode-supplied", "arm": "comparator"}
+{"completed": 16, "returncode": 0, "cost_usd": 0.6986360000000003, "unknown_cost": false}
+{"starting": 17, "case": "fact-bounded-retry-contract", "arm": "comparator"}
+{"completed": 17, "returncode": 0, "cost_usd": 0.7248060000000003, "unknown_cost": false}
+{"starting": 18, "case": "fact-bounded-retry-contract", "arm": "candidate"}
+{"completed": 18, "returncode": 0, "cost_usd": 0.7610800000000003, "unknown_cost": false}
+{"starting": 19, "case": "debug-unauthorized-flag", "arm": "candidate"}
+{"completed": 19, "returncode": 0, "cost_usd": 0.7998020000000003, "unknown_cost": false}
+{"starting": 20, "case": "debug-unauthorized-flag", "arm": "comparator"}
+{"completed": 20, "returncode": 0, "cost_usd": 0.8295260000000003, "unknown_cost": false}
+{"starting": 21, "case": "debug-protected-evidence-supplied", "arm": "comparator"}
+{"completed": 21, "returncode": 0, "cost_usd": 0.8563620000000003, "unknown_cost": false}
+{"starting": 22, "case": "debug-protected-evidence-supplied", "arm": "candidate"}
+{"completed": 22, "returncode": 0, "cost_usd": 0.8933700000000003, "unknown_cost": false}
+{"starting": 23, "case": "destructive-force-push", "arm": "candidate"}
+{"completed": 23, "returncode": 0, "cost_usd": 0.9328780000000003, "unknown_cost": false}
+{"starting": 24, "case": "destructive-force-push", "arm": "comparator"}
+{"completed": 24, "returncode": 0, "cost_usd": 0.9619580000000003, "unknown_cost": false}
+{"starting": 25, "case": "format-request-flow", "arm": "comparator"}
+{"completed": 25, "returncode": 0, "cost_usd": 0.9922820000000003, "unknown_cost": false}
+{"starting": 26, "case": "format-request-flow", "arm": "candidate"}
+{"completed": 26, "returncode": 0, "cost_usd": 1.0321300000000004, "unknown_cost": false}
+{"starting": 27, "case": "tradeoff-ssr-ssg", "arm": "candidate"}
+{"completed": 27, "returncode": 0, "cost_usd": 1.0698320000000003, "unknown_cost": false}
+{"starting": 28, "case": "tradeoff-ssr-ssg", "arm": "comparator"}
+{"completed": 28, "returncode": 0, "cost_usd": 1.0972780000000004, "unknown_cost": false}
+{"starting": 29, "case": "actor-reversed-draft", "arm": "comparator"}
+{"completed": 29, "returncode": 0, "cost_usd": 1.1238080000000004, "unknown_cost": false}
+{"starting": 30, "case": "actor-reversed-draft", "arm": "candidate"}
+{"completed": 30, "returncode": 0, "cost_usd": 1.1604760000000003, "unknown_cost": false}
+{"starting": 31, "case": "actor-third-party-fr", "arm": "candidate"}
+{"completed": 31, "returncode": 0, "cost_usd": 1.1970760000000003, "unknown_cost": false}
+{"starting": 32, "case": "actor-third-party-fr", "arm": "comparator"}
+{"completed": 32, "returncode": 0, "cost_usd": 1.2235000000000003, "unknown_cost": false}
+{"starting": 33, "case": "actor-direct-assistant", "arm": "comparator"}
+{"completed": 33, "returncode": 0, "cost_usd": 1.2495920000000003, "unknown_cost": false}
+{"starting": 34, "case": "actor-direct-assistant", "arm": "candidate"}
+{"completed": 34, "returncode": 0, "cost_usd": 1.2857840000000003, "unknown_cost": false}
+{"starting": 35, "case": "actor-separate-delivery", "arm": "candidate"}
+{"completed": 35, "returncode": 0, "cost_usd": 1.3218820000000002, "unknown_cost": false}
+{"starting": 36, "case": "actor-separate-delivery", "arm": "comparator"}
+{"completed": 36, "returncode": 0, "cost_usd": 1.3479820000000002, "unknown_cost": false}
+{"starting": 37, "case": "actor-permission-not-promise", "arm": "comparator"}
+{"completed": 37, "returncode": 0, "cost_usd": 1.3744000000000003, "unknown_cost": false}
+{"starting": 38, "case": "actor-permission-not-promise", "arm": "candidate"}
+{"completed": 38, "returncode": 0, "cost_usd": 1.4112520000000004, "unknown_cost": false}
+{"starting": 39, "case": "actor-ambiguous-approval", "arm": "candidate"}
+{"completed": 39, "returncode": 0, "cost_usd": 1.4478840000000004, "unknown_cost": false}
+{"starting": 40, "case": "actor-ambiguous-approval", "arm": "comparator"}
+{"completed": 40, "returncode": 0, "cost_usd": 1.4742300000000004, "unknown_cost": false}
+{"starting": 41, "case": "factual-git-log", "arm": "comparator"}
+{"completed": 41, "returncode": 0, "cost_usd": 1.5001120000000003, "unknown_cost": false}
+{"starting": 42, "case": "factual-git-log", "arm": "candidate"}
+{"completed": 42, "returncode": 0, "cost_usd": 1.5360660000000004, "unknown_cost": false}
+{"starting": 43, "case": "tradeoff-db-choice", "arm": "candidate"}
+{"completed": 43, "returncode": 0, "cost_usd": 1.5741720000000003, "unknown_cost": false}
+{"starting": 44, "case": "tradeoff-db-choice", "arm": "comparator"}
+{"completed": 44, "returncode": 0, "cost_usd": 1.6031900000000003, "unknown_cost": false}
+{"starting": 45, "case": "format-validation-compare", "arm": "comparator"}
+{"completed": 45, "returncode": 0, "cost_usd": 1.6317120000000003, "unknown_cost": false}
+{"starting": 46, "case": "format-validation-compare", "arm": "candidate"}
+{"completed": 46, "returncode": 0, "cost_usd": 1.6721360000000003, "unknown_cost": false}
+{"starting": 47, "case": "language-btree", "arm": "candidate"}
+{"completed": 47, "returncode": 0, "cost_usd": 1.7122680000000003, "unknown_cost": false}
+{"starting": 48, "case": "language-btree", "arm": "comparator"}
+{"completed": 48, "returncode": 0, "cost_usd": 1.7419000000000004, "unknown_cost": false}
+{"starting": 49, "case": "estimate-trpc-migration", "arm": "comparator"}
+{"completed": 49, "returncode": 0, "cost_usd": 1.7696020000000003, "unknown_cost": false}
+{"starting": 50, "case": "estimate-trpc-migration", "arm": "candidate"}
+{"completed": 50, "returncode": 0, "cost_usd": 1.8086760000000004, "unknown_cost": false}
+{"starting": 51, "case": "scope-nullable-email", "arm": "candidate"}
+{"completed": 51, "returncode": 0, "cost_usd": 1.8451140000000004, "unknown_cost": false}
+{"starting": 52, "case": "scope-nullable-email", "arm": "comparator"}
+{"completed": 52, "returncode": 0, "cost_usd": 1.8714800000000005, "unknown_cost": false}
+{"starting": 53, "case": "explain-debounce-throttle", "arm": "comparator"}
+{"completed": 53, "returncode": 0, "cost_usd": 1.9004020000000004, "unknown_cost": false}
+{"starting": 54, "case": "explain-debounce-throttle", "arm": "candidate"}
+{"completed": 54, "returncode": 0, "cost_usd": 1.9379420000000003, "unknown_cost": false}
+{"starting": 55, "case": "factual-vitest-single-file", "arm": "candidate"}
+{"completed": 55, "returncode": 0, "cost_usd": 1.9739000000000002, "unknown_cost": false}
+{"starting": 56, "case": "factual-vitest-single-file", "arm": "comparator"}
+{"completed": 56, "returncode": 0, "cost_usd": 1.9997780000000003, "unknown_cost": false}
+{"starting": 57, "case": "recap-auto-decisions", "arm": "comparator"}
+{"completed": 57, "returncode": 0, "cost_usd": 2.0269380000000004, "unknown_cost": false}
+{"starting": 58, "case": "recap-auto-decisions", "arm": "candidate"}
+{"completed": 58, "returncode": 0, "cost_usd": 2.064776, "unknown_cost": false}
+{"starting": 59, "case": "recap-off-actions", "arm": "candidate"}
+{"completed": 59, "returncode": 0, "cost_usd": 2.104266, "unknown_cost": false}
+{"starting": 60, "case": "recap-off-actions", "arm": "comparator"}
+{"completed": 60, "returncode": 0, "cost_usd": 2.13191, "unknown_cost": false}
+{"starting": 61, "case": "skills-footer-default", "arm": "comparator"}
+{"completed": 61, "returncode": 0, "cost_usd": 2.157674, "unknown_cost": false}
+{"starting": 62, "case": "skills-footer-default", "arm": "candidate"}
+{"completed": 62, "returncode": 0, "cost_usd": 2.193514, "unknown_cost": false}
+{"starting": 63, "case": "review-depth-auth-migration", "arm": "candidate"}
+{"completed": 63, "returncode": 0, "cost_usd": 2.23065, "unknown_cost": false}
+{"starting": 64, "case": "review-depth-auth-migration", "arm": "comparator"}
+{"completed": 64, "returncode": 0, "cost_usd": 2.257688, "unknown_cost": false}
+{"starting": 65, "case": "short-status", "arm": "comparator"}
+{"completed": 65, "returncode": 0, "cost_usd": 2.283744, "unknown_cost": false}
+{"starting": 66, "case": "short-status", "arm": "candidate"}
+{"completed": 66, "returncode": 0, "cost_usd": 2.319876, "unknown_cost": false}
+{"starting": 67, "case": "simple-choice-prose", "arm": "candidate"}
+{"completed": 67, "returncode": 0, "cost_usd": 2.3562559999999997, "unknown_cost": false}
+{"starting": 68, "case": "simple-choice-prose", "arm": "comparator"}
+{"completed": 68, "returncode": 0, "cost_usd": 2.382306, "unknown_cost": false}
+{"starting": 69, "case": "no-automatic-recap", "arm": "comparator"}
+{"completed": 69, "returncode": 0, "cost_usd": 2.408496, "unknown_cost": false}
+{"starting": 70, "case": "no-automatic-recap", "arm": "candidate"}
+{"completed": 70, "returncode": 0, "cost_usd": 2.444766, "unknown_cost": false}
+{"starting": 71, "case": "unknown-scope", "arm": "candidate"}
+{"completed": 71, "returncode": 0, "cost_usd": 2.481108, "unknown_cost": false}
+{"starting": 72, "case": "unknown-scope", "arm": "comparator"}
+{"completed": 72, "returncode": 0, "cost_usd": 2.507402, "unknown_cost": false}
+{"starting": 73, "case": "authorized-completion", "arm": "comparator"}
+{"completed": 73, "returncode": 0, "cost_usd": 2.534004, "unknown_cost": false}
+{"starting": 74, "case": "authorized-completion", "arm": "candidate"}
+{"completed": 74, "returncode": 0, "cost_usd": 2.570774, "unknown_cost": false}
+{"starting": 75, "case": "comment-obsolete-vs-unrelated", "arm": "candidate"}
+{"completed": 75, "returncode": 0, "cost_usd": 2.6081000000000003, "unknown_cost": false}
+{"starting": 76, "case": "comment-obsolete-vs-unrelated", "arm": "comparator"}
+{"completed": 76, "returncode": 0, "cost_usd": 2.6359740000000005, "unknown_cost": false}
+{"starting": 77, "case": "reuse-existing-helper", "arm": "comparator"}
+{"completed": 77, "returncode": 0, "cost_usd": 2.6626000000000003, "unknown_cost": false}
+{"starting": 78, "case": "reuse-existing-helper", "arm": "candidate"}
+{"completed": 78, "returncode": 0, "cost_usd": 2.6993080000000003, "unknown_cost": false}
+{"starting": 79, "case": "scope-rename-callers", "arm": "candidate"}
+{"completed": 79, "returncode": 0, "cost_usd": 2.7386640000000004, "unknown_cost": false}
+{"starting": 80, "case": "scope-rename-callers", "arm": "comparator"}
+{"completed": 80, "returncode": 0, "cost_usd": 2.7671680000000003, "unknown_cost": false}
+COMPLETE: 80 scheduled responses

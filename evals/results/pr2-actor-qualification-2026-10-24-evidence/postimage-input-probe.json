@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "label": "A",
+      "source_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+      "inputs": "trusted_installation",
+      "before": {
+        "config": "concurrent user edit\n",
+        "new": "concurrent cache edit\n"
+      },
+      "after": {
+        "config": "concurrent user edit\n",
+        "new": "concurrent cache edit\n"
+      },
+      "exit_code": 3,
+      "stdout": "",
+      "stderr": "REFUSED: Backup or postimage checksum conflict; no target changed; targets may already have changed; inspect retained evidence before retrying\n",
+      "receipt_stages": []
+    },
+    {
+      "label": "A",
+      "source_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+      "inputs": "recomputed_current",
+      "before": {
+        "config": "concurrent user edit\n",
+        "new": "concurrent cache edit\n"
+      },
+      "after": {
+        "config": "original\n",
+        "new": null
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"complete\", \"receipt\": \"/private/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/tmp532x7cgc/records/rollback-tw46f3d1.jsonl\", \"cache_directory_retained\": false}\n",
+      "stderr": "",
+      "receipt_stages": [
+        "validated",
+        "restored",
+        "verified",
+        "complete"
+      ]
+    },
+    {
+      "label": "B",
+      "source_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+      "inputs": "trusted_installation",
+      "before": {
+        "config": "concurrent user edit\n",
+        "new": "concurrent cache edit\n"
+      },
+      "after": {
+        "config": "concurrent user edit\n",
+        "new": "concurrent cache edit\n"
+      },
+      "exit_code": 3,
+      "stdout": "",
+      "stderr": "REFUSED: Backup or postimage checksum conflict; no target changed; targets may already have changed; inspect retained evidence before retrying\n",
+      "receipt_stages": []
+    },
+    {
+      "label": "B",
+      "source_sha256": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+      "inputs": "recomputed_current",
+      "before": {
+        "config": "concurrent user edit\n",
+        "new": "concurrent cache edit\n"
+      },
+      "after": {
+        "config": "original\n",
+        "new": null
+      },
+      "exit_code": 0,
+      "stdout": "{\"status\": \"complete\", \"receipt\": \"/private/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/tmp9cgx2m_t/records/rollback-ctyiskpw.jsonl\", \"cache_directory_retained\": false}\n",
+      "stderr": "",
+      "receipt_stages": [
+        "validated",
+        "restored",
+        "verified",
+        "complete"
+      ]
+    }
+  ],
+  "conclusion": "Trusted installation checksums refuse pre-existing concurrent edits. Recomputing expected values from current targets authorizes their overwrite and deletion. All writers are stopped during both fixture runs; this is an input-provenance failure, not a lock race."
+}

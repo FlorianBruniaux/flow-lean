@@ -25,11 +25,52 @@ The positive and negative routing corpus is bundled at
 invocations and controls are kept in [`explicit-controls.json`](explicit-controls.json)
 for separate native-host checks; they are not implicit-routing training data.
 [`routing-probes.json`](routing-probes.json) retains additional public phrasing
-and boundary probes outside calibration; report misses rather than hiding them. Routing
+and boundary probes outside calibration. Their observed misses informed the public
+corpus repair, so they are development regressions, not an independent holdout.
+The [public BM25 repair report](results/public-bm25-repair-2026-10-21.md) records
+dual-host eligibility, hook results and remaining calibration errors. Routing
 checks measure skill selection; they do not prove response quality or native
 plugin invocation.
 
+With an already installed compatible skill-router, reproduce the offline check:
+
+```bash
+node scripts/check_routing.cjs /path/to/skill-router /tmp/new-flow-lean-routing-report.json
+```
+
+The router root must contain `bm25-suggest.js` and `routing/build-index.js`.
+The checker uses the real user catalogs with disposable project projections and
+caches, verifies that both hosts discover the candidate, and returns a nonzero
+status on failed eligibility, global gate or any probe. It does not install a
+router or call a model. Use a new report path; previous evidence is not overwritten.
+An optional third argument selects a different skill directory for a control run.
+
 ## Latest source-update checks
+
+The [minimal-v4 ablation preparation](results/pr2-v4-ablation-preparation-2026-10-24.md) freezes a 691-word experimental candidate, four single-module removals, full main and the current failed PR candidate. It adds 24 new contrast tasks: **168 planned responses, zero provider calls, $0 authorized**. Actor/evidence/authorization/rollback safeguards stay fixed. The original 40 prompts remain a separate confirmation phase. 100 local tests and 22/22 routing-preview probes per host pass; the candidate is not installed or qualified. See the [protocol](ABLATION-V4.md) for paired analysis and limitations.
+
+The [guardrail qualification](results/pr2-guardrail-qualification-2026-10-24.md) completed 80/80 responses for **$2.832110 reported** under the new $5 cap. The candidate fails: **4.2288 versus 4.3150**, with **10 versus 5 blockers**. On the original 34: **4.2868 versus 4.3338**, with **8 versus 4 blockers**. Correctness and weighted-score thresholds also fail. Three of the four preceding blockers persist; the actor-ambiguity case is nonblocking this time. Both rollback programs pass all executable checks, but main's checksum-input guidance remains unsafe. 92 local tests and nine evidence checks pass. No merge, installation or further model calls; n=1 and non-independent grading do not establish causal deterioration.
+
+The [guardrail preparation](results/pr2-guardrail-preparation-2026-10-24.md) addresses the four latest blockers with revised diagnostic, data-isolation and actor instructions. It preserves all 40 prompts and strengthens only four sets of criteria. The [next protocol](PR2-GUARDRAIL-QUALIFICATION.md) retains separate full/core gates and freezes reviewer-only counterexamples. No model calls, budget or merge are authorized by this offline preparation.
+
+The [40-case actor qualification](results/pr2-actor-qualification-2026-10-24.md) completed 80/80 responses for $2.767168 reported under the new $5 cap. Candidate score: 4.4213 versus 4.1138, with 4 versus 10 blockers. On the original 34 prompts: 4.5059 versus 4.1765, with 2 versus 7 blockers. Both gates fail. The initial approval-actor case passes this time, but two new actor cases and two core cases block merging. Both rollback scripts pass all 18 scenarios and 17 supplemental methods. Initialization receipts now show zero tools/MCP/skills; complete native prompt isolation remains unknown. No further calls, merge or global installation.
+
+The [actor-fidelity preparation](results/pr2-actor-preparation-2026-10-24.md) clarifies the actor/approver instruction after an observed role reversal between a quote and its explanation. It keeps the 34 prior prompts and adds 6 actor cases, preparing 80 responses across 2 conditions. The [protocol](PR2-ACTOR-QUALIFICATION.md) requires separate full/core gates and zero candidate blockers. Offline checks pass: 85 repository tests and 22/22 routing probes per client. No model calls, merge or global installation; the last completed qualification below remains failed.
+
+The [contract qualification](results/pr2-contract-qualification-2026-10-24.md) completed 68/68 responses for $2.343584 reported under the newly authorized $5 cap. The candidate scores 4.4471 versus 4.2603, with 1 blocker versus 6: it reverses the approval actor in `speaker-commitment`. The 13-case focus group passes, but the full gate fails. Both returned rollback scripts pass 18 scenarios and 17 supplemental test methods; unsafe comparator checksum-input guidance is reproduced separately. The [protocol](PR2-CONTRACT-QUALIFICATION.md), [offline preparation](results/pr2-contract-preparation-2026-10-23.md), frozen inputs and older results remain available. No merge, installation or further calls follow from this result.
+
+The [reference-assisted PR #2 qualification](results/pr2-reference-qualification-2026-10-22.md) completed 68/68 responses for $2.300146 reported. Both conditions received the same rollback reference; the other 33 prompts are unchanged. The candidate scores 4.5662 versus 4.3103, but retains 3 blockers. Both returned scripts pass 18/18 executable scenarios; one candidate explanation still falsely guarantees no mutation on exit 3. The PR remains unqualified. [Protocol](PR2-REFERENCE-QUALIFICATION.md), [offline preparation](results/pr2-reference-preparation-2026-10-22.md), raw outputs and frozen sources are retained; this report authorizes no further calls.
+
+The [new PR #2 qualification plan](PR2-REQUALIFICATION.md) freezes the repaired
+rollback and diagnostic rules, the same 34 prompts with strengthened criteria,
+and 18 executable rollback scenarios. The authorized [requalification](results/pr2-requalification-2026-10-22.md) completed 68/68 responses for $2.395518 reported. Its gate fails: the candidate has five blocking responses and passes 15/18 executable rollback scenarios. The original preparation and previous campaign remain preserved; the planner itself authorizes no calls.
+
+The [PR #2 regression protocol](PR2-REGRESSIONS.md) prepares the repaired
+factual-scope and protected-diagnostics rules, six focused cases, and a paired
+comparison against the full main skill. Guillaume completed the 68-response
+[qualification](results/pr2-qualification-2026-10-22.md); its gate fails.
+The [subsequent evidence review](results/pr2-qualification-2026-10-22-review.md)
+reconciles receipts and adds executable rollback findings without another model run.
 
 The [2026-09-27 check report](results/concision-2026-09-27.md) records isolated
 Claude installation, focused Claude/Codex response checks, local routing,
@@ -78,7 +119,7 @@ python3 scripts/run_evals.py plan --trials 1 --include-comparator
 ```
 
 `plan` prints the expected call count before any money is spent. At 1 trial,
-25 cases, 3 conditions: 75 planned calls, before retries.
+30 cases, 3 conditions: 90 planned calls, before retries.
 
 ## Run
 
@@ -256,7 +297,13 @@ reproducible without re-spending.
 
 The committed v0.2.0 result files used the former 13-case suite. They remain
 historical evidence only. Run all three conditions again before publishing a
-current-version comparison against the 25-case suite.
+current-version comparison against the 30-case suite.
 The text-only context and revised cases/criteria also invalidate direct score
 comparisons with the local v1 pilot, even though the case IDs and count remain
 unchanged. Retain old manifests as evidence; regenerate all conditions for v2.
+
+## Latest integration status
+
+[24 October finalization](results/pr2-finalization-2026-10-24.md) records the merged
+editorial checks, the integrated v4 preparation archive and the remaining #9
+qualification / #4 native-loading work. The experiment is prepared, not run.
