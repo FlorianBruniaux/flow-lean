@@ -1,6 +1,6 @@
 # PR #2 contract qualification preparation, 2026-10-23
 
-Status: **PREPARED_NOT_RUN**. Zero provider calls and zero authorized budget. The [last completed campaign](results/pr2-reference-qualification-2026-10-22.md) remains failed with 3 candidate blockers. These source corrections and offline tests do not establish that future model answers will comply. No merge or global installation is authorized by this preparation.
+Status: **COMPLETE_GATE_FAILED**. The separately authorized [2026-10-24 campaign](results/pr2-contract-qualification-2026-10-24.md) completed 68/68 responses for $2.343584 reported under the $5 cap. The candidate retains 1 blocker, an approval-actor reversal, although the 13-case focus group and executable rollback checks pass. The original frozen preparation manifest and earlier campaigns remain unchanged. This reusable protocol authorizes no further calls or global installation; the requested conditional merge does not proceed because the full gate failed.
 
 ## Candidate changes
 
