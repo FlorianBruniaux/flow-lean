@@ -27,7 +27,8 @@ SOURCES = ["skills/flow-lean/SKILL.md", "evals/cases.jsonl", "evals/pr2-regressi
            "tests/test_pr2_qualification.py", "evals/actor-fidelity.jsonl",
            "evals/actor-fidelity-oracles.json", "tests/test_actor_fidelity.py",
            "evals/PR2-ACTOR-QUALIFICATION.md", "evals/guardrail-review-fixtures.json",
-           "evals/PR2-GUARDRAIL-QUALIFICATION.md", "tests/test_guardrail_preparation.py"]
+           "evals/PR2-GUARDRAIL-QUALIFICATION.md", "tests/test_guardrail_preparation.py",
+           ".gitattributes"]
 
 
 def sha(data):

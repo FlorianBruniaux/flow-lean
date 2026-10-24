@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import shutil
 import sqlite3
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -20,6 +21,29 @@ PRIOR = ROOT / 'evals/results/pr2-actor-qualification-2026-10-24-evidence/cases.
 
 
 class GuardrailPreparationTests(unittest.TestCase):
+    def test_git_checkout_preserves_receipt_bytes_under_autocrlf(self):
+        # Reproduce Windows checkout conversion; evidence digests bind raw bytes.
+        relative = 'evals/results/pr2-actor-qualification-2026-10-24.jsonl'
+        original = (ROOT / relative).read_bytes()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / 'repo'
+            root.mkdir()
+            target = root / relative
+            target.parent.mkdir(parents=True)
+            target.write_bytes(original)
+            attributes = ROOT / '.gitattributes'
+            (root / '.gitattributes').write_bytes(attributes.read_bytes() if attributes.exists() else b'')
+            def git(*args):
+                subprocess.run(['git', '-c', 'core.autocrlf=true',
+                                '-c', 'core.hooksPath=' + str(root / 'no-hooks'), *args],
+                               cwd=root, check=True, capture_output=True)
+            git('init')
+            git('add', '--', '.gitattributes', relative)
+            checkout = Path(tmp) / 'checkout'
+            git('checkout-index', '--prefix=' + checkout.as_posix() + '/', '--', relative)
+            self.assertEqual(hashlib.sha256((checkout / relative).read_bytes()).hexdigest(),
+                             hashlib.sha256(original).hexdigest())
+
     def test_same_40_tasks_with_only_four_strengthened_criteria(self):
         prior = {c['id']: c for c in load_cases(PRIOR)}
         current = {c['id']: c for c in planner.cases_for_qualification(
