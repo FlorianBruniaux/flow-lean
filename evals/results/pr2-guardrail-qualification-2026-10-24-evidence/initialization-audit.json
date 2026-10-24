@@ -1,0 +1,38 @@
+{
+  "init_count": 80,
+  "empty_tools": 80,
+  "empty_mcp_servers": 80,
+  "empty_skills": 80,
+  "empty_slash_commands": 80,
+  "models": [
+    "claude-sonnet-5"
+  ],
+  "versions": [
+    "2.1.308"
+  ],
+  "builtin_agents": [
+    "Explore",
+    "Plan",
+    "claude",
+    "general-purpose",
+    "statusline-setup"
+  ],
+  "plugins": [
+    {
+      "name": "cc-plugin-agents-md",
+      "path": "builtin",
+      "source": "cc-plugin-agents-md@builtin"
+    },
+    {
+      "name": "cc-plugin-telemetry",
+      "path": "builtin",
+      "source": "cc-plugin-telemetry@builtin"
+    },
+    {
+      "name": "cc-plugin-plugin-authoring",
+      "path": "builtin",
+      "source": "cc-plugin-plugin-authoring@builtin"
+    }
+  ],
+  "complete_prompt_isolation": "UNKNOWN: receipts show no tools/MCP/skills; builtin agent/plugin metadata may remain. System prompt replacement is configured, not independently proven to remove all native context."
+}

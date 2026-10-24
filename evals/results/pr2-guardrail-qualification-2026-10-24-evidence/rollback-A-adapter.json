@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-I",
+    "/private/tmp/flow-lean-finalize-20261021/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-A.py",
+    "--root",
+    "{root}",
+    "--records",
+    "{records}",
+    "--backup",
+    "{backup}",
+    "--original-sha256",
+    "{original_sha256}",
+    "--config-sha256",
+    "{config_sha256}",
+    "--cache-sha256",
+    "{cache_sha256}",
+    "--writers-stopped"
+  ],
+  "source_files": [
+    "/private/tmp/flow-lean-finalize-20261021/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-A.py"
+  ],
+  "lock_kind": "directory",
+  "lock_path": "{root}/.rollback.lock"
+}
