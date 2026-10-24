@@ -1,0 +1,3 @@
+# Evaluation evidence and frozen sources are hashed as bytes, including newlines.
+# Never convert their line endings on checkout or add, regardless of host config.
+evals/results/** -text

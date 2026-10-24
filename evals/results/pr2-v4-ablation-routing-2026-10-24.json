@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "provider_calls": 0,
+  "node_version": "v22.18.0",
+  "scope": "Real router, disposable effective personal catalog mirrors with candidate replacing Flow Lean; no live installation or native model session",
+  "probe_status": "Development regressions, not independent holdout",
+  "source_hashes": {
+    "SKILL.md": "2a68e7b3a82e1b931e8dd2ac14f868c4846e11b2917bb9be1c471b87680f39d2",
+    "evals/scenarios.json": "56ae2829e09543bedad3c074dfaf82771a3a5e83f6b00e40e367936c752bdc6a",
+    "scripts/rollback_reference.py": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+    "references/rollback.md": "57d6f02cd8c789f5b84828eae383e4fcffa2e38fcc82f80cff523a3dcb3d399d",
+    "evals/routing-probes.json": "6291a4a29f82000a33779ad10a2f34eb4db3a52ef0213752cf6a1b8acc255aeb",
+    "evals/candidates/v3.1-routing-holdout.json": "9fc392421b0259601c21cdcff80aec987785b23a55bfe74b2d5a811e4979db92",
+    "scripts/check_routing.cjs": "32e1dfd921b31beb7cfd1dde029c416be9701b80a9ecbe241aad37a2a03c64b8"
+  },
+  "router_hashes": {
+    "bm25-suggest.js": "ad333703dad1aeac45aea8af99206f8366d5b0c4a821380be4ee3f9b103f31a0",
+    "routing/benchmark.js": "ebc9e40318af5bffe5c29c387a0819658b4a17f2193b91bc914ce54589cdf477",
+    "routing/bm25.js": "69932848ad50c2ccfd196e83f21e7c89c5525100c93ff7685a2a9c2b11fec89a",
+    "routing/build-index.js": "94dad6fc777bef0407171a78b70181049c22c63d7e7f3d3004c623cd7260bf61",
+    "routing/cache.js": "1d45bf6672f2457350ae9ea017e2994b17de3bb78c15d96762c7a50195dec707",
+    "routing/discovery.js": "600f8b93abcd28f0782240e087ba89dc4aa1b77c4bc2d39ef862c72ef47b719f",
+    "routing/paths.js": "fe61a1845dc69642521d2ef1866b323e66fbdb7e47ead0f7ebd995fbf2d785a8",
+    "routing/project-advisory.js": "270eb1417b85836734248bc839f05f901db79df66502fd5272629d9e26c4a576",
+    "routing/tokenize.js": "745609fa266898788559ce00c60b31d73a5c1aeb65b41a8b955332a05c30561c"
+  },
+  "hosts": {
+    "claude": {
+      "active_skills": 125,
+      "source_fingerprint": "4db74385d057a48bc46837eb301be03be87abc2935cda05e9181bfc57a4dbad7",
+      "eligible": true,
+      "global_gate_passed": true,
+      "global": {
+        "TP": 377,
+        "FP": 280,
+        "FN": 18,
+        "precision": 0.573820395738204,
+        "recall": 0.9544303797468354,
+        "f1": 0.7167300380228137
+      },
+      "threshold": {
+        "tau": 9.484968221094771,
+        "TP": 18,
+        "FP": 0,
+        "FN": 1,
+        "precision": 1,
+        "recall": 0.9473684210526315,
+        "f1": 0.972972972972973,
+        "fbeta2": 0.9574468085106381,
+        "n_pos": 19,
+        "n_neg": 23,
+        "status": "ok",
+        "eligible": true,
+        "evaluation": {
+          "TP": 18,
+          "FP": 1,
+          "FN": 1,
+          "TN": 23,
+          "n_pos": 19,
+          "n_neg": 23,
+          "precision": 0.9473684210526315,
+          "recall": 0.9473684210526315,
+          "f1": 0.9473684210526315
+        }
+      },
+      "preview": {
+        "source_skills": 125,
+        "mirrored_skills": 125,
+        "source_fingerprint": "41ace9a506156ca53dd0477027cd527ead4d4c5601a95a71cd328068e2f18b17"
+      },
+      "results": [
+        {
+          "prompt": "Passe en mode concis, réponse courte et directe",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réduis les output tokens et va droit au but",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Be concise but keep the important caveat",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Use short prose by default, skip the duplicate summary",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Compresse cette archive ZIP sans perte",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais une revue de sécurité complète de cette pull request",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un README détaillé pour cette bibliothèque",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds de façon concise, avec la conclusion dès le début et sans phrases de remplissage.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Please make your answers shorter and put the result first.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean detailed : reprends ton explication, elle est trop raccourcie.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean recap auto, ne répète pas les conclusions à la fin.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean : skills footer status",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un email très bref pour remercier le client.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais la synthèse des résultats trimestriels dans un document.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Review the authentication patch for security bugs.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Prépare une note de reprise pour la prochaine session de développement.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Liste les agents et vérifie leur configuration.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Vas-y",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "stop flow-lean",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "/flow-lean concise",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    "codex": {
+      "active_skills": 166,
+      "source_fingerprint": "18b9bc33728cbed8f272c50f389f9cd249554d39e47fba0ed135da3beb9fc687",
+      "eligible": true,
+      "global_gate_passed": true,
+      "global": {
+        "TP": 377,
+        "FP": 280,
+        "FN": 18,
+        "precision": 0.573820395738204,
+        "recall": 0.9544303797468354,
+        "f1": 0.7167300380228137
+      },
+      "threshold": {
+        "tau": 9.484968221094771,
+        "TP": 18,
+        "FP": 0,
+        "FN": 1,
+        "precision": 1,
+        "recall": 0.9473684210526315,
+        "f1": 0.972972972972973,
+        "fbeta2": 0.9574468085106381,
+        "n_pos": 19,
+        "n_neg": 23,
+        "status": "ok",
+        "eligible": true,
+        "evaluation": {
+          "TP": 18,
+          "FP": 1,
+          "FN": 1,
+          "TN": 23,
+          "n_pos": 19,
+          "n_neg": 23,
+          "precision": 0.9473684210526315,
+          "recall": 0.9473684210526315,
+          "f1": 0.9473684210526315
+        }
+      },
+      "preview": {
+        "source_skills": 166,
+        "mirrored_skills": 166,
+        "source_fingerprint": "1f81e3626be859dd0910ee7dc9b31d41120210f7fc42e3ae63a487e76d938566"
+      },
+      "results": [
+        {
+          "prompt": "Passe en mode concis, réponse courte et directe",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réduis les output tokens et va droit au but",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Be concise but keep the important caveat",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Use short prose by default, skip the duplicate summary",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Compresse cette archive ZIP sans perte",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais une revue de sécurité complète de cette pull request",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un README détaillé pour cette bibliothèque",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds de façon concise, avec la conclusion dès le début et sans phrases de remplissage.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Please make your answers shorter and put the result first.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean detailed : reprends ton explication, elle est trop raccourcie.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean recap auto, ne répète pas les conclusions à la fin.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean : skills footer status",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un email très bref pour remercier le client.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais la synthèse des résultats trimestriels dans un document.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Review the authentication patch for security bugs.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Prépare une note de reprise pour la prochaine session de développement.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Liste les agents et vérifie leur configuration.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Vas-y",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "stop flow-lean",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "$flow-lean concise",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  },
+  "pass": true
+}

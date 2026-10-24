@@ -30,7 +30,8 @@ WEIGHTS = {
 }
 CONDITIONS = {"baseline", "candidate", "comparator", "generic", "minimal", "v3",
               "v3_without_fidelity", "v3_without_evidence", "v3_without_duration",
-              "v3_without_rollback"}
+              "v3_without_rollback", "pr2_full", "v4", "v4_without_density",
+              "v4_without_scope", "v4_without_format", "v4_without_status"}
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:

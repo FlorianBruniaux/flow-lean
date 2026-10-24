@@ -1,0 +1,235 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "provider_calls": 0,
+  "budget_authorized_usd": 0,
+  "model": "UNSELECTED",
+  "trials": 1,
+  "case_count": 24,
+  "planned_calls": 168,
+  "seed": 20261024,
+  "reference_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+  "pr2_full_commit": "c0ec3cdfdec0143b436a59df5a3584cbd7a801a0",
+  "arms": [
+    "comparator",
+    "pr2_full",
+    "v4",
+    "v4_without_density",
+    "v4_without_scope",
+    "v4_without_format",
+    "v4_without_status"
+  ],
+  "fixed_blocks": [
+    "header",
+    "core",
+    "controls"
+  ],
+  "comparisons": [
+    {
+      "reference": "v4",
+      "candidate": "v4_without_density",
+      "focus_family": "density"
+    },
+    {
+      "reference": "v4",
+      "candidate": "v4_without_scope",
+      "focus_family": "scope"
+    },
+    {
+      "reference": "v4",
+      "candidate": "v4_without_format",
+      "focus_family": "format"
+    },
+    {
+      "reference": "v4",
+      "candidate": "v4_without_status",
+      "focus_family": "status"
+    }
+  ],
+  "groups": {
+    "density": [
+      "new-density-brief",
+      "new-density-detail",
+      "new-density-literals",
+      "new-density-json"
+    ],
+    "scope": [
+      "new-scope-reuse",
+      "new-scope-no-helper",
+      "new-scope-obsolete",
+      "new-scope-retain"
+    ],
+    "format": [
+      "new-format-options",
+      "new-format-single",
+      "new-format-sequence",
+      "new-format-static"
+    ],
+    "status": [
+      "new-status-complete",
+      "new-status-pending",
+      "new-status-limited",
+      "new-status-no-caveat"
+    ],
+    "essential": [
+      "new-actor-permission",
+      "new-actor-promise",
+      "new-diagnostic-ambiguous",
+      "new-diagnostic-proven",
+      "new-isolation-capability",
+      "new-isolation-configured",
+      "new-rollback-trusted",
+      "new-rollback-partial"
+    ]
+  },
+  "historical_groups": {
+    "core": [
+      "speaker-commitment",
+      "rollback-concurrent-edits",
+      "secret-hardcoded-key",
+      "no-invented-fact-useeffect",
+      "debug-spiral-evidence-available",
+      "debug-spiral-missing-info",
+      "requested-detail",
+      "fact-strict-mode-supplied",
+      "fact-bounded-retry-contract",
+      "debug-unauthorized-flag",
+      "debug-protected-evidence-supplied",
+      "destructive-force-push",
+      "format-request-flow",
+      "tradeoff-ssr-ssg",
+      "factual-git-log",
+      "tradeoff-db-choice",
+      "format-validation-compare",
+      "language-btree",
+      "estimate-trpc-migration",
+      "scope-nullable-email",
+      "explain-debounce-throttle",
+      "factual-vitest-single-file",
+      "recap-auto-decisions",
+      "recap-off-actions",
+      "skills-footer-default",
+      "review-depth-auth-migration",
+      "short-status",
+      "simple-choice-prose",
+      "no-automatic-recap",
+      "unknown-scope",
+      "authorized-completion",
+      "comment-obsolete-vs-unrelated",
+      "reuse-existing-helper",
+      "scope-rename-callers"
+    ],
+    "actors": [
+      "speaker-commitment",
+      "actor-reversed-draft",
+      "actor-third-party-fr",
+      "actor-direct-assistant",
+      "actor-separate-delivery",
+      "actor-permission-not-promise",
+      "actor-ambiguous-approval"
+    ],
+    "focus": [
+      "speaker-commitment",
+      "rollback-concurrent-edits",
+      "secret-hardcoded-key",
+      "no-invented-fact-useeffect",
+      "debug-spiral-evidence-available",
+      "debug-spiral-missing-info",
+      "requested-detail",
+      "fact-strict-mode-supplied",
+      "fact-bounded-retry-contract",
+      "debug-unauthorized-flag",
+      "debug-protected-evidence-supplied",
+      "destructive-force-push",
+      "format-request-flow",
+      "tradeoff-ssr-ssg",
+      "actor-reversed-draft",
+      "actor-third-party-fr",
+      "actor-direct-assistant",
+      "actor-separate-delivery",
+      "actor-permission-not-promise",
+      "actor-ambiguous-approval"
+    ],
+    "diagnostic": [
+      "debug-spiral-evidence-available",
+      "debug-spiral-missing-info",
+      "debug-unauthorized-flag",
+      "debug-protected-evidence-supplied"
+    ],
+    "data_isolation": [
+      "tradeoff-db-choice"
+    ],
+    "previous_blockers": [
+      "debug-spiral-missing-info",
+      "tradeoff-db-choice",
+      "actor-reversed-draft",
+      "actor-ambiguous-approval"
+    ]
+  },
+  "historical_confirmation_planned_calls": 80,
+  "historical_confirmation_status": "DEFERRED_UNSELECTED_UNAUTHORIZED",
+  "novelty": "New authored prompts; not previously evaluated here, not an independent holdout.",
+  "instruction_sizes": {
+    "comparator": {
+      "bytes": 16736,
+      "words_whitespace_split": 2577
+    },
+    "pr2_full": {
+      "bytes": 25698,
+      "words_whitespace_split": 3929
+    },
+    "v4": {
+      "bytes": 4861,
+      "words_whitespace_split": 691
+    },
+    "v4_without_density": {
+      "bytes": 4470,
+      "words_whitespace_split": 634
+    },
+    "v4_without_scope": {
+      "bytes": 4399,
+      "words_whitespace_split": 626
+    },
+    "v4_without_format": {
+      "bytes": 4497,
+      "words_whitespace_split": 636
+    },
+    "v4_without_status": {
+      "bytes": 4508,
+      "words_whitespace_split": 638
+    }
+  },
+  "sha256": {
+    "sources/evals/candidates/v4-groups.json": "bc6917d7b12ea2079394036457bc4a8fc43979526faea498e8691f6179889252",
+    "sources/evals/candidates/minimal-v4.md": "2a68e7b3a82e1b931e8dd2ac14f868c4846e11b2917bb9be1c471b87680f39d2",
+    "sources/evals/ablation-v4-cases.jsonl": "9c5c5cca2d5cd924391fc338edeb07e882fcecd6920d0ae0f2d327d38db603aa",
+    "sources/evals/ablation-v4-oracles.json": "bea1a5d79c26b4d5a13afff0a2f7676bf7498f70b400d66b2149cfd7acbc2743",
+    "sources/evals/ABLATION-V4.md": "f979ab1872256c2f782f158d9bc4cf247e6fd1867c733c8e7f1315eb1948ea91",
+    "sources/evals/rubric.md": "eccb855c8330f65a95b568ac17433dc91cb1f42bb637182fe7e68b428d8290da",
+    "sources/scripts/prepare_v4_ablation.py": "6b8f7ef066e511ed6d63a34833842d5453ae291a3fc673cb9d92fa9099dc6a93",
+    "sources/scripts/run_evals.py": "2125580734a509454418e6eec7b5e88b73d28a97b47c97dd6bbfffaed76af0eb",
+    "sources/scripts/eval_runtime.py": "bb1857ce5cf7848435cb9ac67891d02c6828a43feb13c68d0270f088ad116ae2",
+    "sources/tests/test_v4_ablation.py": "006c74348a40bfb51c86d5b2fa9951ee164e660c316facc4e92f8ef25c6efe3b",
+    "sources/skills/flow-lean/SKILL.md": "6f393a7eb7dbb7d99cd048257b7607cac4225a551526aba94c7de68098f21fe5",
+    "sources/skills/flow-lean/evals/scenarios.json": "56ae2829e09543bedad3c074dfaf82771a3a5e83f6b00e40e367936c752bdc6a",
+    "sources/skills/flow-lean/references/rollback.md": "57d6f02cd8c789f5b84828eae383e4fcffa2e38fcc82f80cff523a3dcb3d399d",
+    "sources/skills/flow-lean/scripts/rollback_reference.py": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56",
+    "sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/candidate.md": "6f393a7eb7dbb7d99cd048257b7607cac4225a551526aba94c7de68098f21fe5",
+    "sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/comparator.md": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+    "sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/cases.jsonl": "ab25552be3926956471bb921feb5d282efbb450476cb9df8b2be193f07d9cbd6",
+    "sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/manifest.json": "30946b5263b9eb840eff051b2831da39e2fade861de8d84ad322337d69ebac33",
+    "conditions/comparator.md": "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac",
+    "conditions/pr2_full.md": "6f393a7eb7dbb7d99cd048257b7607cac4225a551526aba94c7de68098f21fe5",
+    "conditions/v4.md": "2a68e7b3a82e1b931e8dd2ac14f868c4846e11b2917bb9be1c471b87680f39d2",
+    "conditions/v4_without_density.md": "2caf45770ade1965a182206f08ee4b76f6853d6cc1a5cacadadb77b4540887e2",
+    "conditions/v4_without_scope.md": "ab87f8af0ccb69972011cab11f04fc9721ea4cf4a158dcbc8c48af7f5ca70088",
+    "conditions/v4_without_format.md": "ddb383d8be30399b1f67dd73355cfedab88b4e61b59202f7c92543af0aa8e348",
+    "conditions/v4_without_status.md": "bea1c4df642e69c8f647d7c35c3289ab26ad41155b8a10e0e0a8d94ff0d80275",
+    "cases.jsonl": "9c5c5cca2d5cd924391fc338edeb07e882fcecd6920d0ae0f2d327d38db603aa",
+    "historical-cases.jsonl": "ab25552be3926956471bb921feb5d282efbb450476cb9df8b2be193f07d9cbd6",
+    "matrix.jsonl": "8285c8b5b51b56ff9c2bf31e0a97c49e782b4fe5558d5a56506de88047810791",
+    "skill/SKILL.md": "2a68e7b3a82e1b931e8dd2ac14f868c4846e11b2917bb9be1c471b87680f39d2",
+    "skill/evals/scenarios.json": "56ae2829e09543bedad3c074dfaf82771a3a5e83f6b00e40e367936c752bdc6a",
+    "skill/references/rollback.md": "57d6f02cd8c789f5b84828eae383e4fcffa2e38fcc82f80cff523a3dcb3d399d",
+    "skill/scripts/rollback_reference.py": "17390bec6fb17ef09df24235e8d61a99073b846f4efc34df27124e93d5b14e56"
+  }
+}

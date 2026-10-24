@@ -1,0 +1,32 @@
+test_preview_replaces_only_copied_skill_and_preserves_live_catalog (test_routing_preview.RoutingPreviewTests) ... FAIL
+
+======================================================================
+FAIL: test_preview_replaces_only_copied_skill_and_preserves_live_catalog (test_routing_preview.RoutingPreviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_routing_preview.py", line 44, in test_preview_replaces_only_copied_skill_and_preserves_live_catalog
+    self.assertEqual(result.returncode,0,result.stderr)
+AssertionError: 1 != 0 : Usage: node scripts/check_routing.cjs ROUTER_ROOT NEW_REPORT_JSON [SKILL_DIRECTORY]
+node:assert:95
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Missing non-mutating catalog preview
++ actual - expected
+
++ 'undefined'
+- 'function'
+
+    at [eval]:4:8
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:446:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:444:60)
+    at evalFunction (node:internal/process/execution:279:30)
+    at evalTypeScript (node:internal/process/execution:291:3)
+    
+
+----------------------------------------------------------------------
+Ran 1 test in 0.057s
+
+FAILED (failures=1)

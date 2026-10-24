@@ -1,0 +1,27 @@
+test_complete_balanced_reproducible_matrix_and_no_execution_authority (test_v4_ablation.AblationPreparationTests) ... ok
+test_existing_destination_and_changed_artifact_are_refused (test_v4_ablation.AblationPreparationTests) ... ok
+test_historical_prompts_preserved_and_novel_pairs_are_distinct (test_v4_ablation.AblationPreparationTests) ... ok
+test_remove_one_group_preserves_common_contract_and_other_groups (test_v4_ablation.AblationPreparationTests) ... ok
+test_reviewer_changes_cannot_change_generation_inputs (test_v4_ablation.AblationPreparationTests) ... ok
+test_scoring_accepts_all_new_conditions_without_provider (test_v4_ablation.AblationPreparationTests) ... ok
+test_windows_checkout_newlines_keep_source_bytes_but_same_instructions (test_v4_ablation.AblationPreparationTests) ... FAIL
+
+======================================================================
+FAIL: test_windows_checkout_newlines_keep_source_bytes_but_same_instructions (test_v4_ablation.AblationPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 113, in test_windows_checkout_newlines_keep_source_bytes_but_same_instructions
+    try:m=p.prepare(out,root=root)
+ValueError: Rendered candidate differs from the canonical group source
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_v4_ablation.py", line 114, in test_windows_checkout_newlines_keep_source_bytes_but_same_instructions
+    except ValueError as exc:self.fail('Equivalent CRLF checkout rejected: '+str(exc))
+AssertionError: Equivalent CRLF checkout rejected: Rendered candidate differs from the canonical group source
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.448s
+
+FAILED (failures=1)
