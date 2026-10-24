@@ -1,0 +1,31 @@
+{
+  "status": "OFFLINE_PASS_QUALIFICATION_NOT_RUN",
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "budget_authorized_usd": 0,
+  "repository_tests": 85,
+  "actor_preparation_test_methods": 5,
+  "case_count": 40,
+  "planned_calls": 80,
+  "core_prompts_changed_since_last_campaign": [],
+  "criteria_strengthened": [
+    "speaker-commitment"
+  ],
+  "frozen_files_verified": 29,
+  "structure_validation": "PASS",
+  "routing": {
+    "claude": {
+      "passed": 22,
+      "total": 22
+    },
+    "codex": {
+      "passed": 22,
+      "total": 22
+    }
+  },
+  "routing_global_f1": 0.7167300380228137,
+  "routing_gate": 0.7,
+  "known_model_blocker": "speaker-commitment",
+  "model_adherence": "NOT_REQUALIFIED",
+  "global_installation": "NOT_PERFORMED"
+}

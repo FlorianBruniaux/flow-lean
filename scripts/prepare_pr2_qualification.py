@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Freeze the 34-case PR #2 requalification offline; never execute a runner."""
+"""Freeze PR #2 qualification offline, optionally adding actor regressions."""
 import argparse
 import hashlib
 import json
@@ -10,7 +10,7 @@ from run_evals import ROOT, load_cases, validate_cases, _condition_prompt
 REFERENCE = "2c368a71ad9dea556986411baae26a0590348a6a"
 REFERENCE_HASH = "b592b638b5c43898463302b8816a1e5019821a373a74d9fa2c36daf8713b4bac"
 PRIOR = "evals/results/pr2-qualification-2026-10-22.manifest.json"
-FOCUS = ["rollback-concurrent-edits", "secret-hardcoded-key", "no-invented-fact-useeffect",
+FOCUS = ["speaker-commitment", "rollback-concurrent-edits", "secret-hardcoded-key", "no-invented-fact-useeffect",
          "debug-spiral-evidence-available", "debug-spiral-missing-info", "requested-detail",
          "fact-strict-mode-supplied", "fact-bounded-retry-contract", "debug-unauthorized-flag",
          "debug-protected-evidence-supplied", "destructive-force-push",
@@ -24,14 +24,16 @@ SOURCES = ["skills/flow-lean/SKILL.md", "evals/cases.jsonl", "evals/pr2-regressi
            "tests/test_reference_rollback.py", "tests/test_git_range_contract.py",
            "evals/PR2-REFERENCE-QUALIFICATION.md", "skills/flow-lean/evals/scenarios.json",
            "scripts/check_routing.cjs", "evals/PR2-CONTRACT-QUALIFICATION.md",
-           "tests/test_pr2_qualification.py"]
+           "tests/test_pr2_qualification.py", "evals/actor-fidelity.jsonl",
+           "evals/actor-fidelity-oracles.json", "tests/test_actor_fidelity.py",
+           "evals/PR2-ACTOR-QUALIFICATION.md"]
 
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def cases_for_qualification(*, with_rollback_reference=False):
+def cases_for_qualification(*, with_rollback_reference=False, with_actor_regressions=False):
     cases = {}
     for name in ("evals/cases.jsonl", "evals/pr2-regressions.jsonl"):
         for row in load_cases(ROOT / name):
@@ -51,6 +53,17 @@ def cases_for_qualification(*, with_rollback_reference=False):
         cases[row["id"]] = row
     if len(cases) != 34 or not set(FOCUS) <= set(cases):
         raise ValueError("Expected the prepared 34 cases and all focus cases")
+    actor_ids = []
+    if with_actor_regressions:
+        actors = load_cases(ROOT / "evals/actor-fidelity.jsonl")
+        errors = validate_cases(actors)
+        if errors or len(actors) != 6:
+            raise ValueError("Expected six valid actor regressions: " + "; ".join(errors))
+        for row in actors:
+            if row['id'] in cases:
+                raise ValueError("Actor regression shadows a core case: " + row['id'])
+            cases[row['id']] = row
+            actor_ids.append(row['id'])
     if with_rollback_reference:
         # Equal task-side resource access for both arms in this text-only runner.
         # This changes one task prompt: never compare its result as an unassisted rerun.
@@ -63,15 +76,20 @@ def cases_for_qualification(*, with_rollback_reference=False):
             "in the hypothetical environment. Do not claim to have run it.\n\n"
             "<supplied_reference_contract>\n" + contract + "\n</supplied_reference_contract>\n"
             "<supplied_reference_code>\n```python\n" + reference + "```\n</supplied_reference_code>")
-    ordered = [cases[cid] for cid in FOCUS] + [c for cid, c in cases.items() if cid not in FOCUS]
+    focus = FOCUS + actor_ids
+    ordered = [cases[cid] for cid in focus] + [c for cid, c in cases.items() if cid not in focus]
     errors = validate_cases(ordered)
     if errors:
         raise ValueError("; ".join(errors))
     return ordered
 
 
-def prepare(output, *, with_rollback_reference=False):
-    cases = cases_for_qualification(with_rollback_reference=with_rollback_reference)
+def prepare(output, *, with_rollback_reference=False, with_actor_regressions=False):
+    cases = cases_for_qualification(with_rollback_reference=with_rollback_reference,
+                                   with_actor_regressions=with_actor_regressions)
+    core_ids = [c['id'] for c in cases_for_qualification()]
+    actor_ids = [c['id'] for c in cases if c['id'] not in core_ids]
+    focus = FOCUS + actor_ids
     prior = json.loads((ROOT / PRIOR).read_text(encoding="utf-8"))
     comparator = prior["conditions"]["comparator"]["instructions"]
     if sha(comparator.encode()) != REFERENCE_HASH:
@@ -80,7 +98,7 @@ def prepare(output, *, with_rollback_reference=False):
                     "candidate": (ROOT / SOURCES[0]).read_text(encoding="utf-8")}
     rows = []
     for index, case in enumerate(cases):
-        # Balance first/second position: 17 pairs each. Not an independent holdout.
+        # Balance first/second position across pairs. Not an independent holdout.
         arms = ("comparator", "candidate") if index % 2 == 0 else ("candidate", "comparator")
         for arm in arms:
             prompt = _condition_prompt(case["prompt"], arm, instructions[arm])
@@ -98,8 +116,11 @@ def prepare(output, *, with_rollback_reference=False):
                 "modified_prompt_case_ids": ["rollback-concurrent-edits"] if with_rollback_reference else [],
                 "resource_delivery": "Same rollback code and contract in both task prompts" if with_rollback_reference else "No bundled resource text supplied",
                 "model": "UNSELECTED", "case_count": len(cases), "trials": 1,
-                "planned_calls": len(rows), "focus_cases": FOCUS,
-                "order": "Focus first; alternate first condition across pairs (17 each)",
+                "planned_calls": len(rows), "focus_cases": focus,
+                "actor_regressions": with_actor_regressions,
+                "groups": {"core": core_ids, "actors": ["speaker-commitment"] + actor_ids,
+                           "focus": focus},
+                "order": f"Focus first; alternate first condition across pairs ({len(cases) // 2} each)",
                 "execution": "Plan only; after authorization use --next-case in matrix order, one shared ledger",
                 "sha256": {name: sha(data) for name, data in files.items()}}
     output = Path(output)
@@ -117,8 +138,11 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--with-rollback-reference", action="store_true",
                         help="Supply the same rollback reference to both arms; changes that task prompt")
+    parser.add_argument("--with-actor-regressions", action="store_true",
+                        help="Add six actor cases to the unchanged 34 core prompts; 80 planned responses")
     args = parser.parse_args()
-    result = prepare(args.output, with_rollback_reference=args.with_rollback_reference)
+    result = prepare(args.output, with_rollback_reference=args.with_rollback_reference,
+                     with_actor_regressions=args.with_actor_regressions)
     print(json.dumps({key: result[key] for key in ("status", "provider_calls", "case_count", "planned_calls")}))
 
 

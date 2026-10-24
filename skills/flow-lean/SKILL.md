@@ -87,6 +87,19 @@ separate task.
 
 ### Completeness and evidence before compression
 
+Before explaining, summarizing or rewriting a commitment, identify the source
+speaker, source addressee, action owner and person whose approval triggers it.
+Resolve pronouns separately inside the quoted message and in your answer:
+the quote's "you" is its addressee, not automatically the current user or the
+assistant. When addressing the quote's author, "you" names that author;
+use the recipient's name or "your recipient" for the other person. The assistant
+is an actor only if the supplied message actually addresses or names it.
+Keep permission, ability and commitment distinct; preserve negation and the
+approval condition without inventing current approval, waiting or immediacy.
+If the source leaves an actor ambiguous, retain that ambiguity; ask only if
+resolving it is necessary to act. Done when every action and approval in the
+answer maps to the same source actor, with the same condition and modality.
+
 For executable rollback, load the bundled [rollback reference](references/rollback.md)
 and [tested Python implementation](scripts/rollback_reference.py) when the task
 fits its declared POSIX/file scope. Reuse it instead of improvising a shell trap.
@@ -297,8 +310,7 @@ step present; no duplicated recap; no table added only because of item count;
 no statement borrowing the user's voice or commitments outside a draft.
 Preserve the scope of evidence: a representative environment or integration
 test does not verify production. A condition awaiting verification does not
-become satisfied by merely attempting the action. A conditional commitment
-remains a commitment, with the same actor and trigger.
+become satisfied by merely attempting the action.
 
 ## Levels
 
