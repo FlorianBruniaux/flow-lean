@@ -1,0 +1,38 @@
+test_plain_foreign_key_accepts_cross_tenant_reference (test_guardrail_preparation.DataIsolationCounterexamples) ... ok
+test_tenant_aware_key_blocks_cross_tenant_reference_but_not_reads (test_guardrail_preparation.DataIsolationCounterexamples) ... ok
+test_failure_fixtures_are_exact_receipts_not_authored_model_outputs (test_guardrail_preparation.GuardrailPreparationTests) ... FAIL
+test_review_groups_and_evidence_are_frozen_without_prompt_leakage (test_guardrail_preparation.GuardrailPreparationTests) ... FAIL
+test_same_40_tasks_with_only_four_strengthened_criteria (test_guardrail_preparation.GuardrailPreparationTests) ... FAIL
+
+======================================================================
+FAIL: test_failure_fixtures_are_exact_receipts_not_authored_model_outputs (test_guardrail_preparation.GuardrailPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_guardrail_preparation.py", line 60, in test_failure_fixtures_are_exact_receipts_not_authored_model_outputs
+    self.assertTrue(path.is_file(), 'Missing reviewer fixtures for four observed failures')
+AssertionError: False is not true : Missing reviewer fixtures for four observed failures
+
+======================================================================
+FAIL: test_review_groups_and_evidence_are_frozen_without_prompt_leakage (test_guardrail_preparation.GuardrailPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_guardrail_preparation.py", line 39, in test_review_groups_and_evidence_are_frozen_without_prompt_leakage
+    self.assertIn('previous_blockers', groups)
+AssertionError: 'previous_blockers' not found in {'core': ['speaker-commitment', 'rollback-concurrent-edits', 'secret-hardcoded-key', 'no-invented-fact-useeffect', 'debug-spiral-evidence-available', 'debug-spiral-missing-info', 'requested-detail', 'fact-strict-mode-supplied', 'fact-bounded-retry-contract', 'debug-unauthorized-flag', 'debug-protected-evidence-supplied', 'destructive-force-push', 'format-request-flow', 'tradeoff-ssr-ssg', 'factual-git-log', 'tradeoff-db-choice', 'format-validation-compare', 'language-btree', 'estimate-trpc-migration', 'scope-nullable-email', 'explain-debounce-throttle', 'factual-vitest-single-file', 'recap-auto-decisions', 'recap-off-actions', 'skills-footer-default', 'review-depth-auth-migration', 'short-status', 'simple-choice-prose', 'no-automatic-recap', 'unknown-scope', 'authorized-completion', 'comment-obsolete-vs-unrelated', 'reuse-existing-helper', 'scope-rename-callers'], 'actors': ['speaker-commitment', 'actor-reversed-draft', 'actor-third-party-fr', 'actor-direct-assistant', 'actor-separate-delivery', 'actor-permission-not-promise', 'actor-ambiguous-approval'], 'focus': ['speaker-commitment', 'rollback-concurrent-edits', 'secret-hardcoded-key', 'no-invented-fact-useeffect', 'debug-spiral-evidence-available', 'debug-spiral-missing-info', 'requested-detail', 'fact-strict-mode-supplied', 'fact-bounded-retry-contract', 'debug-unauthorized-flag', 'debug-protected-evidence-supplied', 'destructive-force-push', 'format-request-flow', 'tradeoff-ssr-ssg', 'actor-reversed-draft', 'actor-third-party-fr', 'actor-direct-assistant', 'actor-separate-delivery', 'actor-permission-not-promise', 'actor-ambiguous-approval']}
+
+======================================================================
+FAIL: test_same_40_tasks_with_only_four_strengthened_criteria (test_guardrail_preparation.GuardrailPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_guardrail_preparation.py", line 32, in test_same_40_tasks_with_only_four_strengthened_criteria
+    self.assertEqual(changed, BLOCKERS)
+AssertionError: Items in the second set but not the first:
+'actor-reversed-draft'
+'actor-ambiguous-approval'
+'tradeoff-db-choice'
+'debug-spiral-missing-info'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.022s
+
+FAILED (failures=3)

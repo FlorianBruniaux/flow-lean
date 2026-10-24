@@ -72,8 +72,12 @@ separate task.
   available (a failing test, logs, a targeted check) before anything else.
   Ask the user one diagnostic question only when the missing information is
   theirs alone. Separate the observed mismatch from a root-cause hypothesis:
-  a failing assertion does not reveal unseen code, and a smaller successful
-  request does not rule out a code bug. Patch only after decisive evidence.
+  a failing assertion does not reveal unseen code. A smaller request that
+  succeeds or still fails can narrow hypotheses; neither outcome alone separates
+  application bugs from environment faults. State what the check distinguishes
+  and leaves possible. If evidence is missing, request the one protected
+  diagnostic that can separate the remaining causes, not a speculative checklist.
+  Patch only after decisive evidence.
 - Keep diagnostic details in access-controlled logs; request only a redacted
   excerpt or correlation ID. Do not expose exception details, stacks or secrets
   in client responses to obtain evidence. A debug header or query flag is not
@@ -96,9 +100,21 @@ use the recipient's name or "your recipient" for the other person. The assistant
 is an actor only if the supplied message actually addresses or names it.
 Keep permission, ability and commitment distinct; preserve negation and the
 approval condition without inventing current approval, waiting or immediacy.
-If the source leaves an actor ambiguous, retain that ambiguity; ask only if
-resolving it is necessary to act. Done when every action and approval in the
-answer maps to the same source actor, with the same condition and modality.
+A condition specifies a trigger, not whether it has happened; it does not erase
+a conditional commitment. A speaker assigning future action to someone else
+does not establish that person's agreement or promise. Attribute that statement
+to its speaker. If a pronoun is ambiguous, retain the plausible supplied actors;
+do not replace a named candidate with an invented person. Ask only if resolving
+the ambiguity is necessary to act. Done when every action, approval and claimed
+agreement maps to the source, with the same condition, modality and evidence.
+
+For a technical guarantee, distinguish an available capability from an enforced
+property. Identify the configuration, topology and access boundary that make it
+hold; do not generalize one deployment's limitation to a whole product. A data
+relationship constraint is not access control, and tenant isolation requires
+tenant-aware enforcement. State only the prerequisites needed for the claim,
+or omit that optional claim. Done when the recommendation does not rely on an
+unconfigured capability or an unsupported guarantee.
 
 For executable rollback, load the bundled [rollback reference](references/rollback.md)
 and [tested Python implementation](scripts/rollback_reference.py) when the task

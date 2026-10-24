@@ -74,10 +74,10 @@ class QualificationPreparationTests(unittest.TestCase):
             self.assertEqual(case['criteria'][:len(old['criteria'])], old['criteria'])
 
     def test_prior_campaign_prompts_and_criteria_remain_comparable(self):
-        prior_path = ROOT / 'evals/results/pr2-contract-qualification-2026-10-24-evidence/cases.jsonl'
+        prior_path = ROOT / 'evals/results/pr2-actor-qualification-2026-10-24-evidence/cases.jsonl'
         prior = {c['id']: c for c in load_cases(prior_path)}
         current = {c['id']: c for c in cases_for_qualification(with_rollback_reference=True)}
-        self.assertEqual(set(current), set(prior))
+        self.assertEqual(set(current), {cid for cid in prior if not cid.startswith('actor-')})
         changed_prompts, changed_criteria = [], []
         for cid, case in current.items():
             old = prior[cid]
@@ -85,7 +85,7 @@ class QualificationPreparationTests(unittest.TestCase):
             if case['prompt'] != old['prompt']: changed_prompts.append(cid)
             if case['criteria'] != old['criteria']: changed_criteria.append(cid)
         self.assertEqual(changed_prompts, [])
-        self.assertEqual(changed_criteria, ['speaker-commitment'])
+        self.assertEqual(set(changed_criteria), {'debug-spiral-missing-info', 'tradeoff-db-choice'})
 
     def test_changed_prompt_or_weakened_criteria_is_rejected(self):
         real_load = load_cases

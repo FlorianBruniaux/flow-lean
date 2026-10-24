@@ -1,0 +1,26 @@
+# PR #2: four guardrail corrections prepared, no model run
+
+**PREPARED_NOT_RUN.** The canonical repository skill now addresses the four failures from the [last qualification](pr2-actor-qualification-2026-10-24.md). That campaign remains failed. Model adherence to this revision is unverified; no merge or global installation follows from the offline checks.
+
+The diagnostic instruction now rejects both directions of the false inference: a tiny upload succeeding or failing does not by itself separate an application defect from an environment fault. It asks for one protected discriminating diagnostic. Technical recommendations must distinguish a capability from a configured guarantee and preserve topology and access boundaries. The actor instruction retains the difference between a conditional statement and current approval, and between assigning action to a recipient and that recipient agreeing. Ambiguous references retain the plausible supplied actors.
+
+Only four sets of evaluation criteria change. All 40 task prompts, categories, risks and order are identical to the prior campaign; earlier criteria remain as ordered prefixes. Reviewer-only fixtures include the exact four failed responses with source hashes, authored passing examples, causal contrasts and actor maps. They do not enter either condition's generation prompt.
+
+## Offline evidence
+
+- **91 tests pass** in the final full run on Python 3.9.6. Six tests were added: preservation of the 40-case comparison, review grouping/source freeze, historical response provenance, reviewer-answer mutation without generation leakage, and two executable relational counterexamples. The existing prior-campaign test now compares against the latest actor campaign.
+- **SQLite counterexamples pass:** an ordinary foreign key accepts a cross-tenant reference; a tenant-aware non-null composite key rejects it. That composite constraint still does not restrict reads. These checks establish the limits of the supplied examples, not PostgreSQL/MongoDB/RLS deployment behavior. Primary documentation and its checked date are recorded in the [review fixtures](../guardrail-review-fixtures.json).
+- **Claude Code and Codex routing:** 22/22 probes per client, eligible in both catalogs, global gate passes (F1 0.7167300380). Disposable projections resolve the same skill and bundled resources. These are development probes, not independent holdout or native model invocation checks. Global indexes and installations were not changed.
+- **Skill structure passes**, all 40 cases validate, all 32 frozen file hashes match their sources. The prior campaign's evidence verifier and nine evidence checks (valid evidence plus eight corruption refusals) pass without rerunning a model or executing generated scripts.
+
+The first full suite had one error in `test_remote_only_direction_and_recovery_ref` after its assertions: temporary `.git` directory cleanup returned `OSError: [Errno 66] Directory not empty`. The isolated test and final full suite passed on rerun. The cause is UNKNOWN; no speculative Git/test workaround was added. The [first log](pr2-guardrail-preparation-2026-10-24-tests.txt) is retained alongside the [final passing log](pr2-guardrail-preparation-2026-10-24-tests-final.txt). The separate [red test log](pr2-guardrail-preparation-2026-10-24-red-test.txt) records three expected preparation failures before implementation.
+
+## Frozen next qualification
+
+[Plan manifest](pr2-guardrail-preparation-2026-10-24-plan/manifest.json): **40 cases × 2 conditions × 1 trial = 80 planned responses**, alternating first condition 20/20. Candidate SHA-256: `6f393a7eb7dbb7d99cd048257b7607cac4225a551526aba94c7de68098f21fe5`. Comparator remains main `2c368a71ad9dea556986411baae26a0590348a6a`. Source provenance is the commit containing this report plus the manifest's file hashes.
+
+Groups retain the original core (34), actors (7) and focus (20), with diagnostic (4), data isolation (1) and previous blockers (4) recorded separately. These groups overlap. [The protocol](../PR2-GUARDRAIL-QUALIFICATION.md) keeps separate full/core numerical gates and requires zero candidate blockers; improvement on the four targeted cases alone cannot qualify the PR.
+
+Model `UNSELECTED`, provider calls **0**, authorized budget **$0**. A new explicit authorization is required before any model run. The existing rollback source and shared task resource remain unchanged. Complete native prompt isolation remains UNKNOWN, and future same-agent grading must not be called independent. No quality or cost improvement is claimed from these offline results. Remote CI is checked after publication; its exact commit/run result belongs to the PR update.
+
+Additional evidence: [checks](pr2-guardrail-preparation-2026-10-24-checks.json), [routing](pr2-guardrail-preparation-2026-10-24-routing.json), [prior verification](pr2-guardrail-preparation-2026-10-24-prior-verification.json), [evidence corruption checks](pr2-guardrail-preparation-2026-10-24-prior-corruption-checks.json).

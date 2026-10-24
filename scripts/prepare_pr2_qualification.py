@@ -26,7 +26,8 @@ SOURCES = ["skills/flow-lean/SKILL.md", "evals/cases.jsonl", "evals/pr2-regressi
            "scripts/check_routing.cjs", "evals/PR2-CONTRACT-QUALIFICATION.md",
            "tests/test_pr2_qualification.py", "evals/actor-fidelity.jsonl",
            "evals/actor-fidelity-oracles.json", "tests/test_actor_fidelity.py",
-           "evals/PR2-ACTOR-QUALIFICATION.md"]
+           "evals/PR2-ACTOR-QUALIFICATION.md", "evals/guardrail-review-fixtures.json",
+           "evals/PR2-GUARDRAIL-QUALIFICATION.md", "tests/test_guardrail_preparation.py"]
 
 
 def sha(data):
@@ -119,7 +120,13 @@ def prepare(output, *, with_rollback_reference=False, with_actor_regressions=Fal
                 "planned_calls": len(rows), "focus_cases": focus,
                 "actor_regressions": with_actor_regressions,
                 "groups": {"core": core_ids, "actors": ["speaker-commitment"] + actor_ids,
-                           "focus": focus},
+                           "focus": focus,
+                           "diagnostic": ["debug-spiral-evidence-available", "debug-spiral-missing-info",
+                                          "debug-unauthorized-flag", "debug-protected-evidence-supplied"],
+                           "data_isolation": ["tradeoff-db-choice"],
+                           "previous_blockers": [cid for cid in ("debug-spiral-missing-info", "tradeoff-db-choice",
+                                                   "actor-reversed-draft", "actor-ambiguous-approval")
+                                                 if cid in core_ids or cid in actor_ids]},
                 "order": f"Focus first; alternate first condition across pairs ({len(cases) // 2} each)",
                 "execution": "Plan only; after authorization use --next-case in matrix order, one shared ledger",
                 "sha256": {name: sha(data) for name, data in files.items()}}
