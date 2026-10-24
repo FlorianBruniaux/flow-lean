@@ -1,0 +1,171 @@
+evals/results/pr2-actor-qualification-2026-10-24.md
+  s_67362ad3557062::t_3d16dc661be1ec 1-65
+evals/PR2-ACTOR-QUALIFICATION.md
+  s_67362ad3557062::t_f9fb37732337e9 3
+evals/README.md
+  s_67362ad3557062::t_5cbca8e89a0853 50-51
+evals/results/pr2-actor-qualification-2026-10-24-check-evidence.py
+  s_67362ad3557062::t_ac237cfc8c9968 1-39
+evals/results/pr2-actor-qualification-2026-10-24-evidence-checks.json
+  s_67362ad3557062::t_270deb5c6b6be1 1-49
+evals/results/pr2-actor-qualification-2026-10-24-evidence/actor-audit-blind.json
+  s_67362ad3557062::t_d1ef3fbbb09586 1-151
+evals/results/pr2-actor-qualification-2026-10-24-evidence/artifact-hashes.json
+  s_67362ad3557062::t_fa026bcdc13436 1-70
+evals/results/pr2-actor-qualification-2026-10-24-evidence/authorization.json
+  s_67362ad3557062::t_57bdffcce4e0fa 1-17
+evals/results/pr2-actor-qualification-2026-10-24-evidence/blind-key.json
+  s_67362ad3557062::t_b71f5fe87055bd 1-165
+evals/results/pr2-actor-qualification-2026-10-24-evidence/candidate.md
+  s_67362ad3557062::t_569f27f1e98a35 1-399
+evals/results/pr2-actor-qualification-2026-10-24-evidence/cases.jsonl
+  s_67362ad3557062::t_99f5d1f38aee96 1-40
+evals/results/pr2-actor-qualification-2026-10-24-evidence/check_generated.py
+  s_67362ad3557062::t_af0f6347883bde 1-37
+evals/results/pr2-actor-qualification-2026-10-24-evidence/comparator.md
+  s_67362ad3557062::t_f66e25edc6cd8a 1-299
+evals/results/pr2-actor-qualification-2026-10-24-evidence/execute.py
+  s_67362ad3557062::t_f8bdd967e78dd0 1-45
+evals/results/pr2-actor-qualification-2026-10-24-evidence/execution.log
+  s_67362ad3557062::t_2b697e089db718 1-161
+evals/results/pr2-actor-qualification-2026-10-24-evidence/exit-contract-probe.json
+  s_67362ad3557062::t_086485318e1284 1-52
+evals/results/pr2-actor-qualification-2026-10-24-evidence/fact-audit-blind.json
+  s_67362ad3557062::t_93e65c3eef3b31 1-529
+evals/results/pr2-actor-qualification-2026-10-24-evidence/grade_helpers.py
+  s_67362ad3557062::t_22d6826dbabbb3 1-20
+evals/results/pr2-actor-qualification-2026-10-24-evidence/grades-blind.jsonl
+  s_67362ad3557062::t_121dd7e6e9a8b9 1-80
+evals/results/pr2-actor-qualification-2026-10-24-evidence/grading-freeze.json
+  s_67362ad3557062::t_a4937206cdb0b1 1-8
+evals/results/pr2-actor-qualification-2026-10-24-evidence/initialization-audit.json
+  s_67362ad3557062::t_42fad35240f5b3 1-25
+evals/results/pr2-actor-qualification-2026-10-24-evidence/manifest.json
+  s_67362ad3557062::t_5ae879228bc82f 1-141
+evals/results/pr2-actor-qualification-2026-10-24-evidence/matrix.jsonl
+  s_67362ad3557062::t_855567d7cf3a97 1-80
+evals/results/pr2-actor-qualification-2026-10-24-evidence/postimage-input-probe.json
+  s_67362ad3557062::t_06b0e1ed33333b 1-83
+evals/results/pr2-actor-qualification-2026-10-24-evidence/probe_exit_contract.py
+  s_67362ad3557062::t_c813141be9b26f 1-40
+evals/results/pr2-actor-qualification-2026-10-24-evidence/probe_postimage_inputs.py
+  s_67362ad3557062::t_d81514e99ba26e 1-24
+evals/results/pr2-actor-qualification-2026-10-24-evidence/publish_scores.py
+  s_67362ad3557062::t_738427fd398465 1-18
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_audits.py
+  s_67362ad3557062::t_ee23cfbb5be999 1-66
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_01.py
+  s_67362ad3557062::t_9778755d20ec02 1-4
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_02.py
+  s_67362ad3557062::t_b0d7923d4aa350 1-4
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_03.py
+  s_67362ad3557062::t_89add0d97af3c8 1-6
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_04.py
+  s_67362ad3557062::t_d6e50ef96cadb8 1-6
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_05.py
+  s_67362ad3557062::t_bd869425c857c8 1-8
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_06.py
+  s_67362ad3557062::t_8cce13edef1bec 1-10
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_07.py
+  s_67362ad3557062::t_876716ac764d29 1-16
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_08.py
+  s_67362ad3557062::t_73733d63f5d781 1-22
+evals/results/pr2-actor-qualification-2026-10-24-evidence/record_grades_09.py
+  s_67362ad3557062::t_cab5e54e0e9c7b 1-22
+evals/results/pr2-actor-qualification-2026-10-24-evidence/review.py
+  s_67362ad3557062::t_824b7409133f6a 1-29
+evals/results/pr2-actor-qualification-2026-10-24-evidence/rollback-A-adapter.json
+  s_67362ad3557062::t_3ff4bc8ef22271 1-25
+evals/results/pr2-actor-qualification-2026-10-24-evidence/rollback-A-report.json
+  s_67362ad3557062::t_0ca7e128d2b6ca 1-2165
+evals/results/pr2-actor-qualification-2026-10-24-evidence/rollback-A.py
+  s_67362ad3557062::t_34d31278740aca 1-194
+evals/results/pr2-actor-qualification-2026-10-24-evidence/rollback-B-adapter.json
+  s_67362ad3557062::t_0c566130790298 1-25
+evals/results/pr2-actor-qualification-2026-10-24-evidence/rollback-B-report.json
+  s_67362ad3557062::t_3900a6dbf20768 1-2165
+evals/results/pr2-actor-qualification-2026-10-24-evidence/rollback-B.py
+  s_67362ad3557062::t_41b43487daaba6 1-194
+evals/results/pr2-actor-qualification-2026-10-24-evidence/runner.json
+  s_67362ad3557062::t_ee55ca956f778b 1-31
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/PR2-ACTOR-QUALIFICATION.md
+  s_67362ad3557062::t_7951402ccc66e7 1-45
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/PR2-CONTRACT-QUALIFICATION.md
+  s_67362ad3557062::t_c5d255da0887b6 1-43
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/PR2-REFERENCE-QUALIFICATION.md
+  s_67362ad3557062::t_d6ab17d74136f6 1-38
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/PR2-REQUALIFICATION.md
+  s_67362ad3557062::t_74f2461ae7f4a5 1-90
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/ROLLBACK-CHECKS.md
+  s_67362ad3557062::t_4a736b71ed0f11 1-128
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/actor-fidelity-oracles.json
+  s_67362ad3557062::t_f5c3301640e1fb 1-93
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/actor-fidelity.jsonl
+  s_67362ad3557062::t_c479525f65ce62 1-6
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/cases.jsonl
+  s_67362ad3557062::t_7127b1ffa4b833 1-30
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/pr2-regressions.jsonl
+  s_67362ad3557062::t_a2975c51200f70 1-6
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_42bc0585532d88 1-9
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/rubric.md
+  s_67362ad3557062::t_bf2bbb48403376 1-79
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/evals/runners.example.json
+  s_67362ad3557062::t_0fc77ddbfffd8d 1-30
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/scripts/check_rollback.py
+  s_67362ad3557062::t_d3e80460baabb7 1-269
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/scripts/check_routing.cjs
+  s_67362ad3557062::t_e0c7470ad414b4 1-105
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/scripts/eval_runtime.py
+  s_67362ad3557062::t_dcd0a74293329f 1-243
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_e736a344480b05 1-150
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/scripts/run_evals.py
+  s_67362ad3557062::t_aa84bf23b05711 1-326
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_c19f32898b0f39 1-399
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/skills/flow-lean/evals/scenarios.json
+  s_67362ad3557062::t_c13c92c4f1d299 1-49
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/skills/flow-lean/references/rollback.md
+  s_67362ad3557062::t_889b1d6ecde458 1-27
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/skills/flow-lean/scripts/rollback_reference.py
+  s_67362ad3557062::t_8c308198370677 1-194
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/tests/test_actor_fidelity.py
+  s_67362ad3557062::t_9ca0b47545ad27 1-107
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/tests/test_git_range_contract.py
+  s_67362ad3557062::t_2167b67314e157 1-30
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/tests/test_pr2_qualification.py
+  s_67362ad3557062::t_9e3828267399bf 1-109
+evals/results/pr2-actor-qualification-2026-10-24-evidence/sources/tests/test_reference_rollback.py
+  s_67362ad3557062::t_6d17d02de84afc 1-281
+evals/results/pr2-actor-qualification-2026-10-24-scores.jsonl
+  s_67362ad3557062::t_85526467f2da5f 1-80
+evals/results/pr2-actor-qualification-2026-10-24-suite.txt
+  s_67362ad3557062::t_752481526fbe45 1-90
+evals/results/pr2-actor-qualification-2026-10-24-summary.json
+  s_67362ad3557062::t_3627210bfae88c 1-480
+evals/results/pr2-actor-qualification-2026-10-24-verify.py
+  s_67362ad3557062::t_01951b0b3ea684 1-194
+evals/results/pr2-actor-qualification-2026-10-24.jsonl
+  s_67362ad3557062::t_f4c19c07bd73ec 1-80
+evals/results/pr2-actor-qualification-2026-10-24.jsonl.attempts.jsonl
+  s_67362ad3557062::t_86067d3fd05c09 1-160
+evals/results/pr2-actor-qualification-2026-10-24.jsonl.manifest.json
+  s_67362ad3557062::t_c7c1dc28232c13 1-536
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "53c1d8208b68368e5a6f460ae97367601a63a737",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
