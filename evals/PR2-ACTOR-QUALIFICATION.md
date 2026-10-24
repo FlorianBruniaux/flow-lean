@@ -1,6 +1,6 @@
 # PR #2 actor-fidelity qualification preparation
 
-**PREPARED_NOT_RUN. Zero provider calls and zero authorized budget.** The last [completed campaign](results/pr2-contract-qualification-2026-10-24.md) remains failed with one candidate blocker. The new instruction and evaluation material do not establish improved model adherence. No merge or global installation follows from this preparation.
+**Preparation record; execution completed under a later authorization.** The [80-response campaign](results/pr2-actor-qualification-2026-10-24.md) cost $2.767168 reported and failed both the full and original-core gates. The frozen plan below had zero provider calls and zero authorized budget; it remains preserved unchanged. The preceding [34-case campaign](results/pr2-contract-qualification-2026-10-24.md) failed with one candidate blocker. The new instruction and evaluation material do not establish improved model adherence. No merge or global installation follows from this preparation.
 
 ## Change and cases
 
