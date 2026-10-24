@@ -1,0 +1,123 @@
+scripts/prepare_v4_ablation.py
+  s_67362ad3557062::t_3ebb8d2deca7d6 21
+evals/ABLATION-V4.md
+  s_67362ad3557062::t_3ebb8d2deca7d6 52-61
+tests/test_git_range_contract.py
+  s_67362ad3557062::t_56ddf4ad66203b 3,13-16,18-19
+tests/test_v4_ablation.py
+  s_67362ad3557062::t_c6fd23e47965c1 101
+  s_67362ad3557062::t_7b1fe278abcc80 7,93-100,102-107
+  s_ab608404793925::t_0cabba22b792a5 108
+evals/README.md
+  s_67362ad3557062::t_214481b2973f23 268-289,304-309
+evals/results/pr2-editorial-finalization-2026-10-24.json
+  s_67362ad3557062::t_100942829c367f 1-36
+evals/results/pr2-finalization-2026-10-24.md
+  s_67362ad3557062::t_bcc1fad0055d3b 1-29
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/cases.jsonl
+  s_67362ad3557062::t_8637578a43572e 1-24
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/comparator.md
+  s_67362ad3557062::t_60961eb89fe7bc 1-299
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/pr2_full.md
+  s_67362ad3557062::t_e0dcd2f86908c1 1-415
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/v4.md
+  s_67362ad3557062::t_db5cc11f1e7cf6 1-42
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/v4_without_density.md
+  s_67362ad3557062::t_0161a6654cfd33 1-38
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/v4_without_format.md
+  s_67362ad3557062::t_eeac1555ae34d8 1-38
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/v4_without_scope.md
+  s_67362ad3557062::t_9171f5790c7b2d 1-38
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/conditions/v4_without_status.md
+  s_67362ad3557062::t_638c2a73df03c4 1-38
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/historical-cases.jsonl
+  s_67362ad3557062::t_d6094d0a7a4984 1-40
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/manifest.json
+  s_67362ad3557062::t_d12a9f7c83a318 1-240
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/matrix.jsonl
+  s_67362ad3557062::t_c17632bfd1bbbf 1-168
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/skill/SKILL.md
+  s_67362ad3557062::t_f980b11f08e0ca 1-42
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/skill/evals/scenarios.json
+  s_67362ad3557062::t_78ade7153ec5ef 1-49
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/skill/references/rollback.md
+  s_67362ad3557062::t_b977f342beebc4 1-27
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/skill/scripts/rollback_reference.py
+  s_67362ad3557062::t_c077c8f6a45b62 1-194
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/.gitattributes
+  s_67362ad3557062::t_1770bf48e490bc 1-3
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/ABLATION-V4.md
+  s_67362ad3557062::t_4460691c2d4384 1-66
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/ablation-v4-cases.jsonl
+  s_67362ad3557062::t_15589607f2d9ee 1-24
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/ablation-v4-oracles.json
+  s_67362ad3557062::t_faa0510f71fd95 1-132
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/candidates/minimal-v4.md
+  s_67362ad3557062::t_5acf5634f43b1b 1-42
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/candidates/v4-groups.json
+  s_67362ad3557062::t_2a9685bd779ce3 1-24
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/candidate.md
+  s_67362ad3557062::t_6eafa59b96a3e1 1-415
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/cases.jsonl
+  s_67362ad3557062::t_ebfe874de6161c 1-40
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/comparator.md
+  s_67362ad3557062::t_8e5130bedf8c32 1-299
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/results/pr2-guardrail-qualification-2026-10-24-evidence/manifest.json
+  s_67362ad3557062::t_96c77905840cfb 1-160
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/evals/rubric.md
+  s_67362ad3557062::t_7f4b383254d5b6 1-79
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/scripts/check_routing.cjs
+  s_67362ad3557062::t_9f3ee5b530496e 1-149
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/scripts/editorial.py
+  s_67362ad3557062::t_faf9488c3d4222 1-82
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/scripts/eval_runtime.py
+  s_67362ad3557062::t_87500a8417207f 1-243
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/scripts/prepare_v4_ablation.py
+  s_67362ad3557062::t_c41e89ee4512e0 1-173
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/scripts/run_evals.py
+  s_67362ad3557062::t_8d677741c65dac 1-359
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_7e0b5624f0a598 1-415
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/skills/flow-lean/evals/scenarios.json
+  s_67362ad3557062::t_56703d90195621 1-49
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/skills/flow-lean/references/rollback.md
+  s_67362ad3557062::t_6dc2914e265e7c 1-27
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/skills/flow-lean/scripts/rollback_reference.py
+  s_67362ad3557062::t_b9e8d379355e61 1-194
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/tests/test_editorial.py
+  s_67362ad3557062::t_37bf61389997cd 1-102
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/tests/test_routing_preview.py
+  s_67362ad3557062::t_8b13dcddf9e885 1-47
+evals/results/pr2-v4-ablation-finalization-2026-10-24-plan/sources/tests/test_v4_ablation.py
+  s_67362ad3557062::t_d05d0eb0cf4967 1-151
+scripts/editorial.py
+  s_67362ad3557062::t_415213f94c7080 1-82
+scripts/run_evals.py
+  s_67362ad3557062::t_5025415ba8b9b3 19,250-272,295-298,350-353
+tests/test_editorial.py
+  s_67362ad3557062::t_966dbc3a353cd8 1-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2477fb6119cecde2975e5adef389b7c5d2bb15da",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ab608404793925": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a163df-f2bc-7140-ba66-3fa00063199f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
