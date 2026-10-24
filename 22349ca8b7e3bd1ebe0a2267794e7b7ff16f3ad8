@@ -1,0 +1,109 @@
+evals/PR2-CONTRACT-QUALIFICATION.md
+  s_67362ad3557062::t_0586f4f0269937 1-43
+evals/README.md
+  s_67362ad3557062::t_2734ebb0c51750 50-51
+evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_bee538086475e8 1,7-8
+evals/results/pr2-contract-preparation-2026-10-23-checks.json
+  s_67362ad3557062::t_9095b942d0125a 1-50
+evals/results/pr2-contract-preparation-2026-10-23-initial-suite.txt
+  s_67362ad3557062::t_62774fe21ca128 1-105
+evals/results/pr2-contract-preparation-2026-10-23-plan/candidate.md
+  s_67362ad3557062::t_2a993898bd90b4 1-387
+evals/results/pr2-contract-preparation-2026-10-23-plan/cases.jsonl
+  s_67362ad3557062::t_7aac24ae7cb2ed 1-34
+evals/results/pr2-contract-preparation-2026-10-23-plan/comparator.md
+  s_67362ad3557062::t_66d3c84d3292fe 1-299
+evals/results/pr2-contract-preparation-2026-10-23-plan/manifest.json
+  s_67362ad3557062::t_4965e2dfdae73a 1-60
+evals/results/pr2-contract-preparation-2026-10-23-plan/matrix.jsonl
+  s_67362ad3557062::t_47f1b7508a4d6a 1-68
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/PR2-CONTRACT-QUALIFICATION.md
+  s_67362ad3557062::t_8f3a96c8febe2b 1-43
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/PR2-REFERENCE-QUALIFICATION.md
+  s_67362ad3557062::t_db82ce26920fdb 1-38
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/PR2-REQUALIFICATION.md
+  s_67362ad3557062::t_6e5f7a30637bde 1-90
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/ROLLBACK-CHECKS.md
+  s_67362ad3557062::t_f2a11725ce1f79 1-128
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/cases.jsonl
+  s_67362ad3557062::t_fccab754f0fa21 1-30
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/pr2-regressions.jsonl
+  s_67362ad3557062::t_34089f55cab7ce 1-6
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_00a671b709e05f 1-8
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/rubric.md
+  s_67362ad3557062::t_402753d44ed5e4 1-79
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/evals/runners.example.json
+  s_67362ad3557062::t_72e4e37213a6fb 1-30
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/scripts/check_rollback.py
+  s_67362ad3557062::t_807d548e679878 1-269
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/scripts/check_routing.cjs
+  s_67362ad3557062::t_7ce31b35ea872d 1-105
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/scripts/eval_runtime.py
+  s_67362ad3557062::t_a0dc8dd7025f13 1-243
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_90bb1bd56fa964 1-126
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/scripts/run_evals.py
+  s_67362ad3557062::t_1916d08bd4f623 1-326
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_d31a0894db4adc 1-387
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/skills/flow-lean/evals/scenarios.json
+  s_67362ad3557062::t_a67b8824e12520 1-49
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/skills/flow-lean/references/rollback.md
+  s_67362ad3557062::t_2c4093f8b12ebf 1-27
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/skills/flow-lean/scripts/rollback_reference.py
+  s_67362ad3557062::t_bda16b70c0fc43 1-194
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/tests/test_git_range_contract.py
+  s_67362ad3557062::t_dd4c55228d0a86 1-30
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/tests/test_pr2_qualification.py
+  s_67362ad3557062::t_caf37bb1abad9d 1-110
+evals/results/pr2-contract-preparation-2026-10-23-plan/sources/tests/test_reference_rollback.py
+  s_67362ad3557062::t_285f0e46b4fecc 1-281
+evals/results/pr2-contract-preparation-2026-10-23-rollback-tests.txt
+  s_67362ad3557062::t_ad76f57fd49164 1-22
+evals/results/pr2-contract-preparation-2026-10-23-rollback.json
+  s_0abc1b72615d02::t_ad3f567a629c5b 1-2125
+evals/results/pr2-contract-preparation-2026-10-23-routing.json
+  s_0abc1b72615d02::t_44c093a1166ad7 1-377
+evals/results/pr2-contract-preparation-2026-10-23-suite.txt
+  s_67362ad3557062::t_59f91eb801632f 1-85
+evals/results/pr2-contract-preparation-2026-10-23.md
+  s_67362ad3557062::t_4f362386a62910 1-41
+scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_fc6d3b3ba72701 16-17,26-27
+skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_4e234209f9dc84 112-116,339-347
+skills/flow-lean/references/rollback.md
+  s_67362ad3557062::t_16872bd1a5594a 8,27
+skills/flow-lean/scripts/rollback_reference.py
+  s_67362ad3557062::t_0b5ea704ef2b68 6-8,23,183-184
+tests/test_pr2_qualification.py
+  s_67362ad3557062::t_abf47e403b9bca 76-90
+tests/test_reference_rollback.py
+  s_67362ad3557062::t_a0301321e46a06 2-3,165-257
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "22349ca8b7e3bd1ebe0a2267794e7b7ff16f3ad8",
+  "prompts": {},
+  "sessions": {
+    "s_0abc1b72615d02": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9e408fa5-cc30-42a3-9880-b3c84afc2c15",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

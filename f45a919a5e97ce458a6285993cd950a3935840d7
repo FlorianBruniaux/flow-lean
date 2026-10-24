@@ -1,0 +1,110 @@
+scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_662aeabae7b272 2,13,27-29,36,56-66,79-80,87-92,101,119-123,141-142,144-145
+tests/test_actor_fidelity.py
+  s_67362ad3557062::t_46f4281667959b 18-73
+  s_67362ad3557062::t_a23c433a49d6c5 1-17,74-107
+skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_eb6c8f8942aea4 90-102,313
+tests/test_pr2_qualification.py
+  s_67362ad3557062::t_662aeabae7b272 77,87-88
+evals/PR2-ACTOR-QUALIFICATION.md
+  s_67362ad3557062::t_662aeabae7b272 1-45
+evals/results/pr2-actor-preparation-2026-10-24.md
+  s_67362ad3557062::t_2b4bed63e11088 1-23
+evals/README.md
+  s_67362ad3557062::t_f244b9eddef5c1 50-51
+evals/actor-fidelity-oracles.json
+  s_67362ad3557062::t_a2ec9bb7a11396 1-93
+evals/actor-fidelity.jsonl
+  s_67362ad3557062::t_035cf6054b54d1 1-6
+evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_4a300e0523da78 9
+evals/results/pr2-actor-preparation-2026-10-24-checks.json
+  s_67362ad3557062::t_bb14b8a83417f3 1-31
+evals/results/pr2-actor-preparation-2026-10-24-plan/candidate.md
+  s_67362ad3557062::t_1d08a0c94369e3 1-399
+evals/results/pr2-actor-preparation-2026-10-24-plan/cases.jsonl
+  s_67362ad3557062::t_7806f80b821549 1-40
+evals/results/pr2-actor-preparation-2026-10-24-plan/comparator.md
+  s_67362ad3557062::t_c69ec4d019845f 1-299
+evals/results/pr2-actor-preparation-2026-10-24-plan/manifest.json
+  s_67362ad3557062::t_a9d0ccb9d4a86f 1-141
+evals/results/pr2-actor-preparation-2026-10-24-plan/matrix.jsonl
+  s_67362ad3557062::t_a4e3b7b787b74d 1-80
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/PR2-ACTOR-QUALIFICATION.md
+  s_67362ad3557062::t_0da7d4e1f4dbfd 1-45
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/PR2-CONTRACT-QUALIFICATION.md
+  s_67362ad3557062::t_6444e11e1d4c2f 1-43
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/PR2-REFERENCE-QUALIFICATION.md
+  s_67362ad3557062::t_ae86dac6b00ee1 1-38
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/PR2-REQUALIFICATION.md
+  s_67362ad3557062::t_386e98285b85e6 1-90
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/ROLLBACK-CHECKS.md
+  s_67362ad3557062::t_221ff1c8c7483b 1-128
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/actor-fidelity-oracles.json
+  s_67362ad3557062::t_0a4ea5c7b73849 1-93
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/actor-fidelity.jsonl
+  s_67362ad3557062::t_c1463aa9343ec4 1-6
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/cases.jsonl
+  s_67362ad3557062::t_44f50e8710bb85 1-30
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/pr2-regressions.jsonl
+  s_67362ad3557062::t_c5a6ca596447ac 1-6
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_3d90e460a3868d 1-9
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/rubric.md
+  s_67362ad3557062::t_ebaab37f359c8a 1-79
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/evals/runners.example.json
+  s_67362ad3557062::t_63d585a2d7c987 1-30
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/scripts/check_rollback.py
+  s_67362ad3557062::t_061bd3bdff1517 1-269
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/scripts/check_routing.cjs
+  s_67362ad3557062::t_af89225e8fccf8 1-105
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/scripts/eval_runtime.py
+  s_67362ad3557062::t_54dee28e6e1ced 1-243
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_817fbbf64f5bd6 1-150
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/scripts/run_evals.py
+  s_67362ad3557062::t_aa3d79d0b7f401 1-326
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_5f9ae74f8eb281 1-399
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/skills/flow-lean/evals/scenarios.json
+  s_67362ad3557062::t_c32978e3cb4b56 1-49
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/skills/flow-lean/references/rollback.md
+  s_67362ad3557062::t_a7eced7d4a2a6c 1-27
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/skills/flow-lean/scripts/rollback_reference.py
+  s_67362ad3557062::t_336a5facad64f3 1-194
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/tests/test_actor_fidelity.py
+  s_67362ad3557062::t_6571763a961490 1-107
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/tests/test_git_range_contract.py
+  s_67362ad3557062::t_ed883f3d0d5120 1-30
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/tests/test_pr2_qualification.py
+  s_67362ad3557062::t_7090f28f48e433 1-109
+evals/results/pr2-actor-preparation-2026-10-24-plan/sources/tests/test_reference_rollback.py
+  s_67362ad3557062::t_ba91ab49355fbb 1-281
+evals/results/pr2-actor-preparation-2026-10-24-prior-corruption-checks.json
+  s_67362ad3557062::t_ed128e8327f563 1-34
+evals/results/pr2-actor-preparation-2026-10-24-prior-verification.json
+  s_67362ad3557062::t_647ccb41713f1c 1-307
+evals/results/pr2-actor-preparation-2026-10-24-red-test.txt
+  s_67362ad3557062::t_760d5c6579e8b1 1-17
+evals/results/pr2-actor-preparation-2026-10-24-routing.json
+  s_67362ad3557062::t_ff231980b5bf5d 1-377
+evals/results/pr2-actor-preparation-2026-10-24-tests.txt
+  s_67362ad3557062::t_fdd4e000a744d1 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f45a919a5e97ce458a6285993cd950a3935840d7",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

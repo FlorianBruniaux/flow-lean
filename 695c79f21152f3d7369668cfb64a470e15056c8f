@@ -1,0 +1,34 @@
+.github/workflows/plugin-load-check.yml
+  s_67362ad3557062::t_59b012f6fa19c2 34
+scripts/check_routing.cjs
+  s_67362ad3557062::t_5f523251a36297 1-104
+evals/results/public-bm25-repair-2026-10-21.md
+  s_67362ad3557062::t_b91b25d51a8480 1-70
+evals/PR2-REGRESSIONS.md
+  s_67362ad3557062::t_b91b25d51a8480 9-11
+evals/README.md
+  s_67362ad3557062::t_b91b25d51a8480 28-31,35-46
+  s_67362ad3557062::t_f1ad75635022c6 47
+evals/results/public-bm25-repair-2026-10-21.json
+  s_67362ad3557062::t_dee3951a0b681b 1-469
+evals/routing-probes.json
+  s_67362ad3557062::t_ef7c6dec8985fc 2
+skills/flow-lean/evals/scenarios.json
+  s_67362ad3557062::t_07d5677b2a4b40 4-21,24-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "695c79f21152f3d7369668cfb64a470e15056c8f",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

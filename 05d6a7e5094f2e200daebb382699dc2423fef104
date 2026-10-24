@@ -1,0 +1,42 @@
+evals/runners.example.json
+  s_aa8c18eb70eb58::t_768c567c17aed9 1-20
+.gitignore
+  s_aa8c18eb70eb58::t_d78b40927ba6e6 3
+evals/README.md
+  s_aa8c18eb70eb58::t_86d545c8cc1fad 8,15-18,29-30,40,44-48,51,55,59,61-65,67-68,70-72,74-77,79-85,87-91,94-95,99-104,121-122
+  s_aa8c18eb70eb58::t_15eaaef9297df8 1-7,9-14,19-25,27-28,31-34,37-39,41-43,49-50,53-54,56,58,60,78,86,92-93,96-98,105-112,114-120
+  s_aa8c18eb70eb58::t_50be28c39cebec 26,35-36,52,57,66,69,73,113
+evals/cases.jsonl
+  s_aa8c18eb70eb58::t_feeaa33f5b2a0a 1-13
+evals/rubric.md
+  s_aa8c18eb70eb58::t_3609fa276ae2b7 1-48
+scripts/fetch_comparators.sh
+  s_aa8c18eb70eb58::t_8e6ef0f20519cc 9
+  s_ac0334b288fed5::t_18c4eaee4acd49 1-8,10-22
+scripts/run_evals.py
+  s_aa8c18eb70eb58::t_218aeacd8d768a 1-379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "05d6a7e5094f2e200daebb382699dc2423fef104",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ac0334b288fed5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3298e97-02bb-45fc-ab93-6a257a4ea74d",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

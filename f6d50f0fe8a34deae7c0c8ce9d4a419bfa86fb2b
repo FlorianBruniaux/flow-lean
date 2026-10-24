@@ -1,0 +1,23 @@
+evals/results/vs-ponytail-v2.jsonl
+  s_aa8c18eb70eb58::t_34b7ff05e3a84d 27-39
+  s_aa8c18eb70eb58::t_7763a8c406aad8 1-26
+evals/results/vs-i-have-adhd-v2.jsonl
+  s_aa8c18eb70eb58::t_7763a8c406aad8 1-26
+  s_aa8c18eb70eb58::t_f10d503acbd400 27-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "f6d50f0fe8a34deae7c0c8ce9d4a419bfa86fb2b",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

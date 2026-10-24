@@ -1,0 +1,21 @@
+evals/results/scores-vs-i-have-adhd-v2.jsonl
+  s_aa8c18eb70eb58::t_4e097ee3954309 1-39
+evals/results/scores-vs-ponytail-v2.jsonl
+  s_aa8c18eb70eb58::t_4e097ee3954309 1-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "776634328570f2e8a2a0d41b3b2429d1c31b60b5",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

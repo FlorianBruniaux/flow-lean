@@ -1,0 +1,83 @@
+scripts/eval_runtime.py
+  s_67362ad3557062::t_f37b2421f36a2c 1-243
+tests/test_evaluations.py
+  s_67362ad3557062::t_b26fefb12610d1 1-354
+evals/runners.example.json
+  s_67362ad3557062::t_d6a6b8a99b2ad7 12-13,16-18,20,23-25,27-28
+evals/README.md
+  s_67362ad3557062::t_d6a6b8a99b2ad7 8-9,40-59,81,85-107,139-143,146-206,238-240
+.github/workflows/plugin-load-check.yml
+  s_67362ad3557062::t_6bfeb5e355f565 4,8-22
+.gitignore
+  s_67362ad3557062::t_4ba45980ef8fe8 5
+evals/GROUP-COMPARISON.md
+  s_67362ad3557062::t_d98a76259aec85 1-105
+evals/MINIMAL-COMPARISON.md
+  s_67362ad3557062::t_c6ba6174b7be33 1-155
+evals/ROLLBACK-CHECKS.md
+  s_67362ad3557062::t_fdf49171877261 1-112
+evals/V3.1-PREPARATION.md
+  s_67362ad3557062::t_f0f33ed835dddf 1-83
+evals/V3.1-ROUTING-INSTALL.md
+  s_67362ad3557062::t_8b68dbaf90e5a8 1-107
+evals/candidates/README.md
+  s_67362ad3557062::t_39b7d674b93a33 1-68
+evals/candidates/generic.md
+  s_67362ad3557062::t_6659a1399ae342 1
+evals/candidates/minimal-v2.md
+  s_67362ad3557062::t_14c59ce8697991 1-17
+evals/candidates/minimal-v3.1.md
+  s_67362ad3557062::t_5a76d9f3900cfc 1-9
+evals/candidates/minimal-v3.md
+  s_67362ad3557062::t_d779b652f1aac0 1-9
+evals/candidates/minimal.md
+  s_67362ad3557062::t_dfb4211f92dc91 1-10
+evals/candidates/v3-groups.json
+  s_67362ad3557062::t_ff1b0941281960 1-26
+evals/candidates/v3.1-groups.json
+  s_67362ad3557062::t_edde47c75ff8dc 1-46
+evals/candidates/v3.1-review-cases.json
+  s_67362ad3557062::t_19bda82ce9aea3 1-91
+evals/candidates/v3.1-routing-holdout.json
+  s_67362ad3557062::t_919d95f9e7a185 1-48
+evals/candidates/v3.1-routing-scenarios.json
+  s_67362ad3557062::t_7beef6c179951f 1-43
+evals/cases.jsonl
+  s_67362ad3557062::t_318bddbf377c4d 3-4,10,13,15,20-21,24-25
+evals/rubric.md
+  s_67362ad3557062::t_d2b65389638f3c 10-39
+scripts/check_rollback.py
+  s_67362ad3557062::t_1540f6a84d6378 1-200
+scripts/prepare_global_candidate.py
+  s_67362ad3557062::t_aa108601fd74a9 1-124
+scripts/prepare_group_comparison.py
+  s_67362ad3557062::t_7c6c0f17aa1398 1-100
+scripts/run_evals.py
+  s_67362ad3557062::t_7c35de2cc60ce9 6-7,19-20,31-33,97,109,111,121,126-127,132-134,149-150,155,157,159,162,169,171-173,176-187,192,203,205,231-233,242-245,258-261,265-266,275,303-306,315
+tests/fixtures/rollback_program.py
+  s_67362ad3557062::t_0d260d74f00e42 1-46
+tests/fixtures/rollback_v3_1.sh
+  s_67362ad3557062::t_85613f680cea9c 1-240
+tests/test_group_comparison.py
+  s_67362ad3557062::t_9149dea25cfa45 1-81
+tests/test_rollback_checks.py
+  s_67362ad3557062::t_3c69e869e638a1 1-116
+tests/test_run_evals.py
+  s_67362ad3557062::t_210076a8b16bee 2,4,15-31,33-34,41-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0f687bf14f8eb060e56bf24715b9fcc484dbbcd1",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

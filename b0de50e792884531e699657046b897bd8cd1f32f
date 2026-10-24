@@ -1,0 +1,37 @@
+evals/PR2-REGRESSIONS.md
+  s_67362ad3557062::t_9c9f4c1b2d4451 1-7,11-119
+  s_67362ad3557062::t_f296100573dd34 8-10
+evals/README.md
+  s_67362ad3557062::t_9c9f4c1b2d4451 34-37
+evals/results/pr2-repair-preparation-2026-10-21.md
+  s_67362ad3557062::t_f296100573dd34 1-54
+skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_bead2e11898fec 75-78,284-287
+scripts/run_evals.py
+  s_67362ad3557062::t_bead2e11898fec 260-261,309-310
+tests/test_evaluations.py
+  s_67362ad3557062::t_54fd15b3aece68 326-339
+  s_67362ad3557062::t_ae2fc9523351ef 340-378
+evals/cases.jsonl
+  s_67362ad3557062::t_b2fae1765ba1c6 28
+evals/pr2-regressions.jsonl
+  s_67362ad3557062::t_357a77a1c07d11 1-6
+evals/results/pr2-repair-preparation-2026-10-21.json
+  s_67362ad3557062::t_1e984878be830e 1-258
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b0de50e792884531e699657046b897bd8cd1f32f",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+evals/results/scores-vs-caveman.jsonl
+  s_aa8c18eb70eb58::t_42efd3bd8c7c96 1-39
+evals/results/scores-vs-i-have-adhd.jsonl
+  s_aa8c18eb70eb58::t_7c135b53789137 1-39
+evals/results/scores-vs-ponytail.jsonl
+  s_aa8c18eb70eb58::t_22d0491ab875ff 1-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "3e7e9b20b9ea67f12503f728858ea8e696e564f1",
+  "prompts": {},
+  "sessions": {
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

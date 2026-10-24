@@ -1,0 +1,28 @@
+evals/results/pr2-qualification-2026-10-22-verify.py
+  s_67362ad3557062::t_de2a5124a3b88b 1-45,48-97,101-129
+  s_67362ad3557062::t_d0010697da1c0a 46-47,98-100
+evals/results/pr2-qualification-2026-10-22-review.md
+  s_67362ad3557062::t_9af86eba2876c5 1-154
+evals/README.md
+  s_67362ad3557062::t_9af86eba2876c5 52-55
+evals/PR2-REGRESSIONS.md
+  s_67362ad3557062::t_9af86eba2876c5 3-7
+evals/results/pr2-qualification-2026-10-22-review.json
+  s_67362ad3557062::t_43b90a75e33bf7 1-547
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "409f65dfe8bff4d2e3d763ad60bd1078e849a77c",
+  "prompts": {},
+  "sessions": {
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

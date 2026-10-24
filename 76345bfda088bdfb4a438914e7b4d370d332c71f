@@ -1,0 +1,25 @@
+README.md
+  s_456ca2457a9c31::t_8c6dcfc36c37be 17-19,136-143,308-310
+.claude-plugin/marketplace.json
+  s_456ca2457a9c31::t_8c6dcfc36c37be 4,12
+.claude-plugin/plugin.json
+  s_456ca2457a9c31::t_8c6dcfc36c37be 3-4
+CHANGELOG.md
+  s_456ca2457a9c31::t_8c6dcfc36c37be 5,11-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "76345bfda088bdfb4a438914e7b4d370d332c71f",
+  "prompts": {},
+  "sessions": {
+    "s_456ca2457a9c31": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06ad3-db3c-7032-9b12-fae879c50acd",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+evals/README.md
+  s_67362ad3557062::t_a935156e9b937b 50-51
+evals/results/pr2-guardrail-qualification-2026-10-24-check-evidence.py
+  s_67362ad3557062::t_aaa270bd5acf20 1-39
+evals/results/pr2-guardrail-qualification-2026-10-24-checks.json
+  s_67362ad3557062::t_6628d664e70f53 1-49
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/actor-audit-blind.json
+  s_67362ad3557062::t_ed013183f6f7ec 1-151
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/artifact-hashes.json
+  s_67362ad3557062::t_13040ce56fa1bd 1-74
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/authorization.json
+  s_25349e7c7ded1c::t_d48523d67c7e8b 1-19
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/blind-key.json
+  s_25349e7c7ded1c::t_c619048d030587 1-165
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/candidate.md
+  s_25349e7c7ded1c::t_f39a2ee5ecf741 1-415
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/cases.jsonl
+  s_25349e7c7ded1c::t_14a9a399082910 1-40
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/check_generated.py
+  s_25349e7c7ded1c::t_b4b395c7892175 1-37
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/comparator.md
+  s_25349e7c7ded1c::t_2cc2752c0485d1 1-299
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/execute.py
+  s_25349e7c7ded1c::t_29bd9c30b49ca4 1-47
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/execution.log
+  s_ec27ff3a7ae4e7::t_7f95528f0b1ac2 1-161
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/exit-contract-probe.json
+  s_67362ad3557062::t_c0aee1052127a0 1-52
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/fact-audit-blind.json
+  s_67362ad3557062::t_4f3b3057c10b3e 1-917
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/grade_helpers.py
+  s_25349e7c7ded1c::t_03ef592682087d 1-20
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/grades-blind.jsonl
+  s_67362ad3557062::t_d4f8c3e3f2fa04 1-80
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/grading-freeze.json
+  s_67362ad3557062::t_8ce568817068cd 1-8
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/initialization-audit.json
+  s_67362ad3557062::t_36fb5f5c2e1121 1-38
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/manifest.json
+  s_25349e7c7ded1c::t_bcf26631c00af1 1-160
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/matrix.jsonl
+  s_25349e7c7ded1c::t_0c1a590535bcb6 1-80
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/postimage-input-probe.json
+  s_67362ad3557062::t_7415381fef56a7 1-83
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/probe_exit_contract.py
+  s_25349e7c7ded1c::t_390463cae3c7e3 1-40
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/probe_postimage_inputs.py
+  s_25349e7c7ded1c::t_c3fbdb0696bed0 1-24
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/publish_scores.py
+  s_25349e7c7ded1c::t_ddef4a25dbddd2 1-18
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_audits.py
+  s_67362ad3557062::t_90a78b3b562262 1-50
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_01.py
+  s_67362ad3557062::t_0460efa1d744f1 1-5
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_02.py
+  s_0fc8db88e7e383::t_fb1685ae9f7d17 1-7
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_03.py
+  s_67362ad3557062::t_eb8990e42dfb84 1-7
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_04.py
+  s_67362ad3557062::t_de5abab8f5c41c 1-11
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_05.py
+  s_67362ad3557062::t_5e2d2b118a1f98 1-11
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_06.py
+  s_0fc8db88e7e383::t_39fa4eb67ef76c 1-13
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_07.py
+  s_67362ad3557062::t_bb5ffc391bf295 1-11
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_08.py
+  s_67362ad3557062::t_01e4cab610f7d6 1-17
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/record_grades_09.py
+  s_67362ad3557062::t_a183fca86de858 1-25
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/review.py
+  s_25349e7c7ded1c::t_d89a818d5283fe 1-29
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-A-adapter.json
+  s_0fc8db88e7e383::t_000f72e4f51192 1-25
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-A-report.json
+  s_0fc8db88e7e383::t_1de552ccf74b44 1-2165
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-A.py
+  s_3ab17e0511afc8::t_c00ddbe1eca069 1-194
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-B-adapter.json
+  s_67362ad3557062::t_34ac5ff715961b 1-25
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-B-report.json
+  s_67362ad3557062::t_37a937f2c747e1 1-2165
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/rollback-B.py
+  s_0fc8db88e7e383::t_0cc9cce8eae165 1-194
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/runner.json
+  s_25349e7c7ded1c::t_f641879831644c 1-31
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/.gitattributes
+  s_25349e7c7ded1c::t_0cc66cd323114b 1-3
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/PR2-ACTOR-QUALIFICATION.md
+  s_25349e7c7ded1c::t_9770122c49f4de 1-45
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/PR2-CONTRACT-QUALIFICATION.md
+  s_25349e7c7ded1c::t_f1eeeb9b4c463a 1-43
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/PR2-GUARDRAIL-QUALIFICATION.md
+  s_25349e7c7ded1c::t_e635dc6c71f116 1-57
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/PR2-REFERENCE-QUALIFICATION.md
+  s_25349e7c7ded1c::t_cfe2be0d0e9619 1-38
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/PR2-REQUALIFICATION.md
+  s_25349e7c7ded1c::t_69d8feb3a12292 1-90
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/ROLLBACK-CHECKS.md
+  s_25349e7c7ded1c::t_929e0fe2c28da7 1-128
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/actor-fidelity-oracles.json
+  s_25349e7c7ded1c::t_574a1a7c34b05d 1-93
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/actor-fidelity.jsonl
+  s_25349e7c7ded1c::t_aeda2e86164ee5 1-6
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/cases.jsonl
+  s_25349e7c7ded1c::t_76766f9818e7e3 1-30
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/guardrail-review-fixtures.json
+  s_25349e7c7ded1c::t_12d178eb395572 1-87
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/pr2-regressions.jsonl
+  s_25349e7c7ded1c::t_8e49cb5bdcc710 1-6
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/pr2-requalification-overrides.jsonl
+  s_25349e7c7ded1c::t_881620681e86f4 1-10
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/rubric.md
+  s_25349e7c7ded1c::t_bf3c51bb1fe692 1-79
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/evals/runners.example.json
+  s_25349e7c7ded1c::t_f92ebbf2132dc6 1-30
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/scripts/check_rollback.py
+  s_25349e7c7ded1c::t_6edf9a7c5a0d1d 1-269
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/scripts/check_routing.cjs
+  s_25349e7c7ded1c::t_a30058cfd4bcb6 1-105
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/scripts/eval_runtime.py
+  s_25349e7c7ded1c::t_a94fad1831da78 1-243
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/scripts/prepare_pr2_qualification.py
+  s_25349e7c7ded1c::t_b5f26402383b23 1-158
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/scripts/run_evals.py
+  s_25349e7c7ded1c::t_c6922811c42b0e 1-326
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/skills/flow-lean/SKILL.md
+  s_25349e7c7ded1c::t_1d41983833693a 1-415
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/skills/flow-lean/evals/scenarios.json
+  s_25349e7c7ded1c::t_2dd70a4af9d706 1-49
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/skills/flow-lean/references/rollback.md
+  s_25349e7c7ded1c::t_276d6b6a2f03b4 1-27
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/skills/flow-lean/scripts/rollback_reference.py
+  s_25349e7c7ded1c::t_def4238c619d4f 1-194
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/tests/test_actor_fidelity.py
+  s_25349e7c7ded1c::t_0c19524f939917 1-107
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/tests/test_git_range_contract.py
+  s_25349e7c7ded1c::t_7be434a9130f45 1-30
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/tests/test_guardrail_preparation.py
+  s_25349e7c7ded1c::t_7a3300fb6d9c90 1-160
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/tests/test_pr2_qualification.py
+  s_25349e7c7ded1c::t_10912a33ab387f 1-109
+evals/results/pr2-guardrail-qualification-2026-10-24-evidence/sources/tests/test_reference_rollback.py
+  s_25349e7c7ded1c::t_60e653d6400f76 1-281
+evals/results/pr2-guardrail-qualification-2026-10-24-scores.jsonl
+  s_67362ad3557062::t_2b7741a5bd2a10 1-80
+evals/results/pr2-guardrail-qualification-2026-10-24-summary.json
+  s_67362ad3557062::t_e08f43e696a9d0 1-642
+evals/results/pr2-guardrail-qualification-2026-10-24-tests.log
+  s_67362ad3557062::t_197473fff67e2b 1-97
+evals/results/pr2-guardrail-qualification-2026-10-24-verify.py
+  s_43b3d0625e7ac1::t_b002b8a9f061cc 1-197
+evals/results/pr2-guardrail-qualification-2026-10-24.jsonl
+  s_ec27ff3a7ae4e7::t_72c26fe2a789b0 1-80
+evals/results/pr2-guardrail-qualification-2026-10-24.jsonl.attempts.jsonl
+  s_ec27ff3a7ae4e7::t_38fc54f8dfd260 1-160
+evals/results/pr2-guardrail-qualification-2026-10-24.jsonl.manifest.json
+  s_80718c65bb95e0::t_d9c64f9e77ea05 1-544
+evals/results/pr2-guardrail-qualification-2026-10-24.md
+  s_67362ad3557062::t_856d14ca1ba803 1-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "50e7b4c59931bd61f275b21d970f8fc3d9a49253",
+  "prompts": {},
+  "sessions": {
+    "s_0fc8db88e7e383": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb14230-a222-44b5-8a92-3de0f50554c7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_25349e7c7ded1c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15fcc-1eea-78b0-b78f-30e954c250f6",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_3ab17e0511afc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "55485b30-4b07-41e5-825e-ff1a4e0f11c5",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_43b3d0625e7ac1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15a1b-5236-7d02-8b4b-a57765692018",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_80718c65bb95e0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a14aa8-7e7f-7fa3-a24a-d79ea89532b7",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ec27ff3a7ae4e7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a158a4-1852-7f53-a868-0ae1b16c0089",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
