@@ -1,0 +1,128 @@
+scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_b6367291089be0 29-30,123-129
+skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_b6367291089be0 75,77-80,103-117
+  s_67362ad3557062::t_77670c7dc8264d 76
+tests/test_pr2_qualification.py
+  s_67362ad3557062::t_b6367291089be0 77,80,88
+tests/test_guardrail_preparation.py
+  s_67362ad3557062::t_85e29e933ce118 1-136
+evals/PR2-GUARDRAIL-QUALIFICATION.md
+  s_67362ad3557062::t_eee41bd2f01596 1-55
+evals/README.md
+  s_67362ad3557062::t_d73a369128441c 50-51
+evals/actor-fidelity.jsonl
+  s_67362ad3557062::t_485f1899639071 1,6
+evals/guardrail-review-fixtures.json
+  s_67362ad3557062::t_c212b732513f49 1-87
+evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_1d1d34b3fcad48 3,10
+evals/results/pr2-guardrail-preparation-2026-10-24-checks.json
+  s_67362ad3557062::t_ba6bd6b87039f5 1-123
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/candidate.md
+  s_67362ad3557062::t_240353686a7ecb 1-415
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/cases.jsonl
+  s_67362ad3557062::t_e8dc1523472aa1 1-40
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/comparator.md
+  s_67362ad3557062::t_9a4dfeb2b183c9 1-299
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/manifest.json
+  s_67362ad3557062::t_554603078cadee 1-159
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/matrix.jsonl
+  s_67362ad3557062::t_e4590f41b8cf9e 1-80
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/PR2-ACTOR-QUALIFICATION.md
+  s_67362ad3557062::t_cfaf4f0b404f22 1-45
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/PR2-CONTRACT-QUALIFICATION.md
+  s_67362ad3557062::t_cc2d4a2b7f3b9f 1-43
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/PR2-GUARDRAIL-QUALIFICATION.md
+  s_67362ad3557062::t_e8d10f971fdea9 1-55
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/PR2-REFERENCE-QUALIFICATION.md
+  s_67362ad3557062::t_bfdbba5e646daa 1-38
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/PR2-REQUALIFICATION.md
+  s_67362ad3557062::t_4102b884a7ab91 1-90
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/ROLLBACK-CHECKS.md
+  s_67362ad3557062::t_52640449fe17d2 1-128
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/actor-fidelity-oracles.json
+  s_67362ad3557062::t_ad7cc95677b210 1-93
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/actor-fidelity.jsonl
+  s_67362ad3557062::t_9d26a0071bf4a5 1-6
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/cases.jsonl
+  s_67362ad3557062::t_930a1605e60bc8 1-30
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/guardrail-review-fixtures.json
+  s_67362ad3557062::t_65318156208e44 1-87
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/pr2-regressions.jsonl
+  s_67362ad3557062::t_fb2061ae919245 1-6
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/pr2-requalification-overrides.jsonl
+  s_67362ad3557062::t_d4983da53df070 1-10
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/rubric.md
+  s_67362ad3557062::t_cd1d357c5638ec 1-79
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/evals/runners.example.json
+  s_67362ad3557062::t_8a1395d08bf0d4 1-30
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/scripts/check_rollback.py
+  s_67362ad3557062::t_7e898c8f6898cc 1-269
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/scripts/check_routing.cjs
+  s_67362ad3557062::t_41b590d9a64be7 1-105
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/scripts/eval_runtime.py
+  s_67362ad3557062::t_be0a30bc9a5311 1-243
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/scripts/prepare_pr2_qualification.py
+  s_67362ad3557062::t_924bd19fa995bc 1-157
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/scripts/run_evals.py
+  s_67362ad3557062::t_4341324a545c0b 1-326
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/skills/flow-lean/SKILL.md
+  s_67362ad3557062::t_92a4af27109139 1-415
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/skills/flow-lean/evals/scenarios.json
+  s_67362ad3557062::t_558d19d59b6623 1-49
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/skills/flow-lean/references/rollback.md
+  s_67362ad3557062::t_96ec0ef02470f6 1-27
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/skills/flow-lean/scripts/rollback_reference.py
+  s_67362ad3557062::t_ae1bfa1133cf65 1-194
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/tests/test_actor_fidelity.py
+  s_67362ad3557062::t_b34f4dde616cc8 1-107
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/tests/test_git_range_contract.py
+  s_67362ad3557062::t_cbcd997e33a0bd 1-30
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/tests/test_guardrail_preparation.py
+  s_67362ad3557062::t_fbf7de3eb0d967 1-136
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/tests/test_pr2_qualification.py
+  s_67362ad3557062::t_b8e3703ed73c32 1-109
+evals/results/pr2-guardrail-preparation-2026-10-24-plan/sources/tests/test_reference_rollback.py
+  s_67362ad3557062::t_4122278d77328a 1-281
+evals/results/pr2-guardrail-preparation-2026-10-24-prior-corruption-checks.json
+  s_67362ad3557062::t_e35f16dc3dba78 1-49
+evals/results/pr2-guardrail-preparation-2026-10-24-prior-verification.json
+  s_67362ad3557062::t_c3614e986bf0de 1-480
+evals/results/pr2-guardrail-preparation-2026-10-24-red-test.txt
+  s_67362ad3557062::t_589ef88970693a 1-38
+evals/results/pr2-guardrail-preparation-2026-10-24-routing.json
+  s_67362ad3557062::t_ba5b5a0c293607 1-377
+evals/results/pr2-guardrail-preparation-2026-10-24-tests-final.txt
+  s_67362ad3557062::t_242b9a78c8a353 1-96
+evals/results/pr2-guardrail-preparation-2026-10-24-tests-rerun.txt
+  s_3ab17e0511afc8::t_b83d72cd54b07c 1-96
+evals/results/pr2-guardrail-preparation-2026-10-24-tests.txt
+  s_67362ad3557062::t_f83f341180e65d 1-115
+evals/results/pr2-guardrail-preparation-2026-10-24.md
+  s_67362ad3557062::t_bd2059d30a7e31 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "810919c2f000410897f7260e9f111da77b5f8bcd",
+  "prompts": {},
+  "sessions": {
+    "s_3ab17e0511afc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "55485b30-4b07-41e5-825e-ff1a4e0f11c5",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_67362ad3557062": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a143ef-da94-7a23-ae51-986013ecec07",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
