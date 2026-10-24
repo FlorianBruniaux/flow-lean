@@ -4,6 +4,7 @@ import importlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -88,6 +89,22 @@ class AblationPreparationTests(unittest.TestCase):
             self.assertFalse({c['prompt'] for c in new}&{c['prompt'] for c in historical})
             self.assertFalse({c['id'] for c in new}&{c['id'] for c in historical})
             self.assertEqual(sorted(Counter(c['contrast_id'] for c in new).values()),[2]*12)
+
+    def test_frozen_runner_can_report_editorial_findings_without_checkout(self):
+        p = self.planner()
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'plan'
+            p.prepare(out)
+            response = Path(tmp) / 'responses.jsonl'
+            response.write_text(json.dumps(dict(case_id='probe', trial=1,
+                condition='v4', response='A robust solution.')) + '\n', encoding='utf-8')
+            result = subprocess.run([sys.executable, '-E',
+                str(out/'sources/scripts/run_evals.py'), 'editorial', str(response),
+                '--cases', str(out/'cases.jsonl')], cwd=tmp,
+                capture_output=True, encoding='utf-8')
+            self.assertEqual(result.returncode, 0, result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(report['findings'][0]['banned'], ['robust'])
 
     def test_existing_destination_and_changed_artifact_are_refused(self):
         p=self.planner()

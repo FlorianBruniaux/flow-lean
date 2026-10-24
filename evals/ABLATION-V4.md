@@ -49,6 +49,16 @@ python3 -m unittest discover -s tests -v
 
 The existing harness accepts the seven condition names using explicit condition-skill files. A future execution must bind the model, runtime, runner, shared budget and attempts ledger to the frozen matrix before any call; unknown cost or source drift stops it. Existing score commands accept the resulting labels. No runner configuration or execution command is created here.
 
+After generation, run the report-only editorial check using the frozen runner
+and the experiment's cases. Its vocabulary comes from the archived public
+skill and stays identical across arms. Review flagged excerpts; the scanner
+does not implement every Markdown container or verify quoted attributions.
+Counts supplement the rubric and never replace the quality gate. Preparation
+archives the editorial module and tests so its runner works outside the live
+checkout. Earlier plans remain historical; the integrated revision is
+`results/pr2-v4-ablation-finalization-2026-10-24-plan/`, with unchanged generation
+prompts and zero authorized provider calls.
+
 The package at `PLAN/skill/` has the same metadata and scenarios as the public skill. Use the installed router with `scripts/check_routing.cjs ROUTER_ROOT NEW_REPORT PLAN/skill --preview-personal` to test both clients without installation. Word/byte reductions are deterministic source measurements, not tokenizer measurements, savings or quality results.
 
 The preview mode copies each host's effective personal routing catalog into temporary directories and substitutes the candidate homonym there. This accommodates Claude's personal-before-project precedence; Codex still selects the project projection. Other skill metadata/corpora remain byte-identical in the mirror. Live catalogs, thresholds and caches are not modified. Passing preview routing is not proof that the candidate is installed or selected in a native session. The default checker still rejects a project candidate shadowed by a different personal skill.

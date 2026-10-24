@@ -1,5 +1,6 @@
 """Exercise the documented ranges in a disposable diverged history; no remote writes."""
 from pathlib import Path
+import os
 import subprocess
 import tempfile
 import unittest
@@ -9,8 +10,13 @@ class GitRangeContractTests(unittest.TestCase):
     def test_remote_only_direction_and_recovery_ref(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
+            # Personal trace2 integrations can write after Git exits, racing
+            # temporary-directory cleanup. This fixture needs no global config.
+            env = dict(os.environ, GIT_CONFIG_GLOBAL=os.devnull,
+                       GIT_CONFIG_NOSYSTEM='1', GIT_TRACE2_EVENT='0')
             def git(*args):
-                return subprocess.check_output(['git', *args], cwd=root, text=True, stderr=subprocess.PIPE).strip()
+                return subprocess.check_output(['git', *args], cwd=root, env=env,
+                                               text=True, stderr=subprocess.PIPE).strip()
             git('init', '-b', 'main')
             git('config', 'user.name', 'Fixture'); git('config', 'user.email', 'fixture@example.invalid')
             git('config', 'commit.gpgsign', 'false'); git('config', 'core.hooksPath', str(root / 'no-hooks'))

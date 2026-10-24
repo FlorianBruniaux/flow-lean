@@ -18,6 +18,7 @@ SOURCES = [
     'evals/ablation-v4-cases.jsonl', 'evals/ablation-v4-oracles.json',
     'evals/ABLATION-V4.md', 'evals/rubric.md', 'scripts/prepare_v4_ablation.py',
     'scripts/run_evals.py', 'scripts/eval_runtime.py', 'tests/test_v4_ablation.py',
+    'scripts/editorial.py', 'tests/test_editorial.py',
     'scripts/check_routing.cjs', 'tests/test_routing_preview.py', '.gitattributes',
     'skills/flow-lean/SKILL.md', 'skills/flow-lean/evals/scenarios.json',
     'skills/flow-lean/references/rollback.md', 'skills/flow-lean/scripts/rollback_reference.py',

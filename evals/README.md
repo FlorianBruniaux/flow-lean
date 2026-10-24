@@ -265,6 +265,28 @@ Then apply the release gate:
 python3 scripts/run_evals.py score evals/results/scores-vs-caveman.jsonl
 ```
 
+Before judging, run the deterministic editorial check on the same file:
+
+```bash
+python3 scripts/run_evals.py editorial evals/results/vs-caveman.jsonl
+```
+
+It counts em dashes (U+2014) and the banned tokens listed in `SKILL.md`,
+outside fenced and inline code, blockquotes and quoted strings. Banned tokens
+match accent-insensitively, with plural and adverb inflections only. A
+response that parses as JSON, or a case with `"output_schema": true`, is
+exempt. The check reports counts per condition and the flagged rows; it does
+not change scores or the release gate.
+
+Indented fences (up to three spaces), longer closing fences and unclosed
+fences through end of output are exempt too. An empty banned-token block
+or non-boolean `output_schema` metadata fails explicitly. The report uses
+the checked-out skill's vocabulary for every condition, not each historical
+condition's vocabulary. Quoted spans are syntactic exemptions, not verified
+attributions. This lightweight scanner does not implement all Markdown
+containers (for example, lazy blockquote continuations); review flagged
+excerpts before interpreting counts. A flag is not proof of AI authorship.
+
 For `no-invented-fact` cases, run the separate fact-audit pass described in
 `rubric.md` before scoring, its `false` verdicts are a hard blocker
 regardless of the weighted score.
@@ -279,3 +301,9 @@ current-version comparison against the 30-case suite.
 The text-only context and revised cases/criteria also invalidate direct score
 comparisons with the local v1 pilot, even though the case IDs and count remain
 unchanged. Retain old manifests as evidence; regenerate all conditions for v2.
+
+## Latest integration status
+
+[24 October finalization](results/pr2-finalization-2026-10-24.md) records the merged
+editorial checks, the integrated v4 preparation archive and the remaining #9
+qualification / #4 native-loading work. The experiment is prepared, not run.
