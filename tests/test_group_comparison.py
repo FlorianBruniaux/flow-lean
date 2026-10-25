@@ -29,7 +29,7 @@ class GroupComparisonTests(unittest.TestCase):
     def test_balanced_pairing_actual_prompt_hashes_and_determinism(self):
         with patch("subprocess.run", side_effect=AssertionError("Planner must not start a process")):
             instructions, rows = build(self.spec, self.cases, trials=2)
-        self.assertEqual(len(rows), 350)
+        self.assertEqual(len(rows), len(self.cases) * 7 * 2)
         self.assertEqual(rows, build(self.spec, self.cases, trials=2)[1])
         self.assertNotEqual(rows, build(self.spec, self.cases, trials=2, seed=3)[1])
         for trial in (1, 2):
@@ -71,7 +71,7 @@ class GroupComparisonTests(unittest.TestCase):
             self.assertEqual(manifest["provider_calls"], 0)
             self.assertEqual(manifest["budget_authorized_usd"], 0)
             self.assertEqual(manifest["matrix_sha256"], hashlib.sha256((output / "matrix.jsonl").read_bytes()).hexdigest())
-            self.assertEqual(len(matrix.splitlines()), 175)
+            self.assertEqual(len(matrix.splitlines()), len(self.cases) * 7)
             for path, fingerprint in manifest["source_hashes"].items():
                 self.assertEqual(hashlib.sha256((output / "sources" / path).read_bytes()).hexdigest(), fingerprint)
             self.assertNotEqual(subprocess.run(command, capture_output=True).returncode, 0)

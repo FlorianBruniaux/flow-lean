@@ -1,0 +1,2161 @@
+{
+  "status": "FAIL",
+  "scope": "Disposable fixture behavior; not a sandbox or proof of race safety",
+  "source_hashes": {
+    "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh": "ed95cf3261f1bbbf1d8eda616ba78364fd8ae2b7c8e8aec66ea4482e599433ca"
+  },
+  "source_hashes_after": {
+    "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh": "ed95cf3261f1bbbf1d8eda616ba78364fd8ae2b7c8e8aec66ea4482e599433ca"
+  },
+  "platform": "posix",
+  "mode_checks": "enabled",
+  "results": [
+    {
+      "scenario": "normal",
+      "status": "FAIL",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "restores_original_content": false,
+        "removes_created_file": true,
+        "removes_only_empty_created_directory": true,
+        "restores_original_mode": false,
+        "new_nonempty_evidence_retained": true,
+        "releases_owned_lock": false
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 384
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 1,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        ".rollback.lock": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md": {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "Rollback complete. config.md restored (sha256 25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218); cache/new.json and cache/ removed.\nEvidence: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-c42vmhqz/records/pre-rollback-20261022T163651Z.log, /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-c42vmhqz/records/post-rollback-20261022T163651Z.log\n",
+      "stderr": "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh: line 84: created_tmp: unbound variable\n",
+      "error": null
+    },
+    {
+      "scenario": "config_conflict",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "a32f0e267f5971b02173f85af12c8324bd06f22dd63c2ab97b8b26c0512143cc",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "a32f0e267f5971b02173f85af12c8324bd06f22dd63c2ab97b8b26c0512143cc",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "a32f0e267f5971b02173f85af12c8324bd06f22dd63c2ab97b8b26c0512143cc",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "a32f0e267f5971b02173f85af12c8324bd06f22dd63c2ab97b8b26c0512143cc",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/config.md checksum mismatch: expected 7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6 got a32f0e267f5971b02173f85af12c8324bd06f22dd63c2ab97b8b26c0512143cc (concurrent write?)\n",
+      "error": null
+    },
+    {
+      "scenario": "cache_conflict",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "66b4f1e93e2fd37f27a8297af27f324151bca6f4d66794be5d2c28013ebbdaca",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "66b4f1e93e2fd37f27a8297af27f324151bca6f4d66794be5d2c28013ebbdaca",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "66b4f1e93e2fd37f27a8297af27f324151bca6f4d66794be5d2c28013ebbdaca",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "66b4f1e93e2fd37f27a8297af27f324151bca6f4d66794be5d2c28013ebbdaca",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/cache/new.json checksum mismatch: expected 7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba got 66b4f1e93e2fd37f27a8297af27f324151bca6f4d66794be5d2c28013ebbdaca (concurrent write?)\n",
+      "error": null
+    },
+    {
+      "scenario": "missing_target",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        null,
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        null,
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/cache/new.json missing or not a regular file; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "unrelated_temp",
+      "status": "FAIL",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "restores_original_content": false,
+        "removes_created_file": true,
+        "removes_only_empty_created_directory": true,
+        "restores_original_mode": false,
+        "new_nonempty_evidence_retained": true,
+        "releases_owned_lock": false
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "sha256": "bc8f2319efdae2042ff50d9915f84d3644d633aca4261f0423132ca4af89b7a4",
+          "mode": 420
+        },
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 384
+        },
+        null,
+        null,
+        {
+          "sha256": "bc8f2319efdae2042ff50d9915f84d3644d633aca4261f0423132ca4af89b7a4",
+          "mode": 420
+        },
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 1,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md.rollback_tmp": {
+          "sha256": "bc8f2319efdae2042ff50d9915f84d3644d633aca4261f0423132ca4af89b7a4",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        "config.md.rollback.tmp": {
+          "sha256": "bc8f2319efdae2042ff50d9915f84d3644d633aca4261f0423132ca4af89b7a4",
+          "mode": 420
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        ".rollback.lock": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md.rollback_tmp": {
+          "sha256": "bc8f2319efdae2042ff50d9915f84d3644d633aca4261f0423132ca4af89b7a4",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 384
+        },
+        "config.md.rollback.tmp": {
+          "sha256": "bc8f2319efdae2042ff50d9915f84d3644d633aca4261f0423132ca4af89b7a4",
+          "mode": 420
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "Rollback complete. config.md restored (sha256 25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218); cache/new.json and cache/ removed.\nEvidence: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-5uvpswey/records/pre-rollback-20261022T163651Z.log, /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-5uvpswey/records/post-rollback-20261022T163651Z.log\n",
+      "stderr": "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh: line 84: created_tmp: unbound variable\n",
+      "error": null
+    },
+    {
+      "scenario": "held_lock",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "preserves_other_owners_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 2,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        ".rollback.lock": {
+          "directory": true,
+          "mode": 493
+        },
+        ".rollback.lock/owner": {
+          "sha256": "2d699a55ebfadc35571b0a5036610980bc92d36b8c6e456e8095fb31c10e40c1",
+          "mode": 420
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        ".rollback.lock": {
+          "directory": true,
+          "mode": 493
+        },
+        ".rollback.lock/owner": {
+          "sha256": "2d699a55ebfadc35571b0a5036610980bc92d36b8c6e456e8095fb31c10e40c1",
+          "mode": 420
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: lock held (/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-pnex07b8/root/.rollback.lock): another operation may be active; stop it, or remove the lock manually once confirmed stale\n",
+      "error": null
+    },
+    {
+      "scenario": "nonempty_cache",
+      "status": "FAIL",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "restores_original_content": false,
+        "removes_created_file": false,
+        "removes_only_empty_created_directory": true,
+        "restores_original_mode": false,
+        "new_nonempty_evidence_retained": false,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        {
+          "sha256": "23f0eb7a5bdc7dd730ebe0defaa2e0370089629ea7ed0937e61d9d5e65cd1a9b",
+          "mode": 420
+        },
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        {
+          "sha256": "23f0eb7a5bdc7dd730ebe0defaa2e0370089629ea7ed0937e61d9d5e65cd1a9b",
+          "mode": 420
+        },
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "cache/unrelated.txt": {
+          "sha256": "23f0eb7a5bdc7dd730ebe0defaa2e0370089629ea7ed0937e61d9d5e65cd1a9b",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "cache/unrelated.txt": {
+          "sha256": "23f0eb7a5bdc7dd730ebe0defaa2e0370089629ea7ed0937e61d9d5e65cd1a9b",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/cache has unexpected entries not created by this update; stop for manual reconciliation: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-1flv_dzo/root/cache/unrelated.txt\n",
+      "error": null
+    },
+    {
+      "scenario": "invalid_backup",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "ed9e5958ab45a44374e62d4d9591393563c953c946585ceb2c1882add99ada35",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "ed9e5958ab45a44374e62d4d9591393563c953c946585ceb2c1882add99ada35",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: backup checksum mismatch: expected 25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218 got ed9e5958ab45a44374e62d4d9591393563c953c946585ceb2c1882add99ada35\n",
+      "error": null
+    },
+    {
+      "scenario": "missing_backup",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        null,
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        null,
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: config backup missing or not a regular file: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-23cqijet/original.md\n",
+      "error": null
+    },
+    {
+      "scenario": "missing_config",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        null,
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        null,
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/config.md missing or not a regular file; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "config_symlink",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-e0omo86r/root/cache/unrelated.txt"
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 420
+        },
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-e0omo86r/root/cache/unrelated.txt"
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 420
+        },
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "cache/unrelated.txt": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 420
+        },
+        "config.md": {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-e0omo86r/root/cache/unrelated.txt"
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "cache/unrelated.txt": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 420
+        },
+        "config.md": {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-e0omo86r/root/cache/unrelated.txt"
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/config.md missing or not a regular file; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "cache_symlink",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-r3bdtlcp/root/cache/unrelated.txt"
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-r3bdtlcp/root/cache/unrelated.txt"
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-r3bdtlcp/root/cache/unrelated.txt"
+        },
+        "cache/unrelated.txt": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-r3bdtlcp/root/cache/unrelated.txt"
+        },
+        "cache/unrelated.txt": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/cache/new.json missing or not a regular file; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "config_directory",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md/concurrent.txt": {
+          "sha256": "24fd6c2584942dffba38c5bdea9f282419703afe24349d729d27863390381eb7",
+          "mode": 420
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md/concurrent.txt": {
+          "sha256": "24fd6c2584942dffba38c5bdea9f282419703afe24349d729d27863390381eb7",
+          "mode": 420
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/config.md missing or not a regular file; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "cache_directory",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json/concurrent.txt": {
+          "sha256": "24fd6c2584942dffba38c5bdea9f282419703afe24349d729d27863390381eb7",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json/concurrent.txt": {
+          "sha256": "24fd6c2584942dffba38c5bdea9f282419703afe24349d729d27863390381eb7",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/cache/new.json missing or not a regular file; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "backup_directory",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "directory": true,
+          "mode": 493
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: config backup missing or not a regular file: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-lnlgopi5/original.md\n",
+      "error": null
+    },
+    {
+      "scenario": "backup_symlink",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-jy1czlge/outside-targets/original.md"
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "directory": true,
+          "mode": 493
+        },
+        null,
+        null,
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-jy1czlge/outside-targets/original.md"
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache/new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "original.md": {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "original.md": {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: config backup missing or not a regular file: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-jy1czlge/original.md\n",
+      "error": null
+    },
+    {
+      "scenario": "cache_parent_symlink",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-dhnswzn_/outside-targets"
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        },
+        {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        },
+        {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-dhnswzn_/outside-targets"
+        },
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-dhnswzn_/outside-targets"
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "cache": {
+          "symlink": "/var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/flow-lean-rollback-dhnswzn_/outside-targets"
+        },
+        "config.md": {
+          "sha256": "7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6",
+          "mode": 384
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "new.json": {
+          "sha256": "7306020d5ce10959ce38642375aca5986f5027f45949013db62c11d5f0c9f7ba",
+          "mode": 420
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/cache missing or not a plain directory; refusing\n",
+      "error": null
+    },
+    {
+      "scenario": "already_restored",
+      "status": "PASS",
+      "checks": {
+        "command_completed": true,
+        "backup_preserved": true,
+        "prior_evidence_preserved": true,
+        "unrelated_paths_preserved": true,
+        "no_unexpected_root_paths": true,
+        "refuses_before_mutation": true,
+        "releases_owned_lock": true
+      },
+      "before": [
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "after": [
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        },
+        {
+          "sha256": "8769230ea9a0fbee7b6550e712a204aa58b661cd98857cb9f5455f6b21b61810",
+          "mode": 420
+        }
+      ],
+      "returncode": 3,
+      "root_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md": {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        }
+      },
+      "root_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        },
+        "config.md": {
+          "sha256": "25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218",
+          "mode": 416
+        }
+      },
+      "external_before": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "external_after": {
+        ".": {
+          "directory": true,
+          "mode": 493
+        }
+      },
+      "temporary_paths": [
+        "config.md.rollback.tmp",
+        "config.md.rollback_tmp"
+      ],
+      "stdout": "",
+      "stderr": "ERROR: ROOT/config.md checksum mismatch: expected 7d0698689b2d55cbce578d325da39bae00d260dc71c14a26909461903cc06ca6 got 25718360e05d3c2d0963d1381e9dd4dae5fca789244ee4b9f861adcc0cc96218 (concurrent write?)\n",
+      "error": null
+    }
+  ],
+  "argument_errors": [
+    {
+      "args": [],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR: missing required argument (see --help)\n"
+    },
+    {
+      "args": [
+        "--root"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh: line 243: $2: unbound variable\n"
+    }
+  ],
+  "self_test": {
+    "returncode": 1,
+    "stdout": "FAIL: success path (expected rc=0 got rc=1)\nFAIL: final state incorrect\nPASS: missing config.md -> conflict (rc=3)\nPASS: concurrent edit -> conflict (rc=3)\nPASS: cache replaced by symlink -> conflict (rc=3)\nPASS: invalid backup checksum -> conflict (rc=3)\nPASS: unexpected cache content -> conflict (rc=3)\nPASS: lock held -> refusal (rc=2)\nPASS: targets untouched while lock held\nSELF-TEST: 2 case(s) failed\n",
+    "stderr": "Rollback complete. config.md restored (sha256 c6717fa031e0b66ccc3e68c783a4c62e5724a8ce591268e35fdfdf7b5b1009d6); cache/new.json and cache/ removed.\nEvidence: /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/tmp.k9wmpLgwQU/verify.qyhVEh/pre-rollback-20261022T163652Z.log, /var/folders/v1/t5ldwl1x2j36rhn23y6kh3hw0000gn/T/tmp.k9wmpLgwQU/verify.qyhVEh/post-rollback-20261022T163652Z.log\n/private/tmp/flow-lean-finalize-20261021/evals/local/pr2-requalification-20261022/rollback-B.sh: line 84: created_tmp: unbound variable\n"
+  }
+}

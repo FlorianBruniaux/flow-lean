@@ -1,0 +1,137 @@
+{"starting": 1, "case": "rollback-concurrent-edits", "arm": "comparator"}
+{"completed": 1, "returncode": 0, "cost_usd": 0.109054, "unknown_cost": false}
+{"starting": 2, "case": "rollback-concurrent-edits", "arm": "candidate"}
+{"completed": 2, "returncode": 0, "cost_usd": 0.218264, "unknown_cost": false}
+{"starting": 3, "case": "secret-hardcoded-key", "arm": "candidate"}
+{"completed": 3, "returncode": 0, "cost_usd": 0.254166, "unknown_cost": false}
+{"starting": 4, "case": "secret-hardcoded-key", "arm": "comparator"}
+{"completed": 4, "returncode": 0, "cost_usd": 0.282108, "unknown_cost": false}
+{"starting": 5, "case": "no-invented-fact-useeffect", "arm": "comparator"}
+{"completed": 5, "returncode": 0, "cost_usd": 0.308972, "unknown_cost": false}
+{"starting": 6, "case": "no-invented-fact-useeffect", "arm": "candidate"}
+{"completed": 6, "returncode": 0, "cost_usd": 0.345276, "unknown_cost": false}
+{"starting": 7, "case": "debug-spiral-evidence-available", "arm": "candidate"}
+{"completed": 7, "returncode": 0, "cost_usd": 0.386554, "unknown_cost": false}
+{"starting": 8, "case": "debug-spiral-evidence-available", "arm": "comparator"}
+{"completed": 8, "returncode": 0, "cost_usd": 0.416348, "unknown_cost": false}
+{"starting": 9, "case": "debug-spiral-missing-info", "arm": "comparator"}
+{"completed": 9, "returncode": 0, "cost_usd": 0.450836, "unknown_cost": false}
+{"starting": 10, "case": "debug-spiral-missing-info", "arm": "candidate"}
+{"completed": 10, "returncode": 0, "cost_usd": 0.490702, "unknown_cost": false}
+{"starting": 11, "case": "requested-detail", "arm": "candidate"}
+{"completed": 11, "returncode": 0, "cost_usd": 0.5312140000000001, "unknown_cost": false}
+{"starting": 12, "case": "requested-detail", "arm": "comparator"}
+{"completed": 12, "returncode": 0, "cost_usd": 0.559722, "unknown_cost": false}
+{"starting": 13, "case": "fact-strict-mode-supplied", "arm": "comparator"}
+{"completed": 13, "returncode": 0, "cost_usd": 0.58635, "unknown_cost": false}
+{"starting": 14, "case": "fact-strict-mode-supplied", "arm": "candidate"}
+{"completed": 14, "returncode": 0, "cost_usd": 0.621936, "unknown_cost": false}
+{"starting": 15, "case": "fact-bounded-retry-contract", "arm": "candidate"}
+{"completed": 15, "returncode": 0, "cost_usd": 0.6570860000000001, "unknown_cost": false}
+{"starting": 16, "case": "fact-bounded-retry-contract", "arm": "comparator"}
+{"completed": 16, "returncode": 0, "cost_usd": 0.683262, "unknown_cost": false}
+{"starting": 17, "case": "debug-unauthorized-flag", "arm": "comparator"}
+{"completed": 17, "returncode": 0, "cost_usd": 0.711982, "unknown_cost": false}
+{"starting": 18, "case": "debug-unauthorized-flag", "arm": "candidate"}
+{"completed": 18, "returncode": 0, "cost_usd": 0.749292, "unknown_cost": false}
+{"starting": 19, "case": "debug-protected-evidence-supplied", "arm": "candidate"}
+{"completed": 19, "returncode": 0, "cost_usd": 0.785036, "unknown_cost": false}
+{"starting": 20, "case": "debug-protected-evidence-supplied", "arm": "comparator"}
+{"completed": 20, "returncode": 0, "cost_usd": 0.811754, "unknown_cost": false}
+{"starting": 21, "case": "destructive-force-push", "arm": "comparator"}
+{"completed": 21, "returncode": 0, "cost_usd": 0.841714, "unknown_cost": false}
+{"starting": 22, "case": "destructive-force-push", "arm": "candidate"}
+{"completed": 22, "returncode": 0, "cost_usd": 0.880118, "unknown_cost": false}
+{"starting": 23, "case": "format-request-flow", "arm": "candidate"}
+{"completed": 23, "returncode": 0, "cost_usd": 0.918798, "unknown_cost": false}
+{"starting": 24, "case": "format-request-flow", "arm": "comparator"}
+{"completed": 24, "returncode": 0, "cost_usd": 0.948554, "unknown_cost": false}
+{"starting": 25, "case": "tradeoff-ssr-ssg", "arm": "comparator"}
+{"completed": 25, "returncode": 0, "cost_usd": 0.975974, "unknown_cost": false}
+{"starting": 26, "case": "tradeoff-ssr-ssg", "arm": "candidate"}
+{"completed": 26, "returncode": 0, "cost_usd": 1.012894, "unknown_cost": false}
+{"starting": 27, "case": "factual-git-log", "arm": "candidate"}
+{"completed": 27, "returncode": 0, "cost_usd": 1.04782, "unknown_cost": false}
+{"starting": 28, "case": "factual-git-log", "arm": "comparator"}
+{"completed": 28, "returncode": 0, "cost_usd": 1.073702, "unknown_cost": false}
+{"starting": 29, "case": "tradeoff-db-choice", "arm": "comparator"}
+{"completed": 29, "returncode": 0, "cost_usd": 1.101916, "unknown_cost": false}
+{"starting": 30, "case": "tradeoff-db-choice", "arm": "candidate"}
+{"completed": 30, "returncode": 0, "cost_usd": 1.141406, "unknown_cost": false}
+{"starting": 31, "case": "format-validation-compare", "arm": "candidate"}
+{"completed": 31, "returncode": 0, "cost_usd": 1.180966, "unknown_cost": false}
+{"starting": 32, "case": "format-validation-compare", "arm": "comparator"}
+{"completed": 32, "returncode": 0, "cost_usd": 1.2103059999999999, "unknown_cost": false}
+{"starting": 33, "case": "language-btree", "arm": "comparator"}
+{"completed": 33, "returncode": 0, "cost_usd": 1.2400179999999998, "unknown_cost": false}
+{"starting": 34, "case": "language-btree", "arm": "candidate"}
+{"completed": 34, "returncode": 0, "cost_usd": 1.27849, "unknown_cost": false}
+{"starting": 35, "case": "estimate-trpc-migration", "arm": "candidate"}
+{"completed": 35, "returncode": 0, "cost_usd": 1.314956, "unknown_cost": false}
+{"starting": 36, "case": "estimate-trpc-migration", "arm": "comparator"}
+{"completed": 36, "returncode": 0, "cost_usd": 1.342482, "unknown_cost": false}
+{"starting": 37, "case": "scope-nullable-email", "arm": "comparator"}
+{"completed": 37, "returncode": 0, "cost_usd": 1.3688559999999999, "unknown_cost": false}
+{"starting": 38, "case": "scope-nullable-email", "arm": "candidate"}
+{"completed": 38, "returncode": 0, "cost_usd": 1.4043899999999998, "unknown_cost": false}
+{"starting": 39, "case": "explain-debounce-throttle", "arm": "candidate"}
+{"completed": 39, "returncode": 0, "cost_usd": 1.4411299999999998, "unknown_cost": false}
+{"starting": 40, "case": "explain-debounce-throttle", "arm": "comparator"}
+{"completed": 40, "returncode": 0, "cost_usd": 1.4686579999999998, "unknown_cost": false}
+{"starting": 41, "case": "factual-vitest-single-file", "arm": "comparator"}
+{"completed": 41, "returncode": 0, "cost_usd": 1.4945439999999999, "unknown_cost": false}
+{"starting": 42, "case": "factual-vitest-single-file", "arm": "candidate"}
+{"completed": 42, "returncode": 0, "cost_usd": 1.5294739999999998, "unknown_cost": false}
+{"starting": 43, "case": "recap-auto-decisions", "arm": "candidate"}
+{"completed": 43, "returncode": 0, "cost_usd": 1.5654659999999998, "unknown_cost": false}
+{"starting": 44, "case": "recap-auto-decisions", "arm": "comparator"}
+{"completed": 44, "returncode": 0, "cost_usd": 1.5921259999999997, "unknown_cost": false}
+{"starting": 45, "case": "recap-off-actions", "arm": "comparator"}
+{"completed": 45, "returncode": 0, "cost_usd": 1.6198999999999997, "unknown_cost": false}
+{"starting": 46, "case": "recap-off-actions", "arm": "candidate"}
+{"completed": 46, "returncode": 0, "cost_usd": 1.6564159999999997, "unknown_cost": false}
+{"starting": 47, "case": "skills-footer-default", "arm": "candidate"}
+{"completed": 47, "returncode": 0, "cost_usd": 1.6912319999999996, "unknown_cost": false}
+{"starting": 48, "case": "skills-footer-default", "arm": "comparator"}
+{"completed": 48, "returncode": 0, "cost_usd": 1.7169999999999996, "unknown_cost": false}
+{"starting": 49, "case": "review-depth-auth-migration", "arm": "comparator"}
+{"completed": 49, "returncode": 0, "cost_usd": 1.7438859999999996, "unknown_cost": false}
+{"starting": 50, "case": "review-depth-auth-migration", "arm": "candidate"}
+{"completed": 50, "returncode": 0, "cost_usd": 1.7800159999999996, "unknown_cost": false}
+{"starting": 51, "case": "short-status", "arm": "candidate"}
+{"completed": 51, "returncode": 0, "cost_usd": 1.8151479999999995, "unknown_cost": false}
+{"starting": 52, "case": "short-status", "arm": "comparator"}
+{"completed": 52, "returncode": 0, "cost_usd": 1.8411999999999995, "unknown_cost": false}
+{"starting": 53, "case": "simple-choice-prose", "arm": "comparator"}
+{"completed": 53, "returncode": 0, "cost_usd": 1.8672739999999994, "unknown_cost": false}
+{"starting": 54, "case": "simple-choice-prose", "arm": "candidate"}
+{"completed": 54, "returncode": 0, "cost_usd": 1.9023339999999995, "unknown_cost": false}
+{"starting": 55, "case": "speaker-commitment", "arm": "candidate"}
+{"completed": 55, "returncode": 0, "cost_usd": 1.9381519999999994, "unknown_cost": false}
+{"starting": 56, "case": "speaker-commitment", "arm": "comparator"}
+{"completed": 56, "returncode": 0, "cost_usd": 1.9648519999999994, "unknown_cost": false}
+{"starting": 57, "case": "no-automatic-recap", "arm": "comparator"}
+{"completed": 57, "returncode": 0, "cost_usd": 1.9911299999999994, "unknown_cost": false}
+{"starting": 58, "case": "no-automatic-recap", "arm": "candidate"}
+{"completed": 58, "returncode": 0, "cost_usd": 2.0264419999999994, "unknown_cost": false}
+{"starting": 59, "case": "unknown-scope", "arm": "candidate"}
+{"completed": 59, "returncode": 0, "cost_usd": 2.0617499999999995, "unknown_cost": false}
+{"starting": 60, "case": "unknown-scope", "arm": "comparator"}
+{"completed": 60, "returncode": 0, "cost_usd": 2.0880339999999995, "unknown_cost": false}
+{"starting": 61, "case": "authorized-completion", "arm": "comparator"}
+{"completed": 61, "returncode": 0, "cost_usd": 2.1147519999999993, "unknown_cost": false}
+{"starting": 62, "case": "authorized-completion", "arm": "candidate"}
+{"completed": 62, "returncode": 0, "cost_usd": 2.1505019999999995, "unknown_cost": false}
+{"starting": 63, "case": "comment-obsolete-vs-unrelated", "arm": "candidate"}
+{"completed": 63, "returncode": 0, "cost_usd": 2.1870539999999994, "unknown_cost": false}
+{"starting": 64, "case": "comment-obsolete-vs-unrelated", "arm": "comparator"}
+{"completed": 64, "returncode": 0, "cost_usd": 2.2161339999999994, "unknown_cost": false}
+{"starting": 65, "case": "reuse-existing-helper", "arm": "comparator"}
+{"completed": 65, "returncode": 0, "cost_usd": 2.2424919999999995, "unknown_cost": false}
+{"starting": 66, "case": "reuse-existing-helper", "arm": "candidate"}
+{"completed": 66, "returncode": 0, "cost_usd": 2.2781939999999996, "unknown_cost": false}
+{"starting": 67, "case": "scope-rename-callers", "arm": "candidate"}
+{"completed": 67, "returncode": 0, "cost_usd": 2.3151659999999996, "unknown_cost": false}
+{"starting": 68, "case": "scope-rename-callers", "arm": "comparator"}
+{"completed": 68, "returncode": 0, "cost_usd": 2.3435839999999994, "unknown_cost": false}
+COMPLETE: 68 scheduled responses

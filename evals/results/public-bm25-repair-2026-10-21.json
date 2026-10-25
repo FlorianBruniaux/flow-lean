@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "provider_calls": 0,
+  "node_version": "v22.18.0",
+  "scope": "Real router processes, disposable dual-host projections, full user catalogs, isolated caches; no native model session",
+  "probe_status": "Development regressions, not independent holdout",
+  "source_hashes": {
+    "SKILL.md": "41a480403ec59b5066c80b45310def38b65bc66ad386457f3798fefb4e3ee5c7",
+    "evals/scenarios.json": "4ef6b0d65d41a07a2739652197b2f8d763625d3f47e9e98eb1182ed642ac881a",
+    "evals/routing-probes.json": "6291a4a29f82000a33779ad10a2f34eb4db3a52ef0213752cf6a1b8acc255aeb",
+    "evals/candidates/v3.1-routing-holdout.json": "9fc392421b0259601c21cdcff80aec987785b23a55bfe74b2d5a811e4979db92",
+    "scripts/check_routing.cjs": "4db7f7c6beface7edb24ab81398329e17b31a07344e135548c571b200156af20"
+  },
+  "router_hashes": {
+    "bm25-suggest.js": "b13461cf5587010113a0622c937e92b2fa97a686dd2d7b6eadb09dfc01146210",
+    "routing/benchmark.js": "ebc9e40318af5bffe5c29c387a0819658b4a17f2193b91bc914ce54589cdf477",
+    "routing/bm25.js": "69932848ad50c2ccfd196e83f21e7c89c5525100c93ff7685a2a9c2b11fec89a",
+    "routing/build-index.js": "94dad6fc777bef0407171a78b70181049c22c63d7e7f3d3004c623cd7260bf61",
+    "routing/cache.js": "f0116a2b0815fd39e5c48ba3bb29d9f41bdaee2580b1c88b9b2e5ea42f48db3b",
+    "routing/discovery.js": "ddfc753fd59337a1d5d264ff1313a1d89d4d19acb69a15157b3dc6074e1061bb",
+    "routing/paths.js": "fe61a1845dc69642521d2ef1866b323e66fbdb7e47ead0f7ebd995fbf2d785a8",
+    "routing/tokenize.js": "745609fa266898788559ce00c60b31d73a5c1aeb65b41a8b955332a05c30561c"
+  },
+  "hosts": {
+    "claude": {
+      "active_skills": 123,
+      "source_fingerprint": "14c723ba03ded7c78b0fb277c480f6b636a155c924e79d380cde4906e9bb03d0",
+      "eligible": true,
+      "global_gate_passed": true,
+      "global": {
+        "TP": 329,
+        "FP": 214,
+        "FN": 16,
+        "precision": 0.6058931860036832,
+        "recall": 0.9536231884057971,
+        "f1": 0.7409909909909911
+      },
+      "threshold": {
+        "tau": 9.576066472673684,
+        "TP": 17,
+        "FP": 0,
+        "FN": 1,
+        "precision": 1,
+        "recall": 0.9444444444444444,
+        "f1": 0.9714285714285714,
+        "fbeta2": 0.9550561797752809,
+        "n_pos": 18,
+        "n_neg": 23,
+        "status": "ok",
+        "eligible": true,
+        "evaluation": {
+          "TP": 17,
+          "FP": 1,
+          "FN": 1,
+          "TN": 23,
+          "n_pos": 18,
+          "n_neg": 23,
+          "precision": 0.9444444444444444,
+          "recall": 0.9444444444444444,
+          "f1": 0.9444444444444444
+        }
+      },
+      "results": [
+        {
+          "prompt": "Passe en mode concis, réponse courte et directe",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réduis les output tokens et va droit au but",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Be concise but keep the important caveat",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Use short prose by default, skip the duplicate summary",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Compresse cette archive ZIP sans perte",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais une revue de sécurité complète de cette pull request",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un README détaillé pour cette bibliothèque",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds de façon concise, avec la conclusion dès le début et sans phrases de remplissage.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Please make your answers shorter and put the result first.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean detailed : reprends ton explication, elle est trop raccourcie.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean recap auto, ne répète pas les conclusions à la fin.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean : skills footer status",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un email très bref pour remercier le client.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais la synthèse des résultats trimestriels dans un document.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Review the authentication patch for security bugs.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Prépare une note de reprise pour la prochaine session de développement.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Liste les agents et vérifie leur configuration.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Vas-y",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "stop flow-lean",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "/flow-lean concise",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    "codex": {
+      "active_skills": 164,
+      "source_fingerprint": "58d2b4b95f4ef6fb84c87750de42579c3324799fd090eed43e9ab3150c588878",
+      "eligible": true,
+      "global_gate_passed": true,
+      "global": {
+        "TP": 329,
+        "FP": 214,
+        "FN": 16,
+        "precision": 0.6058931860036832,
+        "recall": 0.9536231884057971,
+        "f1": 0.7409909909909911
+      },
+      "threshold": {
+        "tau": 9.576066472673684,
+        "TP": 17,
+        "FP": 0,
+        "FN": 1,
+        "precision": 1,
+        "recall": 0.9444444444444444,
+        "f1": 0.9714285714285714,
+        "fbeta2": 0.9550561797752809,
+        "n_pos": 18,
+        "n_neg": 23,
+        "status": "ok",
+        "eligible": true,
+        "evaluation": {
+          "TP": 17,
+          "FP": 1,
+          "FN": 1,
+          "TN": 23,
+          "n_pos": 18,
+          "n_neg": 23,
+          "precision": 0.9444444444444444,
+          "recall": 0.9444444444444444,
+          "f1": 0.9444444444444444
+        }
+      },
+      "results": [
+        {
+          "prompt": "Passe en mode concis, réponse courte et directe",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réduis les output tokens et va droit au but",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds plus court, sans tableau ni récap à la fin",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Be concise but keep the important caveat",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Use short prose by default, skip the duplicate summary",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Audite la consommation de tokens de ces cinquante transcripts",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Compresse cette archive ZIP sans perte",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais une revue de sécurité complète de cette pull request",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un README détaillé pour cette bibliothèque",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Réponds de façon concise, avec la conclusion dès le début et sans phrases de remplissage.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Please make your answers shorter and put the result first.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean detailed : reprends ton explication, elle est trop raccourcie.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean recap auto, ne répète pas les conclusions à la fin.",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Flow Lean : skills footer status",
+          "expected": true,
+          "selected": true,
+          "pass": true
+        },
+        {
+          "prompt": "Rédige un email très bref pour remercier le client.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Fais la synthèse des résultats trimestriels dans un document.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Review the authentication patch for security bugs.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Prépare une note de reprise pour la prochaine session de développement.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Liste les agents et vérifie leur configuration.",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "Vas-y",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "stop flow-lean",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        },
+        {
+          "prompt": "$flow-lean concise",
+          "expected": false,
+          "selected": false,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  },
+  "pass": true,
+  "baseline_control": {
+    "commit": "b0de50e792884531e699657046b897bd8cd1f32f",
+    "source_hashes": {
+      "SKILL.md": "41a480403ec59b5066c80b45310def38b65bc66ad386457f3798fefb4e3ee5c7",
+      "evals/scenarios.json": "817b5aa9ce8df0f4fde64531dc38467c5ba3787ee5e7b12b52388cf4af19a48b",
+      "evals/routing-probes.json": "6291a4a29f82000a33779ad10a2f34eb4db3a52ef0213752cf6a1b8acc255aeb",
+      "evals/candidates/v3.1-routing-holdout.json": "9fc392421b0259601c21cdcff80aec987785b23a55bfe74b2d5a811e4979db92",
+      "scripts/check_routing.cjs": "4db7f7c6beface7edb24ab81398329e17b31a07344e135548c571b200156af20"
+    },
+    "hosts": {
+      "claude": {
+        "active_skills": 123,
+        "eligible": false,
+        "global_gate_passed": true,
+        "global": {
+          "TP": 320,
+          "FP": 214,
+          "FN": 17,
+          "precision": 0.599250936329588,
+          "recall": 0.9495548961424333,
+          "f1": 0.7347876004592423
+        },
+        "threshold": {
+          "tau": 4.210358020243783,
+          "TP": 13,
+          "FP": 1,
+          "FN": 3,
+          "precision": 0.9285714285714286,
+          "recall": 0.8125,
+          "f1": 0.8666666666666666,
+          "fbeta2": 0.8333333333333334,
+          "n_pos": 16,
+          "n_neg": 4,
+          "status": "ok",
+          "eligible": false,
+          "evaluation": {
+            "TP": 12,
+            "FP": 29,
+            "FN": 4,
+            "TN": 3,
+            "n_pos": 16,
+            "n_neg": 4,
+            "precision": 0.2926829268292683,
+            "recall": 0.75,
+            "f1": 0.4210526315789473
+          }
+        },
+        "pass": false,
+        "passed_probes": 12,
+        "total_probes": 22
+      },
+      "codex": {
+        "active_skills": 164,
+        "eligible": false,
+        "global_gate_passed": true,
+        "global": {
+          "TP": 320,
+          "FP": 214,
+          "FN": 17,
+          "precision": 0.599250936329588,
+          "recall": 0.9495548961424333,
+          "f1": 0.7347876004592423
+        },
+        "threshold": {
+          "tau": 4.210358020243783,
+          "TP": 13,
+          "FP": 1,
+          "FN": 3,
+          "precision": 0.9285714285714286,
+          "recall": 0.8125,
+          "f1": 0.8666666666666666,
+          "fbeta2": 0.8333333333333334,
+          "n_pos": 16,
+          "n_neg": 4,
+          "status": "ok",
+          "eligible": false,
+          "evaluation": {
+            "TP": 12,
+            "FP": 29,
+            "FN": 4,
+            "TN": 3,
+            "n_pos": 16,
+            "n_neg": 4,
+            "precision": 0.2926829268292683,
+            "recall": 0.75,
+            "f1": 0.4210526315789473
+          }
+        },
+        "pass": false,
+        "passed_probes": 12,
+        "total_probes": 22
+      }
+    }
+  }
+}

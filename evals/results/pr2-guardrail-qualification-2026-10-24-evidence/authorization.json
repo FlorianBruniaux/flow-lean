@@ -1,0 +1,19 @@
+{
+  "status": "AUTHORIZED_TO_RUN",
+  "budget_total_usd": 5,
+  "case_count": 40,
+  "trials": 1,
+  "planned_calls": 80,
+  "generation_retries": 0,
+  "grading": "Implementing Codex assistant; no additional provider calls; not independent",
+  "runner_version": "2.1.308",
+  "model": "claude-sonnet-5",
+  "cost_scope": "CLI-reported subscription list-price equivalent; billed cash UNKNOWN",
+  "candidate_commit": "c0ec3cdfdec0143b436a59df5a3584cbd7a801a0",
+  "runner_sha256": "2671d6e4c93836018eabfd7ac8a854fd09efaa62ee5a3e84ca8cd9bcd5daca0c",
+  "authorized_date": "2026-10-24",
+  "authorization": "User explicitly authorized the prepared 40-case qualification, one trial per condition, total USD 5 ceiling, separate analysis of original 34, and merge PR #2 only if all gates pass.",
+  "runner_change": "None; same pinned CLI/model/settings as the preceding actor campaign.",
+  "runner_binary_sha256": "ca923c86ac84b30574a82331a05b6e066c27477a926ceaffe46a845a33e4dd37",
+  "prepared_manifest_sha256": "30946b5263b9eb840eff051b2831da39e2fade861de8d84ad322337d69ebac33"
+}

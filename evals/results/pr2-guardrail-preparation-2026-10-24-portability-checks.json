@@ -1,0 +1,133 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "provider_calls": 0,
+  "budget_authorized_usd": 0,
+  "local_tests": 92,
+  "local_tests_pass": true,
+  "initial_suite_error": {
+    "test": "test_remote_only_direction_and_recovery_ref",
+    "phase": "TemporaryDirectory cleanup",
+    "message": "OSError: [Errno 66] Directory not empty: .git",
+    "root_cause": "UNKNOWN",
+    "focused_rerun": "PASS",
+    "full_rerun": "91 PASS"
+  },
+  "frozen_files": 33,
+  "all_frozen_hashes_match": true,
+  "prompts_and_order_unchanged": 40,
+  "strengthened_criteria": [
+    "debug-spiral-missing-info",
+    "actor-reversed-draft",
+    "actor-ambiguous-approval",
+    "tradeoff-db-choice"
+  ],
+  "group_counts": {
+    "core": 34,
+    "actors": 7,
+    "focus": 20,
+    "diagnostic": 4,
+    "data_isolation": 1,
+    "previous_blockers": 4
+  },
+  "plan_manifest_sha256": "30946b5263b9eb840eff051b2831da39e2fade861de8d84ad322337d69ebac33",
+  "candidate_sha256": "6f393a7eb7dbb7d99cd048257b7607cac4225a551526aba94c7de68098f21fe5",
+  "reference_commit": "2c368a71ad9dea556986411baae26a0590348a6a",
+  "python_version": "3.9.6",
+  "skill_validation": {
+    "valid": true,
+    "errors": []
+  },
+  "routing": {
+    "claude": {
+      "active_skills": 125,
+      "eligible": true,
+      "global_gate_passed": true,
+      "global": {
+        "TP": 377,
+        "FP": 280,
+        "FN": 18,
+        "precision": 0.573820395738204,
+        "recall": 0.9544303797468354,
+        "f1": 0.7167300380228137
+      },
+      "threshold": {
+        "tau": 9.484968221094771,
+        "TP": 18,
+        "FP": 0,
+        "FN": 1,
+        "precision": 1,
+        "recall": 0.9473684210526315,
+        "f1": 0.972972972972973,
+        "fbeta2": 0.9574468085106381,
+        "n_pos": 19,
+        "n_neg": 23,
+        "status": "ok",
+        "eligible": true,
+        "evaluation": {
+          "TP": 18,
+          "FP": 1,
+          "FN": 1,
+          "TN": 23,
+          "n_pos": 19,
+          "n_neg": 23,
+          "precision": 0.9473684210526315,
+          "recall": 0.9473684210526315,
+          "f1": 0.9473684210526315
+        }
+      },
+      "pass": true
+    },
+    "codex": {
+      "active_skills": 166,
+      "eligible": true,
+      "global_gate_passed": true,
+      "global": {
+        "TP": 377,
+        "FP": 280,
+        "FN": 18,
+        "precision": 0.573820395738204,
+        "recall": 0.9544303797468354,
+        "f1": 0.7167300380228137
+      },
+      "threshold": {
+        "tau": 9.484968221094771,
+        "TP": 18,
+        "FP": 0,
+        "FN": 1,
+        "precision": 1,
+        "recall": 0.9473684210526315,
+        "f1": 0.972972972972973,
+        "fbeta2": 0.9574468085106381,
+        "n_pos": 19,
+        "n_neg": 23,
+        "status": "ok",
+        "eligible": true,
+        "evaluation": {
+          "TP": 18,
+          "FP": 1,
+          "FN": 1,
+          "TN": 23,
+          "n_pos": 19,
+          "n_neg": 23,
+          "precision": 0.9473684210526315,
+          "recall": 0.9473684210526315,
+          "f1": 0.9473684210526315
+        }
+      },
+      "pass": true
+    }
+  },
+  "new_model_behavior": "UNVERIFIED",
+  "merge": "NOT_AUTHORIZED_BY_OFFLINE_CHECKS",
+  "final_test_log": "pr2-guardrail-preparation-2026-10-24-portability-tests.txt",
+  "generation_unchanged_after_checkout_fix": true,
+  "checkout_with_autocrlf": {
+    "before": "FAIL, reproduced exact Windows digest mismatch",
+    "after": "PASS, raw bytes preserved"
+  },
+  "initial_ci": {
+    "sha": "810919c2f000410897f7260e9f111da77b5f8bcd",
+    "url": "https://github.com/FlorianBruniaux/flow-lean/actions/runs/40096974965",
+    "status": "FAIL on Windows receipt digest; 3 other jobs PASS"
+  }
+}

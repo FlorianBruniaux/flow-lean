@@ -1,0 +1,25 @@
+{
+  "init_count": 80,
+  "empty_tools": 80,
+  "empty_mcp_servers": 80,
+  "empty_skills": 80,
+  "empty_slash_commands": 80,
+  "empty_additional_directories": 80,
+  "distinct_cwds": 80,
+  "distinct_auto_memory_paths": 80,
+  "memory_directories_existing_at_postrun_inspection": 0,
+  "builtin_plugin_names": [
+    "cc-plugin-agents-md",
+    "cc-plugin-plugin-authoring",
+    "cc-plugin-telemetry"
+  ],
+  "builtin_agents": [
+    "Explore",
+    "Plan",
+    "claude",
+    "general-purpose",
+    "statusline-setup"
+  ],
+  "complete_prompt_isolation": "UNKNOWN",
+  "limit": "Init receipts establish advertised tool/connectors/skills absence, not the complete sent prompt or global instruction exclusion. Auto-memory paths are unique per temporary cwd; postrun existence is not proof of what was loaded during generation."
+}

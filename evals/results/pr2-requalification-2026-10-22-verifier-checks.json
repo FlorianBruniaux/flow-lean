@@ -1,0 +1,17 @@
+[
+  {
+    "mutation": "missing response",
+    "rejected": true,
+    "reason": "Scheduled order mismatch"
+  },
+  {
+    "mutation": "changed receipt cost",
+    "rejected": true,
+    "reason": "Receipt cost mismatch"
+  },
+  {
+    "mutation": "changed instructions",
+    "rejected": true,
+    "reason": "Instructions mismatch"
+  }
+]

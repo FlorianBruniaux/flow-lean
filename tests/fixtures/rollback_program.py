@@ -16,24 +16,33 @@ try:
         os.close(fd)
     else: lock.mkdir()
 except FileExistsError:
-    if mutant == "remove_other_lock": lock.rmdir()
+    if mutant == "remove_other_lock": shutil.rmtree(lock)
+    if mutant == "alter_other_lock": (lock / "owner").write_text("changed\n")
     sys.exit(4)
 try:
-    if not backup.is_file() or digest(backup) != original_hash:
+    if ((backup.is_symlink() and mutant != "follow_backup")
+            or not backup.is_file() or digest(backup) != original_hash):
         sys.exit(5)
+    if ((root / "cache").is_symlink() and mutant != "follow_parent"):
+        sys.exit(6)
     if (config.is_symlink() or new.is_symlink() or digest(config) != config_hash
             or (digest(new) != cache_hash and not (mutant == "accept_missing" and not new.exists()))):
+        if mutant == "alter_conflict_child" and new.is_dir():
+            (new / "concurrent.txt").write_text("clobbered\n")
         if mutant == "partial_mutation":
             if new.exists(): new.unlink()
             shutil.copy2(backup, config)
         sys.exit(6)
     if mutant != "noop":
-        if mutant == "overwrite_temp":
-            temp = root / "config.md.rollback.tmp"
+        if mutant in {"overwrite_temp", "overwrite_temp_underscore", "overwrite_other_temp"}:
+            temp = root / {"overwrite_temp": "config.md.rollback.tmp",
+                           "overwrite_temp_underscore": "config.md.rollback_tmp",
+                           "overwrite_other_temp": "restore.stage"}[mutant]
             shutil.copy2(backup, temp); temp.replace(config)
         else:
             shutil.copy2(backup, config)
         if mutant == "wrong_mode": config.chmod(0o600)
+        if mutant == "leak_temp": (root / "leaked.tmp").write_text("uncollected\n")
         if new.exists(): new.unlink()
         if not any((root / "cache").iterdir()): (root / "cache").rmdir()
         elif mutant == "delete_nonempty": shutil.rmtree(root / "cache")

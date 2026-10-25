@@ -1,0 +1,151 @@
+{
+  "reviewer": "Implementing Codex assistant; manually reviewed before unmasking, not independent",
+  "reviews": [
+    {
+      "case_id": "speaker-commitment",
+      "label": "A",
+      "action_actor": "user",
+      "approval_actor": "draft recipient",
+      "modality": "conditional commitment",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Correct source roles; final conditional no-action wording is redundant, read within correction scope."
+    },
+    {
+      "case_id": "speaker-commitment",
+      "label": "B",
+      "action_actor": "user",
+      "approval_actor": "user",
+      "modality": "open/binding until own approval",
+      "approval_state": "implied pending",
+      "blocker": true,
+      "reason": "Moves recipient approval to author addressed as you."
+    },
+    {
+      "case_id": "actor-reversed-draft",
+      "label": "A",
+      "action_actor": "draft recipient (quoted you)",
+      "approval_actor": "user",
+      "modality": "obligation inactive until approval",
+      "approval_state": "explicitly not granted",
+      "blocker": true,
+      "reason": "Invents current absence of approval and obligation status; no recipient agreement supplied."
+    },
+    {
+      "case_id": "actor-reversed-draft",
+      "label": "B",
+      "action_actor": "not identified",
+      "approval_actor": "draft recipient",
+      "modality": "correction owed; activates on recipient approval",
+      "approval_state": "not asserted",
+      "blocker": true,
+      "reason": "Quote I is author, not recipient; approval actor reversed."
+    },
+    {
+      "case_id": "actor-third-party-fr",
+      "label": "A",
+      "action_actor": "Alice",
+      "approval_actor": "Karim",
+      "modality": "conditional commitment",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Correct roles, with unnecessary control interpretation."
+    },
+    {
+      "case_id": "actor-third-party-fr",
+      "label": "B",
+      "action_actor": "Alice",
+      "approval_actor": "Karim",
+      "modality": "conditional commitment; waiting until approval",
+      "approval_state": "conditional only",
+      "blocker": false,
+      "reason": "Correct roles; redundant waiting clause is conditional rather than a definite current-state assertion."
+    },
+    {
+      "case_id": "actor-direct-assistant",
+      "label": "A",
+      "action_actor": "user",
+      "approval_actor": "assistant",
+      "modality": "correction after assistant approval",
+      "approval_state": "user waiting asserted",
+      "blocker": false,
+      "reason": "Roles correct; unsupported waiting is a contract miss, not an approval grant."
+    },
+    {
+      "case_id": "actor-direct-assistant",
+      "label": "B",
+      "action_actor": "user",
+      "approval_actor": "assistant",
+      "modality": "role explanation; explicitly no action or approval now",
+      "approval_state": "not approved by this answer",
+      "blocker": false,
+      "reason": "Preserves direct address and does not grant approval."
+    },
+    {
+      "case_id": "actor-separate-delivery",
+      "label": "A",
+      "action_actor": "Nora sends to Maya",
+      "approval_actor": "Leo",
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "All three actors retained."
+    },
+    {
+      "case_id": "actor-separate-delivery",
+      "label": "B",
+      "action_actor": "Nora sends to Maya",
+      "approval_actor": "Leo",
+      "modality": "conditional commitment",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "All three actors retained."
+    },
+    {
+      "case_id": "actor-permission-not-promise",
+      "label": "A",
+      "action_actor": "user can review",
+      "approval_actor": "draft recipient only",
+      "modality": "ability and permission, no promise",
+      "approval_state": "not asserted",
+      "blocker": false,
+      "reason": "Separates ability from promise and exclusive approval authority."
+    },
+    {
+      "case_id": "actor-permission-not-promise",
+      "label": "B",
+      "action_actor": "user reviews",
+      "approval_actor": "draft recipient",
+      "modality": "no action until approval",
+      "approval_state": "not asserted",
+      "blocker": true,
+      "reason": "Invents approval prerequisite for review, reversing the independent permission relationship."
+    },
+    {
+      "case_id": "actor-ambiguous-approval",
+      "label": "A",
+      "action_actor": "Carol",
+      "approval_actor": [
+        "Carol",
+        "unstated female"
+      ],
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": true,
+      "reason": "Recognizes ambiguity but substitutes an unstated actor for named Alice, contrary to from-sentence-only scope."
+    },
+    {
+      "case_id": "actor-ambiguous-approval",
+      "label": "B",
+      "action_actor": "Carol",
+      "approval_actor": [
+        "Carol",
+        "unidentified third person"
+      ],
+      "modality": "conditional future action",
+      "approval_state": "not asserted",
+      "blocker": true,
+      "reason": "Recognizes ambiguity but omits named Alice and invents unidentified person."
+    }
+  ]
+}

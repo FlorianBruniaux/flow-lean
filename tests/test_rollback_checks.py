@@ -20,6 +20,57 @@ def adapter(mutant="none"):
 
 
 class RollbackTests(unittest.TestCase):
+    def test_actual_temporary_filename_is_checked(self):
+        spec = adapter('overwrite_other_temp')
+        spec['temporary_paths'] = ['{root}/restore.stage']
+        result = check(spec, ('unrelated_temp',))
+        self.assertEqual(result['status'], 'FAIL', result)
+        self.assertFalse(result['results'][0]['checks']['unrelated_paths_preserved'])
+
+    def test_known_alternate_temporary_filename_is_checked(self):
+        result = check(adapter('overwrite_temp_underscore'), ('unrelated_temp',))
+        self.assertEqual(result['status'], 'FAIL', result)
+        self.assertFalse(result['results'][0]['checks']['unrelated_paths_preserved'])
+
+    def test_temporary_probe_paths_cannot_escape_or_alias_inputs(self):
+        for path in ('../outside', '{root}/config.md', '{root}/cache',
+                     '{root}/cache/new.json', '{backup}', '{records}/prior-evidence.txt',
+                     '{root}/.lock', '{root}/config.md/child'):
+            with self.subTest(path=path):
+                spec = adapter(); spec['temporary_paths'] = [path]
+                with self.assertRaises(ValueError): check(spec, ('unrelated_temp',))
+
+    def test_type_parent_and_unreceipted_restoration_conflicts(self):
+        cases = ('config_directory', 'cache_directory', 'backup_directory',
+                 'backup_symlink', 'cache_parent_symlink', 'already_restored')
+        result = check(adapter(), cases)
+        self.assertEqual(result['status'], 'PASS', result)
+        for row in result['results']:
+            self.assertTrue(row['checks']['refuses_before_mutation'])
+
+    def test_following_parent_or_backup_symlinks_is_rejected(self):
+        for mutant, scenario in (('follow_parent', 'cache_parent_symlink'),
+                                 ('follow_backup', 'backup_symlink')):
+            with self.subTest(mutant=mutant):
+                result = check(adapter(mutant), (scenario,))
+                self.assertEqual(result['status'], 'FAIL', result)
+                self.assertFalse(result['results'][0]['checks']['refuses_before_mutation'])
+
+    def test_conflict_preservation_includes_nested_files(self):
+        result = check(adapter('alter_conflict_child'), ('cache_directory',))
+        self.assertEqual(result['status'], 'FAIL', result)
+        self.assertFalse(result['results'][0]['checks']['refuses_before_mutation'])
+
+    def test_held_directory_lock_contents_are_preserved(self):
+        result = check(adapter('alter_other_lock'), ('held_lock',))
+        self.assertEqual(result['status'], 'FAIL', result)
+        self.assertFalse(result['results'][0]['checks']['preserves_other_owners_lock'])
+
+    def test_owned_temporary_file_must_be_cleaned(self):
+        result = check(adapter('leak_temp'), ('normal',))
+        self.assertEqual(result['status'], 'FAIL', result)
+        self.assertFalse(result['results'][0]['checks']['no_unexpected_root_paths'])
+
     def test_positive_control_all_scenarios(self):
         result = check(adapter())
         self.assertEqual(result["status"], "PASS", result)

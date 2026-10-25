@@ -1,0 +1,6 @@
+{
+  "sha256": "60fbee31d7864a6b1251c1ddfbddf96c1662dd352e46a724c886148b383fa88e",
+  "rows": 68,
+  "grader": "implementing Codex assistant; non-independent; labels masked but style can reveal arms",
+  "extra_paid_grading_calls": 0
+}

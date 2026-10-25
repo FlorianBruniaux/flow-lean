@@ -1,0 +1,9 @@
+{
+  "frozen_at_utc": "2026-10-24T09:08:18.012948+00:00",
+  "sha256": "b2dc897b1cda7b590b5a7b9635cc0924153314109979625e591d7e5469a3f6eb",
+  "fact_audit_sha256": "21e13d9bd7c71fd7202d5cc4a37368da379c419ccbba54bf794aae9bc9261cb9",
+  "count": 68,
+  "masked": true,
+  "independent": false,
+  "limitation": "Arm names not printed during grading; wording/style can reveal identity. Same implementing assistant judged answers. External facts checked separately against official docs and offline fixtures."
+}

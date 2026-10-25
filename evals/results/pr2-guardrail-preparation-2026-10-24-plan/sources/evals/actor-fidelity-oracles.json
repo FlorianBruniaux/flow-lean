@@ -1,0 +1,93 @@
+{
+  "scope": "Reviewer-only calibration examples and manually resolved roles; never injected into model prompts. Not an automatic semantic grader or measured model outputs except the explicitly sourced historical failure.",
+  "cases": {
+    "actor-reversed-draft": {
+      "source_anchor": "You will make the correction once I approve it!",
+      "role_map": {
+        "action_actor": "draft recipient",
+        "approval_actor": "user",
+        "modality": "draft attributes a conditional action to recipient; no evidence recipient agreed",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "Your draft says your recipient will make the correction after you approve it.",
+      "failing_example": "You commit to making the correction once your recipient approves it.",
+      "failure_reason": "Both action owner and approver are swapped relative to the source."
+    },
+    "actor-third-party-fr": {
+      "source_anchor": "Je corrigerai dès que Karim aura approuvé.",
+      "role_map": {
+        "action_actor": "Alice",
+        "approval_actor": "Karim",
+        "modality": "Alice commits after Karim approval",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "Alice s’engage à corriger après l’approbation de Karim.",
+      "failing_example": "Alice s’engage à corriger dès que tu auras approuvé.",
+      "failure_reason": "The addressee Bob is substituted for named third-party approver Karim."
+    },
+    "actor-direct-assistant": {
+      "source_anchor": "I will make the correction once you approve it.",
+      "role_map": {
+        "action_actor": "user",
+        "approval_actor": "assistant",
+        "modality": "user commits after assistant approval",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "You commit to making the correction after I, the assistant, approve it.",
+      "failing_example": "I will make the correction once you approve it.",
+      "failure_reason": "Assistant adopts the user action and transfers approval to the user."
+    },
+    "actor-separate-delivery": {
+      "source_anchor": "I will send the correction to Maya once you approve it.",
+      "role_map": {
+        "action_actor": "Nora",
+        "approval_actor": "Leo",
+        "modality": "Nora commits to send correction to Maya after Leo approval",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "Nora commits to sending the correction to Maya after Leo approves it.",
+      "failing_example": "Nora will send the correction to Leo after Maya approves it.",
+      "failure_reason": "Delivery recipient and approver are exchanged."
+    },
+    "actor-permission-not-promise": {
+      "source_anchor": "I can review the fix, but only you may approve it.",
+      "role_map": {
+        "action_actor": "user",
+        "approval_actor": "draft recipient",
+        "modality": "user can review; only recipient may approve, no promise",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "You can review the fix; only your recipient may approve it. This states ability and permission, not a promise to act.",
+      "failing_example": "You will approve the fix after your recipient reviews it.",
+      "failure_reason": "Turns permission into commitment, reverses roles and invents a temporal condition."
+    },
+    "actor-ambiguous-approval": {
+      "source_anchor": "Alice tells Bob that Carol will make the correction once she approves it.",
+      "role_map": {
+        "action_actor": "Carol",
+        "approval_actor": [
+          "Alice",
+          "Carol"
+        ],
+        "modality": "conditional future action; approver ambiguous",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "Carol will make the correction; the sentence leaves whether Alice or Carol approves ambiguous.",
+      "failing_example": "Carol will make the correction once Alice approves it.",
+      "failure_reason": "Chooses one plausible referent as certain without evidence."
+    },
+    "speaker-commitment": {
+      "source_anchor": "I will make the correction once you approve it!",
+      "role_map": {
+        "action_actor": "user",
+        "approval_actor": "draft recipient",
+        "modality": "user commits after recipient approval",
+        "approval_state": "unspecified"
+      },
+      "passing_example": "You commit to making the correction after your recipient approves it.",
+      "failing_example": "This sentence commits you (same actor) to making the correction, with your approval as the trigger condition. It stays conditional: nothing obligates you until that approval arrives, and the commitment doesn't get satisfied just by someone attempting or claiming the correction, only by it actually happening after approval.\n\nSkills used: flow-lean",
+      "failure_reason": "The answer addresses the speaker as you, then assigns approval to your approval, moving it from the draft recipient to the speaker.",
+      "observed_failure_source": "results/pr2-contract-qualification-2026-10-24.jsonl"
+    }
+  }
+}

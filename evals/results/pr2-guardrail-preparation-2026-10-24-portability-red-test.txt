@@ -1,0 +1,23 @@
+test_plain_foreign_key_accepts_cross_tenant_reference (test_guardrail_preparation.DataIsolationCounterexamples) ... ok
+test_tenant_aware_key_blocks_cross_tenant_reference_but_not_reads (test_guardrail_preparation.DataIsolationCounterexamples) ... ok
+test_changing_review_answers_changes_evidence_but_not_generation (test_guardrail_preparation.GuardrailPreparationTests) ... ok
+test_failure_fixtures_are_exact_receipts_not_authored_model_outputs (test_guardrail_preparation.GuardrailPreparationTests) ... ok
+test_git_checkout_preserves_receipt_bytes_under_autocrlf (test_guardrail_preparation.GuardrailPreparationTests) ... FAIL
+test_review_groups_and_evidence_are_frozen_without_prompt_leakage (test_guardrail_preparation.GuardrailPreparationTests) ... ok
+test_same_40_tasks_with_only_four_strengthened_criteria (test_guardrail_preparation.GuardrailPreparationTests) ... ok
+
+======================================================================
+FAIL: test_git_checkout_preserves_receipt_bytes_under_autocrlf (test_guardrail_preparation.GuardrailPreparationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/flow-lean-finalize-20261021/tests/test_guardrail_preparation.py", line 44, in test_git_checkout_preserves_receipt_bytes_under_autocrlf
+    self.assertEqual(hashlib.sha256((checkout / relative).read_bytes()).hexdigest(),
+AssertionError: '901ea18c1d545344163b462da5ed35e4bc8690acc0cdcf90980454e170d6f0e2' != '71ed36654b47562b93fd5322206b2caa61b8f22b85c62d92de14808e0da05471'
+- 901ea18c1d545344163b462da5ed35e4bc8690acc0cdcf90980454e170d6f0e2
++ 71ed36654b47562b93fd5322206b2caa61b8f22b85c62d92de14808e0da05471
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.263s
+
+FAILED (failures=1)

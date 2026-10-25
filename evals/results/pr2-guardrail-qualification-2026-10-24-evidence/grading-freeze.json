@@ -1,0 +1,8 @@
+{
+  "frozen_at_utc": "2026-10-24T13:42:58.510324+00:00",
+  "graded_responses": 80,
+  "sha256": "2d3e4586bfd9c4751d4771dfe8132a7dd754799a4760a4ae24866caa8cf98695",
+  "fact_audit_sha256": "a83c43494a364e467d07b2ab2775dd52050011fc316694f8b2f6e52eada830e1",
+  "actor_audit_sha256": "d90790780ce369df57cb1dea50c9c5049ae7c068d45d046a2b1fae9aaeaffcbe",
+  "scope": "Grades and audits frozen before condition mapping is revealed; reviewer is the implementing assistant, not independent."
+}
